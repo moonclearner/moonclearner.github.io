@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[sudo no password]]></title>
+    <url>%2Fubuntu%2Fsudo_nopasswd.html</url>
+    <content type="text"><![CDATA[setting sudo no password通过修改sudouser列表的方式免密码 首先切换到root用户下 sudo -i,这个时候需要输入一次用户名和密码。 然后，执行visudo，在打开的文件中找到root ALL=(ALL) ALL 在其下面追加如下配置，即执行所有超级用户命令密码。 your_user_name ALL=(ALL) NOPASSWD: ALL]]></content>
+      <categories>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>setting</tag>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[backup ubuntu system]]></title>
+    <url>%2Fubuntu%2Frestore_ubuntu_system.html</url>
+    <content type="text"><![CDATA[原链接：https://community.bwbot.org/topic/167 Systemback是一个Ubuntu系统中用于发布自定义系统镜像和系统备份的软件。有时候我们对自己的Ubuntu做了很多设置，比如各种软件包，各种自定义的配置。我们想要在另一台电脑上也安装一个和我们一模一样的系统，这个时候就会用到这种方法了。这个方法不仅可以用于发布系统，也可以用来作为系统备份使用。 下面就具体介绍一下这个软件的安装和使用方法 安装sudo add-apt-repository ppa:nemh/systemback sudo apt-get update &amp;&amp; sudo apt-get install systemback unionfs-fuse 使用方法安装完成后在Dash菜单中就能找到这个软件了 输入管理员密码，打开后界面如下图所示 如果我们需要创建系统备份，点击Create new 就可以了。下面介绍一下自定义系统的iso文件如何制作。1. 点击右侧的Live system create按钮，出现界面如下图所示2. 勾选左侧的include the user data files，这样自己主文件夹内的文件都会被包含在系统镜像中。很多相关的程序的配置文件都是保存在主文件夹内的。Working Directory是设置工作目录，程序运行时产生的临时文件都会被保存在这里。所以一定要保证这里有足够的存储空间。3. 点击Create New按钮就开始创建了，等待创建完成。完成后界面如下图所示右侧的列表中就是已经创建的备份。我已经创建了两个相关的备份，所以有两个在右侧显示。此时文件没有转换成iso格式，选中你要转换的备份，点击convert to ISO 就可以开始转换了。转换完成后，在你的工作目录下就能找到生成的iso文件。 这个文件就可以用来安装系统了。同时还可以作为live系统来使用。 在备份过程中可能提示 The restore point creation is aborted! There has been critical changes in the file system during this operation 这并不一定是由于系统发生了严重的更改，只要是在复制文件的过程中出现错误都会出现这个信息。详细的错误信息可以通过 systemback-sustart 这个指令去调试，看看具体哪一个文件复制出了问题。极有可能的是权限问题。也可以通过这个指令去调试 DBGLEV=3 systemback-sustart 当错误出现后会在/tmp文件夹下创建一个systemback的错误信息文件。可以方便的通过这个文件去找到错误的原因。]]></content>
+      <categories>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>backup</tag>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[zsh setting]]></title>
+    <url>%2Fubuntu%2Fzsh_setting.html</url>
+    <content type="text"><![CDATA[How to fix and recover a “corrupt history file” in zshSimply removing random characters may also work: 12vim .zsh_historyRemove any strange characters, which would most probably be near the end. (In my case I had a string of @ in the second last line, following a forced shutdown) seting ls file color12vim .zshrcexport CLICOLOR=1]]></content>
+      <categories>
+        <category>zsh</category>
+      </categories>
+      <tags>
+        <tag>zsh</tag>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Apache cookbook]]></title>
+    <url>%2Fapache%2Fphp_My_cookbook.html</url>
+    <content type="text"><![CDATA[apache cookbookquery apache default user or group ps aux | egrep ‘(apache|httpd)’]]></content>
+      <categories>
+        <category>apache</category>
+      </categories>
+      <tags>
+        <tag>apache</tag>
+        <tag>setting</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[cmder 各类配置以及问题解决]]></title>
+    <url>%2Fcmder%2Fcmder.html</url>
+    <content type="text"><![CDATA[cmder 配置cmder 显示 oh my zsh会出现乱码 去网站nerdfonts最下面下载hack字体，解压安装hack字体 在cmder 的setting中 font是 选择hack字体 启动quake模式，使得cmder能够从window最上面一键呼出 cmder的setting，general 的quake style，勾选 quake style slide down , always on top , restore inactive .. , restore to active monitor setting的 keys &amp;macro 修改 minimize/restore quake style hotkey 快捷键]]></content>
+      <categories>
+        <category>cmder</category>
+      </categories>
+      <tags>
+        <tag>cmder</tag>
+        <tag>oh my zsh</tag>
+        <tag>zsh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo head setting]]></title>
+    <url>%2Fhexo%2Fhexo_post_header.html</url>
+    <content type="text"><![CDATA[hexo post文件头设置12345678910---title: Hexo head settingcategories: hexocopyright: truetags: - hexo - settingkeywords:description:--- hexo abstract setting12abstract content&lt;!--more--&gt; multi level categories12345categories: [no 1 categories, no 2 categories]categories: - no 1 - no 2]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>setting</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[onclick lanuch a post request，解决get参数太长，导致请求失败]]></title>
+    <url>%2Fjs%2Fonclick_for_post.html</url>
+    <content type="text"><![CDATA[onclick lanuch post request有时候，由于get请求下载文件，请求参数超过了2048字符，在IE等浏览器就会导致参数不完整 因此使用post请求，其参数就没有限制长度， 然后，使用ajax发起post请求，无法触发文件下载，因此使用模拟form表单发起post请求 原生onclick 发起post请求 12345678910111213141516function onclickpost(URL, PARAMS) &#123; var temp = document.createElement("form"); temp.action = URL; temp.method = "post"; temp.style.display = "none"; for (var x in PARAMS) &#123; var opt = document.createElement("textarea"); opt.name = x; opt.value = PARAMS[x]; temp.appendChild(opt); &#125; document.body.appendChild(temp); temp.submit(); temp.parentNode.removeChild(temp);&#125;onclickpost(url, &#123;cat:rawinfo&#125;)]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>html</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP My Cookbook]]></title>
+    <url>%2Fphp%2Fphp_My_cookbook.html</url>
+    <content type="text"><![CDATA[判断变量是否为空empty() 函数用于检查一个变量是否为空。 empty() 判断一个变量是否被认为是空的。当一个变量并不存在，或者它的值等同于 FALSE，那么它会被认为不存在。如果变量不存在的话，empty()并不会产生警告。 empty() 5.5 版本之后支持表达式了，而不仅仅是变量。 版本要求：PHP 4, PHP 5, PHP 7 语法bool empty ( mixed $var ) 参数说明： $var：待检查的变量。 注意：在 PHP 5.5 之前，empty() 仅支持变量；任何其他东西将会导致一个解析错误。换言之，下列代码不会生效： empty(trim($name)) 作为替代，应该使用: trim($name) == false empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。 返回值当 var 存在，并且是一个非空非零的值时返回 FALSE 否则返回 TRUE。 以下的变量会被认为是空的： “” (空字符串) 0 (作为整数的0) 0.0 (作为浮点数的0) “0” (作为字符串的0) NULL FALSE array() (一个空数组) $var; (一个声明了，但是没有值的变量) 实例1234567891011121314151617181920&lt;?php$ivar1=0;$istr1=&apos;Runoob&apos;;if (empty($ivar1))&#123; echo &apos;$ivar1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;&#125;else&#123; echo &apos;$ivar1&apos; . &quot; 不为空或不为 0。&quot; . PHP_EOL;&#125;if (empty($istr1))&#123; echo &apos;$istr1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;&#125;else&#123; echo &apos;$istr1&apos; . &quot; 字符串不为空或不为0。&quot; . PHP_EOL;&#125;?&gt; 执行结果如下所示：$ivar1 为空或为 0。 $istr1 字符串不为空或不为0。 读取文件，得到状态码12345if(file_exists("/absolution path"))&#123; $res = file_get_contents("/absolution path"); if("0" != $res)&#123; &#125;&#125; 判断字符串a是否存在某字符串bstrpos 会返回0即从a的第一个位置就找到了b12if(false !== strpos("a", "b"))&#123;&#125; 用strlen来替代empty当form var填入0的时候, empty($_POST[‘var’]) empty 为空 “” (空字符串) 0 (作为整数的0) 0.0 (作为浮点数的0) “0” (作为字符串的0) NULL FALSE array() (一个空数组) $var; (一个声明了，但是没有值的变量) empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。 empty(trim($name)) is wrong, empty cant contain func but a variable before version 5.3 产生随机数做id12345678if (function_exists('mcrypt_create_iv')) &#123; $_SESSION['token'] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));&#125; else &#123; $_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(32));&#125;md5(uniqid()) replace string or charactersstrtr sql special characters % and _ 1strtr($string, array('_'=&gt;'\_', '%'=&gt;'\%')); the list of php extension php -m php -i php -r “print_r(get_loaded_extensions());” php 7 change log openssl built in (not need install) bcmath built in (in archlinux)]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>cookbook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP deal with ip and mask]]></title>
+    <url>%2Fphp%2Fphp_deal_ip_and_mask.html</url>
+    <content type="text"><![CDATA[PHP deal with ip and mask12345678910111213141516171819202122function ip_parse($ip_str) &#123; $mark_len = 32; if (strpos($ip_str, "/") &gt; 0) &#123; list($ip_str, $mark_len) = explode("/", $ip_str); &#125; $ip = ip2long($ip_str); $mark = 0xFFFFFFFF &lt;&lt; (32 - $mark_len) &amp; 0xFFFFFFFF; $ip_start = $ip &amp; $mark; $ip_end = $ip | (~$mark) &amp; 0xFFFFFFFF; return array($ip, $mark, $ip_start, $ip_end);&#125;list($ip, $mark, $ip_start, $ip_end) = ip_parse("192.168.1.12/24");echo "IP地址 : ", long2ip($ip), "\n";echo "子网掩码: ", long2ip($mark), "\n";echo "IP段开始: ", long2ip($ip_start), "\n";echo "IP段结束: ", long2ip($ip_end), "\n";IP地址 : 192.168.1.12子网掩码: 255.255.255.0IP段开始: 192.168.1.0IP段结束: 192.168.1.255 its in ip segment1234567891011function ip_in($ip, $ip_str) &#123; $mark_len = 32; if (strpos($ip_str, "/") &gt; 0) &#123; list($ip_str, $mark_len) = explode("/", $ip_str); &#125; $right_len = 32 - $mark_len; return ip2long($ip) &gt;&gt; $right_len == ip2long($ip_str) &gt;&gt; $right_len;&#125;var_dump(ip_in("192.168.1.1", "192.168.1.0/24"));]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>ip</tag>
+        <tag>ipmask</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP delete array element删除数组元素]]></title>
+    <url>%2Fphp%2Fphp_delete_array_element.html</url>
+    <content type="text"><![CDATA[PHP删除数组元素unset from key1234unset($array['key'])//将数组的引索重新排列array_values($array) array_search from value12345$arr1 = array(1,3, 5,7,8);$key = array_search(3, $arr1);if ($key !== false) array_splice($arr1, $key, 1);// 引索会自动排列var_dump($arr1); array_splice123$array = array(0 =&gt; "a", 1 =&gt; "b", 2 =&gt; "c");// 引索不会保存array_splice($array, 1, 1); array_diff123$array = array(0 =&gt; "a", 1 =&gt; "b", 2 =&gt; "c");// 引索会保存$array = array_diff($array, ["a", "c"]); array_diff_key按键删除多个元素123$array = array(0 =&gt; "a", 1 =&gt; "b", 2 =&gt; "c");// 引索会保存$array = array_diff_key($array, [0 =&gt; "xy", "2" =&gt; "xy"]);]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>array</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP filter func]]></title>
+    <url>%2Fphp%2Fphp_filter_fuc.html</url>
+    <content type="text"><![CDATA[php filter function filter_has_var() 检查是否存在指定输入类型的变量 filter_id() 返回指定过滤器的 ID 号。 filter_input() 从脚本外部获取输入，并进行过滤。 filter_input_array() 从脚本外部获取多项输入，并进行过滤。 filter_list() 返回包含所有得到支持的过滤器的一个数组。 filter_var_array() 获取多个变量，并进行过滤。 filter_var() 获取一个变量，并进行过滤。 type INPUT_GET INPUT_POST INPUT_COOKIE INPUT_SERVER INPUT_ENV INPUT_SERVER INPUT_SESSION INPUT_REQUEST filter FILTER_CALLBACK 调用用户自定义函数来过滤数据。 FILTER_SANITIZE_STRING 去除标签，去除或编码特殊字符。 FILTER_SANITIZE_STRIPPED “string” 过滤器的别名。 FILTER_SANITIZE_ENCODED URL-encode 字符串，去除或编码特殊字符。 FILTER_SANITIZE_SPECIAL_CHARS HTML 转义字符 ‘“&lt;&gt;&amp; 以及 ASCII 值小于 32 的字符。 FILTER_SANITIZE_EMAIL 删除所有字符，除了字母、数字以及 !#$%&amp;’*+-/=?^_`{|}~@.[] FILTER_SANITIZE_URL 删除所有字符，除了字母、数字以及 $-_.+!*’(),{}|\^~[]`&lt;&gt;#%”;/?:@&amp;= FILTER_SANITIZE_NUMBER_INT 删除所有字符，除了数字和 +- FILTER_SANITIZE_NUMBER_FLOAT 删除所有字符，除了数字、+- 以及 .,eE FILTER_SANITIZE_MAGIC_QUOTES 应用 addslashes()。 FILTER_UNSAFE_RAW 不进行任何过滤，去除或编码特殊字符。 FILTER_VALIDATE_INT 把值作为整数来验证。 FILTER_VALIDATE_BOOLEAN 把值作为布尔选项来验证。如果是 “1”、”true”、”on” 和 “yes”，则返回 TRUE。如果是 “0”、”false”、”off”、”no” 和 “”，则返回 FALSE。否则返回 NULL。 FILTER_VALIDATE_FLOAT 把值作为浮点数来验证。 FILTER_VALIDATE_REGEXP 根据 regexp（一种兼容 Perl 的正则表达式）来验证值。 FILTER_VALIDATE_URL 把值作为 URL 来验证。 FILTER_VALIDATE_EMAIL 把值作为 e-mail 地址来验证。 FILTER_VALIDATE_IP 把值作为 IP 地址来验证，只限 IPv4 或 IPv6 或 不是来自私有或者保留的范围。 reference参考]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>filter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP Filesystem]]></title>
+    <url>%2Fphp%2Fphp_get_path_filename.html</url>
+    <content type="text"><![CDATA[PHP Filesystem 函数 描述 PHP basename() 返回路径中的文件名部分。 3 chgrp() 改变文件组。 3 chmod() 改变文件模式。 3 chown() 改变文件所有者。 3 clearstatcache() 清除文件状态缓存。 3 copy() 复制文件。 3 delete() 参见 unlink() 或 unset()。 dirname() 返回路径中的目录名称部分。 3 disk_free_space() 返回目录的可用空间。 4 disk_total_space() 返回一个目录的磁盘总容量。 4 diskfreespace() disk_free_space() 的别名。 3 fclose() 关闭打开的文件。 3 feof() 测试文件指针是否到了文件结束的位置。 3 fflush() 向打开的文件输出缓冲内容。 4 fgetc() 从打开的文件中返回字符。 3 fgetcsv() 从打开的文件中解析一行，校验 CSV 字段。 3 fgets() 从打开的文件中返回一行。 3 fgetss() 从打开的文件中读取一行并过滤掉 HTML 和 PHP 标记。 3 file() 把文件读入一个数组中。 3 file_exists() 检查文件或目录是否存在。 3 file_get_contents() 将文件读入字符串。 4 file_put_contents() 将字符串写入文件。 5 fileatime() 返回文件的上次访问时间。 3 filectime() 返回文件的上次改变时间。 3 filegroup() 返回文件的组 ID。 3 fileinode() 返回文件的 inode 编号。 3 filemtime() 返回文件的上次修改时间。 3 fileowner() 文件的 user ID （所有者）。 3 fileperms() 返回文件的权限。 3 filesize() 返回文件大小。 3 filetype() 返回文件类型。 3 flock() 锁定或释放文件。 3 fnmatch() 根据指定的模式来匹配文件名或字符串。 4 fopen() 打开一个文件或 URL。 3 fpassthru() 从打开的文件中读数据，直到 EOF，并向输出缓冲写结果。 3 fputcsv() 将行格式化为 CSV 并写入一个打开的文件中。 5 fputs() fwrite() 的别名。 3 fread() 读取打开的文件。 3 fscanf() 根据指定的格式对输入进行解析。 4 fseek() 在打开的文件中定位。 3 fstat() 返回关于一个打开的文件的信息。 4 ftell() 返回文件指针的读/写位置 3 ftruncate() 将文件截断到指定的长度。 4 fwrite() 写入文件。 3 glob() 返回一个包含匹配指定模式的文件名/目录的数组。 4 is_dir() 判断指定的文件名是否是一个目录。 3 is_executable() 判断文件是否可执行。 3 is_file() 判断指定文件是否为常规的文件。 3 is_link() 判断指定的文件是否是连接。 3 is_readable() 判断文件是否可读。 3 is_uploaded_file() 判断文件是否是通过 HTTP POST 上传的。 3 is_writable() 判断文件是否可写。 4 is_writeable() is_writable() 的别名。 3 link() 创建一个硬连接。 3 linkinfo() 返回有关一个硬连接的信息。 3 lstat() 返回关于文件或符号连接的信息。 3 mkdir() 创建目录。 3 move_uploaded_file() 将上传的文件移动到新位置。 4 parse_ini_file() 解析一个配置文件。 4 pathinfo() 返回关于文件路径的信息。 4 pclose() 关闭有 popen() 打开的进程。 3 popen() 打开一个进程。 3 readfile() 读取一个文件，并输出到输出缓冲。 3 readlink() 返回符号连接的目标。 3 realpath() 返回绝对路径名。 4 rename() 重名名文件或目录。 3 rewind() 倒回文件指针的位置。 3 rmdir() 删除空的目录。 3 set_file_buffer() 设置已打开文件的缓冲大小。 3 stat() 返回关于文件的信息。 3 symlink() 创建符号连接。 3 tempnam() 创建唯一的临时文件。 3 tmpfile() 建立临时文件。 3 touch() 设置文件的访问和修改时间。 3 umask() 改变文件的文件权限。 3 unlink() 删除文件。 3 compatibility当在 Unix 平台上规定路径时，正斜杠 (/) 用作目录分隔符。而在 Windows 平台上，正斜杠 (/) 和反斜杠 () 均可使用。]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>os</tag>
+        <tag>filesystem</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP quotes]]></title>
+    <url>%2Fphp%2Fphp_quotes.html</url>
+    <content type="text"><![CDATA[php quote魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符都会被自动加上一个反斜线进行转义，这和 addslashes() 作用完全相同 相关的函数 set_magic_quotes_runtime magic_quotes_gpc addslashes stripslashes set_magic_quotes_runtime()设置当前magic_quotes_runtime 配置选项的激活状态，0为关闭，1为开启。set_magic_quotes_runtime(1)或是配置文件中magic_quotes_runtime为true（这个在php.ini中配置），那么php脚本读取文件或是从数据库中读取数据，遇到反斜线（\）、单引号（’）、双引号（”）、NULL时，会在前面自动加上转义字符，变成\、\’、\”、\NULL；若是关闭的话，也就是set_magic_quotes_runtime(0)magic_quotes_runtime为false，那么便会转义，此时可以借助addslashes进行转义。 magic_quotes_gpc()当此值为1时，会对HTTP请求中的G（$_GET）、P（$_POST）、C（$_COOKIE）单双引号和反斜线进行转义；反之则不会。该操作一般见于表单提交的数据库操作，若是值为0时，便用addslashes进行转义存入数据库中，取出时再用stripslashes函数把反斜线给去掉。 特别注意的是在PHP 5.4版本时，魔术引号被移除了，因此转义都需要加上addslashes函数。 12345678910$_GET['des'] = "she's a beauty";foreach (array('_GET', '_POST', '_COOKIE') as $_request)&#123; echo $_request; // _GET_POST _COOKIE foreach ($$_request as $_key=&gt; $_value)&#123; // $_key为键，如_GET，$$_key为$_GET // $$_key=$_value意思就是把$_GET['des'] = 1111便为$des=she\'s a beauty $_key&#123;0&#125; != '_' &amp;&amp; $$_key=addslashes($_value); echo $$_key; &#125;&#125; 12345if(get_magic_quotes_gpc() &amp;&amp; (! ini_get('magic_quotes_sybase')))&#123; $value = stripslashes($_GET['value']);&#125;else&#123; $value = $_GET['value'];&#125;]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[vim]]></title>
+    <url>%2Fvim%2Fvim.html</url>
+    <content type="text"><![CDATA[vim 不按 Esc 而是按 ^『或者 ^c，速度快很多 学会几个定位键的区别：0, $, {, }, g, G, w, e, b… Shift+V 选定几行，然后用 一起移动 Ctrl+V 选定行首或行尾的字符，然后用 shift+i 做插入，或者 shift+x 做删除 学会用 y,d 和 p, P 做粘贴剪切 学会用 ^W 的窗口操作。打开文件用 sp 或者 vs 学会记录宏的命令。用 q 加任意键开始录制，再按 q 保存。然后可用 @加这个任意键回放，在 @前加数字可定义回放次数 “.”重复上一个命令，”u”取消上一个命令，”^r”反取消 ^n, ^p 用 buf 里的关键词补全。 学会搜索替换”:%s/ 要搜的东西 / 要换成的东西 /g” 任何时候移到一个单词上按#的话可以高亮这个文档里所有一样的单词 用“/”做搜索，按 n 或 N 上一个 / 下一个 “:! 命令 &amp;”可直接运行这个命令，用”:! 命令 %&amp;”如果你想让这个命令对当前所编辑文件做操作。 任何时候可用”:cd %:p:h”来切换目录到当前编辑文件所在目录。 “.” 这个 mark 代表最后一次修改的地方，所以 “‘.” 可以跳到最后一次修改的地方，’. 可以跳到最后一次修改的那一行。 g; 和 g, 则可以在整个 changelist 里面来回跳转，敲 :help changelist 可以看说明。 + or or //change windows size + left or right //rapidly change windows to watch two files diffience + &lt;+&gt; or //change windows size vim -on file1 file2 … // n split windows numbers o horizontal split O vertical split :sp filename //horizontal split windows ^M how to delete ^M :%s/^M//g ^M “ +“ run markdown rmk open by typora show all result when search /searchStringlv move windows center to cursor zz z+ z- H M L move cursor to windows :set scrolloff=10 //let cursor on windows center alwaysly move on buffers :ls, :buffers show all buffers :bn[ext] next buffer :bp[revious] last buffer :b2 move to number 2 buffer :b exa move to match exa file such as example.txt :sb 3 split windows open buffer number 3 file by horizontal spl :vertical sb 3 by vertical split reg pasteclipboard :reg show all reg “+ system reg yyn n is name of reg paste reg content to current lin on txt file move to title ctrl + ] 2017/2/26 星期日 21:05:31switch tabel gt create tabel nt insert current time tt switch windows Ctrl + f : next windows Ctrl + b : last windows ctrl + d : next half windows ctrl + u : last half windows delete trick dw de db d$ delete to row end di dtc delete between c all charcters read and save :r filename read filename to current cursor 1,20 w filename create new filename to 1,20 line content 1,$ w filename whole content write new filename 1,20 w &gt;&gt; filename write 1,20 content to filename last line autoindent == jump to last cursor ctrl + i ctrl + o jedi K document g go to not for javascript setting pwd . nerdtrem rename file m -&gt;m alter filename delete file use key “m” emmet key ,, == &lt;ctrl y&gt;, go to mark mark place: m {a-zA-Z} go to mark: ‘{a-zA-Z} delete mark: :delmarks {a-zA-Z} show all mark: :marks line choose by visual mode line visual mode: V Vjj 块 visual mode: ctrl + v but on windows ctrl + q gv =&gt; choose last visual chosed text o =&gt; cursor move to selected text end O =&gt; cursor move to selected text start run python code on your vim12s = 'djj'print s Run code by select 2 line Vkk, then press: !python and hit enteroutput:djj anothor example:123def func(x, y): return x + yprint func(3, 4) output:7 12for i in 'moonclearner': print i output:123456789101112moonclearner vim-surround“hello world” press cs”‘ inside “ switch to ‘‘hello world’ press cs’ inside ‘ switch to hello world cst”“hello world” ds” delete “hello world cursor on hello ysiw][hello] world cs]{{ hello } world yssb or yss) wrap entire line({ hello } world) ds{ds) revert to original texthello world ysiw cursor on hellohello world VS wrap hello world close label tag &gt;output: block visual ctrl+v on unix ctrl+q on windows jjj or % muti line select i,I,a,A to input ^ and 01this a sentence! cursor on t ^ the cursor will jump to c 0 the cursor will jump to space, first column $ and g_ $ go to the end of line g_ go to the last non-blank character of line buffer :bn :bp :buffers -&gt; show all buffers saveas :saveas -&gt; save as # and * # look previous same character * jump next same character yank muti times character this my test and test the cursor on i y2/test -&gt;will copy is my test and yank up to the second occurence of test y/test -&gt; will yank is my yank up to the first test before ye y$ f and t fa -&gt; go to next occurence of the letter a on the line , and ; respresent next and previous, reverse use F ta -&gt; go to just before the character a, reverse use Tdt and yt t represent to delete everything util the character before yank everything util the character before Zone select adb(map(+)(“foo”))nnn cursor on o vi” -&gt; will select foo va” -&gt; will select “foo” vi) -&gt; will select “foo” va) -&gt; will select (“foo”) v2i) -&gt; willl select map(+)(&quot;foo&quot;) v2a) -&gt; will select (map(+)(&quot;foo&quot;)) completion ctrl+n next completion ctrl+p previous completion Macros qa record actions in the reg a q stop record actions @a replay the macro saved into the reg a @@ to replay the last executed macro number@@ visual using J -&gt;join all the lines together &lt; or &gt; -&gt;indent to left or right = -&gt;auto indent split :split :vsplitopen nerdtree :Vexplore :Sexplore common command add ; three line at the line ctrl+q -&gt;$ -&gt;jjj -&gt;A -&gt;; -&gt;Esc vim save as sudo :w !sudo tee % :%!sudo bash -c “cat &gt; ‘%’” yapf python format requirement python and pip install yapf = run only read file by user confsudo -E vim filename]]></content>
+      <categories>
+        <category>Vim</category>
+      </categories>
+      <tags>
+        <tag>vim</tag>
+        <tag>text</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[sqlite common cmd 常用命令]]></title>
+    <url>%2Fdatabases%2Fsqlite%2Fsqlite_common_cmd.html</url>
+    <content type="text"><![CDATA[sqlite common cmd 常用命令查看列表名 pragma table_info(tablename); .schema tablename select * from sqlite_master where type=”table” and name=”tablename”; 退出sqlite shel.exit 显示所有table.tables]]></content>
+      <categories>
+        <category>sqlite</category>
+      </categories>
+      <tags>
+        <tag>sqlite</tag>
+        <tag>sql</tag>
+        <tag>common</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Jq from label name get]]></title>
+    <url>%2Fjs%2Fjquery%2Fjq_get_name.html</url>
+    <content type="text"><![CDATA[jquery from label name get label123jQuery("input[name='imgtitle']").each(function()&#123; titles += jQuery(this).val()+",";&#125;);]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>jquery</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP database transaction]]></title>
+    <url>%2Fphp%2Fcookbook%2Fphp_database_transaction.html</url>
+    <content type="text"><![CDATA[PHP database transaction123456789101112131415161718192021222324252627282930class Message&#123; protected $db; // $form_errors save post validate error for showing error in pages protected $form_errors = array(); public function __construct()&#123; set_exception_handler(array($this, 'logAndDie')); $this-&gt;db = new PDO("sqlite:/tmp/tmp.db"); $this-&gt;db-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); &#125; protected function save()&#123; $this-&gt;db-&gt;beginTransaction(); pass $this-&gt;db-&gt;commit(); &#125; public function valid()&#123; pass &#125; public function logAndDie(Exception $e)&#123; print 'ERROR: '. htmlentities($e-&gt;getMessage()); if($this-&gt;db-&gt;inTransaction())&#123; $this-&gt;db-&gt;rollback(); &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>database</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP dynamically create object]]></title>
+    <url>%2Fphp%2Fcookbook%2Fphp_dynamic_create_object.html</url>
+    <content type="text"><![CDATA[PHP dynamically create object123$object = new ReflectionClass('PDO');$object-&gt;newInstanceArgs(array('arg1'=&gt;$arg1, 'arg2'=&gt;$arg2)); PHP dynamically calling func1234567$classname = "TestClassName";$object = new #classname();$methodname = "getData";$object-&gt;$methodname("arg1", "arg2");]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP PDO error info]]></title>
+    <url>%2Fphp%2Fcookbook%2Fphp_pdo_error_info.html</url>
+    <content type="text"><![CDATA[PHP PDO catch error info`php try{ $db = new PDO(‘sqlite:/tmp/tmp.db’); $db-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); $st = $db-&gt;prepare(‘SELECT * FROM tmp’); $st-&gt;execute(): while($row = $st-&gt;fetch(PDO:FETCH_NUM)){ print implode(‘,’, $row).”\n”; }}catch(Exception $e){ print “problem: “ . $e-&gt;getMessage();} referencephp cookbook 10.10]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>pdo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP session]]></title>
+    <url>%2Fphp%2Fcookbook%2Fphp_session.html</url>
+    <content type="text"><![CDATA[PHP SessionPHP redirect url need add phpsessionidSID is constant value replace phpsessionid1234$redirect_url = 'http://www.example.com';if(defined('SID') &amp;&amp; (! isset($_COOKIE[session_name()])))&#123; $redirect_url .= '?' . SID&#125; output_add_rewrite_var ( string $name , string $value ) : bool1output_add_rewrite_var('token', $token); 此函数给URL重写机制添加名/值对。 这种名值对将被添加到URL（以GET参数的形式）和表单（以input隐藏域的形式），当透明URL重写用 session.use_trans_sid 开启时同样可以添加到session ID。 要注意，绝对URL(http://example.com/..)不能被重写。 force use cookie, url not contain phpsessionid123ini_set('session.use_only_cookies', true)session_regenerate_id();]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>session</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[build php extension fail phpizse]]></title>
+    <url>%2Fphp%2Fconfigure%2Fphp_extension_compile_fail.html</url>
+    <content type="text"><![CDATA[CDPATH command not found12345678$ make /home/user/libtool: line 482: CDPATH: command not foundlibtool: Version mismatch error. This is libtool 2.4.2, but thelibtool: definition of this LT_INIT comes from an older release.libtool: You should recreate aclocal.m4 with macros from libtool 2.4.2libtool: and run autoconf again.make: *** [xdebug.lo] Error 63 solution aclocal libtoolize –force autoheader autoconf]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>configure</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP Laravel]]></title>
+    <url>%2Fphp%2Flaravel%2Ftimeline.html</url>
+    <content type="text"><![CDATA[learning laravel install homestead vagrant box git clone https://github.com/laravel/homestead.git Homestead laravel local server init php artisan serve –host=0.0.0.0 –port=8000]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>laravel</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP protected from crsf attack]]></title>
+    <url>%2Fphp%2Fsecure%2Fphp_CRSF_TOKEN.html</url>
+    <content type="text"><![CDATA[php protected from crsf attackgenerate token1234567891011&lt;?phpsession_start();if (empty($_SESSION['token'])) &#123; if (function_exists('mcrypt_create_iv')) &#123; $_SESSION['token'] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM)); &#125; else &#123; $_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(32)); &#125;&#125;$token = $_SESSION['token'];?&gt; form use token123456789101112131415&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;title&gt;CSRF&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;form method="post" action=""&gt; &lt;input type="text" name="username"&gt; &lt;br&gt; &lt;input type="text" name="password"&gt;&lt;br&gt; &lt;input type="text" name="token" value="&lt;?php echo $_SESSION['token']; ?&gt;"&gt;&lt;br&gt; &lt;input type="submit" value="submit"&gt;&lt;/form&gt;&lt;/body&gt;&lt;/html&gt; request handler1234567if (!empty($_POST['token'])) &#123; if (hash_equals($_SESSION['token'], $_POST['token'])) &#123; &#125; else &#123; &#125;&#125;]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>crsf</tag>
+        <tag>web attack</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP protected from sql inject]]></title>
+    <url>%2Fphp%2Fsecure%2Fphp_SQL_inject.html</url>
+    <content type="text"><![CDATA[PHP protected from sql injectPDOinsert123456$db = new PDO("sqlite:/tmp.db");$sql = "insert into auth (time, user) values(?, ?)";$query = $db-&gt;prepare($sql);if($query-&gt;execute(array($time, $user)))&#123; echo "insert success";&#125; select123456$db = new PDO("sqlite:/tmp.db");$sql = "select * from tmp where ip=? or user=?";$query = $db-&gt;prepare($sql);$query-&gt;execute(array($ip, $user));$rows = $query-&gt;fetchAll(PDO::FETCH_ASSOC);var_dump($rows);]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>web attack</tag>
+        <tag>sql inject</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[django basic commands]]></title>
+    <url>%2Fpython%2Fdjango%2Fbasic_command.html</url>
+    <content type="text"><![CDATA[django basic commandscreate projectdjango-admin.py startproject project_name create appdjango-admin.py startapp appname synchro database python manange.py makemigrations python manange.py migrate run by test serverpython manange.py runserver 127.0.0.1:8888 clear databasepython manange.py flush create super userpython manange.py createsuperuser change user passwordpython manange.py changepassword username dump databasepython manange.py dumpdata appname &gt; appname.json load databasepython manange.py loaddata appname.json django shellpython manange.py shell database sql shellpython manange.py dbshell]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>django</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[install pip]]></title>
+    <url>%2Fpython%2Finstall%2FPip.html</url>
+    <content type="text"><![CDATA[install pip2 and pip3123wget https://bootstrap.pypa.io/get-pip.pysudo python2 get-pip.pysudo python get-pip.py]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>pip</tag>
+      </tags>
+  </entry>
+</search>

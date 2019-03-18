@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="true">
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="true">
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":5},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+
+    <meta name="baidu-site-verification" content="8NezAkUO3s">
+
+
+  <meta name="description" content="vim 不按 Esc 而是按 ^『或者 ^c，速度快很多 学会几个定位键的区别：0, $, {, }, g, G, w, e, b… Shift+V 选定几行，然后用 一起移动 Ctrl+V 选定行首或行尾的字符，然后用 shift+i 做插入，或者 shift+x 做删除 学会用 y,d 和 p, P 做粘贴剪切 学会用 ^W 的窗口操作。打开文件用 sp 或者 vs 学会记录宏的命令。用 q">
+<meta name="keywords" content="vim,text">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim">
+<meta property="og:url" content="https://moonclearner.cn/vim/vim.html">
+<meta property="og:site_name" content="moonclearner page">
+<meta property="og:description" content="vim 不按 Esc 而是按 ^『或者 ^c，速度快很多 学会几个定位键的区别：0, $, {, }, g, G, w, e, b… Shift+V 选定几行，然后用 一起移动 Ctrl+V 选定行首或行尾的字符，然后用 shift+i 做插入，或者 shift+x 做删除 学会用 y,d 和 p, P 做粘贴剪切 学会用 ^W 的窗口操作。打开文件用 sp 或者 vs 学会记录宏的命令。用 q">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-27T05:33:54.374Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vim">
+<meta name="twitter:description" content="vim 不按 Esc 而是按 ^『或者 ^c，速度快很多 学会几个定位键的区别：0, $, {, }, g, G, w, e, b… Shift+V 选定几行，然后用 一起移动 Ctrl+V 选定行首或行尾的字符，然后用 shift+i 做插入，或者 shift+x 做删除 学会用 y,d 和 p, P 做粘贴剪切 学会用 ^W 的窗口操作。打开文件用 sp 或者 vs 学会记录宏的命令。用 q">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="moonclearner page" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://moonclearner.cn/vim/vim.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>vim | moonclearner page</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+  <div class="bg_content">
+      <canvas id="canvas"></canvas>
+  </div>
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <!--github-start-->
+    <a href="https://github.com/moonclearner" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <!--github-end-->
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">moonclearner page</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">moonclearner blog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>Sitemap</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/vim/vim.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moonclearner">
+      <meta itemprop="description" content="moonclearner record code skill and my feeling">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="moonclearner page">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vim
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-27 13:33:54" itemprop="dateCreated datePublished" datetime="2019-02-27T13:33:54+08:00">2019-02-27</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Vim/" itemprop="url" rel="index"><span itemprop="name">Vim</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">5.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">5 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h1><ul>
+<li>不按 Esc 而是按 ^『或者 ^c，速度快很多</li>
+<li>学会几个定位键的区别：0, $, {, }, g, G, w, e, b…</li>
+<li>Shift+V 选定几行，然后用 一起移动</li>
+<li>Ctrl+V 选定行首或行尾的字符，然后用 shift+i 做插入，或者 shift+x 做删除</li>
+<li>学会用 y,d 和 p, P 做粘贴剪切</li>
+<li>学会用 ^W 的窗口操作。打开文件用 sp 或者 vs</li>
+<li>学会记录宏的命令。用 q 加任意键开始录制，再按 q 保存。然后可用 @加这个任意键回放，在 @前加数字可定义回放次数</li>
+<li>“.”重复上一个命令，”u”取消上一个命令，”^r”反取消</li>
+<li>^n, ^p 用 buf 里的关键词补全。</li>
+<li>学会搜索替换”:%s/ 要搜的东西 / 要换成的东西 /g”</li>
+<li>任何时候移到一个单词上按#的话可以高亮这个文档里所有一样的单词</li>
+<li>用“/”做搜索，按 n 或 N 上一个 / 下一个</li>
+<li>“:! 命令 &amp;”可直接运行这个命令，用”:! 命令 %&amp;”如果你想让这个命令对当前所编辑文件做操作。</li>
+<li>任何时候可用”:cd %:p:h”来切换目录到当前编辑文件所在目录。</li>
+<li>“.” 这个 mark 代表最后一次修改的地方，所以 “‘.” 可以跳到最后一次修改的地方，’. 可以跳到最后一次修改的那一行。</li>
+<li>g; 和 g, 则可以在整个 changelist 里面来回跳转，敲 :help changelist 可以看说明。</li>
+<li><win> + <pg up=""> or <pg down=""> or <pg left=""> //change windows size</pg></pg></pg></win></li>
+<li><win> + left or right //rapidly change windows to watch two files diffience</win></li>
+<li><ctrl +="" w=""> + &lt;+&gt; or <->  //change windows size</-></ctrl></li>
+<li>vim -on file1 file2 … // n split windows numbers o horizontal split O vertical split</li>
+<li>:sp filename //horizontal split windows</li>
+</ul>
+<h2 id="M-how-to-delete-M"><a href="#M-how-to-delete-M" class="headerlink" title="^M how to delete ^M"></a>^M how to delete ^M</h2><ul>
+<li><code>:%s/^M//g</code></li>
+<li>^M “<ctrl -v=""> +<ctrl -m="">“</ctrl></ctrl></li>
+</ul>
+<h2 id="run-markdown"><a href="#run-markdown" class="headerlink" title="run markdown"></a>run markdown</h2><ul>
+<li><reader>rmk</reader></li>
+<li>open by typora</li>
+</ul>
+<h2 id="show-all-result-when-search"><a href="#show-all-result-when-search" class="headerlink" title="show all result when search"></a>show all result when search</h2><ul>
+<li>/searchString<cr><leader>lv</leader></cr></li>
+</ul>
+<h2 id="move-windows-center-to-cursor"><a href="#move-windows-center-to-cursor" class="headerlink" title="move windows center to cursor"></a>move windows center to cursor</h2><ul>
+<li>zz</li>
+<li>z+</li>
+<li>z-</li>
+<li>H M L move cursor to windows</li>
+<li>:set scrolloff=10  //let cursor on windows center alwaysly</li>
+</ul>
+<h2 id="move-on-buffers"><a href="#move-on-buffers" class="headerlink" title="move on buffers"></a>move on buffers</h2><ul>
+<li>:ls, :buffers<br>  show all buffers</li>
+<li>:bn[ext]<br>  next buffer</li>
+<li>:bp[revious]<br>  last buffer</li>
+<li>:b2<br>  move to number 2 buffer</li>
+<li>:b exa<br>  move to match exa file  such as example.txt</li>
+<li>:sb 3<br>  split windows open buffer number 3 file by horizontal spl</li>
+<li>:vertical sb 3<br>  by vertical split</li>
+</ul>
+<h2 id="reg-pasteclipboard"><a href="#reg-pasteclipboard" class="headerlink" title="reg pasteclipboard"></a>reg pasteclipboard</h2><ul>
+<li>:reg</li>
+<li>show all reg</li>
+<li>“+ system reg</li>
+<li>yyn<ul>
+<li>n is name of reg</li>
+<li>paste reg content to current lin</li>
+</ul>
+</li>
+</ul>
+<h2 id="on-txt-file-move-to-title"><a href="#on-txt-file-move-to-title" class="headerlink" title="on txt file move to title"></a>on txt file move to title</h2><ul>
+<li>ctrl + ]</li>
+</ul>
+<h1 id="2017-2-26-星期日-21-05-31"><a href="#2017-2-26-星期日-21-05-31" class="headerlink" title="2017/2/26 星期日 21:05:31"></a>2017/2/26 星期日 21:05:31</h1><h2 id="switch-tabel"><a href="#switch-tabel" class="headerlink" title="switch tabel"></a>switch tabel</h2><ul>
+<li>gt</li>
+</ul>
+<h2 id="create-tabel"><a href="#create-tabel" class="headerlink" title="create tabel"></a>create tabel</h2><ul>
+<li><leader>nt</leader></li>
+</ul>
+<h2 id="insert-current-time"><a href="#insert-current-time" class="headerlink" title="insert current time"></a>insert current time</h2><ul>
+<li><leader>tt</leader></li>
+</ul>
+<h2 id="switch-windows"><a href="#switch-windows" class="headerlink" title="switch windows"></a>switch windows</h2><ul>
+<li>Ctrl + f : next windows</li>
+<li>Ctrl + b : last windows</li>
+<li>ctrl + d : next half windows</li>
+<li>ctrl + u : last half windows</li>
+</ul>
+<h2 id="delete-trick"><a href="#delete-trick" class="headerlink" title="delete trick"></a>delete trick</h2><ul>
+<li>dw</li>
+<li>de</li>
+<li>db</li>
+<li>d$  delete to row end</li>
+<li>di</li>
+<li>dtc delete between c all charcters</li>
+</ul>
+<h2 id="read-and-save"><a href="#read-and-save" class="headerlink" title="read and save"></a>read and save</h2><ul>
+<li>:r filename  read filename to current cursor</li>
+<li>1,20 w filename  create new filename to 1,20 line content</li>
+<li>1,$ w filename whole content write new filename</li>
+<li>1,20 w &gt;&gt; filename write 1,20 content to filename last line</li>
+</ul>
+<h2 id="autoindent"><a href="#autoindent" class="headerlink" title="autoindent"></a>autoindent</h2><ul>
+<li>==</li>
+</ul>
+<h2 id="jump-to-last-cursor"><a href="#jump-to-last-cursor" class="headerlink" title="jump to last cursor"></a>jump to last cursor</h2><ul>
+<li>ctrl + i</li>
+<li>ctrl + o</li>
+</ul>
+<h2 id="jedi"><a href="#jedi" class="headerlink" title="jedi"></a>jedi</h2><ul>
+<li>K document</li>
+<li><leader>g  go to</leader></li>
+<li>not for javascript</li>
+</ul>
+<h2 id="setting-pwd"><a href="#setting-pwd" class="headerlink" title="setting pwd"></a>setting pwd</h2><ul>
+<li><leader>.</leader></li>
+</ul>
+<h2 id="nerdtrem"><a href="#nerdtrem" class="headerlink" title="nerdtrem"></a>nerdtrem</h2><ul>
+<li>rename file</li>
+<li><code>m</code> -&gt;<code>m</code></li>
+<li>alter filename</li>
+<li>delete file</li>
+<li>use key “m”</li>
+</ul>
+<h2 id="emmet-key"><a href="#emmet-key" class="headerlink" title="emmet key"></a>emmet key</h2><ul>
+<li>,, == <code>&lt;ctrl y&gt;,</code></li>
+</ul>
+<h2 id="go-to-mark"><a href="#go-to-mark" class="headerlink" title="go to mark"></a>go to mark</h2><ul>
+<li>mark place: m {a-zA-Z}</li>
+<li>go to mark: ‘{a-zA-Z}</li>
+<li>delete mark: :delmarks {a-zA-Z}</li>
+<li>show all mark: :marks</li>
+</ul>
+<h2 id="line-choose-by-visual-mode"><a href="#line-choose-by-visual-mode" class="headerlink" title="line choose by visual mode"></a>line choose by visual mode</h2><ul>
+<li>line visual mode: V</li>
+<li>Vjj</li>
+<li>块 visual mode: ctrl + v but on windows ctrl + q</li>
+<li>gv  =&gt; choose last visual chosed text</li>
+<li>o   =&gt; cursor move to selected text end</li>
+<li>O   =&gt; cursor move to selected text start</li>
+</ul>
+<h2 id="run-python-code-on-your-vim"><a href="#run-python-code-on-your-vim" class="headerlink" title="run python code on your vim"></a>run python code on your vim</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">'djj'</span></span><br><span class="line"><span class="keyword">print</span> s</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>Run code by select 2 line Vkk, then press: !python and hit enter</strong><br>output:djj</li>
+<li>anothor example:<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x, y)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> x + y</span><br><span class="line"><span class="keyword">print</span> func(<span class="number">3</span>, <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>output:7</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">'moonclearner'</span>:</span><br><span class="line">	<span class="keyword">print</span> i</span><br></pre></td></tr></table></figure>
+<p><strong>output:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">m</span><br><span class="line">o</span><br><span class="line">o</span><br><span class="line">n</span><br><span class="line">c</span><br><span class="line">l</span><br><span class="line">e</span><br><span class="line">a</span><br><span class="line">r</span><br><span class="line">n</span><br><span class="line">e</span><br><span class="line">r</span><br></pre></td></tr></table></figure></p>
+<h2 id="vim-surround"><a href="#vim-surround" class="headerlink" title="vim-surround"></a>vim-surround</h2><p>“hello world”</p>
+<ul>
+<li>press cs”‘ inside “ switch to ‘<br>‘hello world’</li>
+<li>press cs’<q> inside ‘ switch to <q></q><br><q>hello world</q></q></li>
+<li>cst”<br>“hello world”</li>
+<li>ds” delete “<br>hello world</li>
+<li>cursor on hello ysiw]<br>[hello] world</li>
+<li>cs]{<br>{ hello } world</li>
+<li>yssb or yss) wrap entire line<br>({ hello } world)</li>
+<li>ds{ds) revert to original text<br>hello world</li>
+<li>ysiw<em> cursor on hello<br><em>hello</em> world</em></li>
+<li>VS<p class="important"> wrap </p><p></p>  <p class="important"><br>  <em>hello</em> world<br>  </p>
+
+</li>
+</ul>
+<h2 id="close-label-tag"><a href="#close-label-tag" class="headerlink" title="close label tag"></a>close label tag</h2><ul>
+<li><p>&gt;<br>output: </p><p></p>
+
+
+</li>
+</ul>
+<h2 id="block-visual"><a href="#block-visual" class="headerlink" title="block visual"></a>block visual</h2><ul>
+<li><code>ctrl+v</code>  on unix</li>
+<li><code>ctrl+q</code>  on windows</li>
+<li>jjj or % muti line select</li>
+<li>i,I,a,A to input</li>
+</ul>
+<h2 id="and-0"><a href="#and-0" class="headerlink" title="^ and 0"></a>^ and 0</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this a sentence!</span><br></pre></td></tr></table></figure>
+<ul>
+<li>cursor on t</li>
+<li>^ the cursor will jump to c</li>
+<li>0 the cursor will jump to space, first column</li>
+</ul>
+<h2 id="and-g"><a href="#and-g" class="headerlink" title="$ and g_"></a>$ and g_</h2><ul>
+<li>$ go to the end of line</li>
+<li>g_ go to the last non-blank character of line</li>
+</ul>
+<h2 id="buffer"><a href="#buffer" class="headerlink" title="buffer"></a>buffer</h2><ul>
+<li>:bn</li>
+<li>:bp</li>
+<li>:buffers -&gt; show all buffers</li>
+</ul>
+<h2 id="saveas"><a href="#saveas" class="headerlink" title="saveas"></a>saveas</h2><ul>
+<li>:saveas   -&gt; save as</li>
+</ul>
+<h2 id="and"><a href="#and" class="headerlink" title="# and *"></a># and *</h2><ul>
+<li># look previous same character</li>
+<li>* jump next same character</li>
+</ul>
+<h2 id="yank-muti-times-character"><a href="#yank-muti-times-character" class="headerlink" title="yank muti times character"></a>yank muti times character</h2><ul>
+<li>this my test and test</li>
+<li><em>the cursor on i</em></li>
+<li>y2/test -&gt;will copy <code>is my test and</code><br>  yank up to the second occurence of test</li>
+<li>y/test   -&gt; will yank <code>is my</code><br>  yank up to the first test before</li>
+<li>ye</li>
+<li>y$</li>
+</ul>
+<h2 id="f-and-t"><a href="#f-and-t" class="headerlink" title="f and t"></a>f and t</h2><ul>
+<li>fa -&gt; go to next occurence of the letter <code>a</code> on the line<br>  , and ; respresent next and previous, reverse use F</li>
+<li>ta -&gt; go to just before the character <code>a</code>, reverse use T<h2 id="dt-and-yt"><a href="#dt-and-yt" class="headerlink" title="dt and yt"></a>dt and yt</h2></li>
+<li>t represent to</li>
+<li>delete everything util the character before</li>
+<li>yank everything util the character before</li>
+</ul>
+<h2 id="Zone-select"><a href="#Zone-select" class="headerlink" title="Zone select"></a>Zone select</h2><ul>
+<li>adb(map(+)(“foo”))nnn</li>
+<li><strong>cursor on <code>o</code></strong></li>
+<li>vi” -&gt; will select foo</li>
+<li>va” -&gt; will select “foo”</li>
+<li>vi) -&gt; will select “foo”</li>
+<li>va) -&gt; will select (“foo”)</li>
+<li>v2i) -&gt; willl select <code>map(+)(&quot;foo&quot;)</code></li>
+<li>v2a) -&gt; will select <code>(map(+)(&quot;foo&quot;))</code></li>
+</ul>
+<h2 id="completion"><a href="#completion" class="headerlink" title="completion"></a>completion</h2><ul>
+<li>ctrl+n next completion</li>
+<li>ctrl+p previous completion</li>
+</ul>
+<h2 id="Macros"><a href="#Macros" class="headerlink" title="Macros"></a>Macros</h2><ul>
+<li>qa record actions in the reg a</li>
+<li>q  stop record actions</li>
+<li>@a replay the macro saved into the reg a</li>
+<li>@@ to replay the last executed macro</li>
+<li>number@@</li>
+</ul>
+<h2 id="visual-using"><a href="#visual-using" class="headerlink" title="visual using"></a>visual using</h2><ul>
+<li>J -&gt;join all the lines together</li>
+<li>&lt; or &gt;  -&gt;indent to left or right</li>
+<li>=  -&gt;auto indent</li>
+</ul>
+<h2 id="split"><a href="#split" class="headerlink" title="split"></a>split</h2><ul>
+<li>:split</li>
+<li>:vsplit<br>open nerdtree</li>
+<li>:Vexplore</li>
+<li>:Sexplore</li>
+</ul>
+<h2 id="common-command"><a href="#common-command" class="headerlink" title="common command"></a>common command</h2><ul>
+<li>add ; three line at the line</li>
+<li>ctrl+q -&gt;$ -&gt;jjj -&gt;A -&gt;; -&gt;Esc</li>
+</ul>
+<h2 id="vim-save-as-sudo"><a href="#vim-save-as-sudo" class="headerlink" title="vim save as sudo"></a>vim save as sudo</h2><ol>
+<li>:w !sudo tee %</li>
+<li>:%!sudo bash -c “cat &gt; ‘%’”</li>
+</ol>
+<h2 id="yapf-python-format"><a href="#yapf-python-format" class="headerlink" title="yapf python format"></a>yapf python format</h2><ul>
+<li>requirement python and pip install yapf</li>
+<li><leader>=</leader></li>
+</ul>
+<h2 id="run-only-read-file-by-user-conf"><a href="#run-only-read-file-by-user-conf" class="headerlink" title="run only read file by user conf"></a>run only read file by user conf</h2><p>sudo -E vim filename</p>
+
+      
+    </div>
+
+    
+
+
+    
+    
+    
+    
+      <div>
+        
+
+      </div>
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vim/" rel="tag"><i class="fa fa-tag"></i> vim</a>
+          
+            <a href="/tags/text/" rel="tag"><i class="fa fa-tag"></i> text</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/databases/sqlite/sqlite_common_cmd.html" rel="next" title="sqlite common cmd 常用命令">
+                <i class="fa fa-chevron-left"></i> sqlite common cmd 常用命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/php/php_quotes.html" rel="prev" title="PHP quotes">
+                PHP quotes <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div id="gitalk-container">
+    </div>
+    
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">moonclearner</p>
+              <p class="site-description motion-element" itemprop="description">moonclearner record code skill and my feeling</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/moonclearner" title="GitHub &rarr; https://github.com/moonclearner" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:moonclearner@qq.com" title="E-Mail &rarr; mailto:moonclearner@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vim"><span class="nav-number">1.</span> <span class="nav-text">vim</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#M-how-to-delete-M"><span class="nav-number">1.1.</span> <span class="nav-text">^M how to delete ^M</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#run-markdown"><span class="nav-number">1.2.</span> <span class="nav-text">run markdown</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#show-all-result-when-search"><span class="nav-number">1.3.</span> <span class="nav-text">show all result when search</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#move-windows-center-to-cursor"><span class="nav-number">1.4.</span> <span class="nav-text">move windows center to cursor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#move-on-buffers"><span class="nav-number">1.5.</span> <span class="nav-text">move on buffers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reg-pasteclipboard"><span class="nav-number">1.6.</span> <span class="nav-text">reg pasteclipboard</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#on-txt-file-move-to-title"><span class="nav-number">1.7.</span> <span class="nav-text">on txt file move to title</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2017-2-26-星期日-21-05-31"><span class="nav-number">2.</span> <span class="nav-text">2017/2/26 星期日 21:05:31</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#switch-tabel"><span class="nav-number">2.1.</span> <span class="nav-text">switch tabel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#create-tabel"><span class="nav-number">2.2.</span> <span class="nav-text">create tabel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#insert-current-time"><span class="nav-number">2.3.</span> <span class="nav-text">insert current time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#switch-windows"><span class="nav-number">2.4.</span> <span class="nav-text">switch windows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-trick"><span class="nav-number">2.5.</span> <span class="nav-text">delete trick</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#read-and-save"><span class="nav-number">2.6.</span> <span class="nav-text">read and save</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#autoindent"><span class="nav-number">2.7.</span> <span class="nav-text">autoindent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jump-to-last-cursor"><span class="nav-number">2.8.</span> <span class="nav-text">jump to last cursor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jedi"><span class="nav-number">2.9.</span> <span class="nav-text">jedi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setting-pwd"><span class="nav-number">2.10.</span> <span class="nav-text">setting pwd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nerdtrem"><span class="nav-number">2.11.</span> <span class="nav-text">nerdtrem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#emmet-key"><span class="nav-number">2.12.</span> <span class="nav-text">emmet key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#go-to-mark"><span class="nav-number">2.13.</span> <span class="nav-text">go to mark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#line-choose-by-visual-mode"><span class="nav-number">2.14.</span> <span class="nav-text">line choose by visual mode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#run-python-code-on-your-vim"><span class="nav-number">2.15.</span> <span class="nav-text">run python code on your vim</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-surround"><span class="nav-number">2.16.</span> <span class="nav-text">vim-surround</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#close-label-tag"><span class="nav-number">2.17.</span> <span class="nav-text">close label tag</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#block-visual"><span class="nav-number">2.18.</span> <span class="nav-text">block visual</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#and-0"><span class="nav-number">2.19.</span> <span class="nav-text">^ and 0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#and-g"><span class="nav-number">2.20.</span> <span class="nav-text">$ and g_</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#buffer"><span class="nav-number">2.21.</span> <span class="nav-text">buffer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#saveas"><span class="nav-number">2.22.</span> <span class="nav-text">saveas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#and"><span class="nav-number">2.23.</span> <span class="nav-text"># and *</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yank-muti-times-character"><span class="nav-number">2.24.</span> <span class="nav-text">yank muti times character</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#f-and-t"><span class="nav-number">2.25.</span> <span class="nav-text">f and t</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dt-and-yt"><span class="nav-number">2.26.</span> <span class="nav-text">dt and yt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zone-select"><span class="nav-number">2.27.</span> <span class="nav-text">Zone select</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#completion"><span class="nav-number">2.28.</span> <span class="nav-text">completion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Macros"><span class="nav-number">2.29.</span> <span class="nav-text">Macros</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#visual-using"><span class="nav-number">2.30.</span> <span class="nav-text">visual using</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#split"><span class="nav-number">2.31.</span> <span class="nav-text">split</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#common-command"><span class="nav-number">2.32.</span> <span class="nav-text">common command</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-save-as-sudo"><span class="nav-number">2.33.</span> <span class="nav-text">vim save as sudo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yapf-python-format"><span class="nav-number">2.34.</span> <span class="nav-text">yapf python format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#run-only-read-file-by-user-conf"><span class="nav-number">2.35.</span> <span class="nav-text">run only read file by user conf</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moonclearner</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">22k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">20 mins.</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共字</span>
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+
+  
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.css">
+
+  
+  
+  <script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+   <script>
+        var gitalk = new Gitalk({
+          clientID: 'e47bf4fb4f5f701fc3a6',
+          clientSecret: '9155535868459f5a16e1180edee3a495ecc8eb71',
+          repo: 'moonclearner.github.io',
+          owner: 'moonclearner',
+          admin: ['moonclearner'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')
+       </script>
+
+
+  
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+<script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+</html>

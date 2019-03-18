@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>moonclearner page</title>
+  
+  <subtitle>moonclearner blog</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://moonclearner.cn/"/>
+  <updated>2019-03-18T02:23:59.022Z</updated>
+  <id>https://moonclearner.cn/</id>
+  
+  <author>
+    <name>moonclearner</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>sudo no password</title>
+    <link href="https://moonclearner.cn/ubuntu/sudo_nopasswd.html"/>
+    <id>https://moonclearner.cn/ubuntu/sudo_nopasswd.html</id>
+    <published>2019-03-18T02:23:59.150Z</published>
+    <updated>2019-03-18T02:23:59.022Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="setting-sudo-no-password"><a href="#setting-sudo-no-password" class="headerlink" title="setting sudo no password"></a>setting sudo no password</h1><p>通过修改sudouser列表的方式免密码</p><p>首先切换到root用户下 sudo -i,这个时候需要输入一次用户名和密码。</p><p>然后，执行visudo，在打开的文件中找到root ALL=(ALL) ALL</p><p>在其下面追加如下配置，即执行所有超级用户命令密码。</p><blockquote><blockquote><blockquote><p>your_user_name ALL=(ALL) NOPASSWD: ALL</p></blockquote></blockquote></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;setting-sudo-no-password&quot;&gt;&lt;a href=&quot;#setting-sudo-no-password&quot; class=&quot;headerlink&quot; title=&quot;setting sudo no password&quot;&gt;&lt;/a&gt;setting sudo n
+      
+    
+    </summary>
+    
+      <category term="ubuntu" scheme="https://moonclearner.cn/categories/ubuntu/"/>
+    
+    
+      <category term="setting" scheme="https://moonclearner.cn/tags/setting/"/>
+    
+      <category term="ubuntu" scheme="https://moonclearner.cn/tags/ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>backup ubuntu system</title>
+    <link href="https://moonclearner.cn/ubuntu/restore_ubuntu_system.html"/>
+    <id>https://moonclearner.cn/ubuntu/restore_ubuntu_system.html</id>
+    <published>2019-03-18T02:18:57.157Z</published>
+    <updated>2019-03-18T02:18:57.105Z</updated>
+    
+    <content type="html"><![CDATA[<p>原链接：<a href="https://community.bwbot.org/topic/167" target="_blank" rel="noopener">https://community.bwbot.org/topic/167</a></p><p>Systemback是一个<a href="https://www.baidu.com/s?wd=Ubuntu%E7%B3%BB%E7%BB%9F&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">Ubuntu系统</a>中用于发布自定义系统镜像和系统备份的软件。有时候我们对自己的Ubuntu做了很多设置，比如各种软件包，各种自定义的配置。我们想要在另一台电脑上也安装一个和我们<a href="https://www.baidu.com/s?wd=%E4%B8%80%E6%A8%A1%E4%B8%80%E6%A0%B7&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">一模一样</a>的系统，这个时候就会用到这种方法了。这个方法不仅可以用于发布系统，也可以用来作为系统备份使用。</p><p>下面就具体介绍一下这个软件的安装和使用方法</p><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>sudo add-apt-repository ppa:nemh/systembacksudo apt-get update &amp;&amp; sudo apt-get install systemback unionfs-fuse</code></pre><h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>安装完成后在Dash菜单中就能找到这个软件了<br><img src="https://community.bwbot.org/uploads/files/1488520080916-screenshot-from-2017-03-03-13-47-36.png" alt="0_1488520081214_Screenshot from 2017-03-03 13-47-36.png"></p><p>输入管理员密码，打开后界面如下图所示<br><img src="https://community.bwbot.org/uploads/files/1488520135605-screenshot-from-2017-03-03-13-48-49.png" alt="0_1488520135916_Screenshot from 2017-03-03 13-48-49.png"></p><p>如果我们需要创建系统备份，点击Create new 就可以了。下面介绍一下自定义系统的iso文件如何制作。<br>1. 点击右侧的Live system create按钮，出现界面如下图所示<br><img src="https://community.bwbot.org/uploads/files/1488520374613-screenshot-from-2017-03-03-13-52-47.png" alt="0_1488520374959_Screenshot from 2017-03-03 13-52-47.png"><br>2. 勾选左侧的include the user data files，这样自己主文件夹内的文件都会被包含在系统镜像中。很多相关的程序的配置文件都是保存在主文件夹内的。Working Directory是设置工作目录，程序运行时产生的临时文件都会被保存在这里。所以一定要保证这里有足够的存储空间。<br>3. 点击Create New按钮就开始创建了，等待创建完成。完成后界面如下图所示<br><img src="https://community.bwbot.org/uploads/files/1488520634892-screenshot-from-2017-03-03-13-56-48.png" alt="0_1488520634884_Screenshot from 2017-03-03 13-56-48.png"><br>右侧的列表中就是已经创建的备份。我已经创建了两个相关的备份，所以有两个在右侧显示。此时文件没有转换成iso格式，选中你要转换的备份，点击convert to ISO 就可以开始转换了。转换完成后，在你的工作目录下就能找到生成的iso文件。<br><img src="https://community.bwbot.org/uploads/files/1488520901416-screenshot-from-2017-03-03-14-01-33.png" alt="0_1488520901942_Screenshot from 2017-03-03 14-01-33.png"></p><p>这个文件就可以用来<a href="https://www.baidu.com/s?wd=%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">安装系统</a>了。同时还可以作为live系统来使用。</p><p>在备份过程中可能提示</p><pre><code>The restore point creation is aborted!There has been critical changes in the file system during this operation</code></pre><p>这并不一定是由于系统发生了严重的更改，只要是在复制文件的过程中出现错误都会出现这个信息。<br>详细的错误信息可以通过</p><pre><code>systemback-sustart</code></pre><p>这个指令去调试，看看具体哪一个文件复制出了问题。极有可能的是权限问题。<br>也可以通过这个指令去调试</p><pre><code>DBGLEV=3 systemback-sustart</code></pre><p>当错误出现后会在/tmp文件夹下创建一个systemback的错误信息文件。可以方便的通过这个文件去找到错误的原因。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;原链接：&lt;a href=&quot;https://community.bwbot.org/topic/167&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://community.bwbot.org/topic/167&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Syste
+      
+    
+    </summary>
+    
+      <category term="ubuntu" scheme="https://moonclearner.cn/categories/ubuntu/"/>
+    
+    
+      <category term="backup" scheme="https://moonclearner.cn/tags/backup/"/>
+    
+      <category term="ubuntu" scheme="https://moonclearner.cn/tags/ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>zsh setting</title>
+    <link href="https://moonclearner.cn/ubuntu/zsh_setting.html"/>
+    <id>https://moonclearner.cn/ubuntu/zsh_setting.html</id>
+    <published>2019-03-18T02:09:42.659Z</published>
+    <updated>2019-03-18T02:09:42.623Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="How-to-fix-and-recover-a-“corrupt-history-file”-in-zsh"><a href="#How-to-fix-and-recover-a-“corrupt-history-file”-in-zsh" class="headerlink" title="How to fix and recover a “corrupt history file” in zsh"></a>How to fix and recover a “corrupt history file” in zsh</h1><p>Simply removing random characters may also work:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim .zsh_history</span><br><span class="line">Remove any strange characters, which would most probably be near the end. (In my case I had a string of @ in the second last line, following a forced shutdown)</span><br></pre></td></tr></table></figure><h1 id="seting-ls-file-color"><a href="#seting-ls-file-color" class="headerlink" title="seting ls file color"></a>seting ls file color</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim .zshrc</span><br><span class="line">export CLICOLOR=1</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;How-to-fix-and-recover-a-“corrupt-history-file”-in-zsh&quot;&gt;&lt;a href=&quot;#How-to-fix-and-recover-a-“corrupt-history-file”-in-zsh&quot; class=&quot;hea
+      
+    
+    </summary>
+    
+      <category term="zsh" scheme="https://moonclearner.cn/categories/zsh/"/>
+    
+    
+      <category term="zsh" scheme="https://moonclearner.cn/tags/zsh/"/>
+    
+      <category term="ubuntu" scheme="https://moonclearner.cn/tags/ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Apache cookbook</title>
+    <link href="https://moonclearner.cn/apache/php_My_cookbook.html"/>
+    <id>https://moonclearner.cn/apache/php_My_cookbook.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="apache-cookbook"><a href="#apache-cookbook" class="headerlink" title="apache cookbook"></a>apache cookbook</h1><h2 id="query-apache-default-user-or-group"><a href="#query-apache-default-user-or-group" class="headerlink" title="query apache default user or group"></a>query apache default user or group</h2><ul><li>ps aux | egrep ‘(apache|httpd)’</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;apache-cookbook&quot;&gt;&lt;a href=&quot;#apache-cookbook&quot; class=&quot;headerlink&quot; title=&quot;apache cookbook&quot;&gt;&lt;/a&gt;apache cookbook&lt;/h1&gt;&lt;h2 id=&quot;query-apache-
+      
+    
+    </summary>
+    
+      <category term="apache" scheme="https://moonclearner.cn/categories/apache/"/>
+    
+    
+      <category term="apache" scheme="https://moonclearner.cn/tags/apache/"/>
+    
+      <category term="setting" scheme="https://moonclearner.cn/tags/setting/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cmder 各类配置以及问题解决</title>
+    <link href="https://moonclearner.cn/cmder/cmder.html"/>
+    <id>https://moonclearner.cn/cmder/cmder.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="cmder-配置"><a href="#cmder-配置" class="headerlink" title="cmder 配置"></a>cmder 配置</h1><h2 id="cmder-显示-oh-my-zsh会出现乱码"><a href="#cmder-显示-oh-my-zsh会出现乱码" class="headerlink" title="cmder 显示 oh my zsh会出现乱码"></a>cmder 显示 oh my zsh会出现乱码</h2><ul><li>去网站<a href="http://nerdfonts.com/" target="_blank" rel="noopener">nerdfonts</a>最下面下载hack字体，解压安装hack字体</li><li>在cmder 的setting中 font是 选择hack字体</li></ul><h2 id="启动quake模式，使得cmder能够从window最上面一键呼出"><a href="#启动quake模式，使得cmder能够从window最上面一键呼出" class="headerlink" title="启动quake模式，使得cmder能够从window最上面一键呼出"></a>启动quake模式，使得cmder能够从window最上面一键呼出</h2><ul><li>cmder的setting，general 的quake style，勾选 quake style slide down ,  always on top , restore inactive .. , restore to active monitor</li><li>setting的 keys &amp;macro 修改 minimize/restore quake style hotkey 快捷键</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;cmder-配置&quot;&gt;&lt;a href=&quot;#cmder-配置&quot; class=&quot;headerlink&quot; title=&quot;cmder 配置&quot;&gt;&lt;/a&gt;cmder 配置&lt;/h1&gt;&lt;h2 id=&quot;cmder-显示-oh-my-zsh会出现乱码&quot;&gt;&lt;a href=&quot;#cmder-
+      
+    
+    </summary>
+    
+      <category term="cmder" scheme="https://moonclearner.cn/categories/cmder/"/>
+    
+    
+      <category term="cmder" scheme="https://moonclearner.cn/tags/cmder/"/>
+    
+      <category term="oh my zsh" scheme="https://moonclearner.cn/tags/oh-my-zsh/"/>
+    
+      <category term="zsh" scheme="https://moonclearner.cn/tags/zsh/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo head setting</title>
+    <link href="https://moonclearner.cn/hexo/hexo_post_header.html"/>
+    <id>https://moonclearner.cn/hexo/hexo_post_header.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="hexo-post文件头设置"><a href="#hexo-post文件头设置" class="headerlink" title="hexo post文件头设置"></a>hexo post文件头设置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo head setting</span><br><span class="line">categories: hexo</span><br><span class="line">copyright: true</span><br><span class="line">tags:</span><br><span class="line">  - hexo</span><br><span class="line">  - setting</span><br><span class="line">keywords:</span><br><span class="line">description:</span><br><span class="line">---</span><br></pre></td></tr></table></figure><h1 id="hexo-abstract-setting"><a href="#hexo-abstract-setting" class="headerlink" title="hexo abstract setting"></a>hexo abstract setting</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">abstract content</span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure><h1 id="multi-level-categories"><a href="#multi-level-categories" class="headerlink" title="multi level categories"></a>multi level categories</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">categories: [no 1 categories, no 2 categories]</span><br><span class="line"></span><br><span class="line">categories:</span><br><span class="line">  - no 1</span><br><span class="line">  - no 2</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;hexo-post文件头设置&quot;&gt;&lt;a href=&quot;#hexo-post文件头设置&quot; class=&quot;headerlink&quot; title=&quot;hexo post文件头设置&quot;&gt;&lt;/a&gt;hexo post文件头设置&lt;/h1&gt;&lt;figure class=&quot;highlight 
+      
+    
+    </summary>
+    
+      <category term="hexo" scheme="https://moonclearner.cn/categories/hexo/"/>
+    
+    
+      <category term="setting" scheme="https://moonclearner.cn/tags/setting/"/>
+    
+      <category term="hexo" scheme="https://moonclearner.cn/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>onclick lanuch a post request，解决get参数太长，导致请求失败</title>
+    <link href="https://moonclearner.cn/js/onclick_for_post.html"/>
+    <id>https://moonclearner.cn/js/onclick_for_post.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="onclick-lanuch-post-request"><a href="#onclick-lanuch-post-request" class="headerlink" title="onclick lanuch post request"></a>onclick lanuch post request</h1><p>有时候，由于get请求下载文件，请求参数超过了2048字符，在IE等浏览器就会导致参数不完整</p><p>因此使用post请求，其参数就没有限制长度，</p><p>然后，使用ajax发起post请求，无法触发文件下载，因此使用模拟form表单发起post请求</p><p>原生onclick 发起post请求</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onclickpost</span>(<span class="params">URL, PARAMS</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp    = <span class="built_in">document</span>.createElement(<span class="string">"form"</span>);</span><br><span class="line">    temp.action = URL;</span><br><span class="line">    temp.method = <span class="string">"post"</span>;</span><br><span class="line">    temp.style.display = <span class="string">"none"</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> x <span class="keyword">in</span> PARAMS) &#123;</span><br><span class="line">        <span class="keyword">var</span> opt   = <span class="built_in">document</span>.createElement(<span class="string">"textarea"</span>);</span><br><span class="line">        opt.name  = x;</span><br><span class="line">        opt.value = PARAMS[x];</span><br><span class="line">        temp.appendChild(opt);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(temp);</span><br><span class="line">    temp.submit();</span><br><span class="line">    temp.parentNode.removeChild(temp);</span><br><span class="line">&#125;</span><br><span class="line">onclickpost(url, &#123;<span class="attr">cat</span>:rawinfo&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;onclick-lanuch-post-request&quot;&gt;&lt;a href=&quot;#onclick-lanuch-post-request&quot; class=&quot;headerlink&quot; title=&quot;onclick lanuch post request&quot;&gt;&lt;/a&gt;oncli
+      
+    
+    </summary>
+    
+      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
+    
+    
+      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
+    
+      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP My Cookbook</title>
+    <link href="https://moonclearner.cn/php/php_My_cookbook.html"/>
+    <id>https://moonclearner.cn/php/php_My_cookbook.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="判断变量是否为空"><a href="#判断变量是否为空" class="headerlink" title="判断变量是否为空"></a>判断变量是否为空</h1><p>empty() 函数用于检查一个变量是否为空。</p><p>empty() 判断一个变量是否被认为是空的。当一个变量并不存在，或者它的值等同于 FALSE，那么它会被认为不存在。如果变量不存在的话，empty()并不会产生警告。</p><p>empty() 5.5 版本之后支持表达式了，而不仅仅是变量。</p><p>版本要求：PHP 4, PHP 5, PHP 7</p><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>bool empty ( mixed $var )</p><p>参数说明：</p><p>$var：待检查的变量。</p><p><strong>注意：在 PHP 5.5 之前，empty() 仅支持变量；任何其他东西将会导致一个解析错误。换言之，下列代码不会生效：</strong></p><p>empty(trim($name))</p><p>作为替代，应该使用:</p><p>trim($name) == false</p><p>empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。</p><h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>当 var 存在，并且是一个非空非零的值时返回 FALSE 否则返回 TRUE。</p><p>以下的变量会被认为是空的：</p><ul><li>“” (空字符串)</li><li>0 (作为整数的0)</li><li>0.0 (作为浮点数的0)</li><li>“0” (作为字符串的0)</li><li>NULL</li><li>FALSE</li><li>array() (一个空数组)</li><li>$var; (一个声明了，但是没有值的变量)</li></ul><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$ivar1=0;</span><br><span class="line">$istr1=&apos;Runoob&apos;;</span><br><span class="line">if (empty($ivar1))</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$ivar1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$ivar1&apos; . &quot; 不为空或不为 0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">if (empty($istr1))</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$istr1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$istr1&apos; . &quot; 字符串不为空或不为0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure><h3 id="执行结果如下所示："><a href="#执行结果如下所示：" class="headerlink" title="执行结果如下所示："></a>执行结果如下所示：</h3><p>$ivar1 为空或为 0。</p><p>$istr1 字符串不为空或不为0。</p><h2 id="读取文件，得到状态码"><a href="#读取文件，得到状态码" class="headerlink" title="读取文件，得到状态码"></a>读取文件，得到状态码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(file_exists(<span class="string">"/absolution path"</span>))&#123;</span><br><span class="line">    $res = file_get_contents(<span class="string">"/absolution path"</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="string">"0"</span> != $res)&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="判断字符串a是否存在某字符串b"><a href="#判断字符串a是否存在某字符串b" class="headerlink" title="判断字符串a是否存在某字符串b"></a>判断字符串a是否存在某字符串b</h2><p>strpos 会返回0即从a的第一个位置就找到了b<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">false</span> !== strpos(<span class="string">"a"</span>, <span class="string">"b"</span>))&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="用strlen来替代empty"><a href="#用strlen来替代empty" class="headerlink" title="用strlen来替代empty"></a>用strlen来替代empty</h2><p>当form var填入0的时候, empty($_POST[‘var’])</p><h2 id="empty-为空"><a href="#empty-为空" class="headerlink" title="empty 为空"></a>empty 为空</h2><ul><li>“” (空字符串)</li><li>0 (作为整数的0)</li><li>0.0 (作为浮点数的0)</li><li>“0” (作为字符串的0)</li><li>NULL</li><li>FALSE</li><li>array() (一个空数组)</li><li>$var; (一个声明了，但是没有值的变量)</li></ul><p>empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。</p><p><strong>empty(trim($name)) is wrong, empty cant contain func but a variable before version 5.3</strong></p><h2 id="产生随机数做id"><a href="#产生随机数做id" class="headerlink" title="产生随机数做id"></a>产生随机数做id</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (function_exists(<span class="string">'mcrypt_create_iv'</span>)) &#123;</span><br><span class="line">    $_SESSION[<span class="string">'token'</span>] = bin2hex(mcrypt_create_iv(<span class="number">32</span>, MCRYPT_DEV_URANDOM));</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    $_SESSION[<span class="string">'token'</span>] = bin2hex(openssl_random_pseudo_bytes(<span class="number">32</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">md5(uniqid())</span><br></pre></td></tr></table></figure><h2 id="replace-string-or-characters"><a href="#replace-string-or-characters" class="headerlink" title="replace string or characters"></a>replace string or characters</h2><p>strtr</p><p>sql special characters % and _</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strtr($string, <span class="keyword">array</span>(<span class="string">'_'</span>=&gt;<span class="string">'\_'</span>, <span class="string">'%'</span>=&gt;<span class="string">'\%'</span>));</span><br></pre></td></tr></table></figure><h2 id="the-list-of-php-extension"><a href="#the-list-of-php-extension" class="headerlink" title="the list of php extension"></a>the list of php extension</h2><ul><li>php -m</li><li>php -i</li><li>php -r “print_r(get_loaded_extensions());”</li></ul><h2 id="php-7-change-log"><a href="#php-7-change-log" class="headerlink" title="php 7 change log"></a>php 7 change log</h2><ul><li>openssl built in (not need install)</li><li>bcmath built in (in archlinux)</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;判断变量是否为空&quot;&gt;&lt;a href=&quot;#判断变量是否为空&quot; class=&quot;headerlink&quot; title=&quot;判断变量是否为空&quot;&gt;&lt;/a&gt;判断变量是否为空&lt;/h1&gt;&lt;p&gt;empty() 函数用于检查一个变量是否为空。&lt;/p&gt;
+&lt;p&gt;empty() 判断一个变量是
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+      <category term="cookbook" scheme="https://moonclearner.cn/tags/cookbook/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP deal with ip and mask</title>
+    <link href="https://moonclearner.cn/php/php_deal_ip_and_mask.html"/>
+    <id>https://moonclearner.cn/php/php_deal_ip_and_mask.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="PHP-deal-with-ip-and-mask"><a href="#PHP-deal-with-ip-and-mask" class="headerlink" title="PHP deal with ip and mask"></a>PHP deal with ip and mask</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ip_parse</span><span class="params">($ip_str)</span> </span>&#123;</span><br><span class="line">    $mark_len = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">if</span> (strpos($ip_str, <span class="string">"/"</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">list</span>($ip_str, $mark_len) = explode(<span class="string">"/"</span>, $ip_str);</span><br><span class="line">    &#125;</span><br><span class="line">    $ip = ip2long($ip_str);</span><br><span class="line">    $mark = <span class="number">0xFFFFFFFF</span> &lt;&lt; (<span class="number">32</span> - $mark_len) &amp; <span class="number">0xFFFFFFFF</span>;</span><br><span class="line">    $ip_start = $ip &amp; $mark;</span><br><span class="line">    $ip_end = $ip | (~$mark) &amp; <span class="number">0xFFFFFFFF</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">array</span>($ip, $mark, $ip_start, $ip_end);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">list</span>($ip, $mark, $ip_start, $ip_end) = ip_parse(<span class="string">"192.168.1.12/24"</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"IP地址 : "</span>, long2ip($ip), <span class="string">"\n"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"子网掩码: "</span>, long2ip($mark), <span class="string">"\n"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"IP段开始: "</span>, long2ip($ip_start), <span class="string">"\n"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"IP段结束: "</span>, long2ip($ip_end), <span class="string">"\n"</span>;</span><br><span class="line"></span><br><span class="line">IP地址 : <span class="number">192.168</span><span class="number">.1</span><span class="number">.12</span></span><br><span class="line">子网掩码: <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span></span><br><span class="line">IP段开始: <span class="number">192.168</span><span class="number">.1</span><span class="number">.0</span></span><br><span class="line">IP段结束: <span class="number">192.168</span><span class="number">.1</span><span class="number">.255</span></span><br></pre></td></tr></table></figure><h1 id="its-in-ip-segment"><a href="#its-in-ip-segment" class="headerlink" title="its in ip segment"></a>its in ip segment</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ip_in</span><span class="params">($ip, $ip_str)</span> </span>&#123;</span><br><span class="line">    $mark_len = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">if</span> (strpos($ip_str, <span class="string">"/"</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">list</span>($ip_str, $mark_len) = explode(<span class="string">"/"</span>, $ip_str);</span><br><span class="line">    &#125;</span><br><span class="line">    $right_len = <span class="number">32</span> - $mark_len;</span><br><span class="line">    <span class="keyword">return</span> ip2long($ip) &gt;&gt; $right_len == ip2long($ip_str) &gt;&gt; $right_len;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var_dump(ip_in(<span class="string">"192.168.1.1"</span>, <span class="string">"192.168.1.0/24"</span>));</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;PHP-deal-with-ip-and-mask&quot;&gt;&lt;a href=&quot;#PHP-deal-with-ip-and-mask&quot; class=&quot;headerlink&quot; title=&quot;PHP deal with ip and mask&quot;&gt;&lt;/a&gt;PHP deal wi
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+      <category term="ip" scheme="https://moonclearner.cn/tags/ip/"/>
+    
+      <category term="ipmask" scheme="https://moonclearner.cn/tags/ipmask/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP delete array element删除数组元素</title>
+    <link href="https://moonclearner.cn/php/php_delete_array_element.html"/>
+    <id>https://moonclearner.cn/php/php_delete_array_element.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="PHP删除数组元素"><a href="#PHP删除数组元素" class="headerlink" title="PHP删除数组元素"></a>PHP删除数组元素</h1><h2 id="unset-from-key"><a href="#unset-from-key" class="headerlink" title="unset from key"></a>unset from key</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unset</span>($array[<span class="string">'key'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">//将数组的引索重新排列</span></span><br><span class="line">array_values($array)</span><br></pre></td></tr></table></figure><h2 id="array-search-from-value"><a href="#array-search-from-value" class="headerlink" title="array_search from value"></a>array_search from value</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$arr1 = <span class="keyword">array</span>(<span class="number">1</span>,<span class="number">3</span>, <span class="number">5</span>,<span class="number">7</span>,<span class="number">8</span>);</span><br><span class="line">$key = array_search(<span class="number">3</span>, $arr1);</span><br><span class="line"><span class="keyword">if</span> ($key !== <span class="keyword">false</span>) array_splice($arr1, $key, <span class="number">1</span>);</span><br><span class="line"><span class="comment">// 引索会自动排列</span></span><br><span class="line">var_dump($arr1);</span><br></pre></td></tr></table></figure><h2 id="array-splice"><a href="#array-splice" class="headerlink" title="array_splice"></a>array_splice</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$array = <span class="keyword">array</span>(<span class="number">0</span> =&gt; <span class="string">"a"</span>, <span class="number">1</span> =&gt; <span class="string">"b"</span>, <span class="number">2</span> =&gt; <span class="string">"c"</span>);</span><br><span class="line"><span class="comment">// 引索不会保存</span></span><br><span class="line">array_splice($array, <span class="number">1</span>, <span class="number">1</span>);</span><br></pre></td></tr></table></figure><h2 id="array-diff"><a href="#array-diff" class="headerlink" title="array_diff"></a>array_diff</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$array = <span class="keyword">array</span>(<span class="number">0</span> =&gt; <span class="string">"a"</span>, <span class="number">1</span> =&gt; <span class="string">"b"</span>, <span class="number">2</span> =&gt; <span class="string">"c"</span>);</span><br><span class="line"><span class="comment">// 引索会保存</span></span><br><span class="line">$array = array_diff($array, [<span class="string">"a"</span>, <span class="string">"c"</span>]);</span><br></pre></td></tr></table></figure><h2 id="array-diff-key"><a href="#array-diff-key" class="headerlink" title="array_diff_key"></a>array_diff_key</h2><p>按键删除多个元素<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$array = <span class="keyword">array</span>(<span class="number">0</span> =&gt; <span class="string">"a"</span>, <span class="number">1</span> =&gt; <span class="string">"b"</span>, <span class="number">2</span> =&gt; <span class="string">"c"</span>);</span><br><span class="line"><span class="comment">// 引索会保存</span></span><br><span class="line">$array = array_diff_key($array, [<span class="number">0</span> =&gt; <span class="string">"xy"</span>, <span class="string">"2"</span> =&gt; <span class="string">"xy"</span>]);</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;PHP删除数组元素&quot;&gt;&lt;a href=&quot;#PHP删除数组元素&quot; class=&quot;headerlink&quot; title=&quot;PHP删除数组元素&quot;&gt;&lt;/a&gt;PHP删除数组元素&lt;/h1&gt;&lt;h2 id=&quot;unset-from-key&quot;&gt;&lt;a href=&quot;#unset-from-
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+      <category term="array" scheme="https://moonclearner.cn/tags/array/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP filter func</title>
+    <link href="https://moonclearner.cn/php/php_filter_fuc.html"/>
+    <id>https://moonclearner.cn/php/php_filter_fuc.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="php-filter-function"><a href="#php-filter-function" class="headerlink" title="php filter function"></a>php filter function</h1><ul><li>filter_has_var()<ul><li>检查是否存在指定输入类型的变量</li></ul></li><li>filter_id()<ul><li>返回指定过滤器的 ID 号。</li></ul></li><li>filter_input()<ul><li>从脚本外部获取输入，并进行过滤。</li></ul></li><li>filter_input_array()<ul><li>从脚本外部获取多项输入，并进行过滤。</li></ul></li><li>filter_list()<ul><li>返回包含所有得到支持的过滤器的一个数组。</li></ul></li><li>filter_var_array()<ul><li>获取多个变量，并进行过滤。</li></ul></li><li>filter_var()<ul><li>获取一个变量，并进行过滤。</li></ul></li></ul><h2 id="type"><a href="#type" class="headerlink" title="type"></a>type</h2><ul><li>INPUT_GET</li><li>INPUT_POST</li><li>INPUT_COOKIE</li><li>INPUT_SERVER</li><li>INPUT_ENV</li><li>INPUT_SERVER</li><li>INPUT_SESSION</li><li>INPUT_REQUEST</li></ul><h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><ul><li>FILTER_CALLBACK    调用用户自定义函数来过滤数据。</li><li>FILTER_SANITIZE_STRING    去除标签，去除或编码特殊字符。</li><li>FILTER_SANITIZE_STRIPPED    “string” 过滤器的别名。</li><li>FILTER_SANITIZE_ENCODED    URL-encode 字符串，去除或编码特殊字符。</li><li>FILTER_SANITIZE_SPECIAL_CHARS    HTML 转义字符 ‘“&lt;&gt;&amp; 以及 ASCII 值小于 32 的字符。</li><li>FILTER_SANITIZE_EMAIL    删除所有字符，除了字母、数字以及 !#$%&amp;’*+-/=?^_`{|}~@.[]</li><li>FILTER_SANITIZE_URL    删除所有字符，除了字母、数字以及 $-_.+!*’(),{}|\^~[]`&lt;&gt;#%”;/?:@&amp;=</li><li>FILTER_SANITIZE_NUMBER_INT    删除所有字符，除了数字和 +-</li><li>FILTER_SANITIZE_NUMBER_FLOAT    删除所有字符，除了数字、+- 以及 .,eE</li><li>FILTER_SANITIZE_MAGIC_QUOTES    应用 addslashes()。</li><li>FILTER_UNSAFE_RAW    不进行任何过滤，去除或编码特殊字符。</li><li>FILTER_VALIDATE_INT    把值作为整数来验证。</li><li>FILTER_VALIDATE_BOOLEAN    把值作为布尔选项来验证。如果是 “1”、”true”、”on” 和 “yes”，则返回 TRUE。如果是 “0”、”false”、”off”、”no” 和 “”，则返回 FALSE。否则返回 NULL。</li><li>FILTER_VALIDATE_FLOAT    把值作为浮点数来验证。</li><li>FILTER_VALIDATE_REGEXP    根据 regexp（一种兼容 Perl 的正则表达式）来验证值。</li><li>FILTER_VALIDATE_URL    把值作为 URL 来验证。</li><li>FILTER_VALIDATE_EMAIL    把值作为 e-mail 地址来验证。</li><li>FILTER_VALIDATE_IP    把值作为 IP 地址来验证，只限 IPv4 或 IPv6 或 不是来自私有或者保留的范围。</li></ul><h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="http://www.runoob.com/php/php-ref-filter.html" target="_blank" rel="noopener">参考</a></p>]]></content>
+    
+    <summary type="html">
+    
+      manual for php filter function
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+      <category term="filter" scheme="https://moonclearner.cn/tags/filter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP Filesystem</title>
+    <link href="https://moonclearner.cn/php/php_get_path_filename.html"/>
+    <id>https://moonclearner.cn/php/php_get_path_filename.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="PHP-Filesystem"><a href="#PHP-Filesystem" class="headerlink" title="PHP Filesystem"></a>PHP Filesystem</h1><table><thead><tr><th style="text-align:left">函数</th><th style="text-align:left">描述</th><th style="text-align:left">PHP</th></tr></thead><tbody><tr><td style="text-align:left">basename()</td><td style="text-align:left">返回路径中的文件名部分。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">chgrp()</td><td style="text-align:left">改变文件组。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">chmod()</td><td style="text-align:left">改变文件模式。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">chown()</td><td style="text-align:left">改变文件所有者。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">clearstatcache()</td><td style="text-align:left">清除文件状态缓存。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">copy()</td><td style="text-align:left">复制文件。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">delete()</td><td style="text-align:left">参见 unlink() 或 unset()。</td><td style="text-align:left"></td></tr><tr><td style="text-align:left">dirname()</td><td style="text-align:left">返回路径中的目录名称部分。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">disk_free_space()</td><td style="text-align:left">返回目录的可用空间。</td><td style="text-align:left">4</td></tr><tr><td style="text-align:left">disk_total_space()</td><td style="text-align:left">返回一个目录的磁盘总容量。</td><td style="text-align:left">4</td></tr><tr><td style="text-align:left">diskfreespace()</td><td style="text-align:left">disk_free_space() 的别名。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">fclose()</td><td style="text-align:left">关闭打开的文件。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">feof()</td><td style="text-align:left">测试文件指针是否到了文件结束的位置。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">fflush()</td><td style="text-align:left">向打开的文件输出缓冲内容。</td><td style="text-align:left">4</td></tr><tr><td style="text-align:left">fgetc()</td><td style="text-align:left">从打开的文件中返回字符。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">fgetcsv()</td><td style="text-align:left">从打开的文件中解析一行，校验 CSV 字段。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">fgets()</td><td style="text-align:left">从打开的文件中返回一行。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">fgetss()</td><td style="text-align:left">从打开的文件中读取一行并过滤掉 HTML 和 PHP 标记。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">file()</td><td style="text-align:left">把文件读入一个数组中。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">file_exists()</td><td style="text-align:left">检查文件或目录是否存在。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">file_get_contents()</td><td style="text-align:left">将文件读入字符串。</td><td style="text-align:left">4</td></tr><tr><td style="text-align:left">file_put_contents()</td><td style="text-align:left">将字符串写入文件。</td><td style="text-align:left">5</td></tr><tr><td style="text-align:left">fileatime()</td><td style="text-align:left">返回文件的上次访问时间。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">filectime()</td><td style="text-align:left">返回文件的上次改变时间。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">filegroup()</td><td style="text-align:left">返回文件的组 ID。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">fileinode()</td><td style="text-align:left">返回文件的 inode 编号。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">filemtime()</td><td style="text-align:left">返回文件的上次修改时间。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">fileowner()</td><td style="text-align:left">文件的 user ID （所有者）。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">fileperms()</td><td style="text-align:left">返回文件的权限。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">filesize()</td><td style="text-align:left">返回文件大小。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">filetype()</td><td style="text-align:left">返回文件类型。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">flock()</td><td style="text-align:left">锁定或释放文件。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">fnmatch()</td><td style="text-align:left">根据指定的模式来匹配文件名或字符串。</td><td style="text-align:left">4</td></tr><tr><td style="text-align:left">fopen()</td><td style="text-align:left">打开一个文件或 URL。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">fpassthru()</td><td style="text-align:left">从打开的文件中读数据，直到 EOF，并向输出缓冲写结果。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">fputcsv()</td><td style="text-align:left">将行格式化为 CSV 并写入一个打开的文件中。</td><td style="text-align:left">5</td></tr><tr><td style="text-align:left">fputs()</td><td style="text-align:left">fwrite() 的别名。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">fread()</td><td style="text-align:left">读取打开的文件。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">fscanf()</td><td style="text-align:left">根据指定的格式对输入进行解析。</td><td style="text-align:left">4</td></tr><tr><td style="text-align:left">fseek()</td><td style="text-align:left">在打开的文件中定位。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">fstat()</td><td style="text-align:left">返回关于一个打开的文件的信息。</td><td style="text-align:left">4</td></tr><tr><td style="text-align:left">ftell()</td><td style="text-align:left">返回文件指针的读/写位置</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">ftruncate()</td><td style="text-align:left">将文件截断到指定的长度。</td><td style="text-align:left">4</td></tr><tr><td style="text-align:left">fwrite()</td><td style="text-align:left">写入文件。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">glob()</td><td style="text-align:left">返回一个包含匹配指定模式的文件名/目录的数组。</td><td style="text-align:left">4</td></tr><tr><td style="text-align:left">is_dir()</td><td style="text-align:left">判断指定的文件名是否是一个目录。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">is_executable()</td><td style="text-align:left">判断文件是否可执行。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">is_file()</td><td style="text-align:left">判断指定文件是否为常规的文件。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">is_link()</td><td style="text-align:left">判断指定的文件是否是连接。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">is_readable()</td><td style="text-align:left">判断文件是否可读。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">is_uploaded_file()</td><td style="text-align:left">判断文件是否是通过 HTTP POST 上传的。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">is_writable()</td><td style="text-align:left">判断文件是否可写。</td><td style="text-align:left">4</td></tr><tr><td style="text-align:left">is_writeable()</td><td style="text-align:left">is_writable() 的别名。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">link()</td><td style="text-align:left">创建一个硬连接。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">linkinfo()</td><td style="text-align:left">返回有关一个硬连接的信息。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">lstat()</td><td style="text-align:left">返回关于文件或符号连接的信息。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">mkdir()</td><td style="text-align:left">创建目录。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">move_uploaded_file()</td><td style="text-align:left">将上传的文件移动到新位置。</td><td style="text-align:left">4</td></tr><tr><td style="text-align:left">parse_ini_file()</td><td style="text-align:left">解析一个配置文件。</td><td style="text-align:left">4</td></tr><tr><td style="text-align:left">pathinfo()</td><td style="text-align:left">返回关于文件路径的信息。</td><td style="text-align:left">4</td></tr><tr><td style="text-align:left">pclose()</td><td style="text-align:left">关闭有 popen() 打开的进程。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">popen()</td><td style="text-align:left">打开一个进程。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">readfile()</td><td style="text-align:left">读取一个文件，并输出到输出缓冲。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">readlink()</td><td style="text-align:left">返回符号连接的目标。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">realpath()</td><td style="text-align:left">返回绝对路径名。</td><td style="text-align:left">4</td></tr><tr><td style="text-align:left">rename()</td><td style="text-align:left">重名名文件或目录。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">rewind()</td><td style="text-align:left">倒回文件指针的位置。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">rmdir()</td><td style="text-align:left">删除空的目录。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">set_file_buffer()</td><td style="text-align:left">设置已打开文件的缓冲大小。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">stat()</td><td style="text-align:left">返回关于文件的信息。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">symlink()</td><td style="text-align:left">创建符号连接。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">tempnam()</td><td style="text-align:left">创建唯一的临时文件。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">tmpfile()</td><td style="text-align:left">建立临时文件。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">touch()</td><td style="text-align:left">设置文件的访问和修改时间。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">umask()</td><td style="text-align:left">改变文件的文件权限。</td><td style="text-align:left">3</td></tr><tr><td style="text-align:left">unlink()</td><td style="text-align:left">删除文件。</td><td style="text-align:left">3</td></tr></tbody></table><h1 id="compatibility"><a href="#compatibility" class="headerlink" title="compatibility"></a>compatibility</h1><p>当在 Unix 平台上规定路径时，正斜杠 (/) 用作目录分隔符。而在 Windows 平台上，正斜杠 (/) 和反斜杠 () 均可使用。</p>]]></content>
+    
+    <summary type="html">
+    
+      php operate filesystem
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+      <category term="os" scheme="https://moonclearner.cn/tags/os/"/>
+    
+      <category term="filesystem" scheme="https://moonclearner.cn/tags/filesystem/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP quotes</title>
+    <link href="https://moonclearner.cn/php/php_quotes.html"/>
+    <id>https://moonclearner.cn/php/php_quotes.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="php-quote"><a href="#php-quote" class="headerlink" title="php quote"></a>php quote</h1><p>魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符都会被自动加上一个反斜线进行转义，这和 addslashes() 作用完全相同</p><h2 id="相关的函数"><a href="#相关的函数" class="headerlink" title="相关的函数"></a>相关的函数</h2><ul><li>set_magic_quotes_runtime</li><li>magic_quotes_gpc</li><li>addslashes</li><li>stripslashes</li></ul><h3 id="set-magic-quotes-runtime"><a href="#set-magic-quotes-runtime" class="headerlink" title="set_magic_quotes_runtime()"></a>set_magic_quotes_runtime()</h3><p>设置当前magic_quotes_runtime 配置选项的激活状态，0为关闭，1为开启。set_magic_quotes_runtime(1)或是配置文件中magic_quotes_runtime为true（这个在php.ini中配置），那么php脚本读取文件或是从数据库中读取数据，遇到反斜线（\）、单引号（’）、双引号（”）、NULL时，会在前面自动加上转义字符，变成\、\’、\”、\NULL；若是关闭的话，也就是set_magic_quotes_runtime(0)magic_quotes_runtime为false，那么便会转义，此时可以借助addslashes进行转义。</p><h3 id="magic-quotes-gpc"><a href="#magic-quotes-gpc" class="headerlink" title="magic_quotes_gpc()"></a>magic_quotes_gpc()</h3><p>当此值为1时，会对HTTP请求中的G（$_GET）、P（$_POST）、C（$_COOKIE）单双引号和反斜线进行转义；反之则不会。该操作一般见于表单提交的数据库操作，若是值为0时，便用addslashes进行转义存入数据库中，取出时再用stripslashes函数把反斜线给去掉。</p><p><strong>特别注意的是在PHP 5.4版本时，魔术引号被移除了，因此转义都需要加上addslashes函数。</strong></p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$_GET[<span class="string">'des'</span>] = <span class="string">"she's a beauty"</span>;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">array</span>(<span class="string">'_GET'</span>, <span class="string">'_POST'</span>, <span class="string">'_COOKIE'</span>) <span class="keyword">as</span> $_request)&#123;</span><br><span class="line">    <span class="keyword">echo</span> $_request; <span class="comment">// _GET_POST _COOKIE</span></span><br><span class="line">    <span class="keyword">foreach</span> ($$_request <span class="keyword">as</span> $_key=&gt; $_value)&#123;</span><br><span class="line">        <span class="comment">// $_key为键，如_GET，$$_key为$_GET</span></span><br><span class="line">        <span class="comment">// $$_key=$_value意思就是把$_GET['des'] = 1111便为$des=she\'s a beauty</span></span><br><span class="line">        $_key&#123;<span class="number">0</span>&#125; != <span class="string">'_'</span> &amp;&amp; $$_key=addslashes($_value);</span><br><span class="line">        <span class="keyword">echo</span> $$_key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(get_magic_quotes_gpc() &amp;&amp; (! ini_get(<span class="string">'magic_quotes_sybase'</span>)))&#123;</span><br><span class="line">    $value = stripslashes($_GET[<span class="string">'value'</span>]);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    $value = $_GET[<span class="string">'value'</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;php-quote&quot;&gt;&lt;a href=&quot;#php-quote&quot; class=&quot;headerlink&quot; title=&quot;php quote&quot;&gt;&lt;/a&gt;php quote&lt;/h1&gt;&lt;p&gt;魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vim</title>
+    <link href="https://moonclearner.cn/vim/vim.html"/>
+    <id>https://moonclearner.cn/vim/vim.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h1><ul><li>不按 Esc 而是按 ^『或者 ^c，速度快很多</li><li>学会几个定位键的区别：0, $, {, }, g, G, w, e, b…</li><li>Shift+V 选定几行，然后用 一起移动</li><li>Ctrl+V 选定行首或行尾的字符，然后用 shift+i 做插入，或者 shift+x 做删除</li><li>学会用 y,d 和 p, P 做粘贴剪切</li><li>学会用 ^W 的窗口操作。打开文件用 sp 或者 vs</li><li>学会记录宏的命令。用 q 加任意键开始录制，再按 q 保存。然后可用 @加这个任意键回放，在 @前加数字可定义回放次数</li><li>“.”重复上一个命令，”u”取消上一个命令，”^r”反取消</li><li>^n, ^p 用 buf 里的关键词补全。</li><li>学会搜索替换”:%s/ 要搜的东西 / 要换成的东西 /g”</li><li>任何时候移到一个单词上按#的话可以高亮这个文档里所有一样的单词</li><li>用“/”做搜索，按 n 或 N 上一个 / 下一个</li><li>“:! 命令 &amp;”可直接运行这个命令，用”:! 命令 %&amp;”如果你想让这个命令对当前所编辑文件做操作。</li><li>任何时候可用”:cd %:p:h”来切换目录到当前编辑文件所在目录。</li><li>“.” 这个 mark 代表最后一次修改的地方，所以 “‘.” 可以跳到最后一次修改的地方，’. 可以跳到最后一次修改的那一行。</li><li>g; 和 g, 则可以在整个 changelist 里面来回跳转，敲 :help changelist 可以看说明。</li><li><win> + <pg up=""> or <pg down=""> or <pg left=""> //change windows size</pg></pg></pg></win></li><li><win> + left or right //rapidly change windows to watch two files diffience</win></li><li><ctrl +="" w=""> + &lt;+&gt; or <->  //change windows size</-></ctrl></li><li>vim -on file1 file2 … // n split windows numbers o horizontal split O vertical split</li><li>:sp filename //horizontal split windows</li></ul><h2 id="M-how-to-delete-M"><a href="#M-how-to-delete-M" class="headerlink" title="^M how to delete ^M"></a>^M how to delete ^M</h2><ul><li><code>:%s/^M//g</code></li><li>^M “<ctrl -v=""> +<ctrl -m="">“</ctrl></ctrl></li></ul><h2 id="run-markdown"><a href="#run-markdown" class="headerlink" title="run markdown"></a>run markdown</h2><ul><li><reader>rmk</reader></li><li>open by typora</li></ul><h2 id="show-all-result-when-search"><a href="#show-all-result-when-search" class="headerlink" title="show all result when search"></a>show all result when search</h2><ul><li>/searchString<cr><leader>lv</leader></cr></li></ul><h2 id="move-windows-center-to-cursor"><a href="#move-windows-center-to-cursor" class="headerlink" title="move windows center to cursor"></a>move windows center to cursor</h2><ul><li>zz</li><li>z+</li><li>z-</li><li>H M L move cursor to windows</li><li>:set scrolloff=10  //let cursor on windows center alwaysly</li></ul><h2 id="move-on-buffers"><a href="#move-on-buffers" class="headerlink" title="move on buffers"></a>move on buffers</h2><ul><li>:ls, :buffers<br>  show all buffers</li><li>:bn[ext]<br>  next buffer</li><li>:bp[revious]<br>  last buffer</li><li>:b2<br>  move to number 2 buffer</li><li>:b exa<br>  move to match exa file  such as example.txt</li><li>:sb 3<br>  split windows open buffer number 3 file by horizontal spl</li><li>:vertical sb 3<br>  by vertical split</li></ul><h2 id="reg-pasteclipboard"><a href="#reg-pasteclipboard" class="headerlink" title="reg pasteclipboard"></a>reg pasteclipboard</h2><ul><li>:reg</li><li>show all reg</li><li>“+ system reg</li><li>yyn<ul><li>n is name of reg</li><li>paste reg content to current lin</li></ul></li></ul><h2 id="on-txt-file-move-to-title"><a href="#on-txt-file-move-to-title" class="headerlink" title="on txt file move to title"></a>on txt file move to title</h2><ul><li>ctrl + ]</li></ul><h1 id="2017-2-26-星期日-21-05-31"><a href="#2017-2-26-星期日-21-05-31" class="headerlink" title="2017/2/26 星期日 21:05:31"></a>2017/2/26 星期日 21:05:31</h1><h2 id="switch-tabel"><a href="#switch-tabel" class="headerlink" title="switch tabel"></a>switch tabel</h2><ul><li>gt</li></ul><h2 id="create-tabel"><a href="#create-tabel" class="headerlink" title="create tabel"></a>create tabel</h2><ul><li><leader>nt</leader></li></ul><h2 id="insert-current-time"><a href="#insert-current-time" class="headerlink" title="insert current time"></a>insert current time</h2><ul><li><leader>tt</leader></li></ul><h2 id="switch-windows"><a href="#switch-windows" class="headerlink" title="switch windows"></a>switch windows</h2><ul><li>Ctrl + f : next windows</li><li>Ctrl + b : last windows</li><li>ctrl + d : next half windows</li><li>ctrl + u : last half windows</li></ul><h2 id="delete-trick"><a href="#delete-trick" class="headerlink" title="delete trick"></a>delete trick</h2><ul><li>dw</li><li>de</li><li>db</li><li>d$  delete to row end</li><li>di</li><li>dtc delete between c all charcters</li></ul><h2 id="read-and-save"><a href="#read-and-save" class="headerlink" title="read and save"></a>read and save</h2><ul><li>:r filename  read filename to current cursor</li><li>1,20 w filename  create new filename to 1,20 line content</li><li>1,$ w filename whole content write new filename</li><li>1,20 w &gt;&gt; filename write 1,20 content to filename last line</li></ul><h2 id="autoindent"><a href="#autoindent" class="headerlink" title="autoindent"></a>autoindent</h2><ul><li>==</li></ul><h2 id="jump-to-last-cursor"><a href="#jump-to-last-cursor" class="headerlink" title="jump to last cursor"></a>jump to last cursor</h2><ul><li>ctrl + i</li><li>ctrl + o</li></ul><h2 id="jedi"><a href="#jedi" class="headerlink" title="jedi"></a>jedi</h2><ul><li>K document</li><li><leader>g  go to</leader></li><li>not for javascript</li></ul><h2 id="setting-pwd"><a href="#setting-pwd" class="headerlink" title="setting pwd"></a>setting pwd</h2><ul><li><leader>.</leader></li></ul><h2 id="nerdtrem"><a href="#nerdtrem" class="headerlink" title="nerdtrem"></a>nerdtrem</h2><ul><li>rename file</li><li><code>m</code> -&gt;<code>m</code></li><li>alter filename</li><li>delete file</li><li>use key “m”</li></ul><h2 id="emmet-key"><a href="#emmet-key" class="headerlink" title="emmet key"></a>emmet key</h2><ul><li>,, == <code>&lt;ctrl y&gt;,</code></li></ul><h2 id="go-to-mark"><a href="#go-to-mark" class="headerlink" title="go to mark"></a>go to mark</h2><ul><li>mark place: m {a-zA-Z}</li><li>go to mark: ‘{a-zA-Z}</li><li>delete mark: :delmarks {a-zA-Z}</li><li>show all mark: :marks</li></ul><h2 id="line-choose-by-visual-mode"><a href="#line-choose-by-visual-mode" class="headerlink" title="line choose by visual mode"></a>line choose by visual mode</h2><ul><li>line visual mode: V</li><li>Vjj</li><li>块 visual mode: ctrl + v but on windows ctrl + q</li><li>gv  =&gt; choose last visual chosed text</li><li>o   =&gt; cursor move to selected text end</li><li>O   =&gt; cursor move to selected text start</li></ul><h2 id="run-python-code-on-your-vim"><a href="#run-python-code-on-your-vim" class="headerlink" title="run python code on your vim"></a>run python code on your vim</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">'djj'</span></span><br><span class="line"><span class="keyword">print</span> s</span><br></pre></td></tr></table></figure><ul><li><strong>Run code by select 2 line Vkk, then press: !python and hit enter</strong><br>output:djj</li><li>anothor example:<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x, y)</span>:</span></span><br><span class="line"><span class="keyword">return</span> x + y</span><br><span class="line"><span class="keyword">print</span> func(<span class="number">3</span>, <span class="number">4</span>)</span><br></pre></td></tr></table></figure></li></ul><p><strong>output:7</strong></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">'moonclearner'</span>:</span><br><span class="line"><span class="keyword">print</span> i</span><br></pre></td></tr></table></figure><p><strong>output:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">m</span><br><span class="line">o</span><br><span class="line">o</span><br><span class="line">n</span><br><span class="line">c</span><br><span class="line">l</span><br><span class="line">e</span><br><span class="line">a</span><br><span class="line">r</span><br><span class="line">n</span><br><span class="line">e</span><br><span class="line">r</span><br></pre></td></tr></table></figure></p><h2 id="vim-surround"><a href="#vim-surround" class="headerlink" title="vim-surround"></a>vim-surround</h2><p>“hello world”</p><ul><li>press cs”‘ inside “ switch to ‘<br>‘hello world’</li><li>press cs’<q> inside ‘ switch to <q></q><br><q>hello world</q></q></li><li>cst”<br>“hello world”</li><li>ds” delete “<br>hello world</li><li>cursor on hello ysiw]<br>[hello] world</li><li>cs]{<br>{ hello } world</li><li>yssb or yss) wrap entire line<br>({ hello } world)</li><li>ds{ds) revert to original text<br>hello world</li><li>ysiw<em> cursor on hello<br><em>hello</em> world</em></li><li>VS<p class="important"> wrap </p><p></p>  <p class="important"><br>  <em>hello</em> world<br>  </p></li></ul><h2 id="close-label-tag"><a href="#close-label-tag" class="headerlink" title="close label tag"></a>close label tag</h2><ul><li><p>&gt;<br>output: </p><p></p></li></ul><h2 id="block-visual"><a href="#block-visual" class="headerlink" title="block visual"></a>block visual</h2><ul><li><code>ctrl+v</code>  on unix</li><li><code>ctrl+q</code>  on windows</li><li>jjj or % muti line select</li><li>i,I,a,A to input</li></ul><h2 id="and-0"><a href="#and-0" class="headerlink" title="^ and 0"></a>^ and 0</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this a sentence!</span><br></pre></td></tr></table></figure><ul><li>cursor on t</li><li>^ the cursor will jump to c</li><li>0 the cursor will jump to space, first column</li></ul><h2 id="and-g"><a href="#and-g" class="headerlink" title="$ and g_"></a>$ and g_</h2><ul><li>$ go to the end of line</li><li>g_ go to the last non-blank character of line</li></ul><h2 id="buffer"><a href="#buffer" class="headerlink" title="buffer"></a>buffer</h2><ul><li>:bn</li><li>:bp</li><li>:buffers -&gt; show all buffers</li></ul><h2 id="saveas"><a href="#saveas" class="headerlink" title="saveas"></a>saveas</h2><ul><li>:saveas   -&gt; save as</li></ul><h2 id="and"><a href="#and" class="headerlink" title="# and *"></a># and *</h2><ul><li># look previous same character</li><li>* jump next same character</li></ul><h2 id="yank-muti-times-character"><a href="#yank-muti-times-character" class="headerlink" title="yank muti times character"></a>yank muti times character</h2><ul><li>this my test and test</li><li><em>the cursor on i</em></li><li>y2/test -&gt;will copy <code>is my test and</code><br>  yank up to the second occurence of test</li><li>y/test   -&gt; will yank <code>is my</code><br>  yank up to the first test before</li><li>ye</li><li>y$</li></ul><h2 id="f-and-t"><a href="#f-and-t" class="headerlink" title="f and t"></a>f and t</h2><ul><li>fa -&gt; go to next occurence of the letter <code>a</code> on the line<br>  , and ; respresent next and previous, reverse use F</li><li>ta -&gt; go to just before the character <code>a</code>, reverse use T<h2 id="dt-and-yt"><a href="#dt-and-yt" class="headerlink" title="dt and yt"></a>dt and yt</h2></li><li>t represent to</li><li>delete everything util the character before</li><li>yank everything util the character before</li></ul><h2 id="Zone-select"><a href="#Zone-select" class="headerlink" title="Zone select"></a>Zone select</h2><ul><li>adb(map(+)(“foo”))nnn</li><li><strong>cursor on <code>o</code></strong></li><li>vi” -&gt; will select foo</li><li>va” -&gt; will select “foo”</li><li>vi) -&gt; will select “foo”</li><li>va) -&gt; will select (“foo”)</li><li>v2i) -&gt; willl select <code>map(+)(&quot;foo&quot;)</code></li><li>v2a) -&gt; will select <code>(map(+)(&quot;foo&quot;))</code></li></ul><h2 id="completion"><a href="#completion" class="headerlink" title="completion"></a>completion</h2><ul><li>ctrl+n next completion</li><li>ctrl+p previous completion</li></ul><h2 id="Macros"><a href="#Macros" class="headerlink" title="Macros"></a>Macros</h2><ul><li>qa record actions in the reg a</li><li>q  stop record actions</li><li>@a replay the macro saved into the reg a</li><li>@@ to replay the last executed macro</li><li>number@@</li></ul><h2 id="visual-using"><a href="#visual-using" class="headerlink" title="visual using"></a>visual using</h2><ul><li>J -&gt;join all the lines together</li><li>&lt; or &gt;  -&gt;indent to left or right</li><li>=  -&gt;auto indent</li></ul><h2 id="split"><a href="#split" class="headerlink" title="split"></a>split</h2><ul><li>:split</li><li>:vsplit<br>open nerdtree</li><li>:Vexplore</li><li>:Sexplore</li></ul><h2 id="common-command"><a href="#common-command" class="headerlink" title="common command"></a>common command</h2><ul><li>add ; three line at the line</li><li>ctrl+q -&gt;$ -&gt;jjj -&gt;A -&gt;; -&gt;Esc</li></ul><h2 id="vim-save-as-sudo"><a href="#vim-save-as-sudo" class="headerlink" title="vim save as sudo"></a>vim save as sudo</h2><ol><li>:w !sudo tee %</li><li>:%!sudo bash -c “cat &gt; ‘%’”</li></ol><h2 id="yapf-python-format"><a href="#yapf-python-format" class="headerlink" title="yapf python format"></a>yapf python format</h2><ul><li>requirement python and pip install yapf</li><li><leader>=</leader></li></ul><h2 id="run-only-read-file-by-user-conf"><a href="#run-only-read-file-by-user-conf" class="headerlink" title="run only read file by user conf"></a>run only read file by user conf</h2><p>sudo -E vim filename</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;vim&quot;&gt;&lt;a href=&quot;#vim&quot; class=&quot;headerlink&quot; title=&quot;vim&quot;&gt;&lt;/a&gt;vim&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;不按 Esc 而是按 ^『或者 ^c，速度快很多&lt;/li&gt;
+&lt;li&gt;学会几个定位键的区别：0, $, {, }, g, 
+      
+    
+    </summary>
+    
+      <category term="Vim" scheme="https://moonclearner.cn/categories/Vim/"/>
+    
+    
+      <category term="vim" scheme="https://moonclearner.cn/tags/vim/"/>
+    
+      <category term="text" scheme="https://moonclearner.cn/tags/text/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sqlite common cmd 常用命令</title>
+    <link href="https://moonclearner.cn/databases/sqlite/sqlite_common_cmd.html"/>
+    <id>https://moonclearner.cn/databases/sqlite/sqlite_common_cmd.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="sqlite-common-cmd-常用命令"><a href="#sqlite-common-cmd-常用命令" class="headerlink" title="sqlite common cmd 常用命令"></a>sqlite common cmd 常用命令</h1><h2 id="查看列表名"><a href="#查看列表名" class="headerlink" title="查看列表名"></a>查看列表名</h2><ul><li>pragma table_info(tablename);</li><li>.schema tablename</li><li>select * from sqlite_master where type=”table” and name=”tablename”;</li></ul><h2 id="退出sqlite-shel"><a href="#退出sqlite-shel" class="headerlink" title="退出sqlite shel"></a>退出sqlite shel</h2><p>.exit</p><h2 id="显示所有table"><a href="#显示所有table" class="headerlink" title="显示所有table"></a>显示所有table</h2><p>.tables</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;sqlite-common-cmd-常用命令&quot;&gt;&lt;a href=&quot;#sqlite-common-cmd-常用命令&quot; class=&quot;headerlink&quot; title=&quot;sqlite common cmd 常用命令&quot;&gt;&lt;/a&gt;sqlite common cmd 常用
+      
+    
+    </summary>
+    
+      <category term="sqlite" scheme="https://moonclearner.cn/categories/sqlite/"/>
+    
+    
+      <category term="sqlite" scheme="https://moonclearner.cn/tags/sqlite/"/>
+    
+      <category term="sql" scheme="https://moonclearner.cn/tags/sql/"/>
+    
+      <category term="common" scheme="https://moonclearner.cn/tags/common/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Jq from label name get</title>
+    <link href="https://moonclearner.cn/js/jquery/jq_get_name.html"/>
+    <id>https://moonclearner.cn/js/jquery/jq_get_name.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="jquery-from-label-name-get-label"><a href="#jquery-from-label-name-get-label" class="headerlink" title="jquery from label name get label"></a>jquery from label name get label</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jQuery(<span class="string">"input[name='imgtitle']"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    titles += jQuery(<span class="keyword">this</span>).val()+<span class="string">","</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;jquery-from-label-name-get-label&quot;&gt;&lt;a href=&quot;#jquery-from-label-name-get-label&quot; class=&quot;headerlink&quot; title=&quot;jquery from label name get l
+      
+    
+    </summary>
+    
+      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
+    
+    
+      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
+    
+      <category term="jquery" scheme="https://moonclearner.cn/tags/jquery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP database transaction</title>
+    <link href="https://moonclearner.cn/php/cookbook/php_database_transaction.html"/>
+    <id>https://moonclearner.cn/php/cookbook/php_database_transaction.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="PHP-database-transaction"><a href="#PHP-database-transaction" class="headerlink" title="PHP database transaction"></a>PHP database transaction</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Message</span></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> $db;</span><br><span class="line">    <span class="comment">// $form_errors save post validate error for showing error in pages</span></span><br><span class="line">    <span class="keyword">protected</span> $form_errors = <span class="keyword">array</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        set_exception_handler(<span class="keyword">array</span>(<span class="keyword">$this</span>, <span class="string">'logAndDie'</span>));</span><br><span class="line">        <span class="keyword">$this</span>-&gt;db = <span class="keyword">new</span> PDO(<span class="string">"sqlite:/tmp/tmp.db"</span>);</span><br><span class="line">        <span class="keyword">$this</span>-&gt;db-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">save</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;db-&gt;beginTransaction();</span><br><span class="line">        pass</span><br><span class="line">        <span class="keyword">$this</span>-&gt;db-&gt;commit();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">valid</span><span class="params">()</span></span>&#123;</span><br><span class="line">        pass</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">logAndDie</span><span class="params">(Exception $e)</span></span>&#123;</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'ERROR: '</span>. htmlentities($e-&gt;getMessage());</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;db-&gt;inTransaction())&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;db-&gt;rollback();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;PHP-database-transaction&quot;&gt;&lt;a href=&quot;#PHP-database-transaction&quot; class=&quot;headerlink&quot; title=&quot;PHP database transaction&quot;&gt;&lt;/a&gt;PHP database t
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+      <category term="database" scheme="https://moonclearner.cn/tags/database/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP dynamically create object</title>
+    <link href="https://moonclearner.cn/php/cookbook/php_dynamic_create_object.html"/>
+    <id>https://moonclearner.cn/php/cookbook/php_dynamic_create_object.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="PHP-dynamically-create-object"><a href="#PHP-dynamically-create-object" class="headerlink" title="PHP dynamically create object"></a>PHP dynamically create object</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$object = <span class="keyword">new</span> ReflectionClass(<span class="string">'PDO'</span>);</span><br><span class="line">$object-&gt;newInstanceArgs(<span class="keyword">array</span>(<span class="string">'arg1'</span>=&gt;$arg1, <span class="string">'arg2'</span>=&gt;$arg2));</span><br></pre></td></tr></table></figure><h1 id="PHP-dynamically-calling-func"><a href="#PHP-dynamically-calling-func" class="headerlink" title="PHP dynamically calling func"></a>PHP dynamically calling func</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$classname = <span class="string">"TestClassName"</span>;</span><br><span class="line">$object = <span class="keyword">new</span> <span class="comment">#classname();</span></span><br><span class="line"></span><br><span class="line">$methodname = <span class="string">"getData"</span>;</span><br><span class="line"></span><br><span class="line">$object-&gt;$methodname(<span class="string">"arg1"</span>, <span class="string">"arg2"</span>);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;PHP-dynamically-create-object&quot;&gt;&lt;a href=&quot;#PHP-dynamically-create-object&quot; class=&quot;headerlink&quot; title=&quot;PHP dynamically create object&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP PDO error info</title>
+    <link href="https://moonclearner.cn/php/cookbook/php_pdo_error_info.html"/>
+    <id>https://moonclearner.cn/php/cookbook/php_pdo_error_info.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="PHP-PDO-catch-error-info"><a href="#PHP-PDO-catch-error-info" class="headerlink" title="PHP PDO catch error info"></a>PHP PDO catch error info</h1><p><code>`</code>php</p><p>try{<br>    $db = new PDO(‘sqlite:/tmp/tmp.db’);<br>    $db-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);<br>    $st = $db-&gt;prepare(‘SELECT * FROM tmp’);<br>    $st-&gt;execute():<br>    while($row = $st-&gt;fetch(PDO:FETCH_NUM)){<br>        print implode(‘,’, $row).”<br>\n”;<br>    }<br>}catch(Exception $e){<br>    print “problem: “ . $e-&gt;getMessage();<br>}</p><h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p>php cookbook 10.10</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;PHP-PDO-catch-error-info&quot;&gt;&lt;a href=&quot;#PHP-PDO-catch-error-info&quot; class=&quot;headerlink&quot; title=&quot;PHP PDO catch error info&quot;&gt;&lt;/a&gt;PHP PDO catch 
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+      <category term="pdo" scheme="https://moonclearner.cn/tags/pdo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP session</title>
+    <link href="https://moonclearner.cn/php/cookbook/php_session.html"/>
+    <id>https://moonclearner.cn/php/cookbook/php_session.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="PHP-Session"><a href="#PHP-Session" class="headerlink" title="PHP Session"></a>PHP Session</h1><h2 id="PHP-redirect-url-need-add-phpsessionid"><a href="#PHP-redirect-url-need-add-phpsessionid" class="headerlink" title="PHP redirect url need add phpsessionid"></a>PHP redirect url need add phpsessionid</h2><p>SID is constant value replace phpsessionid<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$redirect_url = <span class="string">'http://www.example.com'</span>;</span><br><span class="line"><span class="keyword">if</span>(defined(<span class="string">'SID'</span>) &amp;&amp; (! <span class="keyword">isset</span>($_COOKIE[session_name()])))&#123;</span><br><span class="line">    $redirect_url .= <span class="string">'?'</span> . SID</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="output-add-rewrite-var-string-name-string-value-bool"><a href="#output-add-rewrite-var-string-name-string-value-bool" class="headerlink" title="output_add_rewrite_var ( string $name , string $value ) : bool"></a>output_add_rewrite_var ( string $name , string $value ) : bool</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">output_add_rewrite_var(<span class="string">'token'</span>, $token);</span><br></pre></td></tr></table></figure><p>此函数给URL重写机制添加名/值对。 这种名值对将被添加到URL（以GET参数的形式）和表单（以input隐藏域的形式），当透明URL重写用 session.use_trans_sid 开启时同样可以添加到session ID。 要注意，绝对URL(<a href="http://example.com/..)不能被重写。" target="_blank" rel="noopener">http://example.com/..)不能被重写。</a></p><h2 id="force-use-cookie-url-not-contain-phpsessionid"><a href="#force-use-cookie-url-not-contain-phpsessionid" class="headerlink" title="force use cookie, url not contain phpsessionid"></a>force use cookie, url not contain phpsessionid</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ini_set(<span class="string">'session.use_only_cookies'</span>, <span class="keyword">true</span>)</span><br><span class="line"></span><br><span class="line">session_regenerate_id();</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;PHP-Session&quot;&gt;&lt;a href=&quot;#PHP-Session&quot; class=&quot;headerlink&quot; title=&quot;PHP Session&quot;&gt;&lt;/a&gt;PHP Session&lt;/h1&gt;&lt;h2 id=&quot;PHP-redirect-url-need-add-php
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+      <category term="session" scheme="https://moonclearner.cn/tags/session/"/>
+    
+  </entry>
+  
+</feed>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://moonclearner.cn/"/>
-  <updated>2019-03-18T02:23:59.022Z</updated>
+  <updated>2019-04-09T07:41:45.409Z</updated>
   <id>https://moonclearner.cn/</id>
   
   <author>
@@ -15,6 +15,114 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>checkbox as radio input</title>
+    <link href="https://moonclearner.cn/js/checkbox_as_radio.html"/>
+    <id>https://moonclearner.cn/js/checkbox_as_radio.html</id>
+    <published>2019-04-09T07:41:45.453Z</published>
+    <updated>2019-04-09T07:41:45.409Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="checkbox-as-radio-input"><a href="#checkbox-as-radio-input" class="headerlink" title="checkbox as radio input"></a>checkbox as radio input</h1><p>将checkbox 作为 单选框来使用</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input style="vertical-align: middle;" id="Checkbox" type="checkbox" name="switch" &lt;?=$isChecked?&gt; /&gt;&lt;span&gt;启用&lt;/span&gt;</span><br></pre></td></tr></table></figure><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当form表单提交的时候执行该语句</span></span><br><span class="line"><span class="keyword">var</span> enable_use = <span class="built_in">document</span>.getElementById(<span class="string">"Checkbox"</span>).checked;</span><br><span class="line"><span class="keyword">var</span> val = (enable_use == <span class="literal">true</span>)?<span class="string">'true'</span>:<span class="string">'false'</span>;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"Checkbox"</span>).value = val;</span><br></pre></td></tr></table></figure><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!<span class="keyword">empty</span>($switch))&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;updateJMREnable($switch);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;updateJMREnable(<span class="string">"false"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;checkbox-as-radio-input&quot;&gt;&lt;a href=&quot;#checkbox-as-radio-input&quot; class=&quot;headerlink&quot; title=&quot;checkbox as radio input&quot;&gt;&lt;/a&gt;checkbox as radio
+      
+    
+    </summary>
+    
+      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
+    
+    
+      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
+    
+      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>get string actual length include Chinese</title>
+    <link href="https://moonclearner.cn/js/get_actual_char_length.html"/>
+    <id>https://moonclearner.cn/js/get_actual_char_length.html</id>
+    <published>2019-04-08T03:00:18.216Z</published>
+    <updated>2019-04-08T03:00:18.196Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="get-string-actual-length-include-Chinese"><a href="#get-string-actual-length-include-Chinese" class="headerlink" title="get string actual length include Chinese"></a>get string actual length include Chinese</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先把中文替换成一个字节的英文，在计算长度</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCharLength</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.replace(<span class="regexp">/[\u0391-\uFFE5]/g</span>,<span class="string">"a"</span>).length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;get-string-actual-length-include-Chinese&quot;&gt;&lt;a href=&quot;#get-string-actual-length-include-Chinese&quot; class=&quot;headerlink&quot; title=&quot;get string a
+      
+    
+    </summary>
+    
+      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
+    
+    
+      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
+    
+      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Jq from label name get</title>
+    <link href="https://moonclearner.cn/js/jquery/jq_select.html"/>
+    <id>https://moonclearner.cn/js/jquery/jq_select.html</id>
+    <published>2019-03-29T11:22:15.101Z</published>
+    <updated>2019-03-29T11:22:15.069Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="select-in-jquery"><a href="#select-in-jquery" class="headerlink" title="select in jquery"></a>select in jquery</h1><h2 id="增加删除select里面的option"><a href="#增加删除select里面的option" class="headerlink" title="增加删除select里面的option"></a>增加删除select里面的option</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#select_id"</span>).append(<span class="string">"&lt;option value='Value'&gt;Text&lt;/option&gt;"</span>); <span class="comment">//为Select追加一个Option(下拉项) </span></span><br><span class="line">$(<span class="string">"#select_id"</span>).prepend(<span class="string">"&lt;option value='0'&gt;请选择&lt;/option&gt;"</span>); <span class="comment">//为Select插入一个Option(第一个位置) </span></span><br><span class="line">$(<span class="string">"#select_id option:last"</span>).remove(); <span class="comment">//删除Select中索引值最大Option(最后一个) </span></span><br><span class="line">$(<span class="string">"#select_id option[index='0']"</span>).remove(); <span class="comment">//删除Select中索引值为0的Option(第一个) </span></span><br><span class="line">$(<span class="string">"#select_id option[value='3']"</span>).remove(); <span class="comment">//删除Select中Value='3'的Option </span></span><br><span class="line">$(<span class="string">"#select_id option[text='4']"</span>).remove(); <span class="comment">//删除Select中Text='4'的Option </span></span><br><span class="line">jQuery(<span class="string">"#link3"</span>).find(<span class="string">"option"</span>).remove();<span class="comment">//删除select里面所有的option</span></span><br></pre></td></tr></table></figure><h2 id="获取select里面的值"><a href="#获取select里面的值" class="headerlink" title="获取select里面的值"></a>获取select里面的值</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#select_id"</span>).change(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//code...&#125;); //为Select添加事件，当选择其中一项时触发 </span></span><br><span class="line"><span class="keyword">var</span> checkText=$(<span class="string">"#select_id"</span>).find(<span class="string">"option:selected"</span>).text(); <span class="comment">//获取Select选择的Text </span></span><br><span class="line"><span class="keyword">var</span> checkValue=$(<span class="string">"#select_id"</span>).val(); <span class="comment">//获取Select选择的Value </span></span><br><span class="line"><span class="keyword">var</span> checkIndex=$(<span class="string">"#select_id "</span>).get(<span class="number">0</span>).selectedIndex; <span class="comment">//获取Select选择的索引值 </span></span><br><span class="line"><span class="keyword">var</span> maxIndex=$(<span class="string">"#select_id option:last"</span>).attr(<span class="string">"index"</span>); <span class="comment">//获取Select最大的索引值</span></span><br></pre></td></tr></table></figure><h2 id="select-事件"><a href="#select-事件" class="headerlink" title="select 事件"></a>select 事件</h2><ul><li>onchange 选择option触发的事件</li><li>onfocus  点击下拉框，就会触发的事件</li><li>onclick 不会触发任何事件</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;select-in-jquery&quot;&gt;&lt;a href=&quot;#select-in-jquery&quot; class=&quot;headerlink&quot; title=&quot;select in jquery&quot;&gt;&lt;/a&gt;select in jquery&lt;/h1&gt;&lt;h2 id=&quot;增加删除selec
+      
+    
+    </summary>
+    
+      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
+    
+    
+      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
+    
+      <category term="jquery" scheme="https://moonclearner.cn/tags/jquery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vim configure</title>
+    <link href="https://moonclearner.cn/vim/configure.html"/>
+    <id>https://moonclearner.cn/vim/configure.html</id>
+    <published>2019-03-18T05:53:33.015Z</published>
+    <updated>2019-03-18T05:53:32.983Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="YouCompleteMe-unavailable-No-module-named-future"><a href="#YouCompleteMe-unavailable-No-module-named-future" class="headerlink" title="YouCompleteMe unavailable No module named future"></a>YouCompleteMe unavailable No module named future</h1><ul><li>cd bundle/YouCompleteMe</li><li>git submodule update –init –recursive<ul><li>if error, git config –global</li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;YouCompleteMe-unavailable-No-module-named-future&quot;&gt;&lt;a href=&quot;#YouCompleteMe-unavailable-No-module-named-future&quot; class=&quot;headerlink&quot; tit
+      
+    
+    </summary>
+    
+      <category term="vim" scheme="https://moonclearner.cn/categories/vim/"/>
+    
+    
+      <category term="vim" scheme="https://moonclearner.cn/tags/vim/"/>
+    
+      <category term="configure" scheme="https://moonclearner.cn/tags/configure/"/>
+    
+  </entry>
   
   <entry>
     <title>sudo no password</title>
@@ -65,9 +173,9 @@
       <category term="ubuntu" scheme="https://moonclearner.cn/categories/ubuntu/"/>
     
     
-      <category term="backup" scheme="https://moonclearner.cn/tags/backup/"/>
-    
       <category term="ubuntu" scheme="https://moonclearner.cn/tags/ubuntu/"/>
+    
+      <category term="backup" scheme="https://moonclearner.cn/tags/backup/"/>
     
   </entry>
   
@@ -126,6 +234,33 @@
   </entry>
   
   <entry>
+    <title>onclick lanuch a post request，解决get参数太长，导致请求失败</title>
+    <link href="https://moonclearner.cn/js/onclick_for_post.html"/>
+    <id>https://moonclearner.cn/js/onclick_for_post.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="onclick-lanuch-post-request"><a href="#onclick-lanuch-post-request" class="headerlink" title="onclick lanuch post request"></a>onclick lanuch post request</h1><p>有时候，由于get请求下载文件，请求参数超过了2048字符，在IE等浏览器就会导致参数不完整</p><p>因此使用post请求，其参数就没有限制长度，</p><p>然后，使用ajax发起post请求，无法触发文件下载，因此使用模拟form表单发起post请求</p><p>原生onclick 发起post请求</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onclickpost</span>(<span class="params">URL, PARAMS</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp    = <span class="built_in">document</span>.createElement(<span class="string">"form"</span>);</span><br><span class="line">    temp.action = URL;</span><br><span class="line">    temp.method = <span class="string">"post"</span>;</span><br><span class="line">    temp.style.display = <span class="string">"none"</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> x <span class="keyword">in</span> PARAMS) &#123;</span><br><span class="line">        <span class="keyword">var</span> opt   = <span class="built_in">document</span>.createElement(<span class="string">"textarea"</span>);</span><br><span class="line">        opt.name  = x;</span><br><span class="line">        opt.value = PARAMS[x];</span><br><span class="line">        temp.appendChild(opt);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(temp);</span><br><span class="line">    temp.submit();</span><br><span class="line">    temp.parentNode.removeChild(temp);</span><br><span class="line">&#125;</span><br><span class="line">onclickpost(url, &#123;<span class="attr">cat</span>:rawinfo&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;onclick-lanuch-post-request&quot;&gt;&lt;a href=&quot;#onclick-lanuch-post-request&quot; class=&quot;headerlink&quot; title=&quot;onclick lanuch post request&quot;&gt;&lt;/a&gt;oncli
+      
+    
+    </summary>
+    
+      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
+    
+    
+      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
+    
+      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
+    
+  </entry>
+  
+  <entry>
     <title>cmder 各类配置以及问题解决</title>
     <link href="https://moonclearner.cn/cmder/cmder.html"/>
     <id>https://moonclearner.cn/cmder/cmder.html</id>
@@ -178,33 +313,6 @@
       <category term="setting" scheme="https://moonclearner.cn/tags/setting/"/>
     
       <category term="hexo" scheme="https://moonclearner.cn/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>onclick lanuch a post request，解决get参数太长，导致请求失败</title>
-    <link href="https://moonclearner.cn/js/onclick_for_post.html"/>
-    <id>https://moonclearner.cn/js/onclick_for_post.html</id>
-    <published>2019-02-27T05:33:54.374Z</published>
-    <updated>2019-02-27T05:33:54.374Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="onclick-lanuch-post-request"><a href="#onclick-lanuch-post-request" class="headerlink" title="onclick lanuch post request"></a>onclick lanuch post request</h1><p>有时候，由于get请求下载文件，请求参数超过了2048字符，在IE等浏览器就会导致参数不完整</p><p>因此使用post请求，其参数就没有限制长度，</p><p>然后，使用ajax发起post请求，无法触发文件下载，因此使用模拟form表单发起post请求</p><p>原生onclick 发起post请求</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onclickpost</span>(<span class="params">URL, PARAMS</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp    = <span class="built_in">document</span>.createElement(<span class="string">"form"</span>);</span><br><span class="line">    temp.action = URL;</span><br><span class="line">    temp.method = <span class="string">"post"</span>;</span><br><span class="line">    temp.style.display = <span class="string">"none"</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> x <span class="keyword">in</span> PARAMS) &#123;</span><br><span class="line">        <span class="keyword">var</span> opt   = <span class="built_in">document</span>.createElement(<span class="string">"textarea"</span>);</span><br><span class="line">        opt.name  = x;</span><br><span class="line">        opt.value = PARAMS[x];</span><br><span class="line">        temp.appendChild(opt);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(temp);</span><br><span class="line">    temp.submit();</span><br><span class="line">    temp.parentNode.removeChild(temp);</span><br><span class="line">&#125;</span><br><span class="line">onclickpost(url, &#123;<span class="attr">cat</span>:rawinfo&#125;)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;onclick-lanuch-post-request&quot;&gt;&lt;a href=&quot;#onclick-lanuch-post-request&quot; class=&quot;headerlink&quot; title=&quot;onclick lanuch post request&quot;&gt;&lt;/a&gt;oncli
-      
-    
-    </summary>
-    
-      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
-    
-    
-      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
-    
-      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
     
   </entry>
   
@@ -317,6 +425,31 @@
   </entry>
   
   <entry>
+    <title>PHP quotes</title>
+    <link href="https://moonclearner.cn/php/php_quotes.html"/>
+    <id>https://moonclearner.cn/php/php_quotes.html</id>
+    <published>2019-02-27T05:33:54.374Z</published>
+    <updated>2019-02-27T05:33:54.374Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="php-quote"><a href="#php-quote" class="headerlink" title="php quote"></a>php quote</h1><p>魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符都会被自动加上一个反斜线进行转义，这和 addslashes() 作用完全相同</p><h2 id="相关的函数"><a href="#相关的函数" class="headerlink" title="相关的函数"></a>相关的函数</h2><ul><li>set_magic_quotes_runtime</li><li>magic_quotes_gpc</li><li>addslashes</li><li>stripslashes</li></ul><h3 id="set-magic-quotes-runtime"><a href="#set-magic-quotes-runtime" class="headerlink" title="set_magic_quotes_runtime()"></a>set_magic_quotes_runtime()</h3><p>设置当前magic_quotes_runtime 配置选项的激活状态，0为关闭，1为开启。set_magic_quotes_runtime(1)或是配置文件中magic_quotes_runtime为true（这个在php.ini中配置），那么php脚本读取文件或是从数据库中读取数据，遇到反斜线（\）、单引号（’）、双引号（”）、NULL时，会在前面自动加上转义字符，变成\、\’、\”、\NULL；若是关闭的话，也就是set_magic_quotes_runtime(0)magic_quotes_runtime为false，那么便会转义，此时可以借助addslashes进行转义。</p><h3 id="magic-quotes-gpc"><a href="#magic-quotes-gpc" class="headerlink" title="magic_quotes_gpc()"></a>magic_quotes_gpc()</h3><p>当此值为1时，会对HTTP请求中的G（$_GET）、P（$_POST）、C（$_COOKIE）单双引号和反斜线进行转义；反之则不会。该操作一般见于表单提交的数据库操作，若是值为0时，便用addslashes进行转义存入数据库中，取出时再用stripslashes函数把反斜线给去掉。</p><p><strong>特别注意的是在PHP 5.4版本时，魔术引号被移除了，因此转义都需要加上addslashes函数。</strong></p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$_GET[<span class="string">'des'</span>] = <span class="string">"she's a beauty"</span>;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">array</span>(<span class="string">'_GET'</span>, <span class="string">'_POST'</span>, <span class="string">'_COOKIE'</span>) <span class="keyword">as</span> $_request)&#123;</span><br><span class="line">    <span class="keyword">echo</span> $_request; <span class="comment">// _GET_POST _COOKIE</span></span><br><span class="line">    <span class="keyword">foreach</span> ($$_request <span class="keyword">as</span> $_key=&gt; $_value)&#123;</span><br><span class="line">        <span class="comment">// $_key为键，如_GET，$$_key为$_GET</span></span><br><span class="line">        <span class="comment">// $$_key=$_value意思就是把$_GET['des'] = 1111便为$des=she\'s a beauty</span></span><br><span class="line">        $_key&#123;<span class="number">0</span>&#125; != <span class="string">'_'</span> &amp;&amp; $$_key=addslashes($_value);</span><br><span class="line">        <span class="keyword">echo</span> $$_key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(get_magic_quotes_gpc() &amp;&amp; (! ini_get(<span class="string">'magic_quotes_sybase'</span>)))&#123;</span><br><span class="line">    $value = stripslashes($_GET[<span class="string">'value'</span>]);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    $value = $_GET[<span class="string">'value'</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;php-quote&quot;&gt;&lt;a href=&quot;#php-quote&quot; class=&quot;headerlink&quot; title=&quot;php quote&quot;&gt;&lt;/a&gt;php quote&lt;/h1&gt;&lt;p&gt;魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
     <title>PHP Filesystem</title>
     <link href="https://moonclearner.cn/php/php_get_path_filename.html"/>
     <id>https://moonclearner.cn/php/php_get_path_filename.html</id>
@@ -339,31 +472,6 @@
       <category term="os" scheme="https://moonclearner.cn/tags/os/"/>
     
       <category term="filesystem" scheme="https://moonclearner.cn/tags/filesystem/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP quotes</title>
-    <link href="https://moonclearner.cn/php/php_quotes.html"/>
-    <id>https://moonclearner.cn/php/php_quotes.html</id>
-    <published>2019-02-27T05:33:54.374Z</published>
-    <updated>2019-02-27T05:33:54.374Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="php-quote"><a href="#php-quote" class="headerlink" title="php quote"></a>php quote</h1><p>魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符都会被自动加上一个反斜线进行转义，这和 addslashes() 作用完全相同</p><h2 id="相关的函数"><a href="#相关的函数" class="headerlink" title="相关的函数"></a>相关的函数</h2><ul><li>set_magic_quotes_runtime</li><li>magic_quotes_gpc</li><li>addslashes</li><li>stripslashes</li></ul><h3 id="set-magic-quotes-runtime"><a href="#set-magic-quotes-runtime" class="headerlink" title="set_magic_quotes_runtime()"></a>set_magic_quotes_runtime()</h3><p>设置当前magic_quotes_runtime 配置选项的激活状态，0为关闭，1为开启。set_magic_quotes_runtime(1)或是配置文件中magic_quotes_runtime为true（这个在php.ini中配置），那么php脚本读取文件或是从数据库中读取数据，遇到反斜线（\）、单引号（’）、双引号（”）、NULL时，会在前面自动加上转义字符，变成\、\’、\”、\NULL；若是关闭的话，也就是set_magic_quotes_runtime(0)magic_quotes_runtime为false，那么便会转义，此时可以借助addslashes进行转义。</p><h3 id="magic-quotes-gpc"><a href="#magic-quotes-gpc" class="headerlink" title="magic_quotes_gpc()"></a>magic_quotes_gpc()</h3><p>当此值为1时，会对HTTP请求中的G（$_GET）、P（$_POST）、C（$_COOKIE）单双引号和反斜线进行转义；反之则不会。该操作一般见于表单提交的数据库操作，若是值为0时，便用addslashes进行转义存入数据库中，取出时再用stripslashes函数把反斜线给去掉。</p><p><strong>特别注意的是在PHP 5.4版本时，魔术引号被移除了，因此转义都需要加上addslashes函数。</strong></p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$_GET[<span class="string">'des'</span>] = <span class="string">"she's a beauty"</span>;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">array</span>(<span class="string">'_GET'</span>, <span class="string">'_POST'</span>, <span class="string">'_COOKIE'</span>) <span class="keyword">as</span> $_request)&#123;</span><br><span class="line">    <span class="keyword">echo</span> $_request; <span class="comment">// _GET_POST _COOKIE</span></span><br><span class="line">    <span class="keyword">foreach</span> ($$_request <span class="keyword">as</span> $_key=&gt; $_value)&#123;</span><br><span class="line">        <span class="comment">// $_key为键，如_GET，$$_key为$_GET</span></span><br><span class="line">        <span class="comment">// $$_key=$_value意思就是把$_GET['des'] = 1111便为$des=she\'s a beauty</span></span><br><span class="line">        $_key&#123;<span class="number">0</span>&#125; != <span class="string">'_'</span> &amp;&amp; $$_key=addslashes($_value);</span><br><span class="line">        <span class="keyword">echo</span> $$_key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(get_magic_quotes_gpc() &amp;&amp; (! ini_get(<span class="string">'magic_quotes_sybase'</span>)))&#123;</span><br><span class="line">    $value = stripslashes($_GET[<span class="string">'value'</span>]);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    $value = $_GET[<span class="string">'value'</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;php-quote&quot;&gt;&lt;a href=&quot;#php-quote&quot; class=&quot;headerlink&quot; title=&quot;php quote&quot;&gt;&lt;/a&gt;php quote&lt;/h1&gt;&lt;p&gt;魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符
-      
-    
-    </summary>
-    
-      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
-    
-    
-      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
     
   </entry>
   
@@ -397,35 +505,6 @@
   </entry>
   
   <entry>
-    <title>sqlite common cmd 常用命令</title>
-    <link href="https://moonclearner.cn/databases/sqlite/sqlite_common_cmd.html"/>
-    <id>https://moonclearner.cn/databases/sqlite/sqlite_common_cmd.html</id>
-    <published>2019-02-27T05:33:54.374Z</published>
-    <updated>2019-02-27T05:33:54.374Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="sqlite-common-cmd-常用命令"><a href="#sqlite-common-cmd-常用命令" class="headerlink" title="sqlite common cmd 常用命令"></a>sqlite common cmd 常用命令</h1><h2 id="查看列表名"><a href="#查看列表名" class="headerlink" title="查看列表名"></a>查看列表名</h2><ul><li>pragma table_info(tablename);</li><li>.schema tablename</li><li>select * from sqlite_master where type=”table” and name=”tablename”;</li></ul><h2 id="退出sqlite-shel"><a href="#退出sqlite-shel" class="headerlink" title="退出sqlite shel"></a>退出sqlite shel</h2><p>.exit</p><h2 id="显示所有table"><a href="#显示所有table" class="headerlink" title="显示所有table"></a>显示所有table</h2><p>.tables</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;sqlite-common-cmd-常用命令&quot;&gt;&lt;a href=&quot;#sqlite-common-cmd-常用命令&quot; class=&quot;headerlink&quot; title=&quot;sqlite common cmd 常用命令&quot;&gt;&lt;/a&gt;sqlite common cmd 常用
-      
-    
-    </summary>
-    
-      <category term="sqlite" scheme="https://moonclearner.cn/categories/sqlite/"/>
-    
-    
-      <category term="sqlite" scheme="https://moonclearner.cn/tags/sqlite/"/>
-    
-      <category term="sql" scheme="https://moonclearner.cn/tags/sql/"/>
-    
-      <category term="common" scheme="https://moonclearner.cn/tags/common/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Jq from label name get</title>
     <link href="https://moonclearner.cn/js/jquery/jq_get_name.html"/>
     <id>https://moonclearner.cn/js/jquery/jq_get_name.html</id>
@@ -453,20 +532,17 @@
   </entry>
   
   <entry>
-    <title>PHP database transaction</title>
-    <link href="https://moonclearner.cn/php/cookbook/php_database_transaction.html"/>
-    <id>https://moonclearner.cn/php/cookbook/php_database_transaction.html</id>
+    <title>build php extension fail phpizse</title>
+    <link href="https://moonclearner.cn/php/configure/php_extension_compile_fail.html"/>
+    <id>https://moonclearner.cn/php/configure/php_extension_compile_fail.html</id>
     <published>2019-02-27T05:33:54.374Z</published>
     <updated>2019-02-27T05:33:54.374Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="PHP-database-transaction"><a href="#PHP-database-transaction" class="headerlink" title="PHP database transaction"></a>PHP database transaction</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Message</span></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> $db;</span><br><span class="line">    <span class="comment">// $form_errors save post validate error for showing error in pages</span></span><br><span class="line">    <span class="keyword">protected</span> $form_errors = <span class="keyword">array</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        set_exception_handler(<span class="keyword">array</span>(<span class="keyword">$this</span>, <span class="string">'logAndDie'</span>));</span><br><span class="line">        <span class="keyword">$this</span>-&gt;db = <span class="keyword">new</span> PDO(<span class="string">"sqlite:/tmp/tmp.db"</span>);</span><br><span class="line">        <span class="keyword">$this</span>-&gt;db-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">save</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;db-&gt;beginTransaction();</span><br><span class="line">        pass</span><br><span class="line">        <span class="keyword">$this</span>-&gt;db-&gt;commit();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">valid</span><span class="params">()</span></span>&#123;</span><br><span class="line">        pass</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">logAndDie</span><span class="params">(Exception $e)</span></span>&#123;</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'ERROR: '</span>. htmlentities($e-&gt;getMessage());</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;db-&gt;inTransaction())&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;db-&gt;rollback();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="CDPATH-command-not-found"><a href="#CDPATH-command-not-found" class="headerlink" title="CDPATH command not found"></a>CDPATH command not found</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">$</span> make </span><br><span class="line">/home/user/libtool: line 482: CDPATH: command not found</span><br><span class="line">libtool: Version mismatch error.  This is libtool 2.4.2, but the</span><br><span class="line">libtool: definition of this LT_INIT comes from an older release.</span><br><span class="line">libtool: You should recreate aclocal.m4 with macros from libtool 2.4.2</span><br><span class="line">libtool: and run autoconf again.</span><br><span class="line">make: *** [xdebug.lo] Error 63</span><br></pre></td></tr></table></figure><h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><ul><li>aclocal</li><li>libtoolize –force</li><li>autoheader</li><li>autoconf</li></ul>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h1 id=&quot;PHP-database-transaction&quot;&gt;&lt;a href=&quot;#PHP-database-transaction&quot; class=&quot;headerlink&quot; title=&quot;PHP database transaction&quot;&gt;&lt;/a&gt;PHP database t
-      
+      CDPATH command not found
     
     </summary>
     
@@ -475,86 +551,7 @@
     
       <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
     
-      <category term="database" scheme="https://moonclearner.cn/tags/database/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP dynamically create object</title>
-    <link href="https://moonclearner.cn/php/cookbook/php_dynamic_create_object.html"/>
-    <id>https://moonclearner.cn/php/cookbook/php_dynamic_create_object.html</id>
-    <published>2019-02-27T05:33:54.374Z</published>
-    <updated>2019-02-27T05:33:54.374Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="PHP-dynamically-create-object"><a href="#PHP-dynamically-create-object" class="headerlink" title="PHP dynamically create object"></a>PHP dynamically create object</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$object = <span class="keyword">new</span> ReflectionClass(<span class="string">'PDO'</span>);</span><br><span class="line">$object-&gt;newInstanceArgs(<span class="keyword">array</span>(<span class="string">'arg1'</span>=&gt;$arg1, <span class="string">'arg2'</span>=&gt;$arg2));</span><br></pre></td></tr></table></figure><h1 id="PHP-dynamically-calling-func"><a href="#PHP-dynamically-calling-func" class="headerlink" title="PHP dynamically calling func"></a>PHP dynamically calling func</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$classname = <span class="string">"TestClassName"</span>;</span><br><span class="line">$object = <span class="keyword">new</span> <span class="comment">#classname();</span></span><br><span class="line"></span><br><span class="line">$methodname = <span class="string">"getData"</span>;</span><br><span class="line"></span><br><span class="line">$object-&gt;$methodname(<span class="string">"arg1"</span>, <span class="string">"arg2"</span>);</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;PHP-dynamically-create-object&quot;&gt;&lt;a href=&quot;#PHP-dynamically-create-object&quot; class=&quot;headerlink&quot; title=&quot;PHP dynamically create object&quot;&gt;&lt;/a
-      
-    
-    </summary>
-    
-      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
-    
-    
-      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP PDO error info</title>
-    <link href="https://moonclearner.cn/php/cookbook/php_pdo_error_info.html"/>
-    <id>https://moonclearner.cn/php/cookbook/php_pdo_error_info.html</id>
-    <published>2019-02-27T05:33:54.374Z</published>
-    <updated>2019-02-27T05:33:54.374Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="PHP-PDO-catch-error-info"><a href="#PHP-PDO-catch-error-info" class="headerlink" title="PHP PDO catch error info"></a>PHP PDO catch error info</h1><p><code>`</code>php</p><p>try{<br>    $db = new PDO(‘sqlite:/tmp/tmp.db’);<br>    $db-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);<br>    $st = $db-&gt;prepare(‘SELECT * FROM tmp’);<br>    $st-&gt;execute():<br>    while($row = $st-&gt;fetch(PDO:FETCH_NUM)){<br>        print implode(‘,’, $row).”<br>\n”;<br>    }<br>}catch(Exception $e){<br>    print “problem: “ . $e-&gt;getMessage();<br>}</p><h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p>php cookbook 10.10</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;PHP-PDO-catch-error-info&quot;&gt;&lt;a href=&quot;#PHP-PDO-catch-error-info&quot; class=&quot;headerlink&quot; title=&quot;PHP PDO catch error info&quot;&gt;&lt;/a&gt;PHP PDO catch 
-      
-    
-    </summary>
-    
-      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
-    
-    
-      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
-    
-      <category term="pdo" scheme="https://moonclearner.cn/tags/pdo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP session</title>
-    <link href="https://moonclearner.cn/php/cookbook/php_session.html"/>
-    <id>https://moonclearner.cn/php/cookbook/php_session.html</id>
-    <published>2019-02-27T05:33:54.374Z</published>
-    <updated>2019-02-27T05:33:54.374Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="PHP-Session"><a href="#PHP-Session" class="headerlink" title="PHP Session"></a>PHP Session</h1><h2 id="PHP-redirect-url-need-add-phpsessionid"><a href="#PHP-redirect-url-need-add-phpsessionid" class="headerlink" title="PHP redirect url need add phpsessionid"></a>PHP redirect url need add phpsessionid</h2><p>SID is constant value replace phpsessionid<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$redirect_url = <span class="string">'http://www.example.com'</span>;</span><br><span class="line"><span class="keyword">if</span>(defined(<span class="string">'SID'</span>) &amp;&amp; (! <span class="keyword">isset</span>($_COOKIE[session_name()])))&#123;</span><br><span class="line">    $redirect_url .= <span class="string">'?'</span> . SID</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="output-add-rewrite-var-string-name-string-value-bool"><a href="#output-add-rewrite-var-string-name-string-value-bool" class="headerlink" title="output_add_rewrite_var ( string $name , string $value ) : bool"></a>output_add_rewrite_var ( string $name , string $value ) : bool</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">output_add_rewrite_var(<span class="string">'token'</span>, $token);</span><br></pre></td></tr></table></figure><p>此函数给URL重写机制添加名/值对。 这种名值对将被添加到URL（以GET参数的形式）和表单（以input隐藏域的形式），当透明URL重写用 session.use_trans_sid 开启时同样可以添加到session ID。 要注意，绝对URL(<a href="http://example.com/..)不能被重写。" target="_blank" rel="noopener">http://example.com/..)不能被重写。</a></p><h2 id="force-use-cookie-url-not-contain-phpsessionid"><a href="#force-use-cookie-url-not-contain-phpsessionid" class="headerlink" title="force use cookie, url not contain phpsessionid"></a>force use cookie, url not contain phpsessionid</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ini_set(<span class="string">'session.use_only_cookies'</span>, <span class="keyword">true</span>)</span><br><span class="line"></span><br><span class="line">session_regenerate_id();</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;PHP-Session&quot;&gt;&lt;a href=&quot;#PHP-Session&quot; class=&quot;headerlink&quot; title=&quot;PHP Session&quot;&gt;&lt;/a&gt;PHP Session&lt;/h1&gt;&lt;h2 id=&quot;PHP-redirect-url-need-add-php
-      
-    
-    </summary>
-    
-      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
-    
-    
-      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
-    
-      <category term="session" scheme="https://moonclearner.cn/tags/session/"/>
+      <category term="configure" scheme="https://moonclearner.cn/tags/configure/"/>
     
   </entry>
   

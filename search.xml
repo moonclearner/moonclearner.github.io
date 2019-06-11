@@ -1,6 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[PHP My Cookbook]]></title>
+    <url>%2Fphp%2Fphp_My_cookbook.html</url>
+    <content type="text"><![CDATA[判断变量是否为空empty() 函数用于检查一个变量是否为空。 empty() 判断一个变量是否被认为是空的。当一个变量并不存在，或者它的值等同于 FALSE，那么它会被认为不存在。如果变量不存在的话，empty()并不会产生警告。 empty() 5.5 版本之后支持表达式了，而不仅仅是变量。 版本要求：PHP 4, PHP 5, PHP 7 语法bool empty ( mixed $var ) 参数说明： $var：待检查的变量。 注意：在 PHP 5.5 之前，empty() 仅支持变量；任何其他东西将会导致一个解析错误。换言之，下列代码不会生效： empty(trim($name)) 作为替代，应该使用: trim($name) == false empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。 返回值当 var 存在，并且是一个非空非零的值时返回 FALSE 否则返回 TRUE。 以下的变量会被认为是空的： “” (空字符串) 0 (作为整数的0) 0.0 (作为浮点数的0) “0” (作为字符串的0) NULL FALSE array() (一个空数组) $var; (一个声明了，但是没有值的变量) 实例1234567891011121314151617181920&lt;?php$ivar1=0;$istr1=&apos;Runoob&apos;;if (empty($ivar1))&#123; echo &apos;$ivar1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;&#125;else&#123; echo &apos;$ivar1&apos; . &quot; 不为空或不为 0。&quot; . PHP_EOL;&#125;if (empty($istr1))&#123; echo &apos;$istr1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;&#125;else&#123; echo &apos;$istr1&apos; . &quot; 字符串不为空或不为0。&quot; . PHP_EOL;&#125;?&gt; 执行结果如下所示：$ivar1 为空或为 0。 $istr1 字符串不为空或不为0。 读取文件，得到状态码12345if(file_exists("/absolution path"))&#123; $res = file_get_contents("/absolution path"); if("0" != $res)&#123; &#125;&#125; 判断字符串a是否存在某字符串bstrpos 会返回0即从a的第一个位置就找到了b12if(false !== strpos("a", "b"))&#123;&#125; 用strlen来替代empty当form var填入0的时候, empty($_POST[‘var’]) empty 为空 “” (空字符串) 0 (作为整数的0) 0.0 (作为浮点数的0) “0” (作为字符串的0) NULL FALSE array() (一个空数组) $var; (一个声明了，但是没有值的变量) empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。 empty(trim($name)) is wrong, empty cant contain func but a variable before version 5.3 产生随机数做id12345678if (function_exists('mcrypt_create_iv')) &#123; $_SESSION['token'] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));&#125; else &#123; $_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(32));&#125;md5(uniqid()) replace string or charactersstrtr sql special characters % and _ 1strtr($string, array('_'=&gt;'\_', '%'=&gt;'\%')); the list of php extension php -m php -i php -r “print_r(get_loaded_extensions());” php 7 change log openssl built in (not need install) bcmath built in (in archlinux) php Daily Discoveryphp gengerate pie or line or column image pChart]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>cookbook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP download]]></title>
+    <url>%2Fphp%2Fphp_download.html</url>
+    <content type="text"><![CDATA[php downloadphp download big file12345678910111213141516171819if (file_exists($path)) &#123; $file_size = filesize($path); if (FALSE!== ($handler = fopen($path, &apos;r&apos;)))&#123; header(&apos;Content-Description: File Transfer&apos;); header(&apos;Content-Type: application/octet-stream&apos;); header(&apos;Accept-Ranges: bytes&apos;); header(&apos;Content-Disposition: attachment; filename=&apos;.basename($path)); header(&apos;Accept-Length:&apos;. $file_size); header(&apos;Content-Transfer-Encoding: chunked&apos;); header(&apos;Expires: 0&apos;); header(&apos;Cache-Control: must-revalidate, post-check=0, pre-check=0&apos;); header(&apos;Pragma: public&apos;); $buffer_size = 4096*20; while(!feof($handler))&#123; $chunk = fread($handler,$buffer_size); echo $chunk; &#125; fclose($handler); &#125; php upload big file第一步： Apache环境中的档案上传大小控制修改httpd.conf添加下面内容LimitRequestBody 10485760即10M=1010241024，有的文章中提到应改为 600000000重新启动apache，就可以在设置里看到你要的大小 第二步：修改在php5下POST文件大小的限制修改php.ini找到 File Uploadsh区域修改以下几个参数： file_uploads = on ;是否允许通过HTTP上传文件的开关。默认为ON即是开 upload_tmp_dir ;文件上传至服务器上存储临时文件的地方，如果没指定就会用系统默认的临时文件夹(moodle可以不改)upload_max_filesize = 8m ;允许上传文件大小的最大值.找到 Data Handling区域，修改 post_max_size = 8m ;指通过表单POST给PHP的所能接收的最大值，包括表单里的所有值。默认为8M设上述四个参数后，上传小于8M的文件一般不成问题。但如果上传大于8M的文件，只还得设置以下参数：在Resource Limits 区域: max_execution_time = 600 ;每个PHP页面运行的最大时间值(秒)，默认30秒 max_input_time = 600 ;每个PHP页面接收数据所需的最大时间，默认60秒 memory_limit = 8m ;每个PHP页面所吃掉的最大内存，默认8M]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[use this]]></title>
+    <url>%2Fjs%2Fuse_this.html</url>
+    <content type="text"><![CDATA[input onclick use1234567//注意this后面不能加空格&lt;input onclick="return enable_box(this,'test')" /&gt;//形参不能写thisfunction enable_box(obj, url) &#123; console.log(obj);&#125;]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Add app to ubuntu dash]]></title>
+    <url>%2Fubuntu%2FaddAppTOdash.html</url>
+    <content type="text"><![CDATA[Add app to ubuntu dash在/usr/share/applications/目录下新建一个名为eclipse.desktop的文件。文件内容如下：123456789[Desktop Entry]Version=2018.09Name=EclipseGenericName[zh_CN]=EclipseExec=/home/user/programs/eclipse/eclipseTerminal=falseIcon=/home/user/programs/eclipse/icon.xpmType=ApplicationCategories=Development 其中Exec=/home/yueru/programs/eclipse/eclipse对应eclipse启动文件的位置。（Eclipse安装包解压在/home/yueru/programs/eclipse） 然后你就可以发现启动器中存在Eclipse了。]]></content>
+      <categories>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>zsh</tag>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ubuntu best tool]]></title>
+    <url>%2Fubuntu%2Fbest_tool.html</url>
+    <content type="text"><![CDATA[十大好用的Linux实用工具推荐，亲测！本文我们收集了对Linux用户非常有用的10个工具，其中包括网络监控、系统审计或其它有用命令，这10个Linux工具可以帮助大家提高工作和使用效率，非常实用。 1.w 对，你没看错，就是 w 命令。使用该命令我们可以查看到当前登录系统的用户是谁，以及执行了哪些命令。 2.nmon Nmon 是一个可以监控当前系统性能的小工具，使用之前需要先用如下命令进行安装： sudo apt-get install nmon 安装好后执行 nmon 命令即可打开： nmon nmon 可以查看网络、CPU、内存和磁盘的使用情况。 打开之后按 c 查看 CPU 信息： 打开之后按 n 查看网络信息： 3.ncdu ncdu 命令可以用来查看和分析 Linux 中各目录对磁盘空间占用情况的工具，请使用如下命令进行安装： apt-get install ncdu 安装好后执行如下命令即可从根目录开始分析： ncdu / 注意：执行上述命令会占用大量磁盘 I/O 分析完成后，会生成类似如下截图的输出： 我们可以在结果界面按 n 按名称进行排序或按 s 按大小进行排序。 4.slurm slurm 是一个网卡带宽监控命令行实用程序，它会自动生成 ASCII 图形输出。使用之前先用如下命令进行安装： apt-get install slurm 使用如下命令进行输出： slurm -i &lt;网卡名称&gt; slurm 界面中可以执行如下选项： ◆I：显示lx/tx状态 ◆c：切换到经典界面 ◆r：手动刷新界面 ◆q：退出工具 5.findmnt Findmnt 是一个 Linux 内置的命令行工具，它主要用于查找挂载的文件系统状态。Findmnt 可以查看到当前系统中已挂载的设备，在必要时还可进行 mount 或 unmount 操作。 执行 findmnt 命令后会看到如下输入： 当然，还有如下参数可用： ◆findmnt -l ：以列表方式进行输出 ◆findmnt -s ：输出 fstab 中挂载的设备 ◆findmnt -t ext4 ：按文件系统类型进行输出 6.dstat dstat 是一个可以非常灵活使用和进行组合使用的工具，它可用于监控内存、进行、网络及磁盘性能，可用于替代 ifstat、iostat、dmstat等工具。使用之前需先执行如下命令进行安装： apt-get install dstat 执行如下命令可以看到所有监控数据： dstat 其可选参数非常多，常用的有： ◆dstat -c ： 监控CPU ◆dstat -cdl -D sda1 ：监控CPU详细信息 ◆dstat -d ：监控磁盘 7.saidar saidar 是另一个 CLI 系统数据监控和统计工具，可提供有关磁盘、网络、存储和 SWAP 的监控信息。使用之前需先使用如下命令进行安装： sudo apt-get install saidar 安装完成后可直接执行 saidar 进行输出，但我们通常使用带参数的命令生成带颜色输出： saidar -c 8.ss ss 全称 socket statistics，是一个可以替代 netstat 的网络连接查看工具。 直接执行 ss 即可进行查看： 常用参数有： ss -A tcp ：指定查看协议 ss -ltp ：显示进程名称和 PID 9.ccze ccze 非常有用，它可以用不同颜色高亮日志，协助管理员进行区分和查看分析。使用之前需先使用如下命令进行安装： apt-get install ccze 我们可以使用类似如下方式进行使用： tailf /var/log/syslog | ccze 而使用 ccze -l 参数可以查看其支持的日志类型。 10.ranwhen.py 我们最后介绍的 ranwhen.py 是一个 python 工具，它可以以图形方式显示系统活动。 要使用该工具需要先安装 python 语言支持： sudo apt-add-repository ppa:fkrull/deadsnakes sudo apt-get update sudo apt-get install python3.2 然后下载ranwhen.py wget https://github.com/p-e-w/ranwhen/archive/master.zip unzip master.zip &amp;&amp; cd ranwhen-master 使用如下命令即可执行ranwhen.py python3.2 ranwhen.py]]></content>
+      <categories>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[adaptively set iframe height after iframe onloaded]]></title>
+    <url>%2Fjs%2Fself_adaption_set_iframe_height.html</url>
+    <content type="text"><![CDATA[adaptively set iframe height after iframe onloaded1234567891011121314151617181920212223242526function setIframeHeight(iframe) &#123; if (iframe) &#123; var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow; if (iframeWin.document.body) &#123; iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight; &#125; &#125;&#125;function getIframeHeight(iframe)&#123; var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow; var height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight; return height&#125;// use tim to set iframe height after iframe onloadedjQuery(document.getElementById('iframe_id')).load(function()&#123; var iframe = document.getElementById('iframe_id'); var height = getIframeHeight(iframe); var tim = setInterval(function()&#123; setIframeHeight(iframe); var after_height = getIframeHeight(iframe); if(after_height &gt; height)&#123; window.clearInterval(tim); &#125; &#125;,100)&#125;);]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[how to show zero value in bar]]></title>
+    <url>%2Fhighchart%2Fhighchart_bar_show_zero_value.html</url>
+    <content type="text"><![CDATA[how to show zero value in bar12345plotOptions: &#123; column: &#123; minPointLength: 3 &#125;&#125;]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>highchart</tag>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[common cmd]]></title>
+    <url>%2Fshell%2Fcommon_cmd.html</url>
+    <content type="text"><![CDATA[common cmddelete all files in the current path except file A1234find ./* |grep -v A |xargs rm -r# second methodrm -rf !(keep1 | keep2)]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[table border collapse]]></title>
+    <url>%2Fcss%2Ftabel_border_collapse.html</url>
+    <content type="text"><![CDATA[the table border is displayed as a separate borderto achieve the effect of td or th border covering the outer border of the table 12345678910table &#123; border-collapse:collapse; border:2px solid red; &#125;table, td, th &#123; border-bottom:2px solid black; &#125;]]></content>
+      <categories>
+        <category>css</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+        <tag>html</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[checkbox as radio input]]></title>
     <url>%2Fjs%2Fcheckbox_as_radio.html</url>
     <content type="text"><![CDATA[checkbox as radio input将checkbox 作为 单选框来使用 1&lt;input style="vertical-align: middle;" id="Checkbox" type="checkbox" name="switch" &lt;?=$isChecked?&gt; /&gt;&lt;span&gt;启用&lt;/span&gt; 1234//当form表单提交的时候执行该语句var enable_use = document.getElementById("Checkbox").checked;var val = (enable_use == true)?'true':'false';document.getElementById("Checkbox").value = val; 12345if(!empty($switch))&#123; $this-&gt;updateJMREnable($switch);&#125;else&#123; $this-&gt;updateJMREnable("false");&#125;]]></content>
@@ -8,8 +114,8 @@
         <category>js</category>
       </categories>
       <tags>
-        <tag>js</tag>
         <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -20,8 +126,8 @@
         <category>js</category>
       </categories>
       <tags>
-        <tag>js</tag>
         <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -44,8 +150,8 @@
         <category>vim</category>
       </categories>
       <tags>
-        <tag>vim</tag>
         <tag>configure</tag>
+        <tag>vim</tag>
       </tags>
   </entry>
   <entry>
@@ -97,18 +203,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[onclick lanuch a post request，解决get参数太长，导致请求失败]]></title>
-    <url>%2Fjs%2Fonclick_for_post.html</url>
-    <content type="text"><![CDATA[onclick lanuch post request有时候，由于get请求下载文件，请求参数超过了2048字符，在IE等浏览器就会导致参数不完整 因此使用post请求，其参数就没有限制长度， 然后，使用ajax发起post请求，无法触发文件下载，因此使用模拟form表单发起post请求 原生onclick 发起post请求 12345678910111213141516function onclickpost(URL, PARAMS) &#123; var temp = document.createElement("form"); temp.action = URL; temp.method = "post"; temp.style.display = "none"; for (var x in PARAMS) &#123; var opt = document.createElement("textarea"); opt.name = x; opt.value = PARAMS[x]; temp.appendChild(opt); &#125; document.body.appendChild(temp); temp.submit(); temp.parentNode.removeChild(temp);&#125;onclickpost(url, &#123;cat:rawinfo&#125;)]]></content>
-      <categories>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>js</tag>
-        <tag>html</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[cmder 各类配置以及问题解决]]></title>
     <url>%2Fcmder%2Fcmder.html</url>
     <content type="text"><![CDATA[cmder 配置cmder 显示 oh my zsh会出现乱码 去网站nerdfonts最下面下载hack字体，解压安装hack字体 在cmder 的setting中 font是 选择hack字体 启动quake模式，使得cmder能够从window最上面一键呼出 cmder的setting，general 的quake style，勾选 quake style slide down , always on top , restore inactive .. , restore to active monitor setting的 keys &amp;macro 修改 minimize/restore quake style hotkey 快捷键]]></content>
@@ -131,18 +225,6 @@
       <tags>
         <tag>setting</tag>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[PHP My Cookbook]]></title>
-    <url>%2Fphp%2Fphp_My_cookbook.html</url>
-    <content type="text"><![CDATA[判断变量是否为空empty() 函数用于检查一个变量是否为空。 empty() 判断一个变量是否被认为是空的。当一个变量并不存在，或者它的值等同于 FALSE，那么它会被认为不存在。如果变量不存在的话，empty()并不会产生警告。 empty() 5.5 版本之后支持表达式了，而不仅仅是变量。 版本要求：PHP 4, PHP 5, PHP 7 语法bool empty ( mixed $var ) 参数说明： $var：待检查的变量。 注意：在 PHP 5.5 之前，empty() 仅支持变量；任何其他东西将会导致一个解析错误。换言之，下列代码不会生效： empty(trim($name)) 作为替代，应该使用: trim($name) == false empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。 返回值当 var 存在，并且是一个非空非零的值时返回 FALSE 否则返回 TRUE。 以下的变量会被认为是空的： “” (空字符串) 0 (作为整数的0) 0.0 (作为浮点数的0) “0” (作为字符串的0) NULL FALSE array() (一个空数组) $var; (一个声明了，但是没有值的变量) 实例1234567891011121314151617181920&lt;?php$ivar1=0;$istr1=&apos;Runoob&apos;;if (empty($ivar1))&#123; echo &apos;$ivar1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;&#125;else&#123; echo &apos;$ivar1&apos; . &quot; 不为空或不为 0。&quot; . PHP_EOL;&#125;if (empty($istr1))&#123; echo &apos;$istr1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;&#125;else&#123; echo &apos;$istr1&apos; . &quot; 字符串不为空或不为0。&quot; . PHP_EOL;&#125;?&gt; 执行结果如下所示：$ivar1 为空或为 0。 $istr1 字符串不为空或不为0。 读取文件，得到状态码12345if(file_exists("/absolution path"))&#123; $res = file_get_contents("/absolution path"); if("0" != $res)&#123; &#125;&#125; 判断字符串a是否存在某字符串bstrpos 会返回0即从a的第一个位置就找到了b12if(false !== strpos("a", "b"))&#123;&#125; 用strlen来替代empty当form var填入0的时候, empty($_POST[‘var’]) empty 为空 “” (空字符串) 0 (作为整数的0) 0.0 (作为浮点数的0) “0” (作为字符串的0) NULL FALSE array() (一个空数组) $var; (一个声明了，但是没有值的变量) empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。 empty(trim($name)) is wrong, empty cant contain func but a variable before version 5.3 产生随机数做id12345678if (function_exists('mcrypt_create_iv')) &#123; $_SESSION['token'] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));&#125; else &#123; $_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(32));&#125;md5(uniqid()) replace string or charactersstrtr sql special characters % and _ 1strtr($string, array('_'=&gt;'\_', '%'=&gt;'\%')); the list of php extension php -m php -i php -r “print_r(get_loaded_extensions());” php 7 change log openssl built in (not need install) bcmath built in (in archlinux)]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
-        <tag>cookbook</tag>
       </tags>
   </entry>
   <entry>
@@ -183,39 +265,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[PHP quotes]]></title>
-    <url>%2Fphp%2Fphp_quotes.html</url>
-    <content type="text"><![CDATA[php quote魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符都会被自动加上一个反斜线进行转义，这和 addslashes() 作用完全相同 相关的函数 set_magic_quotes_runtime magic_quotes_gpc addslashes stripslashes set_magic_quotes_runtime()设置当前magic_quotes_runtime 配置选项的激活状态，0为关闭，1为开启。set_magic_quotes_runtime(1)或是配置文件中magic_quotes_runtime为true（这个在php.ini中配置），那么php脚本读取文件或是从数据库中读取数据，遇到反斜线（\）、单引号（’）、双引号（”）、NULL时，会在前面自动加上转义字符，变成\、\’、\”、\NULL；若是关闭的话，也就是set_magic_quotes_runtime(0)magic_quotes_runtime为false，那么便会转义，此时可以借助addslashes进行转义。 magic_quotes_gpc()当此值为1时，会对HTTP请求中的G（$_GET）、P（$_POST）、C（$_COOKIE）单双引号和反斜线进行转义；反之则不会。该操作一般见于表单提交的数据库操作，若是值为0时，便用addslashes进行转义存入数据库中，取出时再用stripslashes函数把反斜线给去掉。 特别注意的是在PHP 5.4版本时，魔术引号被移除了，因此转义都需要加上addslashes函数。 12345678910$_GET['des'] = "she's a beauty";foreach (array('_GET', '_POST', '_COOKIE') as $_request)&#123; echo $_request; // _GET_POST _COOKIE foreach ($$_request as $_key=&gt; $_value)&#123; // $_key为键，如_GET，$$_key为$_GET // $$_key=$_value意思就是把$_GET['des'] = 1111便为$des=she\'s a beauty $_key&#123;0&#125; != '_' &amp;&amp; $$_key=addslashes($_value); echo $$_key; &#125;&#125; 12345if(get_magic_quotes_gpc() &amp;&amp; (! ini_get('magic_quotes_sybase')))&#123; $value = stripslashes($_GET['value']);&#125;else&#123; $value = $_GET['value'];&#125;]]></content>
+    <title><![CDATA[onclick lanuch a post request，解决get参数太长，导致请求失败]]></title>
+    <url>%2Fjs%2Fonclick_for_post.html</url>
+    <content type="text"><![CDATA[onclick lanuch post request有时候，由于get请求下载文件，请求参数超过了2048字符，在IE等浏览器就会导致参数不完整 因此使用post请求，其参数就没有限制长度， 然后，使用ajax发起post请求，无法触发文件下载，因此使用模拟form表单发起post请求 原生onclick 发起post请求 12345678910111213141516function onclickpost(URL, PARAMS) &#123; var temp = document.createElement("form"); temp.action = URL; temp.method = "post"; temp.style.display = "none"; for (var x in PARAMS) &#123; var opt = document.createElement("textarea"); opt.name = x; opt.value = PARAMS[x]; temp.appendChild(opt); &#125; document.body.appendChild(temp); temp.submit(); temp.parentNode.removeChild(temp);&#125;onclickpost(url, &#123;cat:rawinfo&#125;)]]></content>
       <categories>
-        <category>php</category>
+        <category>js</category>
       </categories>
       <tags>
-        <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[PHP Filesystem]]></title>
-    <url>%2Fphp%2Fphp_get_path_filename.html</url>
-    <content type="text"><![CDATA[PHP Filesystem 函数 描述 PHP basename() 返回路径中的文件名部分。 3 chgrp() 改变文件组。 3 chmod() 改变文件模式。 3 chown() 改变文件所有者。 3 clearstatcache() 清除文件状态缓存。 3 copy() 复制文件。 3 delete() 参见 unlink() 或 unset()。 dirname() 返回路径中的目录名称部分。 3 disk_free_space() 返回目录的可用空间。 4 disk_total_space() 返回一个目录的磁盘总容量。 4 diskfreespace() disk_free_space() 的别名。 3 fclose() 关闭打开的文件。 3 feof() 测试文件指针是否到了文件结束的位置。 3 fflush() 向打开的文件输出缓冲内容。 4 fgetc() 从打开的文件中返回字符。 3 fgetcsv() 从打开的文件中解析一行，校验 CSV 字段。 3 fgets() 从打开的文件中返回一行。 3 fgetss() 从打开的文件中读取一行并过滤掉 HTML 和 PHP 标记。 3 file() 把文件读入一个数组中。 3 file_exists() 检查文件或目录是否存在。 3 file_get_contents() 将文件读入字符串。 4 file_put_contents() 将字符串写入文件。 5 fileatime() 返回文件的上次访问时间。 3 filectime() 返回文件的上次改变时间。 3 filegroup() 返回文件的组 ID。 3 fileinode() 返回文件的 inode 编号。 3 filemtime() 返回文件的上次修改时间。 3 fileowner() 文件的 user ID （所有者）。 3 fileperms() 返回文件的权限。 3 filesize() 返回文件大小。 3 filetype() 返回文件类型。 3 flock() 锁定或释放文件。 3 fnmatch() 根据指定的模式来匹配文件名或字符串。 4 fopen() 打开一个文件或 URL。 3 fpassthru() 从打开的文件中读数据，直到 EOF，并向输出缓冲写结果。 3 fputcsv() 将行格式化为 CSV 并写入一个打开的文件中。 5 fputs() fwrite() 的别名。 3 fread() 读取打开的文件。 3 fscanf() 根据指定的格式对输入进行解析。 4 fseek() 在打开的文件中定位。 3 fstat() 返回关于一个打开的文件的信息。 4 ftell() 返回文件指针的读/写位置 3 ftruncate() 将文件截断到指定的长度。 4 fwrite() 写入文件。 3 glob() 返回一个包含匹配指定模式的文件名/目录的数组。 4 is_dir() 判断指定的文件名是否是一个目录。 3 is_executable() 判断文件是否可执行。 3 is_file() 判断指定文件是否为常规的文件。 3 is_link() 判断指定的文件是否是连接。 3 is_readable() 判断文件是否可读。 3 is_uploaded_file() 判断文件是否是通过 HTTP POST 上传的。 3 is_writable() 判断文件是否可写。 4 is_writeable() is_writable() 的别名。 3 link() 创建一个硬连接。 3 linkinfo() 返回有关一个硬连接的信息。 3 lstat() 返回关于文件或符号连接的信息。 3 mkdir() 创建目录。 3 move_uploaded_file() 将上传的文件移动到新位置。 4 parse_ini_file() 解析一个配置文件。 4 pathinfo() 返回关于文件路径的信息。 4 pclose() 关闭有 popen() 打开的进程。 3 popen() 打开一个进程。 3 readfile() 读取一个文件，并输出到输出缓冲。 3 readlink() 返回符号连接的目标。 3 realpath() 返回绝对路径名。 4 rename() 重名名文件或目录。 3 rewind() 倒回文件指针的位置。 3 rmdir() 删除空的目录。 3 set_file_buffer() 设置已打开文件的缓冲大小。 3 stat() 返回关于文件的信息。 3 symlink() 创建符号连接。 3 tempnam() 创建唯一的临时文件。 3 tmpfile() 建立临时文件。 3 touch() 设置文件的访问和修改时间。 3 umask() 改变文件的文件权限。 3 unlink() 删除文件。 3 compatibility当在 Unix 平台上规定路径时，正斜杠 (/) 用作目录分隔符。而在 Windows 平台上，正斜杠 (/) 和反斜杠 () 均可使用。]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
-        <tag>os</tag>
-        <tag>filesystem</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[vim]]></title>
-    <url>%2Fvim%2Fvim.html</url>
-    <content type="text"><![CDATA[vim 不按 Esc 而是按 ^『或者 ^c，速度快很多 学会几个定位键的区别：0, $, {, }, g, G, w, e, b… Shift+V 选定几行，然后用 一起移动 Ctrl+V 选定行首或行尾的字符，然后用 shift+i 做插入，或者 shift+x 做删除 学会用 y,d 和 p, P 做粘贴剪切 学会用 ^W 的窗口操作。打开文件用 sp 或者 vs 学会记录宏的命令。用 q 加任意键开始录制，再按 q 保存。然后可用 @加这个任意键回放，在 @前加数字可定义回放次数 “.”重复上一个命令，”u”取消上一个命令，”^r”反取消 ^n, ^p 用 buf 里的关键词补全。 学会搜索替换”:%s/ 要搜的东西 / 要换成的东西 /g” 任何时候移到一个单词上按#的话可以高亮这个文档里所有一样的单词 用“/”做搜索，按 n 或 N 上一个 / 下一个 “:! 命令 &amp;”可直接运行这个命令，用”:! 命令 %&amp;”如果你想让这个命令对当前所编辑文件做操作。 任何时候可用”:cd %:p:h”来切换目录到当前编辑文件所在目录。 “.” 这个 mark 代表最后一次修改的地方，所以 “‘.” 可以跳到最后一次修改的地方，’. 可以跳到最后一次修改的那一行。 g; 和 g, 则可以在整个 changelist 里面来回跳转，敲 :help changelist 可以看说明。 + or or //change windows size + left or right //rapidly change windows to watch two files diffience + &lt;+&gt; or //change windows size vim -on file1 file2 … // n split windows numbers o horizontal split O vertical split :sp filename //horizontal split windows ^M how to delete ^M :%s/^M//g ^M “ +“ run markdown rmk open by typora show all result when search /searchStringlv move windows center to cursor zz z+ z- H M L move cursor to windows :set scrolloff=10 //let cursor on windows center alwaysly move on buffers :ls, :buffers show all buffers :bn[ext] next buffer :bp[revious] last buffer :b2 move to number 2 buffer :b exa move to match exa file such as example.txt :sb 3 split windows open buffer number 3 file by horizontal spl :vertical sb 3 by vertical split reg pasteclipboard :reg show all reg “+ system reg yyn n is name of reg paste reg content to current lin on txt file move to title ctrl + ] 2017/2/26 星期日 21:05:31switch tabel gt create tabel nt insert current time tt switch windows Ctrl + f : next windows Ctrl + b : last windows ctrl + d : next half windows ctrl + u : last half windows delete trick dw de db d$ delete to row end di dtc delete between c all charcters read and save :r filename read filename to current cursor 1,20 w filename create new filename to 1,20 line content 1,$ w filename whole content write new filename 1,20 w &gt;&gt; filename write 1,20 content to filename last line autoindent == jump to last cursor ctrl + i ctrl + o jedi K document g go to not for javascript setting pwd . nerdtrem rename file m -&gt;m alter filename delete file use key “m” emmet key ,, == &lt;ctrl y&gt;, go to mark mark place: m {a-zA-Z} go to mark: ‘{a-zA-Z} delete mark: :delmarks {a-zA-Z} show all mark: :marks line choose by visual mode line visual mode: V Vjj 块 visual mode: ctrl + v but on windows ctrl + q gv =&gt; choose last visual chosed text o =&gt; cursor move to selected text end O =&gt; cursor move to selected text start run python code on your vim12s = 'djj'print s Run code by select 2 line Vkk, then press: !python and hit enteroutput:djj anothor example:123def func(x, y): return x + yprint func(3, 4) output:7 12for i in 'moonclearner': print i output:123456789101112moonclearner vim-surround“hello world” press cs”‘ inside “ switch to ‘‘hello world’ press cs’ inside ‘ switch to hello world cst”“hello world” ds” delete “hello world cursor on hello ysiw][hello] world cs]{{ hello } world yssb or yss) wrap entire line({ hello } world) ds{ds) revert to original texthello world ysiw cursor on hellohello world VS wrap hello world close label tag &gt;output: block visual ctrl+v on unix ctrl+q on windows jjj or % muti line select i,I,a,A to input ^ and 01this a sentence! cursor on t ^ the cursor will jump to c 0 the cursor will jump to space, first column $ and g_ $ go to the end of line g_ go to the last non-blank character of line buffer :bn :bp :buffers -&gt; show all buffers saveas :saveas -&gt; save as # and * # look previous same character * jump next same character yank muti times character this my test and test the cursor on i y2/test -&gt;will copy is my test and yank up to the second occurence of test y/test -&gt; will yank is my yank up to the first test before ye y$ f and t fa -&gt; go to next occurence of the letter a on the line , and ; respresent next and previous, reverse use F ta -&gt; go to just before the character a, reverse use Tdt and yt t represent to delete everything util the character before yank everything util the character before Zone select adb(map(+)(“foo”))nnn cursor on o vi” -&gt; will select foo va” -&gt; will select “foo” vi) -&gt; will select “foo” va) -&gt; will select (“foo”) v2i) -&gt; willl select map(+)(&quot;foo&quot;) v2a) -&gt; will select (map(+)(&quot;foo&quot;)) completion ctrl+n next completion ctrl+p previous completion Macros qa record actions in the reg a q stop record actions @a replay the macro saved into the reg a @@ to replay the last executed macro number@@ visual using J -&gt;join all the lines together &lt; or &gt; -&gt;indent to left or right = -&gt;auto indent split :split :vsplitopen nerdtree :Vexplore :Sexplore common command add ; three line at the line ctrl+q -&gt;$ -&gt;jjj -&gt;A -&gt;; -&gt;Esc vim save as sudo :w !sudo tee % :%!sudo bash -c “cat &gt; ‘%’” yapf python format requirement python and pip install yapf = run only read file by user confsudo -E vim filename]]></content>
-      <categories>
-        <category>Vim</category>
-      </categories>
-      <tags>
-        <tag>vim</tag>
-        <tag>text</tag>
+        <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -240,31 +298,6 @@
       <tags>
         <tag>php</tag>
         <tag>configure</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[sqlite common cmd 常用命令]]></title>
-    <url>%2Fdatabases%2Fsqlite%2Fsqlite_common_cmd.html</url>
-    <content type="text"><![CDATA[sqlite common cmd 常用命令查看列表名 pragma table_info(tablename); .schema tablename select * from sqlite_master where type=”table” and name=”tablename”; 退出sqlite shel.exit 显示所有table.tables]]></content>
-      <categories>
-        <category>sqlite</category>
-      </categories>
-      <tags>
-        <tag>sqlite</tag>
-        <tag>sql</tag>
-        <tag>common</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[PHP Laravel]]></title>
-    <url>%2Fphp%2Flaravel%2Ftimeline.html</url>
-    <content type="text"><![CDATA[learning laravel install homestead vagrant box git clone https://github.com/laravel/homestead.git Homestead laravel local server init php artisan serve –host=0.0.0.0 –port=8000]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
-        <tag>laravel</tag>
       </tags>
   </entry>
   <entry>
@@ -315,16 +348,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[PHP protected from sql inject]]></title>
-    <url>%2Fphp%2Fsecure%2Fphp_SQL_inject.html</url>
-    <content type="text"><![CDATA[PHP protected from sql injectPDOinsert123456$db = new PDO("sqlite:/tmp.db");$sql = "insert into auth (time, user) values(?, ?)";$query = $db-&gt;prepare($sql);if($query-&gt;execute(array($time, $user)))&#123; echo "insert success";&#125; select123456$db = new PDO("sqlite:/tmp.db");$sql = "select * from tmp where ip=? or user=?";$query = $db-&gt;prepare($sql);$query-&gt;execute(array($ip, $user));$rows = $query-&gt;fetchAll(PDO::FETCH_ASSOC);var_dump($rows);]]></content>
+    <title><![CDATA[PHP Laravel]]></title>
+    <url>%2Fphp%2Flaravel%2Ftimeline.html</url>
+    <content type="text"><![CDATA[learning laravel install homestead vagrant box git clone https://github.com/laravel/homestead.git Homestead laravel local server init php artisan serve –host=0.0.0.0 –port=8000]]></content>
       <categories>
         <category>php</category>
       </categories>
       <tags>
         <tag>php</tag>
-        <tag>sql inject</tag>
-        <tag>web attack</tag>
+        <tag>laravel</tag>
       </tags>
   </entry>
   <entry>
@@ -336,8 +368,8 @@
       </categories>
       <tags>
         <tag>php</tag>
-        <tag>web attack</tag>
         <tag>crsf</tag>
+        <tag>web attack</tag>
       </tags>
   </entry>
   <entry>
@@ -362,6 +394,68 @@
       <tags>
         <tag>python</tag>
         <tag>pip</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP protected from sql inject]]></title>
+    <url>%2Fphp%2Fsecure%2Fphp_SQL_inject.html</url>
+    <content type="text"><![CDATA[PHP protected from sql injectPDOinsert123456$db = new PDO("sqlite:/tmp.db");$sql = "insert into auth (time, user) values(?, ?)";$query = $db-&gt;prepare($sql);if($query-&gt;execute(array($time, $user)))&#123; echo "insert success";&#125; select123456$db = new PDO("sqlite:/tmp.db");$sql = "select * from tmp where ip=? or user=?";$query = $db-&gt;prepare($sql);$query-&gt;execute(array($ip, $user));$rows = $query-&gt;fetchAll(PDO::FETCH_ASSOC);var_dump($rows);]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>web attack</tag>
+        <tag>sql inject</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[sqlite common cmd 常用命令]]></title>
+    <url>%2Fdatabases%2Fsqlite%2Fsqlite_common_cmd.html</url>
+    <content type="text"><![CDATA[sqlite common cmd 常用命令查看列表名 pragma table_info(tablename); .schema tablename select * from sqlite_master where type=”table” and name=”tablename”; 退出sqlite shel.exit 显示所有table.tables]]></content>
+      <categories>
+        <category>sqlite</category>
+      </categories>
+      <tags>
+        <tag>sqlite</tag>
+        <tag>sql</tag>
+        <tag>common</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP quotes]]></title>
+    <url>%2Fphp%2Fphp_quotes.html</url>
+    <content type="text"><![CDATA[php quote魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符都会被自动加上一个反斜线进行转义，这和 addslashes() 作用完全相同 相关的函数 set_magic_quotes_runtime magic_quotes_gpc addslashes stripslashes set_magic_quotes_runtime()设置当前magic_quotes_runtime 配置选项的激活状态，0为关闭，1为开启。set_magic_quotes_runtime(1)或是配置文件中magic_quotes_runtime为true（这个在php.ini中配置），那么php脚本读取文件或是从数据库中读取数据，遇到反斜线（\）、单引号（’）、双引号（”）、NULL时，会在前面自动加上转义字符，变成\、\’、\”、\NULL；若是关闭的话，也就是set_magic_quotes_runtime(0)magic_quotes_runtime为false，那么便会转义，此时可以借助addslashes进行转义。 magic_quotes_gpc()当此值为1时，会对HTTP请求中的G（$_GET）、P（$_POST）、C（$_COOKIE）单双引号和反斜线进行转义；反之则不会。该操作一般见于表单提交的数据库操作，若是值为0时，便用addslashes进行转义存入数据库中，取出时再用stripslashes函数把反斜线给去掉。 特别注意的是在PHP 5.4版本时，魔术引号被移除了，因此转义都需要加上addslashes函数。 12345678910$_GET['des'] = "she's a beauty";foreach (array('_GET', '_POST', '_COOKIE') as $_request)&#123; echo $_request; // _GET_POST _COOKIE foreach ($$_request as $_key=&gt; $_value)&#123; // $_key为键，如_GET，$$_key为$_GET // $$_key=$_value意思就是把$_GET['des'] = 1111便为$des=she\'s a beauty $_key&#123;0&#125; != '_' &amp;&amp; $$_key=addslashes($_value); echo $$_key; &#125;&#125; 12345if(get_magic_quotes_gpc() &amp;&amp; (! ini_get('magic_quotes_sybase')))&#123; $value = stripslashes($_GET['value']);&#125;else&#123; $value = $_GET['value'];&#125;]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP Filesystem]]></title>
+    <url>%2Fphp%2Fphp_get_path_filename.html</url>
+    <content type="text"><![CDATA[PHP Filesystem 函数 描述 PHP basename() 返回路径中的文件名部分。 3 chgrp() 改变文件组。 3 chmod() 改变文件模式。 3 chown() 改变文件所有者。 3 clearstatcache() 清除文件状态缓存。 3 copy() 复制文件。 3 delete() 参见 unlink() 或 unset()。 dirname() 返回路径中的目录名称部分。 3 disk_free_space() 返回目录的可用空间。 4 disk_total_space() 返回一个目录的磁盘总容量。 4 diskfreespace() disk_free_space() 的别名。 3 fclose() 关闭打开的文件。 3 feof() 测试文件指针是否到了文件结束的位置。 3 fflush() 向打开的文件输出缓冲内容。 4 fgetc() 从打开的文件中返回字符。 3 fgetcsv() 从打开的文件中解析一行，校验 CSV 字段。 3 fgets() 从打开的文件中返回一行。 3 fgetss() 从打开的文件中读取一行并过滤掉 HTML 和 PHP 标记。 3 file() 把文件读入一个数组中。 3 file_exists() 检查文件或目录是否存在。 3 file_get_contents() 将文件读入字符串。 4 file_put_contents() 将字符串写入文件。 5 fileatime() 返回文件的上次访问时间。 3 filectime() 返回文件的上次改变时间。 3 filegroup() 返回文件的组 ID。 3 fileinode() 返回文件的 inode 编号。 3 filemtime() 返回文件的上次修改时间。 3 fileowner() 文件的 user ID （所有者）。 3 fileperms() 返回文件的权限。 3 filesize() 返回文件大小。 3 filetype() 返回文件类型。 3 flock() 锁定或释放文件。 3 fnmatch() 根据指定的模式来匹配文件名或字符串。 4 fopen() 打开一个文件或 URL。 3 fpassthru() 从打开的文件中读数据，直到 EOF，并向输出缓冲写结果。 3 fputcsv() 将行格式化为 CSV 并写入一个打开的文件中。 5 fputs() fwrite() 的别名。 3 fread() 读取打开的文件。 3 fscanf() 根据指定的格式对输入进行解析。 4 fseek() 在打开的文件中定位。 3 fstat() 返回关于一个打开的文件的信息。 4 ftell() 返回文件指针的读/写位置 3 ftruncate() 将文件截断到指定的长度。 4 fwrite() 写入文件。 3 glob() 返回一个包含匹配指定模式的文件名/目录的数组。 4 is_dir() 判断指定的文件名是否是一个目录。 3 is_executable() 判断文件是否可执行。 3 is_file() 判断指定文件是否为常规的文件。 3 is_link() 判断指定的文件是否是连接。 3 is_readable() 判断文件是否可读。 3 is_uploaded_file() 判断文件是否是通过 HTTP POST 上传的。 3 is_writable() 判断文件是否可写。 4 is_writeable() is_writable() 的别名。 3 link() 创建一个硬连接。 3 linkinfo() 返回有关一个硬连接的信息。 3 lstat() 返回关于文件或符号连接的信息。 3 mkdir() 创建目录。 3 move_uploaded_file() 将上传的文件移动到新位置。 4 parse_ini_file() 解析一个配置文件。 4 pathinfo() 返回关于文件路径的信息。 4 pclose() 关闭有 popen() 打开的进程。 3 popen() 打开一个进程。 3 readfile() 读取一个文件，并输出到输出缓冲。 3 readlink() 返回符号连接的目标。 3 realpath() 返回绝对路径名。 4 rename() 重名名文件或目录。 3 rewind() 倒回文件指针的位置。 3 rmdir() 删除空的目录。 3 set_file_buffer() 设置已打开文件的缓冲大小。 3 stat() 返回关于文件的信息。 3 symlink() 创建符号连接。 3 tempnam() 创建唯一的临时文件。 3 tmpfile() 建立临时文件。 3 touch() 设置文件的访问和修改时间。 3 umask() 改变文件的文件权限。 3 unlink() 删除文件。 3 compatibility当在 Unix 平台上规定路径时，正斜杠 (/) 用作目录分隔符。而在 Windows 平台上，正斜杠 (/) 和反斜杠 () 均可使用。]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>os</tag>
+        <tag>filesystem</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[vim]]></title>
+    <url>%2Fvim%2Fvim.html</url>
+    <content type="text"><![CDATA[vim 不按 Esc 而是按 ^『或者 ^c，速度快很多 学会几个定位键的区别：0, $, {, }, g, G, w, e, b… Shift+V 选定几行，然后用 一起移动 Ctrl+V 选定行首或行尾的字符，然后用 shift+i 做插入，或者 shift+x 做删除 学会用 y,d 和 p, P 做粘贴剪切 学会用 ^W 的窗口操作。打开文件用 sp 或者 vs 学会记录宏的命令。用 q 加任意键开始录制，再按 q 保存。然后可用 @加这个任意键回放，在 @前加数字可定义回放次数 “.”重复上一个命令，”u”取消上一个命令，”^r”反取消 ^n, ^p 用 buf 里的关键词补全。 学会搜索替换”:%s/ 要搜的东西 / 要换成的东西 /g” 任何时候移到一个单词上按#的话可以高亮这个文档里所有一样的单词 用“/”做搜索，按 n 或 N 上一个 / 下一个 “:! 命令 &amp;”可直接运行这个命令，用”:! 命令 %&amp;”如果你想让这个命令对当前所编辑文件做操作。 任何时候可用”:cd %:p:h”来切换目录到当前编辑文件所在目录。 “.” 这个 mark 代表最后一次修改的地方，所以 “‘.” 可以跳到最后一次修改的地方，’. 可以跳到最后一次修改的那一行。 g; 和 g, 则可以在整个 changelist 里面来回跳转，敲 :help changelist 可以看说明。 + or or //change windows size + left or right //rapidly change windows to watch two files diffience + &lt;+&gt; or //change windows size vim -on file1 file2 … // n split windows numbers o horizontal split O vertical split :sp filename //horizontal split windows ^M how to delete ^M :%s/^M//g ^M “ +“ run markdown rmk open by typora show all result when search /searchStringlv move windows center to cursor zz z+ z- H M L move cursor to windows :set scrolloff=10 //let cursor on windows center alwaysly move on buffers :ls, :buffers show all buffers :bn[ext] next buffer :bp[revious] last buffer :b2 move to number 2 buffer :b exa move to match exa file such as example.txt :sb 3 split windows open buffer number 3 file by horizontal spl :vertical sb 3 by vertical split reg pasteclipboard :reg show all reg “+ system reg yyn n is name of reg paste reg content to current lin on txt file move to title ctrl + ] 2017/2/26 星期日 21:05:31switch tabel gt create tabel nt insert current time tt switch windows Ctrl + f : next windows Ctrl + b : last windows ctrl + d : next half windows ctrl + u : last half windows delete trick dw de db d$ delete to row end di dtc delete between c all charcters read and save :r filename read filename to current cursor 1,20 w filename create new filename to 1,20 line content 1,$ w filename whole content write new filename 1,20 w &gt;&gt; filename write 1,20 content to filename last line autoindent == jump to last cursor ctrl + i ctrl + o jedi K document g go to not for javascript setting pwd . nerdtrem rename file m -&gt;m alter filename delete file use key “m” emmet key ,, == &lt;ctrl y&gt;, go to mark mark place: m {a-zA-Z} go to mark: ‘{a-zA-Z} delete mark: :delmarks {a-zA-Z} show all mark: :marks line choose by visual mode line visual mode: V Vjj 块 visual mode: ctrl + v but on windows ctrl + q gv =&gt; choose last visual chosed text o =&gt; cursor move to selected text end O =&gt; cursor move to selected text start run python code on your vim12s = 'djj'print s Run code by select 2 line Vkk, then press: !python and hit enteroutput:djj anothor example:123def func(x, y): return x + yprint func(3, 4) output:7 12for i in 'moonclearner': print i output:123456789101112moonclearner vim-surround“hello world” press cs”‘ inside “ switch to ‘‘hello world’ press cs’ inside ‘ switch to hello world cst”“hello world” ds” delete “hello world cursor on hello ysiw][hello] world cs]{{ hello } world yssb or yss) wrap entire line({ hello } world) ds{ds) revert to original texthello world ysiw cursor on hellohello world VS wrap hello world close label tag &gt;output: block visual ctrl+v on unix ctrl+q on windows jjj or % muti line select i,I,a,A to input ^ and 01this a sentence! cursor on t ^ the cursor will jump to c 0 the cursor will jump to space, first column $ and g_ $ go to the end of line g_ go to the last non-blank character of line buffer :bn :bp :buffers -&gt; show all buffers saveas :saveas -&gt; save as # and * # look previous same character * jump next same character yank muti times character this my test and test the cursor on i y2/test -&gt;will copy is my test and yank up to the second occurence of test y/test -&gt; will yank is my yank up to the first test before ye y$ f and t fa -&gt; go to next occurence of the letter a on the line , and ; respresent next and previous, reverse use F ta -&gt; go to just before the character a, reverse use Tdt and yt t represent to delete everything util the character before yank everything util the character before Zone select adb(map(+)(“foo”))nnn cursor on o vi” -&gt; will select foo va” -&gt; will select “foo” vi) -&gt; will select “foo” va) -&gt; will select (“foo”) v2i) -&gt; willl select map(+)(&quot;foo&quot;) v2a) -&gt; will select (map(+)(&quot;foo&quot;)) completion ctrl+n next completion ctrl+p previous completion Macros qa record actions in the reg a q stop record actions @a replay the macro saved into the reg a @@ to replay the last executed macro number@@ visual using J -&gt;join all the lines together &lt; or &gt; -&gt;indent to left or right = -&gt;auto indent split :split :vsplitopen nerdtree :Vexplore :Sexplore common command add ; three line at the line ctrl+q -&gt;$ -&gt;jjj -&gt;A -&gt;; -&gt;Esc vim save as sudo :w !sudo tee % :%!sudo bash -c “cat &gt; ‘%’” yapf python format requirement python and pip install yapf = run only read file by user confsudo -E vim filename]]></content>
+      <categories>
+        <category>Vim</category>
+      </categories>
+      <tags>
+        <tag>vim</tag>
+        <tag>text</tag>
       </tags>
   </entry>
 </search>

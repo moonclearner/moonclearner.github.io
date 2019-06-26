@@ -111,18 +111,18 @@
     <meta name="baidu-site-verification" content="8NezAkUO3s">
 
 
-  <meta name="description" content="apache cookbookquery apache default user or group ps aux | egrep ‘(apache|httpd)’">
+  <meta name="description" content="apache cookbookquery apache default user or group ps aux | egrep ‘(apache|httpd)’  ca认证的时候有时候出现了403首先需要开启apahce ssl trace 3级别的日志,配置1234&amp;lt;IfModule mod_ssl.c&amp;gt;    ErrorLog /var/log/apache2/ssl_engin">
 <meta name="keywords" content="apache,setting">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apache cookbook">
 <meta property="og:url" content="https://moonclearner.cn/apache/php_My_cookbook.html">
 <meta property="og:site_name" content="moonclearner page">
-<meta property="og:description" content="apache cookbookquery apache default user or group ps aux | egrep ‘(apache|httpd)’">
+<meta property="og:description" content="apache cookbookquery apache default user or group ps aux | egrep ‘(apache|httpd)’  ca认证的时候有时候出现了403首先需要开启apahce ssl trace 3级别的日志,配置1234&amp;lt;IfModule mod_ssl.c&amp;gt;    ErrorLog /var/log/apache2/ssl_engin">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-27T05:33:54.374Z">
+<meta property="og:updated_time" content="2019-06-18T10:18:01.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache cookbook">
-<meta name="twitter:description" content="apache cookbookquery apache default user or group ps aux | egrep ‘(apache|httpd)’">
+<meta name="twitter:description" content="apache cookbookquery apache default user or group ps aux | egrep ‘(apache|httpd)’  ca认证的时候有时候出现了403首先需要开启apahce ssl trace 3级别的日志,配置1234&amp;lt;IfModule mod_ssl.c&amp;gt;    ErrorLog /var/log/apache2/ssl_engin">
 
 
 
@@ -456,7 +456,7 @@
                 
               
 
-              <time title="Created: 2019-02-27 13:33:54" itemprop="dateCreated datePublished" datetime="2019-02-27T13:33:54+08:00">2019-02-27</time>
+              <time title="Created: 2019-06-18 18:18:01" itemprop="dateCreated datePublished" datetime="2019-06-18T18:18:01+08:00">2019-06-18</time>
             
 
             
@@ -502,7 +502,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">83</span>
+                <span title="Symbols count in article">959</span>
               
 
               
@@ -539,6 +539,16 @@
         <h1 id="apache-cookbook"><a href="#apache-cookbook" class="headerlink" title="apache cookbook"></a>apache cookbook</h1><h2 id="query-apache-default-user-or-group"><a href="#query-apache-default-user-or-group" class="headerlink" title="query apache default user or group"></a>query apache default user or group</h2><ul>
 <li>ps aux | egrep ‘(apache|httpd)’</li>
 </ul>
+<h2 id="ca认证的时候有时候出现了403"><a href="#ca认证的时候有时候出现了403" class="headerlink" title="ca认证的时候有时候出现了403"></a>ca认证的时候有时候出现了403</h2><p>首先需要开启apahce ssl trace 3级别的日志,配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_ssl.c&gt;</span><br><span class="line">    ErrorLog /var/log/apache2/ssl_engine.log</span><br><span class="line">    LogLevel trace3</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure></p>
+<p>apache重启</p>
+<p>然后去复现bug的过程，查看/var/log/apache2/ssl_engine.log日志，见图ssl error 发现正常认证过程是full renegotiation 而错误的认证过程是 quick renegotiation。quick renegotiation会导致认证过程找到不到peer chain 导致认证失败 返回403。</p>
+<p><a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=55786" target="_blank" rel="noopener">https://bz.apache.org/bugzilla/show_bug.cgi?id=55786</a></p>
+<p>在apache官方bugzilla查看 这个bug在version 2.4.24 已经修复了，但是我们的设备是2.4.16，所以解决办法是：</p>
+<p>a) Removing “OptRenegotiate” on /cert/. We need this feature to prevent client certificate requests with every access to /cert</p>
+<p>b) Setting SSLVerifyClient to require or optional on the whole virtual host: Not possible because requests to /nocert should not trigger a certificate request.</p>
+<p>c) Disable keep-alive.</p>
+<p>因此，我关闭了OptRenegotiate</p>
+<p>优化Renegotiate过程，让每次Renegotiate都是full的状态，这样改会降低一点速度，如果需要优化版本只能升级apahce到2.4.24以上</p>
 
       
     </div>
@@ -559,8 +569,8 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <p><span>本文标题:</span><a href="/apache/php_My_cookbook.html">Apache cookbook</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 moonclearner 的个人博客">moonclearner</a></p>
-  <p><span>发布时间:</span>2019年02月27日 - 13:33</p>
-  <p><span>最后更新:</span>2019年02月27日 - 13:33</p>
+  <p><span>发布时间:</span>2019年06月18日 - 18:18</p>
+  <p><span>最后更新:</span>2019年06月18日 - 18:18</p>
   <p><span>原始链接:</span><a href="/apache/php_My_cookbook.html" title="Apache cookbook">https://moonclearner.cn/apache/php_My_cookbook.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://moonclearner.cn/apache/php_My_cookbook.html" aria-label="复制成功！"></i></span>
   </p>
@@ -612,8 +622,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/cmder/cmder.html" rel="next" title="cmder 各类配置以及问题解决">
-                <i class="fa fa-chevron-left"></i> cmder 各类配置以及问题解决
+              <a href="/shell/common_cmd.html" rel="next" title="common cmd">
+                <i class="fa fa-chevron-left"></i> common cmd
               </a>
             
           </div>
@@ -622,8 +632,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/ubuntu/zsh_setting.html" rel="prev" title="zsh setting">
-                zsh setting <i class="fa fa-chevron-right"></i>
+              <a href="/php/php_My_cookbook.html" rel="prev" title="PHP My Cookbook">
+                PHP My Cookbook <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -698,7 +708,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -901,7 +911,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#apache-cookbook"><span class="nav-number">1.</span> <span class="nav-text">apache cookbook</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#query-apache-default-user-or-group"><span class="nav-number">1.1.</span> <span class="nav-text">query apache default user or group</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#apache-cookbook"><span class="nav-number">1.</span> <span class="nav-text">apache cookbook</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#query-apache-default-user-or-group"><span class="nav-number">1.1.</span> <span class="nav-text">query apache default user or group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ca认证的时候有时候出现了403"><span class="nav-number">1.2.</span> <span class="nav-text">ca认证的时候有时候出现了403</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -934,7 +944,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">30k</span>
+    <span title="Symbols count total">33k</span>
   
 
   
@@ -943,7 +953,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">27 mins.</span>
+    <span title="Reading time total">30 mins.</span>
   
 </div>
 
@@ -1472,4 +1482,5 @@
 
 </body>
 <script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/moonclearner/live2d-widget/autoload.js"></script>
 </html>

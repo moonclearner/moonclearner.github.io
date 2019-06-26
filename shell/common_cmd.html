@@ -111,18 +111,18 @@
     <meta name="baidu-site-verification" content="8NezAkUO3s">
 
 
-  <meta name="description" content="common cmddelete all files in the current path except file A1234find ./* |grep -v A |xargs rm -r# second methodrm -rf !(keep1 | keep2)">
+  <meta name="description" content="common cmddelete all files in the current path except file A1234find ./* |grep -v A |xargs rm -r# second methodrm -rf !(keep1 | keep2) delete all file except py file1find . -name &amp;quot;*&amp;quot; -type f">
 <meta name="keywords" content="linux,shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="common cmd">
 <meta property="og:url" content="https://moonclearner.cn/shell/common_cmd.html">
 <meta property="og:site_name" content="moonclearner page">
-<meta property="og:description" content="common cmddelete all files in the current path except file A1234find ./* |grep -v A |xargs rm -r# second methodrm -rf !(keep1 | keep2)">
+<meta property="og:description" content="common cmddelete all files in the current path except file A1234find ./* |grep -v A |xargs rm -r# second methodrm -rf !(keep1 | keep2) delete all file except py file1find . -name &amp;quot;*&amp;quot; -type f">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-09T08:31:26.330Z">
+<meta property="og:updated_time" content="2019-06-12T11:36:50.786Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="common cmd">
-<meta name="twitter:description" content="common cmddelete all files in the current path except file A1234find ./* |grep -v A |xargs rm -r# second methodrm -rf !(keep1 | keep2)">
+<meta name="twitter:description" content="common cmddelete all files in the current path except file A1234find ./* |grep -v A |xargs rm -r# second methodrm -rf !(keep1 | keep2) delete all file except py file1find . -name &amp;quot;*&amp;quot; -type f">
 
 
 
@@ -456,7 +456,7 @@
                 
               
 
-              <time title="Created: 2019-04-09 16:31:26" itemprop="dateCreated datePublished" datetime="2019-04-09T16:31:26+08:00">2019-04-09</time>
+              <time title="Created: 2019-06-12 19:36:50" itemprop="dateCreated datePublished" datetime="2019-06-12T19:36:50+08:00">2019-06-12</time>
             
 
             
@@ -502,7 +502,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">135</span>
+                <span title="Symbols count in article">262</span>
               
 
               
@@ -537,6 +537,7 @@
 
       
         <h1 id="common-cmd"><a href="#common-cmd" class="headerlink" title="common cmd"></a>common cmd</h1><h2 id="delete-all-files-in-the-current-path-except-file-A"><a href="#delete-all-files-in-the-current-path-except-file-A" class="headerlink" title="delete all files in the current path except file A"></a>delete all files in the current path except file A</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">find ./* |grep -v A |xargs rm -r</span><br><span class="line"></span><br><span class="line"># second method</span><br><span class="line">rm -rf !(keep1 | keep2)</span><br></pre></td></tr></table></figure>
+<h2 id="delete-all-file-except-py-file"><a href="#delete-all-file-except-py-file" class="headerlink" title="delete all file except py file"></a>delete all file except py file</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*&quot; -type f |grep -v &quot;.py&quot; |grep  &quot;\.&quot; |xargs rm -rf</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -582,8 +583,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/css/tabel_border_collapse.html" rel="next" title="table border collapse">
-                <i class="fa fa-chevron-left"></i> table border collapse
+              <a href="/js/note.html" rel="next" title="js Note">
+                <i class="fa fa-chevron-left"></i> js Note
               </a>
             
           </div>
@@ -592,8 +593,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/highchart/highchart_bar_show_zero_value.html" rel="prev" title="how to show zero value in bar">
-                how to show zero value in bar <i class="fa fa-chevron-right"></i>
+              <a href="/apache/php_My_cookbook.html" rel="prev" title="Apache cookbook">
+                Apache cookbook <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -668,7 +669,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -871,7 +872,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#common-cmd"><span class="nav-number">1.</span> <span class="nav-text">common cmd</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-all-files-in-the-current-path-except-file-A"><span class="nav-number">1.1.</span> <span class="nav-text">delete all files in the current path except file A</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#common-cmd"><span class="nav-number">1.</span> <span class="nav-text">common cmd</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-all-files-in-the-current-path-except-file-A"><span class="nav-number">1.1.</span> <span class="nav-text">delete all files in the current path except file A</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-all-file-except-py-file"><span class="nav-number">1.2.</span> <span class="nav-text">delete all file except py file</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -904,7 +905,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">30k</span>
+    <span title="Symbols count total">33k</span>
   
 
   
@@ -913,7 +914,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">27 mins.</span>
+    <span title="Reading time total">30 mins.</span>
   
 </div>
 
@@ -1442,4 +1443,5 @@
 
 </body>
 <script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/moonclearner/live2d-widget/autoload.js"></script>
 </html>

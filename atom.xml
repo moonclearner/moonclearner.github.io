@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://moonclearner.cn/"/>
-  <updated>2019-06-11T10:44:21.192Z</updated>
+  <updated>2019-06-25T10:32:56.923Z</updated>
   <id>https://moonclearner.cn/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <title>PHP My Cookbook</title>
     <link href="https://moonclearner.cn/php/php_My_cookbook.html"/>
     <id>https://moonclearner.cn/php/php_My_cookbook.html</id>
-    <published>2019-06-11T10:44:21.244Z</published>
-    <updated>2019-06-11T10:44:21.192Z</updated>
+    <published>2019-06-25T10:32:56.975Z</published>
+    <updated>2019-06-25T10:32:56.923Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="判断变量是否为空"><a href="#判断变量是否为空" class="headerlink" title="判断变量是否为空"></a>判断变量是否为空</h1><p>empty() 函数用于检查一个变量是否为空。</p><p>empty() 判断一个变量是否被认为是空的。当一个变量并不存在，或者它的值等同于 FALSE，那么它会被认为不存在。如果变量不存在的话，empty()并不会产生警告。</p><p>empty() 5.5 版本之后支持表达式了，而不仅仅是变量。</p><p>版本要求：PHP 4, PHP 5, PHP 7</p><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>bool empty ( mixed $var )</p><p>参数说明：</p><p>$var：待检查的变量。</p><p><strong>注意：在 PHP 5.5 之前，empty() 仅支持变量；任何其他东西将会导致一个解析错误。换言之，下列代码不会生效：</strong></p><p>empty(trim($name))</p><p>作为替代，应该使用:</p><p>trim($name) == false</p><p>empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。</p><h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>当 var 存在，并且是一个非空非零的值时返回 FALSE 否则返回 TRUE。</p><p>以下的变量会被认为是空的：</p><ul><li>“” (空字符串)</li><li>0 (作为整数的0)</li><li>0.0 (作为浮点数的0)</li><li>“0” (作为字符串的0)</li><li>NULL</li><li>FALSE</li><li>array() (一个空数组)</li><li>$var; (一个声明了，但是没有值的变量)</li></ul><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$ivar1=0;</span><br><span class="line">$istr1=&apos;Runoob&apos;;</span><br><span class="line">if (empty($ivar1))</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$ivar1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$ivar1&apos; . &quot; 不为空或不为 0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">if (empty($istr1))</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$istr1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$istr1&apos; . &quot; 字符串不为空或不为0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure><h3 id="执行结果如下所示："><a href="#执行结果如下所示：" class="headerlink" title="执行结果如下所示："></a>执行结果如下所示：</h3><p>$ivar1 为空或为 0。</p><p>$istr1 字符串不为空或不为0。</p><h2 id="读取文件，得到状态码"><a href="#读取文件，得到状态码" class="headerlink" title="读取文件，得到状态码"></a>读取文件，得到状态码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(file_exists(<span class="string">"/absolution path"</span>))&#123;</span><br><span class="line">    $res = file_get_contents(<span class="string">"/absolution path"</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="string">"0"</span> != $res)&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="判断字符串a是否存在某字符串b"><a href="#判断字符串a是否存在某字符串b" class="headerlink" title="判断字符串a是否存在某字符串b"></a>判断字符串a是否存在某字符串b</h2><p>strpos 会返回0即从a的第一个位置就找到了b<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">false</span> !== strpos(<span class="string">"a"</span>, <span class="string">"b"</span>))&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="用strlen来替代empty"><a href="#用strlen来替代empty" class="headerlink" title="用strlen来替代empty"></a>用strlen来替代empty</h2><p>当form var填入0的时候, empty($_POST[‘var’])</p><h2 id="empty-为空"><a href="#empty-为空" class="headerlink" title="empty 为空"></a>empty 为空</h2><ul><li>“” (空字符串)</li><li>0 (作为整数的0)</li><li>0.0 (作为浮点数的0)</li><li>“0” (作为字符串的0)</li><li>NULL</li><li>FALSE</li><li>array() (一个空数组)</li><li>$var; (一个声明了，但是没有值的变量)</li></ul><p>empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。</p><p><strong>empty(trim($name)) is wrong, empty cant contain func but a variable before version 5.3</strong></p><h2 id="产生随机数做id"><a href="#产生随机数做id" class="headerlink" title="产生随机数做id"></a>产生随机数做id</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (function_exists(<span class="string">'mcrypt_create_iv'</span>)) &#123;</span><br><span class="line">    $_SESSION[<span class="string">'token'</span>] = bin2hex(mcrypt_create_iv(<span class="number">32</span>, MCRYPT_DEV_URANDOM));</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    $_SESSION[<span class="string">'token'</span>] = bin2hex(openssl_random_pseudo_bytes(<span class="number">32</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">md5(uniqid())</span><br></pre></td></tr></table></figure><h2 id="replace-string-or-characters"><a href="#replace-string-or-characters" class="headerlink" title="replace string or characters"></a>replace string or characters</h2><p>strtr</p><p>sql special characters % and _</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strtr($string, <span class="keyword">array</span>(<span class="string">'_'</span>=&gt;<span class="string">'\_'</span>, <span class="string">'%'</span>=&gt;<span class="string">'\%'</span>));</span><br></pre></td></tr></table></figure><h2 id="the-list-of-php-extension"><a href="#the-list-of-php-extension" class="headerlink" title="the list of php extension"></a>the list of php extension</h2><ul><li>php -m</li><li>php -i</li><li>php -r “print_r(get_loaded_extensions());”</li></ul><h2 id="php-7-change-log"><a href="#php-7-change-log" class="headerlink" title="php 7 change log"></a>php 7 change log</h2><ul><li>openssl built in (not need install)</li><li>bcmath built in (in archlinux)</li></ul><h1 id="php-Daily-Discovery"><a href="#php-Daily-Discovery" class="headerlink" title="php Daily Discovery"></a>php Daily Discovery</h1><h2 id="php-gengerate-pie-or-line-or-column-image"><a href="#php-gengerate-pie-or-line-or-column-image" class="headerlink" title="php gengerate pie or line or column image"></a>php gengerate pie or line or column image</h2><ul><li>pChart</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="判断变量是否为空"><a href="#判断变量是否为空" class="headerlink" title="判断变量是否为空"></a>判断变量是否为空</h1><p>empty() 函数用于检查一个变量是否为空。</p><p>empty() 判断一个变量是否被认为是空的。当一个变量并不存在，或者它的值等同于 FALSE，那么它会被认为不存在。如果变量不存在的话，empty()并不会产生警告。</p><p>empty() 5.5 版本之后支持表达式了，而不仅仅是变量。</p><p>版本要求：PHP 4, PHP 5, PHP 7</p><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>bool empty ( mixed $var )</p><p>参数说明：</p><p>$var：待检查的变量。</p><p><strong>注意：在 PHP 5.5 之前，empty() 仅支持变量；任何其他东西将会导致一个解析错误。换言之，下列代码不会生效：</strong></p><p>empty(trim($name))</p><p>作为替代，应该使用:</p><p>trim($name) == false</p><p>empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。</p><h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>当 var 存在，并且是一个非空非零的值时返回 FALSE 否则返回 TRUE。</p><p>以下的变量会被认为是空的：</p><ul><li>“” (空字符串)</li><li>0 (作为整数的0)</li><li>0.0 (作为浮点数的0)</li><li>“0” (作为字符串的0)</li><li>NULL</li><li>FALSE</li><li>array() (一个空数组)</li><li>$var; (一个声明了，但是没有值的变量)</li></ul><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$ivar1=0;</span><br><span class="line">$istr1=&apos;Runoob&apos;;</span><br><span class="line">if (empty($ivar1))</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$ivar1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$ivar1&apos; . &quot; 不为空或不为 0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">if (empty($istr1))</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$istr1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$istr1&apos; . &quot; 字符串不为空或不为0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure><h3 id="执行结果如下所示："><a href="#执行结果如下所示：" class="headerlink" title="执行结果如下所示："></a>执行结果如下所示：</h3><p>$ivar1 为空或为 0。</p><p>$istr1 字符串不为空或不为0。</p><h2 id="读取文件，得到状态码"><a href="#读取文件，得到状态码" class="headerlink" title="读取文件，得到状态码"></a>读取文件，得到状态码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(file_exists(<span class="string">"/absolution path"</span>))&#123;</span><br><span class="line">    $res = file_get_contents(<span class="string">"/absolution path"</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="string">"0"</span> != $res)&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="判断字符串a是否存在某字符串b"><a href="#判断字符串a是否存在某字符串b" class="headerlink" title="判断字符串a是否存在某字符串b"></a>判断字符串a是否存在某字符串b</h2><p>strpos 会返回0即从a的第一个位置就找到了b<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">false</span> !== strpos(<span class="string">"a"</span>, <span class="string">"b"</span>))&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="用strlen来替代empty"><a href="#用strlen来替代empty" class="headerlink" title="用strlen来替代empty"></a>用strlen来替代empty</h2><p>当form var填入0的时候, empty($_POST[‘var’])</p><h2 id="empty-为空"><a href="#empty-为空" class="headerlink" title="empty 为空"></a>empty 为空</h2><ul><li>“” (空字符串)</li><li>0 (作为整数的0)</li><li>0.0 (作为浮点数的0)</li><li>“0” (作为字符串的0)</li><li>NULL</li><li>FALSE</li><li>array() (一个空数组)</li><li>$var; (一个声明了，但是没有值的变量)</li></ul><p>empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。</p><p><strong>empty(trim($name)) is wrong, empty cant contain func but a variable before version 5.3</strong></p><h2 id="产生随机数做id"><a href="#产生随机数做id" class="headerlink" title="产生随机数做id"></a>产生随机数做id</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (function_exists(<span class="string">'mcrypt_create_iv'</span>)) &#123;</span><br><span class="line">    $_SESSION[<span class="string">'token'</span>] = bin2hex(mcrypt_create_iv(<span class="number">32</span>, MCRYPT_DEV_URANDOM));</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    $_SESSION[<span class="string">'token'</span>] = bin2hex(openssl_random_pseudo_bytes(<span class="number">32</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">md5(uniqid())</span><br></pre></td></tr></table></figure><h2 id="replace-string-or-characters"><a href="#replace-string-or-characters" class="headerlink" title="replace string or characters"></a>replace string or characters</h2><p>strtr</p><p>sql special characters % and _</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strtr($string, <span class="keyword">array</span>(<span class="string">'_'</span>=&gt;<span class="string">'\_'</span>, <span class="string">'%'</span>=&gt;<span class="string">'\%'</span>));</span><br></pre></td></tr></table></figure><h2 id="the-list-of-php-extension"><a href="#the-list-of-php-extension" class="headerlink" title="the list of php extension"></a>the list of php extension</h2><ul><li>php -m</li><li>php -i</li><li>php -r “print_r(get_loaded_extensions());”</li></ul><h2 id="php-7-change-log"><a href="#php-7-change-log" class="headerlink" title="php 7 change log"></a>php 7 change log</h2><ul><li>openssl built in (not need install)</li><li>bcmath built in (in archlinux)</li></ul><h1 id="php-Daily-Discovery"><a href="#php-Daily-Discovery" class="headerlink" title="php Daily Discovery"></a>php Daily Discovery</h1><h2 id="php-gengerate-pie-or-line-or-column-image"><a href="#php-gengerate-pie-or-line-or-column-image" class="headerlink" title="php gengerate pie or line or column image"></a>php gengerate pie or line or column image</h2><ul><li>pChart</li></ul><h2 id="根据字节数计算单位"><a href="#根据字节数计算单位" class="headerlink" title="根据字节数计算单位"></a>根据字节数计算单位</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">private function formatBytes($size)&#123;</span><br><span class="line">    $units = array(&apos;&apos;,&apos;K&apos;,&apos;M&apos;,&apos;G&apos;,&apos;T&apos;);</span><br><span class="line">    $i = 0;</span><br><span class="line">    for( ; $size&gt;=1024 &amp;&amp; $i&lt;count($units); $i++)&#123;</span><br><span class="line">        $size /= 1024;</span><br><span class="line">    &#125;</span><br><span class="line">    return round($size,2).$units[$i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -41,6 +41,166 @@
       <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
     
       <category term="cookbook" scheme="https://moonclearner.cn/tags/cookbook/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Apache cookbook</title>
+    <link href="https://moonclearner.cn/apache/php_My_cookbook.html"/>
+    <id>https://moonclearner.cn/apache/php_My_cookbook.html</id>
+    <published>2019-06-18T10:18:01.681Z</published>
+    <updated>2019-06-18T10:18:01.629Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="apache-cookbook"><a href="#apache-cookbook" class="headerlink" title="apache cookbook"></a>apache cookbook</h1><h2 id="query-apache-default-user-or-group"><a href="#query-apache-default-user-or-group" class="headerlink" title="query apache default user or group"></a>query apache default user or group</h2><ul><li>ps aux | egrep ‘(apache|httpd)’</li></ul><h2 id="ca认证的时候有时候出现了403"><a href="#ca认证的时候有时候出现了403" class="headerlink" title="ca认证的时候有时候出现了403"></a>ca认证的时候有时候出现了403</h2><p>首先需要开启apahce ssl trace 3级别的日志,配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_ssl.c&gt;</span><br><span class="line">    ErrorLog /var/log/apache2/ssl_engine.log</span><br><span class="line">    LogLevel trace3</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure></p><p>apache重启</p><p>然后去复现bug的过程，查看/var/log/apache2/ssl_engine.log日志，见图ssl error 发现正常认证过程是full renegotiation 而错误的认证过程是 quick renegotiation。quick renegotiation会导致认证过程找到不到peer chain 导致认证失败 返回403。</p><p><a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=55786" target="_blank" rel="noopener">https://bz.apache.org/bugzilla/show_bug.cgi?id=55786</a></p><p>在apache官方bugzilla查看 这个bug在version 2.4.24 已经修复了，但是我们的设备是2.4.16，所以解决办法是：</p><p>a) Removing “OptRenegotiate” on /cert/. We need this feature to prevent client certificate requests with every access to /cert</p><p>b) Setting SSLVerifyClient to require or optional on the whole virtual host: Not possible because requests to /nocert should not trigger a certificate request.</p><p>c) Disable keep-alive.</p><p>因此，我关闭了OptRenegotiate</p><p>优化Renegotiate过程，让每次Renegotiate都是full的状态，这样改会降低一点速度，如果需要优化版本只能升级apahce到2.4.24以上</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;apache-cookbook&quot;&gt;&lt;a href=&quot;#apache-cookbook&quot; class=&quot;headerlink&quot; title=&quot;apache cookbook&quot;&gt;&lt;/a&gt;apache cookbook&lt;/h1&gt;&lt;h2 id=&quot;query-apache-
+      
+    
+    </summary>
+    
+      <category term="apache" scheme="https://moonclearner.cn/categories/apache/"/>
+    
+    
+      <category term="apache" scheme="https://moonclearner.cn/tags/apache/"/>
+    
+      <category term="setting" scheme="https://moonclearner.cn/tags/setting/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>common cmd</title>
+    <link href="https://moonclearner.cn/shell/common_cmd.html"/>
+    <id>https://moonclearner.cn/shell/common_cmd.html</id>
+    <published>2019-06-12T11:36:50.822Z</published>
+    <updated>2019-06-12T11:36:50.786Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="common-cmd"><a href="#common-cmd" class="headerlink" title="common cmd"></a>common cmd</h1><h2 id="delete-all-files-in-the-current-path-except-file-A"><a href="#delete-all-files-in-the-current-path-except-file-A" class="headerlink" title="delete all files in the current path except file A"></a>delete all files in the current path except file A</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">find ./* |grep -v A |xargs rm -r</span><br><span class="line"></span><br><span class="line"># second method</span><br><span class="line">rm -rf !(keep1 | keep2)</span><br></pre></td></tr></table></figure><h2 id="delete-all-file-except-py-file"><a href="#delete-all-file-except-py-file" class="headerlink" title="delete all file except py file"></a>delete all file except py file</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*&quot; -type f |grep -v &quot;.py&quot; |grep  &quot;\.&quot; |xargs rm -rf</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;common-cmd&quot;&gt;&lt;a href=&quot;#common-cmd&quot; class=&quot;headerlink&quot; title=&quot;common cmd&quot;&gt;&lt;/a&gt;common cmd&lt;/h1&gt;&lt;h2 id=&quot;delete-all-files-in-the-current-p
+      
+    
+    </summary>
+    
+      <category term="shell" scheme="https://moonclearner.cn/categories/shell/"/>
+    
+    
+      <category term="linux" scheme="https://moonclearner.cn/tags/linux/"/>
+    
+      <category term="shell" scheme="https://moonclearner.cn/tags/shell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js Note</title>
+    <link href="https://moonclearner.cn/js/note.html"/>
+    <id>https://moonclearner.cn/js/note.html</id>
+    <published>2019-06-12T11:05:33.781Z</published>
+    <updated>2019-06-12T11:05:33.749Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="javascript-Notes"><a href="#javascript-Notes" class="headerlink" title="javascript Notes"></a>javascript Notes</h1><h3 id="jquery-attr-and-prop"><a href="#jquery-attr-and-prop" class="headerlink" title="jquery attr and prop"></a>jquery attr and prop</h3><ul><li>对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。</li><li>对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。</li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才能获得正确的结果。</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"#chk1"</span>).prop(<span class="string">"checked"</span>) == <span class="literal">false</span></span><br><span class="line">$(<span class="string">"#chk2"</span>).prop(<span class="string">"checked"</span>) == <span class="literal">true</span></span><br><span class="line"><span class="comment">//如果上面使用attr方法，则会出现：</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"#chk1"</span>).attr(<span class="string">"checked"</span>) == <span class="literal">undefined</span></span><br><span class="line">$(<span class="string">"#chk2"</span>).attr(<span class="string">"checked"</span>) == <span class="string">"checked"</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;javascript-Notes&quot;&gt;&lt;a href=&quot;#javascript-Notes&quot; class=&quot;headerlink&quot; title=&quot;javascript Notes&quot;&gt;&lt;/a&gt;javascript Notes&lt;/h1&gt;&lt;h3 id=&quot;jquery-at
+      
+    
+    </summary>
+    
+      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
+    
+    
+      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
+    
+      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>use this</title>
+    <link href="https://moonclearner.cn/js/use_this.html"/>
+    <id>https://moonclearner.cn/js/use_this.html</id>
+    <published>2019-06-12T11:03:41.963Z</published>
+    <updated>2019-06-12T11:03:41.927Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="input-onclick-use-this"><a href="#input-onclick-use-this" class="headerlink" title="input onclick use this"></a>input onclick use this</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注意this后面不能加空格</span></span><br><span class="line">&lt;input onclick=<span class="string">"return enable_box(this,'test')"</span> /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//形参不能写this</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">enable_box</span>(<span class="params">obj, url</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;input-onclick-use-this&quot;&gt;&lt;a href=&quot;#input-onclick-use-this&quot; class=&quot;headerlink&quot; title=&quot;input onclick use this&quot;&gt;&lt;/a&gt;input onclick use th
+      
+    
+    </summary>
+    
+      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
+    
+    
+      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
+    
+      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Jq from label name get</title>
+    <link href="https://moonclearner.cn/js/jquery/jq_get_name.html"/>
+    <id>https://moonclearner.cn/js/jquery/jq_get_name.html</id>
+    <published>2019-06-12T11:02:17.094Z</published>
+    <updated>2019-06-12T11:02:17.030Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="jquery-from-label-name-get-label"><a href="#jquery-from-label-name-get-label" class="headerlink" title="jquery from label name get label"></a>jquery from label name get label</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">jQuery(<span class="string">"input[name='imgtitle']"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    titles += jQuery(<span class="keyword">this</span>).val()+<span class="string">","</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> check_val = [];</span><br><span class="line">jQuery(<span class="string">"input[name='checkbox']"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(jQuery(<span class="keyword">this</span>).prop(<span class="string">"checked"</span>))</span><br><span class="line">        check_val.push(jQuery(<span class="keyword">this</span>).val());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;jquery-from-label-name-get-label&quot;&gt;&lt;a href=&quot;#jquery-from-label-name-get-label&quot; class=&quot;headerlink&quot; title=&quot;jquery from label name get l
+      
+    
+    </summary>
+    
+      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
+    
+    
+      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
+    
+      <category term="jquery" scheme="https://moonclearner.cn/tags/jquery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP XML</title>
+    <link href="https://moonclearner.cn/php/php_xml.html"/>
+    <id>https://moonclearner.cn/php/php_xml.html</id>
+    <published>2019-06-11T11:29:43.954Z</published>
+    <updated>2019-06-11T11:29:43.838Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="php-XML"><a href="#php-XML" class="headerlink" title="php XML"></a>php XML</h1><h2 id="simplexml-load-file"><a href="#simplexml-load-file" class="headerlink" title="simplexml_load_file"></a>simplexml_load_file</h2><h3 id="保存"><a href="#保存" class="headerlink" title="保存"></a>保存</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">save</span><span class="params">($dom)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>($dom-&gt;asXML(<span class="string">"/test.xml"</span>))&#123;</span><br><span class="line"></span><br><span class="line">        system(<span class="string">"mv /test.xml /test.xml"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"fail"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="修改标签的值"><a href="#修改标签的值" class="headerlink" title="修改标签的值"></a>修改标签的值</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">$xml = @simplexml_load_file(<span class="string">"/test.xml"</span>);</span><br><span class="line"><span class="comment">//用xpath快速查找值</span></span><br><span class="line">$node = $xml-&gt;xpath(<span class="string">"/ruleFile/globalDef/configs/section/config[@name='enable_JMR_keep_tmp_files']"</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&lt;node&gt;&lt;config name="test"&gt;&lt;/config&gt;&lt;/node&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//读取标签间的值</span></span><br><span class="line">(string)$node-&gt;config;</span><br><span class="line"></span><br><span class="line"><span class="comment">//读取标签的属性</span></span><br><span class="line">(string)$node-&gt;config[<span class="string">"name"</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">//修改标签间的值</span></span><br><span class="line">dom_import_simplexml($node)-&gt;nodeValue = <span class="string">"true"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&lt;node&gt;</span></span><br><span class="line"><span class="comment">   &lt;config enable="true"/&gt;</span></span><br><span class="line"><span class="comment">   &lt;config enable="true"/&gt;</span></span><br><span class="line"><span class="comment">   &lt;config enable="true"/&gt;</span></span><br><span class="line"><span class="comment">&lt;/node&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">foreach</span>($node-&gt;config <span class="keyword">as</span> $config)&#123;</span><br><span class="line">    <span class="comment">//修改标签的属性</span></span><br><span class="line">    $config[<span class="string">"enable"</span>] = <span class="string">"true"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//保存</span></span><br><span class="line"><span class="keyword">if</span>($xml&gt;asXML(<span class="string">"/test.xml"</span>))&#123;</span><br><span class="line">    system(<span class="string">"mv /test.xml /test.xml"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;php-XML&quot;&gt;&lt;a href=&quot;#php-XML&quot; class=&quot;headerlink&quot; title=&quot;php XML&quot;&gt;&lt;/a&gt;php XML&lt;/h1&gt;&lt;h2 id=&quot;simplexml-load-file&quot;&gt;&lt;a href=&quot;#simplexml-load
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
     
   </entry>
   
@@ -66,33 +226,6 @@
     
     
       <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>use this</title>
-    <link href="https://moonclearner.cn/js/use_this.html"/>
-    <id>https://moonclearner.cn/js/use_this.html</id>
-    <published>2019-05-14T08:31:15.478Z</published>
-    <updated>2019-05-14T08:31:15.454Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="input-onclick-use"><a href="#input-onclick-use" class="headerlink" title="input onclick use"></a>input onclick use</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注意this后面不能加空格</span></span><br><span class="line">&lt;input onclick=<span class="string">"return enable_box(this,'test')"</span> /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//形参不能写this</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">enable_box</span>(<span class="params">obj, url</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;input-onclick-use&quot;&gt;&lt;a href=&quot;#input-onclick-use&quot; class=&quot;headerlink&quot; title=&quot;input onclick use&quot;&gt;&lt;/a&gt;input onclick use&lt;/h1&gt;&lt;figure class
-      
-    
-    </summary>
-    
-      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
-    
-    
-      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
-    
-      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
     
   </entry>
   
@@ -199,33 +332,6 @@
       <category term="highchart" scheme="https://moonclearner.cn/tags/highchart/"/>
     
       <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>common cmd</title>
-    <link href="https://moonclearner.cn/shell/common_cmd.html"/>
-    <id>https://moonclearner.cn/shell/common_cmd.html</id>
-    <published>2019-04-09T08:31:26.366Z</published>
-    <updated>2019-04-09T08:31:26.330Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="common-cmd"><a href="#common-cmd" class="headerlink" title="common cmd"></a>common cmd</h1><h2 id="delete-all-files-in-the-current-path-except-file-A"><a href="#delete-all-files-in-the-current-path-except-file-A" class="headerlink" title="delete all files in the current path except file A"></a>delete all files in the current path except file A</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">find ./* |grep -v A |xargs rm -r</span><br><span class="line"></span><br><span class="line"># second method</span><br><span class="line">rm -rf !(keep1 | keep2)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;common-cmd&quot;&gt;&lt;a href=&quot;#common-cmd&quot; class=&quot;headerlink&quot; title=&quot;common cmd&quot;&gt;&lt;/a&gt;common cmd&lt;/h1&gt;&lt;h2 id=&quot;delete-all-files-in-the-current-p
-      
-    
-    </summary>
-    
-      <category term="shell" scheme="https://moonclearner.cn/categories/shell/"/>
-    
-    
-      <category term="linux" scheme="https://moonclearner.cn/tags/linux/"/>
-    
-      <category term="shell" scheme="https://moonclearner.cn/tags/shell/"/>
     
   </entry>
   
@@ -358,9 +464,9 @@
       <category term="vim" scheme="https://moonclearner.cn/categories/vim/"/>
     
     
-      <category term="configure" scheme="https://moonclearner.cn/tags/configure/"/>
-    
       <category term="vim" scheme="https://moonclearner.cn/tags/vim/"/>
+    
+      <category term="configure" scheme="https://moonclearner.cn/tags/configure/"/>
     
   </entry>
   
@@ -443,118 +549,6 @@
       <category term="zsh" scheme="https://moonclearner.cn/tags/zsh/"/>
     
       <category term="ubuntu" scheme="https://moonclearner.cn/tags/ubuntu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Apache cookbook</title>
-    <link href="https://moonclearner.cn/apache/php_My_cookbook.html"/>
-    <id>https://moonclearner.cn/apache/php_My_cookbook.html</id>
-    <published>2019-02-27T05:33:54.374Z</published>
-    <updated>2019-02-27T05:33:54.374Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="apache-cookbook"><a href="#apache-cookbook" class="headerlink" title="apache cookbook"></a>apache cookbook</h1><h2 id="query-apache-default-user-or-group"><a href="#query-apache-default-user-or-group" class="headerlink" title="query apache default user or group"></a>query apache default user or group</h2><ul><li>ps aux | egrep ‘(apache|httpd)’</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;apache-cookbook&quot;&gt;&lt;a href=&quot;#apache-cookbook&quot; class=&quot;headerlink&quot; title=&quot;apache cookbook&quot;&gt;&lt;/a&gt;apache cookbook&lt;/h1&gt;&lt;h2 id=&quot;query-apache-
-      
-    
-    </summary>
-    
-      <category term="apache" scheme="https://moonclearner.cn/categories/apache/"/>
-    
-    
-      <category term="apache" scheme="https://moonclearner.cn/tags/apache/"/>
-    
-      <category term="setting" scheme="https://moonclearner.cn/tags/setting/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>cmder 各类配置以及问题解决</title>
-    <link href="https://moonclearner.cn/cmder/cmder.html"/>
-    <id>https://moonclearner.cn/cmder/cmder.html</id>
-    <published>2019-02-27T05:33:54.374Z</published>
-    <updated>2019-02-27T05:33:54.374Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="cmder-配置"><a href="#cmder-配置" class="headerlink" title="cmder 配置"></a>cmder 配置</h1><h2 id="cmder-显示-oh-my-zsh会出现乱码"><a href="#cmder-显示-oh-my-zsh会出现乱码" class="headerlink" title="cmder 显示 oh my zsh会出现乱码"></a>cmder 显示 oh my zsh会出现乱码</h2><ul><li>去网站<a href="http://nerdfonts.com/" target="_blank" rel="noopener">nerdfonts</a>最下面下载hack字体，解压安装hack字体</li><li>在cmder 的setting中 font是 选择hack字体</li></ul><h2 id="启动quake模式，使得cmder能够从window最上面一键呼出"><a href="#启动quake模式，使得cmder能够从window最上面一键呼出" class="headerlink" title="启动quake模式，使得cmder能够从window最上面一键呼出"></a>启动quake模式，使得cmder能够从window最上面一键呼出</h2><ul><li>cmder的setting，general 的quake style，勾选 quake style slide down ,  always on top , restore inactive .. , restore to active monitor</li><li>setting的 keys &amp;macro 修改 minimize/restore quake style hotkey 快捷键</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;cmder-配置&quot;&gt;&lt;a href=&quot;#cmder-配置&quot; class=&quot;headerlink&quot; title=&quot;cmder 配置&quot;&gt;&lt;/a&gt;cmder 配置&lt;/h1&gt;&lt;h2 id=&quot;cmder-显示-oh-my-zsh会出现乱码&quot;&gt;&lt;a href=&quot;#cmder-
-      
-    
-    </summary>
-    
-      <category term="cmder" scheme="https://moonclearner.cn/categories/cmder/"/>
-    
-    
-      <category term="cmder" scheme="https://moonclearner.cn/tags/cmder/"/>
-    
-      <category term="oh my zsh" scheme="https://moonclearner.cn/tags/oh-my-zsh/"/>
-    
-      <category term="zsh" scheme="https://moonclearner.cn/tags/zsh/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo head setting</title>
-    <link href="https://moonclearner.cn/hexo/hexo_post_header.html"/>
-    <id>https://moonclearner.cn/hexo/hexo_post_header.html</id>
-    <published>2019-02-27T05:33:54.374Z</published>
-    <updated>2019-02-27T05:33:54.374Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="hexo-post文件头设置"><a href="#hexo-post文件头设置" class="headerlink" title="hexo post文件头设置"></a>hexo post文件头设置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo head setting</span><br><span class="line">categories: hexo</span><br><span class="line">copyright: true</span><br><span class="line">tags:</span><br><span class="line">  - hexo</span><br><span class="line">  - setting</span><br><span class="line">keywords:</span><br><span class="line">description:</span><br><span class="line">---</span><br></pre></td></tr></table></figure><h1 id="hexo-abstract-setting"><a href="#hexo-abstract-setting" class="headerlink" title="hexo abstract setting"></a>hexo abstract setting</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">abstract content</span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure><h1 id="multi-level-categories"><a href="#multi-level-categories" class="headerlink" title="multi level categories"></a>multi level categories</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">categories: [no 1 categories, no 2 categories]</span><br><span class="line"></span><br><span class="line">categories:</span><br><span class="line">  - no 1</span><br><span class="line">  - no 2</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;hexo-post文件头设置&quot;&gt;&lt;a href=&quot;#hexo-post文件头设置&quot; class=&quot;headerlink&quot; title=&quot;hexo post文件头设置&quot;&gt;&lt;/a&gt;hexo post文件头设置&lt;/h1&gt;&lt;figure class=&quot;highlight 
-      
-    
-    </summary>
-    
-      <category term="hexo" scheme="https://moonclearner.cn/categories/hexo/"/>
-    
-    
-      <category term="setting" scheme="https://moonclearner.cn/tags/setting/"/>
-    
-      <category term="hexo" scheme="https://moonclearner.cn/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP deal with ip and mask</title>
-    <link href="https://moonclearner.cn/php/php_deal_ip_and_mask.html"/>
-    <id>https://moonclearner.cn/php/php_deal_ip_and_mask.html</id>
-    <published>2019-02-27T05:33:54.374Z</published>
-    <updated>2019-02-27T05:33:54.374Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="PHP-deal-with-ip-and-mask"><a href="#PHP-deal-with-ip-and-mask" class="headerlink" title="PHP deal with ip and mask"></a>PHP deal with ip and mask</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ip_parse</span><span class="params">($ip_str)</span> </span>&#123;</span><br><span class="line">    $mark_len = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">if</span> (strpos($ip_str, <span class="string">"/"</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">list</span>($ip_str, $mark_len) = explode(<span class="string">"/"</span>, $ip_str);</span><br><span class="line">    &#125;</span><br><span class="line">    $ip = ip2long($ip_str);</span><br><span class="line">    $mark = <span class="number">0xFFFFFFFF</span> &lt;&lt; (<span class="number">32</span> - $mark_len) &amp; <span class="number">0xFFFFFFFF</span>;</span><br><span class="line">    $ip_start = $ip &amp; $mark;</span><br><span class="line">    $ip_end = $ip | (~$mark) &amp; <span class="number">0xFFFFFFFF</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">array</span>($ip, $mark, $ip_start, $ip_end);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">list</span>($ip, $mark, $ip_start, $ip_end) = ip_parse(<span class="string">"192.168.1.12/24"</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"IP地址 : "</span>, long2ip($ip), <span class="string">"\n"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"子网掩码: "</span>, long2ip($mark), <span class="string">"\n"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"IP段开始: "</span>, long2ip($ip_start), <span class="string">"\n"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"IP段结束: "</span>, long2ip($ip_end), <span class="string">"\n"</span>;</span><br><span class="line"></span><br><span class="line">IP地址 : <span class="number">192.168</span><span class="number">.1</span><span class="number">.12</span></span><br><span class="line">子网掩码: <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span></span><br><span class="line">IP段开始: <span class="number">192.168</span><span class="number">.1</span><span class="number">.0</span></span><br><span class="line">IP段结束: <span class="number">192.168</span><span class="number">.1</span><span class="number">.255</span></span><br></pre></td></tr></table></figure><h1 id="its-in-ip-segment"><a href="#its-in-ip-segment" class="headerlink" title="its in ip segment"></a>its in ip segment</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ip_in</span><span class="params">($ip, $ip_str)</span> </span>&#123;</span><br><span class="line">    $mark_len = <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">if</span> (strpos($ip_str, <span class="string">"/"</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">list</span>($ip_str, $mark_len) = explode(<span class="string">"/"</span>, $ip_str);</span><br><span class="line">    &#125;</span><br><span class="line">    $right_len = <span class="number">32</span> - $mark_len;</span><br><span class="line">    <span class="keyword">return</span> ip2long($ip) &gt;&gt; $right_len == ip2long($ip_str) &gt;&gt; $right_len;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var_dump(ip_in(<span class="string">"192.168.1.1"</span>, <span class="string">"192.168.1.0/24"</span>));</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;PHP-deal-with-ip-and-mask&quot;&gt;&lt;a href=&quot;#PHP-deal-with-ip-and-mask&quot; class=&quot;headerlink&quot; title=&quot;PHP deal with ip and mask&quot;&gt;&lt;/a&gt;PHP deal wi
-      
-    
-    </summary>
-    
-      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
-    
-    
-      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
-    
-      <category term="ip" scheme="https://moonclearner.cn/tags/ip/"/>
-    
-      <category term="ipmask" scheme="https://moonclearner.cn/tags/ipmask/"/>
     
   </entry>
   

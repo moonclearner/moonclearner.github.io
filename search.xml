@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[vim configure]]></title>
+    <url>%2Fvim%2Fconfigure.html</url>
+    <content type="text"><![CDATA[YouCompleteMe unavailable No module named future cd bundle/YouCompleteMe git submodule update --init --recursive if error, git config –global YouCompleteMe cregex does not appear to contain CMakeLists.txt 由于cregex路径里面为空 git remote -v 获取git 路径 git clone 路径 将其文件夹命名为cregex vim automatic construction tools k-vim k-vim github]]></content>
+      <categories>
+        <category>vim</category>
+      </categories>
+      <tags>
+        <tag>configure</tag>
+        <tag>vim</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[git]]></title>
+    <url>%2Fgit%2Fconfigure.html</url>
+    <content type="text"><![CDATA[查看git的远端路径git remote -v 查看从哪个分支拉下了的git remote show origin]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>configure</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ubuntu best software]]></title>
+    <url>%2Fubuntu%2Fbest_software.html</url>
+    <content type="text"><![CDATA[cpu 内存 网速显示123456sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitorsudo apt-get updatesudo apt-get install indicator-sysmonitorindicator-sysmonitor]]></content>
+      <categories>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[js Note]]></title>
+    <url>%2Fjs%2Fnote.html</url>
+    <content type="text"><![CDATA[javascript Notesjquery attr and prop 对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。 对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。 12345678//像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才能获得正确的结果。$("#chk1").prop("checked") == false$("#chk2").prop("checked") == true//如果上面使用attr方法，则会出现：$("#chk1").attr("checked") == undefined$("#chk2").attr("checked") == "checked"]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[PHP My Cookbook]]></title>
     <url>%2Fphp%2Fphp_My_cookbook.html</url>
     <content type="text"><![CDATA[判断变量是否为空empty() 函数用于检查一个变量是否为空。 empty() 判断一个变量是否被认为是空的。当一个变量并不存在，或者它的值等同于 FALSE，那么它会被认为不存在。如果变量不存在的话，empty()并不会产生警告。 empty() 5.5 版本之后支持表达式了，而不仅仅是变量。 版本要求：PHP 4, PHP 5, PHP 7 语法bool empty ( mixed $var ) 参数说明： $var：待检查的变量。 注意：在 PHP 5.5 之前，empty() 仅支持变量；任何其他东西将会导致一个解析错误。换言之，下列代码不会生效： empty(trim($name)) 作为替代，应该使用: trim($name) == false empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。 返回值当 var 存在，并且是一个非空非零的值时返回 FALSE 否则返回 TRUE。 以下的变量会被认为是空的： “” (空字符串) 0 (作为整数的0) 0.0 (作为浮点数的0) “0” (作为字符串的0) NULL FALSE array() (一个空数组) $var; (一个声明了，但是没有值的变量) 实例1234567891011121314151617181920&lt;?php$ivar1=0;$istr1=&apos;Runoob&apos;;if (empty($ivar1))&#123; echo &apos;$ivar1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;&#125;else&#123; echo &apos;$ivar1&apos; . &quot; 不为空或不为 0。&quot; . PHP_EOL;&#125;if (empty($istr1))&#123; echo &apos;$istr1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;&#125;else&#123; echo &apos;$istr1&apos; . &quot; 字符串不为空或不为0。&quot; . PHP_EOL;&#125;?&gt; 执行结果如下所示：$ivar1 为空或为 0。 $istr1 字符串不为空或不为0。 读取文件，得到状态码12345if(file_exists("/absolution path"))&#123; $res = file_get_contents("/absolution path"); if("0" != $res)&#123; &#125;&#125; 判断字符串a是否存在某字符串bstrpos 会返回0即从a的第一个位置就找到了b12if(false !== strpos("a", "b"))&#123;&#125; 用strlen来替代empty当form var填入0的时候, empty($_POST[‘var’]) empty 为空 “” (空字符串) 0 (作为整数的0) 0.0 (作为浮点数的0) “0” (作为字符串的0) NULL FALSE array() (一个空数组) $var; (一个声明了，但是没有值的变量) empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。 empty(trim($name)) is wrong, empty cant contain func but a variable before version 5.3 产生随机数做id12345678if (function_exists('mcrypt_create_iv')) &#123; $_SESSION['token'] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));&#125; else &#123; $_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(32));&#125;md5(uniqid()) replace string or charactersstrtr sql special characters % and _ 1strtr($string, array('_'=&gt;'\_', '%'=&gt;'\%')); the list of php extension php -m php -i php -r “print_r(get_loaded_extensions());” php 7 change log openssl built in (not need install) bcmath built in (in archlinux) php Daily Discoveryphp gengerate pie or line or column image pChart 根据字节数计算单位12345678private function formatBytes($size)&#123; $units = array(&apos;&apos;,&apos;K&apos;,&apos;M&apos;,&apos;G&apos;,&apos;T&apos;); $i = 0; for( ; $size&gt;=1024 &amp;&amp; $i&lt;count($units); $i++)&#123; $size /= 1024; &#125; return round($size,2).$units[$i];&#125;]]></content>
@@ -34,18 +81,6 @@
       <tags>
         <tag>linux</tag>
         <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[js Note]]></title>
-    <url>%2Fjs%2Fnote.html</url>
-    <content type="text"><![CDATA[javascript Notesjquery attr and prop 对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。 对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。 12345678//像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才能获得正确的结果。$("#chk1").prop("checked") == false$("#chk2").prop("checked") == true//如果上面使用attr方法，则会出现：$("#chk1").attr("checked") == undefined$("#chk2").attr("checked") == "checked"]]></content>
-      <categories>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>html</tag>
-        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -190,18 +225,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[vim configure]]></title>
-    <url>%2Fvim%2Fconfigure.html</url>
-    <content type="text"><![CDATA[YouCompleteMe unavailable No module named future cd bundle/YouCompleteMe git submodule update –init –recursive if error, git config –global]]></content>
-      <categories>
-        <category>vim</category>
-      </categories>
-      <tags>
-        <tag>vim</tag>
-        <tag>configure</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[sudo no password]]></title>
     <url>%2Fubuntu%2Fsudo_nopasswd.html</url>
     <content type="text"><![CDATA[setting sudo no password通过修改sudouser列表的方式免密码 首先切换到root用户下 sudo -i,这个时候需要输入一次用户名和密码。 然后，执行visudo，在打开的文件中找到root ALL=(ALL) ALL 在其下面追加如下配置，即执行所有超级用户命令密码。 your_user_name ALL=(ALL) NOPASSWD: ALL]]></content>
@@ -288,18 +311,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[PHP delete array element删除数组元素]]></title>
-    <url>%2Fphp%2Fphp_delete_array_element.html</url>
-    <content type="text"><![CDATA[PHP删除数组元素unset from key1234unset($array['key'])//将数组的引索重新排列array_values($array) array_search from value12345$arr1 = array(1,3, 5,7,8);$key = array_search(3, $arr1);if ($key !== false) array_splice($arr1, $key, 1);// 引索会自动排列var_dump($arr1); array_splice123$array = array(0 =&gt; "a", 1 =&gt; "b", 2 =&gt; "c");// 引索不会保存array_splice($array, 1, 1); array_diff123$array = array(0 =&gt; "a", 1 =&gt; "b", 2 =&gt; "c");// 引索会保存$array = array_diff($array, ["a", "c"]); array_diff_key按键删除多个元素123$array = array(0 =&gt; "a", 1 =&gt; "b", 2 =&gt; "c");// 引索会保存$array = array_diff_key($array, [0 =&gt; "xy", "2" =&gt; "xy"]);]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
-        <tag>array</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[PHP filter func]]></title>
     <url>%2Fphp%2Fphp_filter_fuc.html</url>
     <content type="text"><![CDATA[php filter function filter_has_var() 检查是否存在指定输入类型的变量 filter_id() 返回指定过滤器的 ID 号。 filter_input() 从脚本外部获取输入，并进行过滤。 filter_input_array() 从脚本外部获取多项输入，并进行过滤。 filter_list() 返回包含所有得到支持的过滤器的一个数组。 filter_var_array() 获取多个变量，并进行过滤。 filter_var() 获取一个变量，并进行过滤。 type INPUT_GET INPUT_POST INPUT_COOKIE INPUT_SERVER INPUT_ENV INPUT_SERVER INPUT_SESSION INPUT_REQUEST filter FILTER_CALLBACK 调用用户自定义函数来过滤数据。 FILTER_SANITIZE_STRING 去除标签，去除或编码特殊字符。 FILTER_SANITIZE_STRIPPED “string” 过滤器的别名。 FILTER_SANITIZE_ENCODED URL-encode 字符串，去除或编码特殊字符。 FILTER_SANITIZE_SPECIAL_CHARS HTML 转义字符 ‘“&lt;&gt;&amp; 以及 ASCII 值小于 32 的字符。 FILTER_SANITIZE_EMAIL 删除所有字符，除了字母、数字以及 !#$%&amp;’*+-/=?^_`{|}~@.[] FILTER_SANITIZE_URL 删除所有字符，除了字母、数字以及 $-_.+!*’(),{}|\^~[]`&lt;&gt;#%”;/?:@&amp;= FILTER_SANITIZE_NUMBER_INT 删除所有字符，除了数字和 +- FILTER_SANITIZE_NUMBER_FLOAT 删除所有字符，除了数字、+- 以及 .,eE FILTER_SANITIZE_MAGIC_QUOTES 应用 addslashes()。 FILTER_UNSAFE_RAW 不进行任何过滤，去除或编码特殊字符。 FILTER_VALIDATE_INT 把值作为整数来验证。 FILTER_VALIDATE_BOOLEAN 把值作为布尔选项来验证。如果是 “1”、”true”、”on” 和 “yes”，则返回 TRUE。如果是 “0”、”false”、”off”、”no” 和 “”，则返回 FALSE。否则返回 NULL。 FILTER_VALIDATE_FLOAT 把值作为浮点数来验证。 FILTER_VALIDATE_REGEXP 根据 regexp（一种兼容 Perl 的正则表达式）来验证值。 FILTER_VALIDATE_URL 把值作为 URL 来验证。 FILTER_VALIDATE_EMAIL 把值作为 e-mail 地址来验证。 FILTER_VALIDATE_IP 把值作为 IP 地址来验证，只限 IPv4 或 IPv6 或 不是来自私有或者保留的范围。 reference参考]]></content>
@@ -309,6 +320,18 @@
       <tags>
         <tag>php</tag>
         <tag>filter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP delete array element删除数组元素]]></title>
+    <url>%2Fphp%2Fphp_delete_array_element.html</url>
+    <content type="text"><![CDATA[PHP删除数组元素unset from key1234unset($array['key'])//将数组的引索重新排列array_values($array) array_search from value12345$arr1 = array(1,3, 5,7,8);$key = array_search(3, $arr1);if ($key !== false) array_splice($arr1, $key, 1);// 引索会自动排列var_dump($arr1); array_splice123$array = array(0 =&gt; "a", 1 =&gt; "b", 2 =&gt; "c");// 引索不会保存array_splice($array, 1, 1); array_diff123$array = array(0 =&gt; "a", 1 =&gt; "b", 2 =&gt; "c");// 引索会保存$array = array_diff($array, ["a", "c"]); array_diff_key按键删除多个元素123$array = array(0 =&gt; "a", 1 =&gt; "b", 2 =&gt; "c");// 引索会保存$array = array_diff_key($array, [0 =&gt; "xy", "2" =&gt; "xy"]);]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -368,20 +391,8 @@
         <category>php</category>
       </categories>
       <tags>
-        <tag>php</tag>
         <tag>configure</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[PHP Laravel]]></title>
-    <url>%2Fphp%2Flaravel%2Ftimeline.html</url>
-    <content type="text"><![CDATA[learning laravel install homestead vagrant box git clone https://github.com/laravel/homestead.git Homestead laravel local server init php artisan serve –host=0.0.0.0 –port=8000]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
         <tag>php</tag>
-        <tag>laravel</tag>
       </tags>
   </entry>
   <entry>
@@ -397,6 +408,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[PHP dynamically create object]]></title>
+    <url>%2Fphp%2Fcookbook%2Fphp_dynamic_create_object.html</url>
+    <content type="text"><![CDATA[PHP dynamically create object123$object = new ReflectionClass('PDO');$object-&gt;newInstanceArgs(array('arg1'=&gt;$arg1, 'arg2'=&gt;$arg2)); PHP dynamically calling func1234567$classname = "TestClassName";$object = new #classname();$methodname = "getData";$object-&gt;$methodname("arg1", "arg2");]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[PHP PDO error info]]></title>
     <url>%2Fphp%2Fcookbook%2Fphp_pdo_error_info.html</url>
     <content type="text"><![CDATA[PHP PDO catch error info`php try{ $db = new PDO(‘sqlite:/tmp/tmp.db’); $db-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); $st = $db-&gt;prepare(‘SELECT * FROM tmp’); $st-&gt;execute(): while($row = $st-&gt;fetch(PDO:FETCH_NUM)){ print implode(‘,’, $row).”\n”; }}catch(Exception $e){ print “problem: “ . $e-&gt;getMessage();} referencephp cookbook 10.10]]></content>
@@ -409,17 +431,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[PHP dynamically create object]]></title>
-    <url>%2Fphp%2Fcookbook%2Fphp_dynamic_create_object.html</url>
-    <content type="text"><![CDATA[PHP dynamically create object123$object = new ReflectionClass('PDO');$object-&gt;newInstanceArgs(array('arg1'=&gt;$arg1, 'arg2'=&gt;$arg2)); PHP dynamically calling func1234567$classname = "TestClassName";$object = new #classname();$methodname = "getData";$object-&gt;$methodname("arg1", "arg2");]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[PHP session]]></title>
     <url>%2Fphp%2Fcookbook%2Fphp_session.html</url>
     <content type="text"><![CDATA[PHP SessionPHP redirect url need add phpsessionidSID is constant value replace phpsessionid1234$redirect_url = 'http://www.example.com';if(defined('SID') &amp;&amp; (! isset($_COOKIE[session_name()])))&#123; $redirect_url .= '?' . SID&#125; output_add_rewrite_var ( string $name , string $value ) : bool1output_add_rewrite_var('token', $token); 此函数给URL重写机制添加名/值对。 这种名值对将被添加到URL（以GET参数的形式）和表单（以input隐藏域的形式），当透明URL重写用 session.use_trans_sid 开启时同样可以添加到session ID。 要注意，绝对URL(http://example.com/..)不能被重写。 force use cookie, url not contain phpsessionid123ini_set('session.use_only_cookies', true)session_regenerate_id();]]></content>
@@ -429,6 +440,18 @@
       <tags>
         <tag>php</tag>
         <tag>session</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP Laravel]]></title>
+    <url>%2Fphp%2Flaravel%2Ftimeline.html</url>
+    <content type="text"><![CDATA[learning laravel install homestead vagrant box git clone https://github.com/laravel/homestead.git Homestead laravel local server init php artisan serve –host=0.0.0.0 –port=8000]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>laravel</tag>
       </tags>
   </entry>
   <entry>
@@ -445,6 +468,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[django basic commands]]></title>
+    <url>%2Fpython%2Fdjango%2Fbasic_command.html</url>
+    <content type="text"><![CDATA[django basic commandscreate projectdjango-admin.py startproject project_name create appdjango-admin.py startapp appname synchro database python manange.py makemigrations python manange.py migrate run by test serverpython manange.py runserver 127.0.0.1:8888 clear databasepython manange.py flush create super userpython manange.py createsuperuser change user passwordpython manange.py changepassword username dump databasepython manange.py dumpdata appname &gt; appname.json load databasepython manange.py loaddata appname.json django shellpython manange.py shell database sql shellpython manange.py dbshell]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>django</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[PHP protected from sql inject]]></title>
     <url>%2Fphp%2Fsecure%2Fphp_SQL_inject.html</url>
     <content type="text"><![CDATA[PHP protected from sql injectPDOinsert123456$db = new PDO("sqlite:/tmp.db");$sql = "insert into auth (time, user) values(?, ?)";$query = $db-&gt;prepare($sql);if($query-&gt;execute(array($time, $user)))&#123; echo "insert success";&#125; select123456$db = new PDO("sqlite:/tmp.db");$sql = "select * from tmp where ip=? or user=?";$query = $db-&gt;prepare($sql);$query-&gt;execute(array($ip, $user));$rows = $query-&gt;fetchAll(PDO::FETCH_ASSOC);var_dump($rows);]]></content>
@@ -455,18 +490,6 @@
         <tag>php</tag>
         <tag>web attack</tag>
         <tag>sql inject</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[django basic commands]]></title>
-    <url>%2Fpython%2Fdjango%2Fbasic_command.html</url>
-    <content type="text"><![CDATA[django basic commandscreate projectdjango-admin.py startproject project_name create appdjango-admin.py startapp appname synchro database python manange.py makemigrations python manange.py migrate run by test serverpython manange.py runserver 127.0.0.1:8888 clear databasepython manange.py flush create super userpython manange.py createsuperuser change user passwordpython manange.py changepassword username dump databasepython manange.py dumpdata appname &gt; appname.json load databasepython manange.py loaddata appname.json django shellpython manange.py shell database sql shellpython manange.py dbshell]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>django</tag>
       </tags>
   </entry>
   <entry>

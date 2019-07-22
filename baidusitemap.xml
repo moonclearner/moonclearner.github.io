@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://moonclearner.cn/php/php_download.html</loc>
+    <lastmod>2019-07-12</lastmod>
+  </url>  <url>
+    <loc>https://moonclearner.cn/shell/common_cmd.html</loc>
+    <lastmod>2019-07-11</lastmod>
+  </url>  <url>
+    <loc>https://moonclearner.cn/php/configure/php_extension_compile_fail.html</loc>
+    <lastmod>2019-07-09</lastmod>
+  </url>  <url>
+    <loc>https://moonclearner.cn/ubuntu/deepin-wine.html</loc>
+    <lastmod>2019-07-08</lastmod>
+  </url>  <url>
+    <loc>https://moonclearner.cn/ubuntu/ubuntu_notes.html</loc>
+    <lastmod>2019-07-08</lastmod>
+  </url>  <url>
+    <loc>https://moonclearner.cn/ubuntu/best_software.html</loc>
+    <lastmod>2019-07-04</lastmod>
+  </url>  <url>
     <loc>https://moonclearner.cn/vim/configure.html</loc>
     <lastmod>2019-06-28</lastmod>
   </url>  <url>
     <loc>https://moonclearner.cn/git/configure.html</loc>
-    <lastmod>2019-06-27</lastmod>
-  </url>  <url>
-    <loc>https://moonclearner.cn/ubuntu/best_software.html</loc>
     <lastmod>2019-06-27</lastmod>
   </url>  <url>
     <loc>https://moonclearner.cn/js/note.html</loc>
@@ -19,9 +34,6 @@
     <loc>https://moonclearner.cn/apache/php_My_cookbook.html</loc>
     <lastmod>2019-06-18</lastmod>
   </url>  <url>
-    <loc>https://moonclearner.cn/shell/common_cmd.html</loc>
-    <lastmod>2019-06-12</lastmod>
-  </url>  <url>
     <loc>https://moonclearner.cn/js/use_this.html</loc>
     <lastmod>2019-06-12</lastmod>
   </url>  <url>
@@ -30,9 +42,6 @@
   </url>  <url>
     <loc>https://moonclearner.cn/php/php_xml.html</loc>
     <lastmod>2019-06-11</lastmod>
-  </url>  <url>
-    <loc>https://moonclearner.cn/php/php_download.html</loc>
-    <lastmod>2019-05-23</lastmod>
   </url>  <url>
     <loc>https://moonclearner.cn/ubuntu/addAppTOdash.html</loc>
     <lastmod>2019-05-09</lastmod>
@@ -67,10 +76,10 @@
     <loc>https://moonclearner.cn/ubuntu/zsh_setting.html</loc>
     <lastmod>2019-03-18</lastmod>
   </url>  <url>
-    <loc>https://moonclearner.cn/cmder/cmder.html</loc>
+    <loc>https://moonclearner.cn/hexo/hexo_post_header.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
-    <loc>https://moonclearner.cn/hexo/hexo_post_header.html</loc>
+    <loc>https://moonclearner.cn/cmder/cmder.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
     <loc>https://moonclearner.cn/js/onclick_for_post.html</loc>
@@ -79,16 +88,16 @@
     <loc>https://moonclearner.cn/php/php_deal_ip_and_mask.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
-    <loc>https://moonclearner.cn/php/php_filter_fuc.html</loc>
-    <lastmod>2019-02-27</lastmod>
-  </url>  <url>
     <loc>https://moonclearner.cn/php/php_delete_array_element.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
-    <loc>https://moonclearner.cn/php/php_get_path_filename.html</loc>
+    <loc>https://moonclearner.cn/php/php_filter_fuc.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
     <loc>https://moonclearner.cn/php/php_quotes.html</loc>
+    <lastmod>2019-02-27</lastmod>
+  </url>  <url>
+    <loc>https://moonclearner.cn/php/php_get_path_filename.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
     <loc>https://moonclearner.cn/vim/vim.html</loc>
@@ -97,19 +106,16 @@
     <loc>https://moonclearner.cn/databases/sqlite/sqlite_common_cmd.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
-    <loc>https://moonclearner.cn/php/configure/php_extension_compile_fail.html</loc>
-    <lastmod>2019-02-27</lastmod>
-  </url>  <url>
     <loc>https://moonclearner.cn/php/cookbook/php_database_transaction.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
-    <loc>https://moonclearner.cn/php/cookbook/php_dynamic_create_object.html</loc>
+    <loc>https://moonclearner.cn/php/cookbook/php_session.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
     <loc>https://moonclearner.cn/php/cookbook/php_pdo_error_info.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
-    <loc>https://moonclearner.cn/php/cookbook/php_session.html</loc>
+    <loc>https://moonclearner.cn/php/cookbook/php_dynamic_create_object.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
     <loc>https://moonclearner.cn/php/laravel/timeline.html</loc>

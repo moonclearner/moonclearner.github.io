@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://moonclearner.cn/"/>
-  <updated>2019-06-28T03:56:56.887Z</updated>
+  <updated>2019-07-12T09:08:13.463Z</updated>
   <id>https://moonclearner.cn/</id>
   
   <author>
@@ -15,6 +15,162 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PHP download</title>
+    <link href="https://moonclearner.cn/php/php_download.html"/>
+    <id>https://moonclearner.cn/php/php_download.html</id>
+    <published>2019-07-12T09:08:13.695Z</published>
+    <updated>2019-07-12T09:08:13.463Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="php-download"><a href="#php-download" class="headerlink" title="php download"></a>php download</h1><h2 id="php-download-big-file"><a href="#php-download-big-file" class="headerlink" title="php download big file"></a>php download big file</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">if (file_exists($path)) &#123;</span><br><span class="line">$file_size = filesize($path);</span><br><span class="line">if (FALSE!== ($handler = fopen($path, &apos;r&apos;)))&#123;</span><br><span class="line">header(&apos;Content-Description: File Transfer&apos;);</span><br><span class="line">header(&apos;Content-Type: application/octet-stream&apos;);</span><br><span class="line">header(&apos;Accept-Ranges: bytes&apos;);</span><br><span class="line">header(&apos;Content-Disposition: attachment; filename=&apos;.basename($path));</span><br><span class="line">header(&apos;Accept-Length:&apos;. $file_size);</span><br><span class="line">header(&apos;Content-Transfer-Encoding: chunked&apos;);</span><br><span class="line">header(&apos;Expires: 0&apos;);</span><br><span class="line">header(&apos;Cache-Control: must-revalidate, post-check=0, pre-check=0&apos;);</span><br><span class="line">header(&apos;Pragma: public&apos;);</span><br><span class="line">$buffer_size = 4096*20;</span><br><span class="line">while(!feof($handler))&#123;</span><br><span class="line">$chunk = fread($handler,$buffer_size);</span><br><span class="line">echo $chunk;</span><br><span class="line">&#125;</span><br><span class="line">fclose($handler);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="php-upload-big-file"><a href="#php-upload-big-file" class="headerlink" title="php upload big file"></a>php upload big file</h2><p>第一步： Apache环境中的档案上传大小控制<br>修改httpd.conf<br>添加下面内容<br>LimitRequestBody 10485760<br>即10M=1010241024，有的文章中提到应改为 600000000<br>重新启动apache，就可以在设置里看到你要的大小</p><p>第二步：修改在php5下POST文件大小的限制<br>修改php.ini<br>找到 File Uploadsh区域修改以下几个参数： file_uploads = on ;是否允许通过HTTP上传文件的开关。<br>默认为ON即是开 upload_tmp_dir ;文件上传至服务器上存储临时文件的地方，如果没指定就会用系统默认的临时文件夹(moodle可以不改)<br>upload_max_filesize = 8m ;允许上传文件大小的最大值.<br>找到 Data Handling区域，修改 post_max_size = 8m ;指通过表单POST给PHP的所能接收的最大值，包括表单里的所有值。<br>默认为8M<br>设上述四个参数后，上传小于8M的文件一般不成问题。但如果上传大于8M的文件，只还得设置以下参数：<br>在Resource Limits 区域: max_execution_time = 600 ;<br>每个PHP页面运行的最大时间值(秒)，默认30秒 max_input_time = 600 ;<br>每个PHP页面接收数据所需的最大时间，默认60秒 memory_limit = 8m ;<br>每个PHP页面所吃掉的最大内存，默认8M</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;php-download&quot;&gt;&lt;a href=&quot;#php-download&quot; class=&quot;headerlink&quot; title=&quot;php download&quot;&gt;&lt;/a&gt;php download&lt;/h1&gt;&lt;h2 id=&quot;php-download-big-file&quot;&gt;&lt;a
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>common cmd</title>
+    <link href="https://moonclearner.cn/shell/common_cmd.html"/>
+    <id>https://moonclearner.cn/shell/common_cmd.html</id>
+    <published>2019-07-11T08:32:14.456Z</published>
+    <updated>2019-07-11T08:32:14.428Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="common-cmd"><a href="#common-cmd" class="headerlink" title="common cmd"></a>common cmd</h1><h2 id="delete-all-files-in-the-current-path-except-file-A"><a href="#delete-all-files-in-the-current-path-except-file-A" class="headerlink" title="delete all files in the current path except file A"></a>delete all files in the current path except file A</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">find ./* |grep -v A |xargs rm -r</span><br><span class="line"></span><br><span class="line"># second method</span><br><span class="line">rm -rf !(keep1 | keep2)</span><br></pre></td></tr></table></figure><h2 id="delete-all-file-except-py-file"><a href="#delete-all-file-except-py-file" class="headerlink" title="delete all file except py file"></a>delete all file except py file</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*&quot; -type f |grep -v &quot;.py&quot; |grep  &quot;\.&quot; |xargs rm -rf</span><br></pre></td></tr></table></figure><h2 id="kill-all-python-process"><a href="#kill-all-python-process" class="headerlink" title="kill all python process"></a>kill all python process</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep python |grep -v grep|awk  &apos;&#123;print $2&#125;&apos;|xargs kill -9</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;common-cmd&quot;&gt;&lt;a href=&quot;#common-cmd&quot; class=&quot;headerlink&quot; title=&quot;common cmd&quot;&gt;&lt;/a&gt;common cmd&lt;/h1&gt;&lt;h2 id=&quot;delete-all-files-in-the-current-p
+      
+    
+    </summary>
+    
+      <category term="shell" scheme="https://moonclearner.cn/categories/shell/"/>
+    
+    
+      <category term="linux" scheme="https://moonclearner.cn/tags/linux/"/>
+    
+      <category term="shell" scheme="https://moonclearner.cn/tags/shell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>build php extension fail phpizse</title>
+    <link href="https://moonclearner.cn/php/configure/php_extension_compile_fail.html"/>
+    <id>https://moonclearner.cn/php/configure/php_extension_compile_fail.html</id>
+    <published>2019-07-09T07:14:54.931Z</published>
+    <updated>2019-07-09T07:14:54.875Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="CDPATH-command-not-found"><a href="#CDPATH-command-not-found" class="headerlink" title="CDPATH command not found"></a>CDPATH command not found</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">$</span> make </span><br><span class="line">/home/user/libtool: line 482: CDPATH: command not found</span><br><span class="line">libtool: Version mismatch error.  This is libtool 2.4.2, but the</span><br><span class="line">libtool: definition of this LT_INIT comes from an older release.</span><br><span class="line">libtool: You should recreate aclocal.m4 with macros from libtool 2.4.2</span><br><span class="line">libtool: and run autoconf again.</span><br><span class="line">make: *** [xdebug.lo] Error 63</span><br></pre></td></tr></table></figure><h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><ul><li>aclocal</li><li>libtoolize –force</li><li>autoheader</li><li>autoconf</li></ul><h2 id="solution2"><a href="#solution2" class="headerlink" title="solution2"></a>solution2</h2><ul><li>rm –rf aclocal.m4</li><li>autoreconf</li></ul><h2 id="solution3"><a href="#solution3" class="headerlink" title="solution3"></a>solution3</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">If you have error with libtool version after make - way to install:</span><br><span class="line">phpize --clean &amp;&amp; phpize</span><br><span class="line">rm aclocal.m4</span><br><span class="line">aclocal</span><br><span class="line">autoconf</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      CDPATH command not found
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="configure" scheme="https://moonclearner.cn/tags/configure/"/>
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>wine setting</title>
+    <link href="https://moonclearner.cn/ubuntu/deepin-wine.html"/>
+    <id>https://moonclearner.cn/ubuntu/deepin-wine.html</id>
+    <published>2019-07-08T05:11:08.452Z</published>
+    <updated>2019-07-08T05:11:08.408Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="软件文字显示方块（如企业微信）"><a href="#软件文字显示方块（如企业微信）" class="headerlink" title="软件文字显示方块（如企业微信）"></a>软件文字显示方块（如企业微信）</h1><ul><li>去windows 系统 上去复制一份Fonts字体</li><li>复制到你要修复的wine容器 将字体放入~/.wine/drive_c/windows/Fonts 里面，如果是deepin的话，就放在~/.deepinwine/XXX/drive_c/windows/Fonts里面（XXX指deepin下的你安装的程序）</li><li><code>touch zh.reg</code></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">REGEDIT4</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink]</span><br><span class="line">&quot;Lucida Sans Unicode&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Microsoft Sans Serif&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;MS Sans Serif&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Tahoma&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Tahoma Bold&quot;=&quot;msyhbd.ttc&quot;</span><br><span class="line">&quot;msyh&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Arial&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Arial Black&quot;=&quot;msyh.ttc&quot;</span><br></pre></td></tr></table></figure><ul><li><code>WINEPREFIX=~/.deepinwine/Deepin-WXWork /usr/bin/deepin-wine regedit zh.reg</code></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;软件文字显示方块（如企业微信）&quot;&gt;&lt;a href=&quot;#软件文字显示方块（如企业微信）&quot; class=&quot;headerlink&quot; title=&quot;软件文字显示方块（如企业微信）&quot;&gt;&lt;/a&gt;软件文字显示方块（如企业微信）&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;去windows 系统 
+      
+    
+    </summary>
+    
+      <category term="wine" scheme="https://moonclearner.cn/categories/wine/"/>
+    
+    
+      <category term="ubuntu" scheme="https://moonclearner.cn/tags/ubuntu/"/>
+    
+      <category term="wine" scheme="https://moonclearner.cn/tags/wine/"/>
+    
+      <category term="deep-win" scheme="https://moonclearner.cn/tags/deep-win/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu notes</title>
+    <link href="https://moonclearner.cn/ubuntu/ubuntu_notes.html"/>
+    <id>https://moonclearner.cn/ubuntu/ubuntu_notes.html</id>
+    <published>2019-07-08T03:12:52.985Z</published>
+    <updated>2019-07-08T03:12:52.961Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="How-to-delete-dash-app-label"><a href="#How-to-delete-dash-app-label" class="headerlink" title="How to delete dash app label"></a>How to delete dash app label</h1><ul><li>/usr/share/applications（全局模式下）</li><li>~/.local/share/applications（用户独立配置）</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;How-to-delete-dash-app-label&quot;&gt;&lt;a href=&quot;#How-to-delete-dash-app-label&quot; class=&quot;headerlink&quot; title=&quot;How to delete dash app label&quot;&gt;&lt;/a&gt;Ho
+      
+    
+    </summary>
+    
+      <category term="zsh" scheme="https://moonclearner.cn/categories/zsh/"/>
+    
+    
+      <category term="ubuntu" scheme="https://moonclearner.cn/tags/ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu best software</title>
+    <link href="https://moonclearner.cn/ubuntu/best_software.html"/>
+    <id>https://moonclearner.cn/ubuntu/best_software.html</id>
+    <published>2019-07-04T04:44:05.880Z</published>
+    <updated>2019-07-04T04:44:05.880Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="cpu-内存-网速显示"><a href="#cpu-内存-网速显示" class="headerlink" title="cpu 内存 网速显示"></a>cpu 内存 网速显示</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install indicator-sysmonitor</span><br><span class="line"></span><br><span class="line">indicator-sysmonitor</span><br></pre></td></tr></table></figure><h2 id="远程连接windos"><a href="#远程连接windos" class="headerlink" title="远程连接windos"></a>远程连接windos</h2><ul><li>rdesktop</li><li>teamview</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;cpu-内存-网速显示&quot;&gt;&lt;a href=&quot;#cpu-内存-网速显示&quot; class=&quot;headerlink&quot; title=&quot;cpu 内存 网速显示&quot;&gt;&lt;/a&gt;cpu 内存 网速显示&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;tabl
+      
+    
+    </summary>
+    
+      <category term="tool" scheme="https://moonclearner.cn/categories/tool/"/>
+    
+    
+      <category term="ubuntu" scheme="https://moonclearner.cn/tags/ubuntu/"/>
+    
+  </entry>
   
   <entry>
     <title>vim configure</title>
@@ -72,31 +228,6 @@
   </entry>
   
   <entry>
-    <title>ubuntu best software</title>
-    <link href="https://moonclearner.cn/ubuntu/best_software.html"/>
-    <id>https://moonclearner.cn/ubuntu/best_software.html</id>
-    <published>2019-06-27T02:16:25.930Z</published>
-    <updated>2019-06-27T02:16:25.878Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="cpu-内存-网速显示"><a href="#cpu-内存-网速显示" class="headerlink" title="cpu 内存 网速显示"></a>cpu 内存 网速显示</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install indicator-sysmonitor</span><br><span class="line"></span><br><span class="line">indicator-sysmonitor</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;cpu-内存-网速显示&quot;&gt;&lt;a href=&quot;#cpu-内存-网速显示&quot; class=&quot;headerlink&quot; title=&quot;cpu 内存 网速显示&quot;&gt;&lt;/a&gt;cpu 内存 网速显示&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;tabl
-      
-    
-    </summary>
-    
-      <category term="tool" scheme="https://moonclearner.cn/categories/tool/"/>
-    
-    
-      <category term="ubuntu" scheme="https://moonclearner.cn/tags/ubuntu/"/>
-    
-  </entry>
-  
-  <entry>
     <title>js Note</title>
     <link href="https://moonclearner.cn/js/note.html"/>
     <id>https://moonclearner.cn/js/note.html</id>
@@ -117,9 +248,9 @@
       <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
     
     
-      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
-    
       <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
+    
+      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
     
   </entry>
   
@@ -172,36 +303,9 @@
       <category term="apache" scheme="https://moonclearner.cn/categories/apache/"/>
     
     
-      <category term="apache" scheme="https://moonclearner.cn/tags/apache/"/>
-    
       <category term="setting" scheme="https://moonclearner.cn/tags/setting/"/>
     
-  </entry>
-  
-  <entry>
-    <title>common cmd</title>
-    <link href="https://moonclearner.cn/shell/common_cmd.html"/>
-    <id>https://moonclearner.cn/shell/common_cmd.html</id>
-    <published>2019-06-12T11:36:50.822Z</published>
-    <updated>2019-06-12T11:36:50.786Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="common-cmd"><a href="#common-cmd" class="headerlink" title="common cmd"></a>common cmd</h1><h2 id="delete-all-files-in-the-current-path-except-file-A"><a href="#delete-all-files-in-the-current-path-except-file-A" class="headerlink" title="delete all files in the current path except file A"></a>delete all files in the current path except file A</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">find ./* |grep -v A |xargs rm -r</span><br><span class="line"></span><br><span class="line"># second method</span><br><span class="line">rm -rf !(keep1 | keep2)</span><br></pre></td></tr></table></figure><h2 id="delete-all-file-except-py-file"><a href="#delete-all-file-except-py-file" class="headerlink" title="delete all file except py file"></a>delete all file except py file</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*&quot; -type f |grep -v &quot;.py&quot; |grep  &quot;\.&quot; |xargs rm -rf</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;common-cmd&quot;&gt;&lt;a href=&quot;#common-cmd&quot; class=&quot;headerlink&quot; title=&quot;common cmd&quot;&gt;&lt;/a&gt;common cmd&lt;/h1&gt;&lt;h2 id=&quot;delete-all-files-in-the-current-p
-      
-    
-    </summary>
-    
-      <category term="shell" scheme="https://moonclearner.cn/categories/shell/"/>
-    
-    
-      <category term="linux" scheme="https://moonclearner.cn/tags/linux/"/>
-    
-      <category term="shell" scheme="https://moonclearner.cn/tags/shell/"/>
+      <category term="apache" scheme="https://moonclearner.cn/tags/apache/"/>
     
   </entry>
   
@@ -226,9 +330,9 @@
       <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
     
     
-      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
-    
       <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
+    
+      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
     
   </entry>
   
@@ -273,31 +377,6 @@
       
       
         &lt;h1 id=&quot;php-XML&quot;&gt;&lt;a href=&quot;#php-XML&quot; class=&quot;headerlink&quot; title=&quot;php XML&quot;&gt;&lt;/a&gt;php XML&lt;/h1&gt;&lt;h2 id=&quot;simplexml-load-file&quot;&gt;&lt;a href=&quot;#simplexml-load
-      
-    
-    </summary>
-    
-      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
-    
-    
-      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP download</title>
-    <link href="https://moonclearner.cn/php/php_download.html"/>
-    <id>https://moonclearner.cn/php/php_download.html</id>
-    <published>2019-05-23T11:18:24.278Z</published>
-    <updated>2019-05-23T11:18:24.246Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="php-download"><a href="#php-download" class="headerlink" title="php download"></a>php download</h1><h2 id="php-download-big-file"><a href="#php-download-big-file" class="headerlink" title="php download big file"></a>php download big file</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">if (file_exists($path)) &#123;</span><br><span class="line">$file_size = filesize($path);</span><br><span class="line">if (FALSE!== ($handler = fopen($path, &apos;r&apos;)))&#123;</span><br><span class="line">header(&apos;Content-Description: File Transfer&apos;);</span><br><span class="line">header(&apos;Content-Type: application/octet-stream&apos;);</span><br><span class="line">header(&apos;Accept-Ranges: bytes&apos;);</span><br><span class="line">header(&apos;Content-Disposition: attachment; filename=&apos;.basename($path));</span><br><span class="line">header(&apos;Accept-Length:&apos;. $file_size);</span><br><span class="line">header(&apos;Content-Transfer-Encoding: chunked&apos;);</span><br><span class="line">header(&apos;Expires: 0&apos;);</span><br><span class="line">header(&apos;Cache-Control: must-revalidate, post-check=0, pre-check=0&apos;);</span><br><span class="line">header(&apos;Pragma: public&apos;);</span><br><span class="line">$buffer_size = 4096*20;</span><br><span class="line">while(!feof($handler))&#123;</span><br><span class="line">$chunk = fread($handler,$buffer_size);</span><br><span class="line">echo $chunk;</span><br><span class="line">&#125;</span><br><span class="line">fclose($handler);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="php-upload-big-file"><a href="#php-upload-big-file" class="headerlink" title="php upload big file"></a>php upload big file</h2><p>第一步： Apache环境中的档案上传大小控制<br>修改httpd.conf<br>添加下面内容<br>LimitRequestBody 10485760<br>即10M=1010241024，有的文章中提到应改为 600000000<br>重新启动apache，就可以在设置里看到你要的大小</p><p>第二步：修改在php5下POST文件大小的限制<br>修改php.ini<br>找到 File Uploadsh区域修改以下几个参数： file_uploads = on ;是否允许通过HTTP上传文件的开关。<br>默认为ON即是开 upload_tmp_dir ;文件上传至服务器上存储临时文件的地方，如果没指定就会用系统默认的临时文件夹(moodle可以不改)<br>upload_max_filesize = 8m ;允许上传文件大小的最大值.<br>找到 Data Handling区域，修改 post_max_size = 8m ;指通过表单POST给PHP的所能接收的最大值，包括表单里的所有值。<br>默认为8M<br>设上述四个参数后，上传小于8M的文件一般不成问题。但如果上传大于8M的文件，只还得设置以下参数：<br>在Resource Limits 区域: max_execution_time = 600 ;<br>每个PHP页面运行的最大时间值(秒)，默认30秒 max_input_time = 600 ;<br>每个PHP页面接收数据所需的最大时间，默认60秒 memory_limit = 8m ;<br>每个PHP页面所吃掉的最大内存，默认8M</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;php-download&quot;&gt;&lt;a href=&quot;#php-download&quot; class=&quot;headerlink&quot; title=&quot;php download&quot;&gt;&lt;/a&gt;php download&lt;/h1&gt;&lt;h2 id=&quot;php-download-big-file&quot;&gt;&lt;a
       
     
     </summary>
@@ -382,9 +461,9 @@
       <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
     
     
-      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
-    
       <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
+    
+      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
     
   </entry>
   
@@ -436,9 +515,9 @@
       <category term="css" scheme="https://moonclearner.cn/categories/css/"/>
     
     
-      <category term="css" scheme="https://moonclearner.cn/tags/css/"/>
-    
       <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
+    
+      <category term="css" scheme="https://moonclearner.cn/tags/css/"/>
     
   </entry>
   
@@ -463,90 +542,9 @@
       <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
     
     
-      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
-    
       <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>get string actual length include Chinese</title>
-    <link href="https://moonclearner.cn/js/get_actual_char_length.html"/>
-    <id>https://moonclearner.cn/js/get_actual_char_length.html</id>
-    <published>2019-04-08T03:00:18.216Z</published>
-    <updated>2019-04-08T03:00:18.196Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="get-string-actual-length-include-Chinese"><a href="#get-string-actual-length-include-Chinese" class="headerlink" title="get string actual length include Chinese"></a>get string actual length include Chinese</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先把中文替换成一个字节的英文，在计算长度</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCharLength</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.replace(<span class="regexp">/[\u0391-\uFFE5]/g</span>,<span class="string">"a"</span>).length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;get-string-actual-length-include-Chinese&quot;&gt;&lt;a href=&quot;#get-string-actual-length-include-Chinese&quot; class=&quot;headerlink&quot; title=&quot;get string a
-      
-    
-    </summary>
-    
-      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
-    
     
       <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
-    
-      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jq from label name get</title>
-    <link href="https://moonclearner.cn/js/jquery/jq_select.html"/>
-    <id>https://moonclearner.cn/js/jquery/jq_select.html</id>
-    <published>2019-03-29T11:22:15.101Z</published>
-    <updated>2019-03-29T11:22:15.069Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="select-in-jquery"><a href="#select-in-jquery" class="headerlink" title="select in jquery"></a>select in jquery</h1><h2 id="增加删除select里面的option"><a href="#增加删除select里面的option" class="headerlink" title="增加删除select里面的option"></a>增加删除select里面的option</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#select_id"</span>).append(<span class="string">"&lt;option value='Value'&gt;Text&lt;/option&gt;"</span>); <span class="comment">//为Select追加一个Option(下拉项) </span></span><br><span class="line">$(<span class="string">"#select_id"</span>).prepend(<span class="string">"&lt;option value='0'&gt;请选择&lt;/option&gt;"</span>); <span class="comment">//为Select插入一个Option(第一个位置) </span></span><br><span class="line">$(<span class="string">"#select_id option:last"</span>).remove(); <span class="comment">//删除Select中索引值最大Option(最后一个) </span></span><br><span class="line">$(<span class="string">"#select_id option[index='0']"</span>).remove(); <span class="comment">//删除Select中索引值为0的Option(第一个) </span></span><br><span class="line">$(<span class="string">"#select_id option[value='3']"</span>).remove(); <span class="comment">//删除Select中Value='3'的Option </span></span><br><span class="line">$(<span class="string">"#select_id option[text='4']"</span>).remove(); <span class="comment">//删除Select中Text='4'的Option </span></span><br><span class="line">jQuery(<span class="string">"#link3"</span>).find(<span class="string">"option"</span>).remove();<span class="comment">//删除select里面所有的option</span></span><br></pre></td></tr></table></figure><h2 id="获取select里面的值"><a href="#获取select里面的值" class="headerlink" title="获取select里面的值"></a>获取select里面的值</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#select_id"</span>).change(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//code...&#125;); //为Select添加事件，当选择其中一项时触发 </span></span><br><span class="line"><span class="keyword">var</span> checkText=$(<span class="string">"#select_id"</span>).find(<span class="string">"option:selected"</span>).text(); <span class="comment">//获取Select选择的Text </span></span><br><span class="line"><span class="keyword">var</span> checkValue=$(<span class="string">"#select_id"</span>).val(); <span class="comment">//获取Select选择的Value </span></span><br><span class="line"><span class="keyword">var</span> checkIndex=$(<span class="string">"#select_id "</span>).get(<span class="number">0</span>).selectedIndex; <span class="comment">//获取Select选择的索引值 </span></span><br><span class="line"><span class="keyword">var</span> maxIndex=$(<span class="string">"#select_id option:last"</span>).attr(<span class="string">"index"</span>); <span class="comment">//获取Select最大的索引值</span></span><br></pre></td></tr></table></figure><h2 id="select-事件"><a href="#select-事件" class="headerlink" title="select 事件"></a>select 事件</h2><ul><li>onchange 选择option触发的事件</li><li>onfocus  点击下拉框，就会触发的事件</li><li>onclick 不会触发任何事件</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;select-in-jquery&quot;&gt;&lt;a href=&quot;#select-in-jquery&quot; class=&quot;headerlink&quot; title=&quot;select in jquery&quot;&gt;&lt;/a&gt;select in jquery&lt;/h1&gt;&lt;h2 id=&quot;增加删除selec
-      
-    
-    </summary>
-    
-      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
-    
-    
-      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
-    
-      <category term="jquery" scheme="https://moonclearner.cn/tags/jquery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>sudo no password</title>
-    <link href="https://moonclearner.cn/ubuntu/sudo_nopasswd.html"/>
-    <id>https://moonclearner.cn/ubuntu/sudo_nopasswd.html</id>
-    <published>2019-03-18T02:23:59.150Z</published>
-    <updated>2019-03-18T02:23:59.022Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="setting-sudo-no-password"><a href="#setting-sudo-no-password" class="headerlink" title="setting sudo no password"></a>setting sudo no password</h1><p>通过修改sudouser列表的方式免密码</p><p>首先切换到root用户下 sudo -i,这个时候需要输入一次用户名和密码。</p><p>然后，执行visudo，在打开的文件中找到root ALL=(ALL) ALL</p><p>在其下面追加如下配置，即执行所有超级用户命令密码。</p><blockquote><blockquote><blockquote><p>your_user_name ALL=(ALL) NOPASSWD: ALL</p></blockquote></blockquote></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;setting-sudo-no-password&quot;&gt;&lt;a href=&quot;#setting-sudo-no-password&quot; class=&quot;headerlink&quot; title=&quot;setting sudo no password&quot;&gt;&lt;/a&gt;setting sudo n
-      
-    
-    </summary>
-    
-      <category term="ubuntu" scheme="https://moonclearner.cn/categories/ubuntu/"/>
-    
-    
-      <category term="setting" scheme="https://moonclearner.cn/tags/setting/"/>
-    
-      <category term="ubuntu" scheme="https://moonclearner.cn/tags/ubuntu/"/>
     
   </entry>
   

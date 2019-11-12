@@ -1,6 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[IE compatible]]></title>
+    <url>%2Fjs%2FIECompatible.html</url>
+    <content type="text"><![CDATA[jQuery().html() and interHtml method run very slowly on IE 8 or IE 9 browserphenomenonwhen run the method below, It costs too much time.123var htmlString = "&lt;div&gt;&lt;span&gt;test&lt;/span&gt;&lt;/div&gt;";jQuery().html(htmlString)domcument.getElementById().interHtml = htmlString; solutionreplace jQuery.html() or interHtml with dom method to solve the problem12345678910var htmlString = "&lt;div&gt;&lt;span&gt;test&lt;/span&gt;&lt;/div&gt;";//turn the string into a dom object var domObj = jQuery(htmlString).get(0);var el = document.getElementById(); var childs = el.childNodes; for(var i = childs .length - 1; i &gt;= 0; i--) &#123; //delete all child node el.removeChild(childs[i]);&#125;document.getElementById().appendChild(domObj); JSON module missingphenomenonsuch as JSON.parse or JSON.stringify method cant use solutiondownload the json2.js or json3.js, and import &lt;script src=&quot;/js/json3.min.js&quot;&gt;&lt;/script&gt; str.trim() missingsolutionreplace str.trim() with jQuery.trim();]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[js将div截图发送到后台生成图片]]></title>
+    <url>%2Fjs%2Fhtml2cavas.html</url>
+    <content type="text"><![CDATA[html2canvas需要导入html2canvas.min.js1234567891011121314151617181920212223242526272829303132333435var oDiv = document.getElementById('div');var opts = &#123; scale:10, width:oDiv.offsetWidth, height:oDiv.offsetHeight&#125;;try&#123; html2canvas(oDiv, opts).then(function(canvas)&#123; canvas.getContext('2d').mozImageSmoothingEnabled = false; canvas.getContext('2d').webkitImageSmoothingEnabled = false; canvas.getContext('2d').msImageSmoothingEnabled = false; canvas.getContext('2d').imageSmoothingEnabled = false; var strDataURI = canvas.toDataURL(); var location_url = "/download/" param = &#123;'img':strDataURI&#125;; new Ajax.Request(location_url, &#123; method:'post', parameters:param, onComplete:function(req)&#123; window.location=location_url; &#125; &#125;); &#125;);&#125;catch(err)&#123; jQuery("#export").show(); var location_url = "/download/" param = &#123;&#125;; new Ajax.Request(location_url, &#123; method:'post', parameters:param, onComplete:function(req)&#123; window.location=location_url; &#125; &#125;);&#125; server12345678public function download()&#123; $img = $_POST['img']; $file = "/tmp.png"; $img = str_replace('data:image/png;base64,', '', $img); $img = str_replace(' ', '+', $img); $data = base64_decode($img); file_put_contents($file, $data);&#125;]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[js Note]]></title>
+    <url>%2Fjs%2Fnote.html</url>
+    <content type="text"><![CDATA[javascript Notesjquery attr and prop 对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。 对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。 12345678//像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才能获得正确的结果。$("#chk1").prop("checked") == false$("#chk2").prop("checked") == true//如果上面使用attr方法，则会出现：$("#chk1").attr("checked") == undefined$("#chk2").attr("checked") == "checked" deep copy12345678910111213//深复制function copy(obj1,obj2)&#123; var obj2=obj2||[]; for(var name in obj1)&#123; if(typeof obj1[name] === &quot;object&quot;)&#123; obj2[name]= (obj1[name] instanceof Array)?[]:&#123;&#125;; copy(obj1[name],obj2[name]); &#125;else&#123; obj2[name]=obj1[name]; &#125; &#125; return obj2;&#125;]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[python secure]]></title>
+    <url>%2Fpython%2Fpython_secure.html</url>
+    <content type="text"><![CDATA[防止命令注入使用subprocess1234cmd = [&apos;ls&apos;, &apos;-al&apos;]p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)data = &apos;&apos;.join(p.stdout.readlines())p.stdout.close() 替换shell的管道符1234567# output = `dmesg | grep hda`p1 = subprocess.Popen([&apos;dmesg&apos;], stdout=PIPE)p2 = subprocess.Popen([&apos;grep&apos;, &apos;hda&apos;], stdin=p1.stdout, stdout=PIPE)p1.stdout.close()output = p2.communicate()[0] 防止sql注入test 1’ or ‘1’ = ‘1 sqlmap 12sql_cmd = &quot;select * from ?&quot;cur.execute(sql_cmd, (table_name, )) 输入参数作为动态代码运行python eval exec pickle.loads cPickle.loads marshal.loads yaml.load php eval asset() preg_replace + ‘e’ call_user_func, call_user_func_array, create_function array_map 目录穿越 过滤掉. and .. os.path.basename(filename) 安全上传文件 文件后缀过滤 文件大小过滤-最大最小 文件名随机化 上传目录随机化]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>secure</tag>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ubuntu notes]]></title>
+    <url>%2Fubuntu%2Fubuntu_notes.html</url>
+    <content type="text"><![CDATA[How to delete dash app label /usr/share/applications（全局模式下） ~/.local/share/applications（用户独立配置） compare expiredrm /home/agu/.config/bcompare/registry.dat zip 解压文件里面有中文乱码unzip -O CP936 xxxx.zip]]></content>
+      <categories>
+        <category>zsh</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[代码审计-企业级web代码安全架构]]></title>
+    <url>%2FITsecure%2Fcode%20audit%20Notes.html</url>
+    <content type="text"><![CDATA[code audit Notescode audit env builtphp env install phpStudy 用于做技术探针，集成了所有php运行的环境，apache nginx php core secure configure register_globals 全局变量注册开关 allow_url_include 是否运行包含远程文件 include() magic_quotes_gpc 魔术引号自动过滤 filter get post cookie but $_SERVER ver 5.4 later abandon magic_quotes_runtime 魔术引号自动过滤 filter database or file ver 5.4 later abandon magic_quotes_sybase 魔术引号自动过滤 like magic_quotes_gpc safe_mode 安全模式 限制文件操作 限制函数执行和外部命令执行 open_basedir PHP可访问目录 disable_functions 禁用函数 phpinfo,eval,assthru,exec,system display_errors 和 error_reporting 错误显示 audit auxiliary tool or defect verification toolcode audit tool seay only for php Fortify SCA RIPS only for php defect verification tool burp suite]]></content>
+      <categories>
+        <category>ITsecure</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>secure</tag>
+        <tag>audit</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP My Cookbook]]></title>
+    <url>%2Fphp%2Fphp_My_cookbook.html</url>
+    <content type="text"><![CDATA[判断变量是否为空empty() 函数用于检查一个变量是否为空。 empty() 判断一个变量是否被认为是空的。当一个变量并不存在，或者它的值等同于 FALSE，那么它会被认为不存在。如果变量不存在的话，empty()并不会产生警告。 empty() 5.5 版本之后支持表达式了，而不仅仅是变量。 版本要求：PHP 4, PHP 5, PHP 7 语法bool empty ( mixed $var ) 参数说明： $var：待检查的变量。 注意：在 PHP 5.5 之前，empty() 仅支持变量；任何其他东西将会导致一个解析错误。换言之，下列代码不会生效： empty(trim($name)) 作为替代，应该使用: trim($name) == false empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。 返回值当 var 存在，并且是一个非空非零的值时返回 FALSE 否则返回 TRUE。 以下的变量会被认为是空的： “” (空字符串) 0 (作为整数的0) 0.0 (作为浮点数的0) “0” (作为字符串的0) NULL FALSE array() (一个空数组) $var; (一个声明了，但是没有值的变量) 实例1234567891011121314151617181920&lt;?php$ivar1=0;$istr1=&apos;Runoob&apos;;if (empty($ivar1))&#123; echo &apos;$ivar1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;&#125;else&#123; echo &apos;$ivar1&apos; . &quot; 不为空或不为 0。&quot; . PHP_EOL;&#125;if (empty($istr1))&#123; echo &apos;$istr1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;&#125;else&#123; echo &apos;$istr1&apos; . &quot; 字符串不为空或不为0。&quot; . PHP_EOL;&#125;?&gt; 执行结果如下所示：$ivar1 为空或为 0。 $istr1 字符串不为空或不为0。 读取文件，得到状态码12345if(file_exists("/absolution path"))&#123; $res = file_get_contents("/absolution path"); if("0" != $res)&#123; &#125;&#125; 判断字符串a是否存在某字符串bstrpos 会返回0即从a的第一个位置就找到了b12if(false !== strpos("a", "b"))&#123;&#125; 用strlen来替代empty当form var填入0的时候, empty($_POST[‘var’]) empty 为空 “” (空字符串) 0 (作为整数的0) 0.0 (作为浮点数的0) “0” (作为字符串的0) NULL FALSE array() (一个空数组) $var; (一个声明了，但是没有值的变量) empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。 empty(trim($name)) is wrong, empty cant contain func but a variable before version 5.3 产生随机数做id12345678if (function_exists('mcrypt_create_iv')) &#123; $_SESSION['token'] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));&#125; else &#123; $_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(32));&#125;md5(uniqid()) replace string or charactersstrtr sql special characters % and _ 1strtr($string, array('_'=&gt;'\_', '%'=&gt;'\%')); the list of php extension php -m php -i php -r “print_r(get_loaded_extensions());” php 7 change log openssl built in (not need install) bcmath built in (in archlinux) php Daily Discoveryphp gengerate pie or line or column image pChart 根据字节数计算单位12345678private function formatBytes($size)&#123; $units = array(&apos;&apos;,&apos;K&apos;,&apos;M&apos;,&apos;G&apos;,&apos;T&apos;); $i = 0; for( ; $size&gt;=1024 &amp;&amp; $i&lt;count($units); $i++)&#123; $size /= 1024; &#125; return round($size,2).$units[$i];&#125; calculated the disk space12disk_total_space()disk_free_space()]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>cookbook</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[PHP download]]></title>
     <url>%2Fphp%2Fphp_download.html</url>
     <content type="text"><![CDATA[php downloadphp download big file12345678910111213141516171819if (file_exists($path)) &#123; $file_size = filesize($path); if (FALSE!== ($handler = fopen($path, &apos;r&apos;)))&#123; header(&apos;Content-Description: File Transfer&apos;); header(&apos;Content-Type: application/octet-stream&apos;); header(&apos;Accept-Ranges: bytes&apos;); header(&apos;Content-Disposition: attachment; filename=&apos;.basename($path)); header(&apos;Accept-Length:&apos;. $file_size); header(&apos;Content-Transfer-Encoding: chunked&apos;); header(&apos;Expires: 0&apos;); header(&apos;Cache-Control: must-revalidate, post-check=0, pre-check=0&apos;); header(&apos;Pragma: public&apos;); $buffer_size = 4096*20; while(!feof($handler))&#123; $chunk = fread($handler,$buffer_size); echo $chunk; &#125; fclose($handler); &#125; php upload big file第一步： Apache环境中的档案上传大小控制修改httpd.conf添加下面内容LimitRequestBody 10485760即10M=1010241024，有的文章中提到应改为 600000000重新启动apache，就可以在设置里看到你要的大小 第二步：修改在php5下POST文件大小的限制修改php.ini找到 File Uploadsh区域修改以下几个参数： file_uploads = on ;是否允许通过HTTP上传文件的开关。默认为ON即是开 upload_tmp_dir ;文件上传至服务器上存储临时文件的地方，如果没指定就会用系统默认的临时文件夹(moodle可以不改)upload_max_filesize = 8m ;允许上传文件大小的最大值.找到 Data Handling区域，修改 post_max_size = 8m ;指通过表单POST给PHP的所能接收的最大值，包括表单里的所有值。默认为8M设上述四个参数后，上传小于8M的文件一般不成问题。但如果上传大于8M的文件，只还得设置以下参数：在Resource Limits 区域: max_execution_time = 600 ;每个PHP页面运行的最大时间值(秒)，默认30秒 max_input_time = 600 ;每个PHP页面接收数据所需的最大时间，默认60秒 memory_limit = 8m ;每个PHP页面所吃掉的最大内存，默认8M]]></content>
@@ -31,8 +115,8 @@
         <category>php</category>
       </categories>
       <tags>
-        <tag>configure</tag>
         <tag>php</tag>
+        <tag>configure</tag>
       </tags>
   </entry>
   <entry>
@@ -46,17 +130,6 @@
         <tag>ubuntu</tag>
         <tag>wine</tag>
         <tag>deep-win</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[ubuntu notes]]></title>
-    <url>%2Fubuntu%2Fubuntu_notes.html</url>
-    <content type="text"><![CDATA[How to delete dash app label /usr/share/applications（全局模式下） ~/.local/share/applications（用户独立配置）]]></content>
-      <categories>
-        <category>zsh</category>
-      </categories>
-      <tags>
-        <tag>ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -95,30 +168,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[js Note]]></title>
-    <url>%2Fjs%2Fnote.html</url>
-    <content type="text"><![CDATA[javascript Notesjquery attr and prop 对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。 对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。 12345678//像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才能获得正确的结果。$("#chk1").prop("checked") == false$("#chk2").prop("checked") == true//如果上面使用attr方法，则会出现：$("#chk1").attr("checked") == undefined$("#chk2").attr("checked") == "checked"]]></content>
-      <categories>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>js</tag>
-        <tag>html</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[PHP My Cookbook]]></title>
-    <url>%2Fphp%2Fphp_My_cookbook.html</url>
-    <content type="text"><![CDATA[判断变量是否为空empty() 函数用于检查一个变量是否为空。 empty() 判断一个变量是否被认为是空的。当一个变量并不存在，或者它的值等同于 FALSE，那么它会被认为不存在。如果变量不存在的话，empty()并不会产生警告。 empty() 5.5 版本之后支持表达式了，而不仅仅是变量。 版本要求：PHP 4, PHP 5, PHP 7 语法bool empty ( mixed $var ) 参数说明： $var：待检查的变量。 注意：在 PHP 5.5 之前，empty() 仅支持变量；任何其他东西将会导致一个解析错误。换言之，下列代码不会生效： empty(trim($name)) 作为替代，应该使用: trim($name) == false empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。 返回值当 var 存在，并且是一个非空非零的值时返回 FALSE 否则返回 TRUE。 以下的变量会被认为是空的： “” (空字符串) 0 (作为整数的0) 0.0 (作为浮点数的0) “0” (作为字符串的0) NULL FALSE array() (一个空数组) $var; (一个声明了，但是没有值的变量) 实例1234567891011121314151617181920&lt;?php$ivar1=0;$istr1=&apos;Runoob&apos;;if (empty($ivar1))&#123; echo &apos;$ivar1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;&#125;else&#123; echo &apos;$ivar1&apos; . &quot; 不为空或不为 0。&quot; . PHP_EOL;&#125;if (empty($istr1))&#123; echo &apos;$istr1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;&#125;else&#123; echo &apos;$istr1&apos; . &quot; 字符串不为空或不为0。&quot; . PHP_EOL;&#125;?&gt; 执行结果如下所示：$ivar1 为空或为 0。 $istr1 字符串不为空或不为0。 读取文件，得到状态码12345if(file_exists("/absolution path"))&#123; $res = file_get_contents("/absolution path"); if("0" != $res)&#123; &#125;&#125; 判断字符串a是否存在某字符串bstrpos 会返回0即从a的第一个位置就找到了b12if(false !== strpos("a", "b"))&#123;&#125; 用strlen来替代empty当form var填入0的时候, empty($_POST[‘var’]) empty 为空 “” (空字符串) 0 (作为整数的0) 0.0 (作为浮点数的0) “0” (作为字符串的0) NULL FALSE array() (一个空数组) $var; (一个声明了，但是没有值的变量) empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。 empty(trim($name)) is wrong, empty cant contain func but a variable before version 5.3 产生随机数做id12345678if (function_exists('mcrypt_create_iv')) &#123; $_SESSION['token'] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));&#125; else &#123; $_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(32));&#125;md5(uniqid()) replace string or charactersstrtr sql special characters % and _ 1strtr($string, array('_'=&gt;'\_', '%'=&gt;'\%')); the list of php extension php -m php -i php -r “print_r(get_loaded_extensions());” php 7 change log openssl built in (not need install) bcmath built in (in archlinux) php Daily Discoveryphp gengerate pie or line or column image pChart 根据字节数计算单位12345678private function formatBytes($size)&#123; $units = array(&apos;&apos;,&apos;K&apos;,&apos;M&apos;,&apos;G&apos;,&apos;T&apos;); $i = 0; for( ; $size&gt;=1024 &amp;&amp; $i&lt;count($units); $i++)&#123; $size /= 1024; &#125; return round($size,2).$units[$i];&#125;]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
-        <tag>cookbook</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Apache cookbook]]></title>
     <url>%2Fapache%2Fphp_My_cookbook.html</url>
     <content type="text"><![CDATA[apache cookbookquery apache default user or group ps aux | egrep ‘(apache|httpd)’ ca认证的时候有时候出现了403首先需要开启apahce ssl trace 3级别的日志,配置1234&lt;IfModule mod_ssl.c&gt; ErrorLog /var/log/apache2/ssl_engine.log LogLevel trace3&lt;/IfModule&gt; apache重启 然后去复现bug的过程，查看/var/log/apache2/ssl_engine.log日志，见图ssl error 发现正常认证过程是full renegotiation 而错误的认证过程是 quick renegotiation。quick renegotiation会导致认证过程找到不到peer chain 导致认证失败 返回403。 https://bz.apache.org/bugzilla/show_bug.cgi?id=55786 在apache官方bugzilla查看 这个bug在version 2.4.24 已经修复了，但是我们的设备是2.4.16，所以解决办法是： a) Removing “OptRenegotiate” on /cert/. We need this feature to prevent client certificate requests with every access to /cert b) Setting SSLVerifyClient to require or optional on the whole virtual host: Not possible because requests to /nocert should not trigger a certificate request. c) Disable keep-alive. 因此，我关闭了OptRenegotiate 优化Renegotiate过程，让每次Renegotiate都是full的状态，这样改会降低一点速度，如果需要优化版本只能升级apahce到2.4.24以上]]></content>
@@ -126,8 +175,8 @@
         <category>apache</category>
       </categories>
       <tags>
-        <tag>setting</tag>
         <tag>apache</tag>
+        <tag>setting</tag>
       </tags>
   </entry>
   <entry>
@@ -138,8 +187,8 @@
         <category>js</category>
       </categories>
       <tags>
-        <tag>js</tag>
         <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -196,8 +245,8 @@
         <category>js</category>
       </categories>
       <tags>
-        <tag>js</tag>
         <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -220,8 +269,8 @@
         <category>css</category>
       </categories>
       <tags>
-        <tag>html</tag>
         <tag>css</tag>
+        <tag>html</tag>
       </tags>
   </entry>
   <entry>
@@ -232,8 +281,8 @@
         <category>js</category>
       </categories>
       <tags>
-        <tag>js</tag>
         <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -244,8 +293,8 @@
         <category>js</category>
       </categories>
       <tags>
-        <tag>js</tag>
         <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -297,18 +346,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hexo head setting]]></title>
-    <url>%2Fhexo%2Fhexo_post_header.html</url>
-    <content type="text"><![CDATA[hexo post文件头设置12345678910---title: Hexo head settingcategories: hexocopyright: truetags: - hexo - settingkeywords:description:--- hexo abstract setting12abstract content&lt;!--more--&gt; multi level categories12345categories: [no 1 categories, no 2 categories]categories: - no 1 - no 2]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>setting</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[cmder 各类配置以及问题解决]]></title>
     <url>%2Fcmder%2Fcmder.html</url>
     <content type="text"><![CDATA[cmder 配置cmder 显示 oh my zsh会出现乱码 去网站nerdfonts最下面下载hack字体，解压安装hack字体 在cmder 的setting中 font是 选择hack字体 启动quake模式，使得cmder能够从window最上面一键呼出 cmder的setting，general 的quake style，勾选 quake style slide down , always on top , restore inactive .. , restore to active monitor setting的 keys &amp;macro 修改 minimize/restore quake style hotkey 快捷键]]></content>
@@ -322,6 +359,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Hexo head setting]]></title>
+    <url>%2Fhexo%2Fhexo_post_header.html</url>
+    <content type="text"><![CDATA[hexo post文件头设置12345678910---title: Hexo head settingcategories: hexocopyright: truetags: - hexo - settingkeywords:description:--- hexo abstract setting12abstract content&lt;!--more--&gt; multi level categories12345categories: [no 1 categories, no 2 categories]categories: - no 1 - no 2]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>setting</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[onclick lanuch a post request，解决get参数太长，导致请求失败]]></title>
     <url>%2Fjs%2Fonclick_for_post.html</url>
     <content type="text"><![CDATA[onclick lanuch post request有时候，由于get请求下载文件，请求参数超过了2048字符，在IE等浏览器就会导致参数不完整 因此使用post请求，其参数就没有限制长度， 然后，使用ajax发起post请求，无法触发文件下载，因此使用模拟form表单发起post请求 原生onclick 发起post请求 12345678910111213141516function onclickpost(URL, PARAMS) &#123; var temp = document.createElement("form"); temp.action = URL; temp.method = "post"; temp.style.display = "none"; for (var x in PARAMS) &#123; var opt = document.createElement("textarea"); opt.name = x; opt.value = PARAMS[x]; temp.appendChild(opt); &#125; document.body.appendChild(temp); temp.submit(); temp.parentNode.removeChild(temp);&#125;onclickpost(url, &#123;cat:rawinfo&#125;)]]></content>
@@ -329,8 +378,8 @@
         <category>js</category>
       </categories>
       <tags>
-        <tag>js</tag>
         <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -371,17 +420,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[PHP quotes]]></title>
-    <url>%2Fphp%2Fphp_quotes.html</url>
-    <content type="text"><![CDATA[php quote魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符都会被自动加上一个反斜线进行转义，这和 addslashes() 作用完全相同 相关的函数 set_magic_quotes_runtime magic_quotes_gpc addslashes stripslashes set_magic_quotes_runtime()设置当前magic_quotes_runtime 配置选项的激活状态，0为关闭，1为开启。set_magic_quotes_runtime(1)或是配置文件中magic_quotes_runtime为true（这个在php.ini中配置），那么php脚本读取文件或是从数据库中读取数据，遇到反斜线（\）、单引号（’）、双引号（”）、NULL时，会在前面自动加上转义字符，变成\、\’、\”、\NULL；若是关闭的话，也就是set_magic_quotes_runtime(0)magic_quotes_runtime为false，那么便会转义，此时可以借助addslashes进行转义。 magic_quotes_gpc()当此值为1时，会对HTTP请求中的G（$_GET）、P（$_POST）、C（$_COOKIE）单双引号和反斜线进行转义；反之则不会。该操作一般见于表单提交的数据库操作，若是值为0时，便用addslashes进行转义存入数据库中，取出时再用stripslashes函数把反斜线给去掉。 特别注意的是在PHP 5.4版本时，魔术引号被移除了，因此转义都需要加上addslashes函数。 12345678910$_GET['des'] = "she's a beauty";foreach (array('_GET', '_POST', '_COOKIE') as $_request)&#123; echo $_request; // _GET_POST _COOKIE foreach ($$_request as $_key=&gt; $_value)&#123; // $_key为键，如_GET，$$_key为$_GET // $$_key=$_value意思就是把$_GET['des'] = 1111便为$des=she\'s a beauty $_key&#123;0&#125; != '_' &amp;&amp; $$_key=addslashes($_value); echo $$_key; &#125;&#125; 12345if(get_magic_quotes_gpc() &amp;&amp; (! ini_get('magic_quotes_sybase')))&#123; $value = stripslashes($_GET['value']);&#125;else&#123; $value = $_GET['value'];&#125;]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[PHP Filesystem]]></title>
     <url>%2Fphp%2Fphp_get_path_filename.html</url>
     <content type="text"><![CDATA[PHP Filesystem 函数 描述 PHP basename() 返回路径中的文件名部分。 3 chgrp() 改变文件组。 3 chmod() 改变文件模式。 3 chown() 改变文件所有者。 3 clearstatcache() 清除文件状态缓存。 3 copy() 复制文件。 3 delete() 参见 unlink() 或 unset()。 dirname() 返回路径中的目录名称部分。 3 disk_free_space() 返回目录的可用空间。 4 disk_total_space() 返回一个目录的磁盘总容量。 4 diskfreespace() disk_free_space() 的别名。 3 fclose() 关闭打开的文件。 3 feof() 测试文件指针是否到了文件结束的位置。 3 fflush() 向打开的文件输出缓冲内容。 4 fgetc() 从打开的文件中返回字符。 3 fgetcsv() 从打开的文件中解析一行，校验 CSV 字段。 3 fgets() 从打开的文件中返回一行。 3 fgetss() 从打开的文件中读取一行并过滤掉 HTML 和 PHP 标记。 3 file() 把文件读入一个数组中。 3 file_exists() 检查文件或目录是否存在。 3 file_get_contents() 将文件读入字符串。 4 file_put_contents() 将字符串写入文件。 5 fileatime() 返回文件的上次访问时间。 3 filectime() 返回文件的上次改变时间。 3 filegroup() 返回文件的组 ID。 3 fileinode() 返回文件的 inode 编号。 3 filemtime() 返回文件的上次修改时间。 3 fileowner() 文件的 user ID （所有者）。 3 fileperms() 返回文件的权限。 3 filesize() 返回文件大小。 3 filetype() 返回文件类型。 3 flock() 锁定或释放文件。 3 fnmatch() 根据指定的模式来匹配文件名或字符串。 4 fopen() 打开一个文件或 URL。 3 fpassthru() 从打开的文件中读数据，直到 EOF，并向输出缓冲写结果。 3 fputcsv() 将行格式化为 CSV 并写入一个打开的文件中。 5 fputs() fwrite() 的别名。 3 fread() 读取打开的文件。 3 fscanf() 根据指定的格式对输入进行解析。 4 fseek() 在打开的文件中定位。 3 fstat() 返回关于一个打开的文件的信息。 4 ftell() 返回文件指针的读/写位置 3 ftruncate() 将文件截断到指定的长度。 4 fwrite() 写入文件。 3 glob() 返回一个包含匹配指定模式的文件名/目录的数组。 4 is_dir() 判断指定的文件名是否是一个目录。 3 is_executable() 判断文件是否可执行。 3 is_file() 判断指定文件是否为常规的文件。 3 is_link() 判断指定的文件是否是连接。 3 is_readable() 判断文件是否可读。 3 is_uploaded_file() 判断文件是否是通过 HTTP POST 上传的。 3 is_writable() 判断文件是否可写。 4 is_writeable() is_writable() 的别名。 3 link() 创建一个硬连接。 3 linkinfo() 返回有关一个硬连接的信息。 3 lstat() 返回关于文件或符号连接的信息。 3 mkdir() 创建目录。 3 move_uploaded_file() 将上传的文件移动到新位置。 4 parse_ini_file() 解析一个配置文件。 4 pathinfo() 返回关于文件路径的信息。 4 pclose() 关闭有 popen() 打开的进程。 3 popen() 打开一个进程。 3 readfile() 读取一个文件，并输出到输出缓冲。 3 readlink() 返回符号连接的目标。 3 realpath() 返回绝对路径名。 4 rename() 重名名文件或目录。 3 rewind() 倒回文件指针的位置。 3 rmdir() 删除空的目录。 3 set_file_buffer() 设置已打开文件的缓冲大小。 3 stat() 返回关于文件的信息。 3 symlink() 创建符号连接。 3 tempnam() 创建唯一的临时文件。 3 tmpfile() 建立临时文件。 3 touch() 设置文件的访问和修改时间。 3 umask() 改变文件的文件权限。 3 unlink() 删除文件。 3 compatibility当在 Unix 平台上规定路径时，正斜杠 (/) 用作目录分隔符。而在 Windows 平台上，正斜杠 (/) 和反斜杠 () 均可使用。]]></content>
@@ -392,6 +430,17 @@
         <tag>php</tag>
         <tag>os</tag>
         <tag>filesystem</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP quotes]]></title>
+    <url>%2Fphp%2Fphp_quotes.html</url>
+    <content type="text"><![CDATA[php quote魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符都会被自动加上一个反斜线进行转义，这和 addslashes() 作用完全相同 相关的函数 set_magic_quotes_runtime magic_quotes_gpc addslashes stripslashes set_magic_quotes_runtime()设置当前magic_quotes_runtime 配置选项的激活状态，0为关闭，1为开启。set_magic_quotes_runtime(1)或是配置文件中magic_quotes_runtime为true（这个在php.ini中配置），那么php脚本读取文件或是从数据库中读取数据，遇到反斜线（\）、单引号（’）、双引号（”）、NULL时，会在前面自动加上转义字符，变成\、\’、\”、\NULL；若是关闭的话，也就是set_magic_quotes_runtime(0)magic_quotes_runtime为false，那么便会转义，此时可以借助addslashes进行转义。 magic_quotes_gpc()当此值为1时，会对HTTP请求中的G（$_GET）、P（$_POST）、C（$_COOKIE）单双引号和反斜线进行转义；反之则不会。该操作一般见于表单提交的数据库操作，若是值为0时，便用addslashes进行转义存入数据库中，取出时再用stripslashes函数把反斜线给去掉。 特别注意的是在PHP 5.4版本时，魔术引号被移除了，因此转义都需要加上addslashes函数。 12345678910$_GET['des'] = "she's a beauty";foreach (array('_GET', '_POST', '_COOKIE') as $_request)&#123; echo $_request; // _GET_POST _COOKIE foreach ($$_request as $_key=&gt; $_value)&#123; // $_key为键，如_GET，$$_key为$_GET // $$_key=$_value意思就是把$_GET['des'] = 1111便为$des=she\'s a beauty $_key&#123;0&#125; != '_' &amp;&amp; $$_key=addslashes($_value); echo $$_key; &#125;&#125; 12345if(get_magic_quotes_gpc() &amp;&amp; (! ini_get('magic_quotes_sybase')))&#123; $value = stripslashes($_GET['value']);&#125;else&#123; $value = $_GET['value'];&#125;]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
       </tags>
   </entry>
   <entry>
@@ -432,15 +481,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[PHP session]]></title>
-    <url>%2Fphp%2Fcookbook%2Fphp_session.html</url>
-    <content type="text"><![CDATA[PHP SessionPHP redirect url need add phpsessionidSID is constant value replace phpsessionid1234$redirect_url = 'http://www.example.com';if(defined('SID') &amp;&amp; (! isset($_COOKIE[session_name()])))&#123; $redirect_url .= '?' . SID&#125; output_add_rewrite_var ( string $name , string $value ) : bool1output_add_rewrite_var('token', $token); 此函数给URL重写机制添加名/值对。 这种名值对将被添加到URL（以GET参数的形式）和表单（以input隐藏域的形式），当透明URL重写用 session.use_trans_sid 开启时同样可以添加到session ID。 要注意，绝对URL(http://example.com/..)不能被重写。 force use cookie, url not contain phpsessionid123ini_set('session.use_only_cookies', true)session_regenerate_id();]]></content>
+    <title><![CDATA[PHP dynamically create object]]></title>
+    <url>%2Fphp%2Fcookbook%2Fphp_dynamic_create_object.html</url>
+    <content type="text"><![CDATA[PHP dynamically create object123$object = new ReflectionClass('PDO');$object-&gt;newInstanceArgs(array('arg1'=&gt;$arg1, 'arg2'=&gt;$arg2)); PHP dynamically calling func1234567$classname = "TestClassName";$object = new #classname();$methodname = "getData";$object-&gt;$methodname("arg1", "arg2");]]></content>
       <categories>
         <category>php</category>
       </categories>
       <tags>
         <tag>php</tag>
-        <tag>session</tag>
       </tags>
   </entry>
   <entry>
@@ -456,14 +504,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[PHP dynamically create object]]></title>
-    <url>%2Fphp%2Fcookbook%2Fphp_dynamic_create_object.html</url>
-    <content type="text"><![CDATA[PHP dynamically create object123$object = new ReflectionClass('PDO');$object-&gt;newInstanceArgs(array('arg1'=&gt;$arg1, 'arg2'=&gt;$arg2)); PHP dynamically calling func1234567$classname = "TestClassName";$object = new #classname();$methodname = "getData";$object-&gt;$methodname("arg1", "arg2");]]></content>
+    <title><![CDATA[PHP session]]></title>
+    <url>%2Fphp%2Fcookbook%2Fphp_session.html</url>
+    <content type="text"><![CDATA[PHP SessionPHP redirect url need add phpsessionidSID is constant value replace phpsessionid1234$redirect_url = 'http://www.example.com';if(defined('SID') &amp;&amp; (! isset($_COOKIE[session_name()])))&#123; $redirect_url .= '?' . SID&#125; output_add_rewrite_var ( string $name , string $value ) : bool1output_add_rewrite_var('token', $token); 此函数给URL重写机制添加名/值对。 这种名值对将被添加到URL（以GET参数的形式）和表单（以input隐藏域的形式），当透明URL重写用 session.use_trans_sid 开启时同样可以添加到session ID。 要注意，绝对URL(http://example.com/..)不能被重写。 force use cookie, url not contain phpsessionid123ini_set('session.use_only_cookies', true)session_regenerate_id();]]></content>
       <categories>
         <category>php</category>
       </categories>
       <tags>
         <tag>php</tag>
+        <tag>session</tag>
       </tags>
   </entry>
   <entry>
@@ -492,18 +541,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[django basic commands]]></title>
-    <url>%2Fpython%2Fdjango%2Fbasic_command.html</url>
-    <content type="text"><![CDATA[django basic commandscreate projectdjango-admin.py startproject project_name create appdjango-admin.py startapp appname synchro database python manange.py makemigrations python manange.py migrate run by test serverpython manange.py runserver 127.0.0.1:8888 clear databasepython manange.py flush create super userpython manange.py createsuperuser change user passwordpython manange.py changepassword username dump databasepython manange.py dumpdata appname &gt; appname.json load databasepython manange.py loaddata appname.json django shellpython manange.py shell database sql shellpython manange.py dbshell]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>django</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[PHP protected from sql inject]]></title>
     <url>%2Fphp%2Fsecure%2Fphp_SQL_inject.html</url>
     <content type="text"><![CDATA[PHP protected from sql injectPDOinsert123456$db = new PDO("sqlite:/tmp.db");$sql = "insert into auth (time, user) values(?, ?)";$query = $db-&gt;prepare($sql);if($query-&gt;execute(array($time, $user)))&#123; echo "insert success";&#125; select123456$db = new PDO("sqlite:/tmp.db");$sql = "select * from tmp where ip=? or user=?";$query = $db-&gt;prepare($sql);$query-&gt;execute(array($ip, $user));$rows = $query-&gt;fetchAll(PDO::FETCH_ASSOC);var_dump($rows);]]></content>
@@ -514,6 +551,18 @@
         <tag>php</tag>
         <tag>web attack</tag>
         <tag>sql inject</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[django basic commands]]></title>
+    <url>%2Fpython%2Fdjango%2Fbasic_command.html</url>
+    <content type="text"><![CDATA[django basic commandscreate projectdjango-admin.py startproject project_name create appdjango-admin.py startapp appname synchro database python manange.py makemigrations python manange.py migrate run by test serverpython manange.py runserver 127.0.0.1:8888 clear databasepython manange.py flush create super userpython manange.py createsuperuser change user passwordpython manange.py changepassword username dump databasepython manange.py dumpdata appname &gt; appname.json load databasepython manange.py loaddata appname.json django shellpython manange.py shell database sql shellpython manange.py dbshell]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>django</tag>
       </tags>
   </entry>
   <entry>

@@ -112,14 +112,14 @@
 
 
   <meta name="description" content="javascript Notesjquery attr and prop 对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。 对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。  12345678//像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才">
-<meta name="keywords" content="js,html">
+<meta name="keywords" content="html,js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js Note">
 <meta property="og:url" content="https://moonclearner.cn/js/note.html">
 <meta property="og:site_name" content="moonclearner page">
 <meta property="og:description" content="javascript Notesjquery attr and prop 对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。 对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。  12345678//像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-26T08:55:45.703Z">
+<meta property="og:updated_time" content="2019-09-19T06:52:51.071Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js Note">
 <meta name="twitter:description" content="javascript Notesjquery attr and prop 对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。 对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。  12345678//像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才">
@@ -456,7 +456,7 @@
                 
               
 
-              <time title="Created: 2019-06-26 16:55:45" itemprop="dateCreated datePublished" datetime="2019-06-26T16:55:45+08:00">2019-06-26</time>
+              <time title="Created: 2019-09-19 14:52:51" itemprop="dateCreated datePublished" datetime="2019-09-19T14:52:51+08:00">2019-09-19</time>
             
 
             
@@ -502,7 +502,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">377</span>
+                <span title="Symbols count in article">764</span>
               
 
               
@@ -541,6 +541,7 @@
 <li>对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才能获得正确的结果。</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"#chk1"</span>).prop(<span class="string">"checked"</span>) == <span class="literal">false</span></span><br><span class="line">$(<span class="string">"#chk2"</span>).prop(<span class="string">"checked"</span>) == <span class="literal">true</span></span><br><span class="line"><span class="comment">//如果上面使用attr方法，则会出现：</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"#chk1"</span>).attr(<span class="string">"checked"</span>) == <span class="literal">undefined</span></span><br><span class="line">$(<span class="string">"#chk2"</span>).attr(<span class="string">"checked"</span>) == <span class="string">"checked"</span></span><br></pre></td></tr></table></figure>
+<h3 id="deep-copy"><a href="#deep-copy" class="headerlink" title="deep copy"></a>deep copy</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//深复制</span><br><span class="line">function copy(obj1,obj2)&#123;</span><br><span class="line">    var obj2=obj2||[];</span><br><span class="line">    for(var name in obj1)&#123;</span><br><span class="line">        if(typeof obj1[name] === &quot;object&quot;)&#123;</span><br><span class="line">            obj2[name]= (obj1[name] instanceof Array)?[]:&#123;&#125;;</span><br><span class="line">            copy(obj1[name],obj2[name]);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            obj2[name]=obj1[name];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return obj2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -571,9 +572,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/js/" rel="tag"><i class="fa fa-tag"></i> js</a>
-          
             <a href="/tags/html/" rel="tag"><i class="fa fa-tag"></i> html</a>
+          
+            <a href="/tags/js/" rel="tag"><i class="fa fa-tag"></i> js</a>
           
         </div>
       
@@ -586,8 +587,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/php/php_My_cookbook.html" rel="next" title="PHP My Cookbook">
-                <i class="fa fa-chevron-left"></i> PHP My Cookbook
+              <a href="/python/python_secure.html" rel="next" title="python secure">
+                <i class="fa fa-chevron-left"></i> python secure
               </a>
             
           </div>
@@ -596,8 +597,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/git/configure.html" rel="prev" title="git">
-                git <i class="fa fa-chevron-right"></i>
+              <a href="/js/html2cavas.html" rel="prev" title="js将div截图发送到后台生成图片">
+                js将div截图发送到后台生成图片 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -672,7 +673,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -719,7 +720,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -816,7 +819,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -885,7 +892,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-Notes"><span class="nav-number">1.</span> <span class="nav-text">javascript Notes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jquery-attr-and-prop"><span class="nav-number">1.0.1.</span> <span class="nav-text">jquery attr and prop</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-Notes"><span class="nav-number">1.</span> <span class="nav-text">javascript Notes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jquery-attr-and-prop"><span class="nav-number">1.0.1.</span> <span class="nav-text">jquery attr and prop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deep-copy"><span class="nav-number">1.0.2.</span> <span class="nav-text">deep copy</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -918,7 +925,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">34k</span>
+    <span title="Symbols count total">39k</span>
   
 
   
@@ -927,7 +934,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">31 mins.</span>
+    <span title="Reading time total">35 mins.</span>
   
 </div>
 

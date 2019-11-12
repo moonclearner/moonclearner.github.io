@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://moonclearner.cn/"/>
-  <updated>2019-07-12T09:08:13.463Z</updated>
+  <updated>2019-11-12T12:05:48.541Z</updated>
   <id>https://moonclearner.cn/</id>
   
   <author>
@@ -15,6 +15,196 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IE compatible</title>
+    <link href="https://moonclearner.cn/js/IECompatible.html"/>
+    <id>https://moonclearner.cn/js/IECompatible.html</id>
+    <published>2019-11-12T12:05:48.541Z</published>
+    <updated>2019-11-12T12:05:48.541Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="jQuery-html-and-interHtml-method-run-very-slowly-on-IE-8-or-IE-9-browser"><a href="#jQuery-html-and-interHtml-method-run-very-slowly-on-IE-8-or-IE-9-browser" class="headerlink" title="jQuery().html() and interHtml method run very slowly on IE 8 or IE 9 browser"></a>jQuery().html() and interHtml method run very slowly on IE 8 or IE 9 browser</h1><h2 id="phenomenon"><a href="#phenomenon" class="headerlink" title="phenomenon"></a>phenomenon</h2><p>when run the method below, It costs too much time.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> htmlString = <span class="string">"&lt;div&gt;&lt;span&gt;test&lt;/span&gt;&lt;/div&gt;"</span>;</span><br><span class="line">jQuery().html(htmlString)</span><br><span class="line">domcument.getElementById().interHtml = htmlString;</span><br></pre></td></tr></table></figure></p><h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>replace jQuery.html() or interHtml with dom method to solve the problem<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> htmlString = <span class="string">"&lt;div&gt;&lt;span&gt;test&lt;/span&gt;&lt;/div&gt;"</span>;</span><br><span class="line"><span class="comment">//turn the string into a dom object </span></span><br><span class="line"><span class="keyword">var</span> domObj = jQuery(htmlString).get(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(); </span><br><span class="line"><span class="keyword">var</span> childs = el.childNodes; </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = childs .length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">    <span class="comment">//delete all child node</span></span><br><span class="line">    el.removeChild(childs[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.getElementById().appendChild(domObj);</span><br></pre></td></tr></table></figure></p><h1 id="JSON-module-missing"><a href="#JSON-module-missing" class="headerlink" title="JSON module missing"></a>JSON module missing</h1><h2 id="phenomenon-1"><a href="#phenomenon-1" class="headerlink" title="phenomenon"></a>phenomenon</h2><p>such as JSON.parse or JSON.stringify method cant use</p><h2 id="solution-1"><a href="#solution-1" class="headerlink" title="solution"></a>solution</h2><p>download the json2.js or json3.js, and import <code>&lt;script src=&quot;/js/json3.min.js&quot;&gt;&lt;/script&gt;</code></p><h1 id="str-trim-missing"><a href="#str-trim-missing" class="headerlink" title="str.trim() missing"></a>str.trim() missing</h1><h2 id="solution-2"><a href="#solution-2" class="headerlink" title="solution"></a>solution</h2><p>replace str.trim() with jQuery.trim();</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;jQuery-html-and-interHtml-method-run-very-slowly-on-IE-8-or-IE-9-browser&quot;&gt;&lt;a href=&quot;#jQuery-html-and-interHtml-method-run-very-slowly
+      
+    
+    </summary>
+    
+      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
+    
+    
+      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
+    
+      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js将div截图发送到后台生成图片</title>
+    <link href="https://moonclearner.cn/js/html2cavas.html"/>
+    <id>https://moonclearner.cn/js/html2cavas.html</id>
+    <published>2019-11-12T10:14:30.463Z</published>
+    <updated>2019-06-11T10:42:03.607Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="html2canvas"><a href="#html2canvas" class="headerlink" title="html2canvas"></a>html2canvas</h1><p>需要导入html2canvas.min.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementById(<span class="string">'div'</span>);</span><br><span class="line"><span class="keyword">var</span> opts = &#123;</span><br><span class="line">scale:<span class="number">10</span>,</span><br><span class="line">width:oDiv.offsetWidth,</span><br><span class="line">height:oDiv.offsetHeight</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">html2canvas(oDiv, opts).then(<span class="function"><span class="keyword">function</span>(<span class="params">canvas</span>)</span>&#123;</span><br><span class="line">canvas.getContext(<span class="string">'2d'</span>).mozImageSmoothingEnabled    = <span class="literal">false</span>;</span><br><span class="line">canvas.getContext(<span class="string">'2d'</span>).webkitImageSmoothingEnabled = <span class="literal">false</span>;</span><br><span class="line">canvas.getContext(<span class="string">'2d'</span>).msImageSmoothingEnabled     = <span class="literal">false</span>;</span><br><span class="line">canvas.getContext(<span class="string">'2d'</span>).imageSmoothingEnabled       = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">var</span> strDataURI = canvas.toDataURL();</span><br><span class="line"><span class="keyword">var</span> location_url = <span class="string">"/download/"</span></span><br><span class="line">param = &#123;<span class="string">'img'</span>:strDataURI&#125;;</span><br><span class="line"><span class="keyword">new</span> Ajax.Request(location_url, &#123;</span><br><span class="line">method:<span class="string">'post'</span>,</span><br><span class="line">parameters:param,</span><br><span class="line">onComplete:<span class="function"><span class="keyword">function</span>(<span class="params">req</span>)</span>&#123;</span><br><span class="line"><span class="built_in">window</span>.location=location_url;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line">&#125;);</span><br><span class="line">&#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">jQuery(<span class="string">"#export"</span>).show();</span><br><span class="line"><span class="keyword">var</span> location_url = <span class="string">"/download/"</span></span><br><span class="line">param = &#123;&#125;;</span><br><span class="line"><span class="keyword">new</span> Ajax.Request(location_url, &#123;</span><br><span class="line">method:<span class="string">'post'</span>,</span><br><span class="line">parameters:param,</span><br><span class="line">onComplete:<span class="function"><span class="keyword">function</span>(<span class="params">req</span>)</span>&#123;</span><br><span class="line"><span class="built_in">window</span>.location=location_url;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>server<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">download</span><span class="params">()</span></span>&#123;</span><br><span class="line">$img       = $_POST[<span class="string">'img'</span>];</span><br><span class="line">$file      = <span class="string">"/tmp.png"</span>;</span><br><span class="line">$img       = str_replace(<span class="string">'data:image/png;base64,'</span>, <span class="string">''</span>, $img);</span><br><span class="line">$img       = str_replace(<span class="string">' '</span>, <span class="string">'+'</span>, $img);</span><br><span class="line">$data      = base64_decode($img);</span><br><span class="line">file_put_contents($file, $data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;html2canvas&quot;&gt;&lt;a href=&quot;#html2canvas&quot; class=&quot;headerlink&quot; title=&quot;html2canvas&quot;&gt;&lt;/a&gt;html2canvas&lt;/h1&gt;&lt;p&gt;需要导入html2canvas.min.js&lt;br&gt;&lt;figure 
+      
+    
+    </summary>
+    
+      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
+    
+    
+      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
+    
+      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js Note</title>
+    <link href="https://moonclearner.cn/js/note.html"/>
+    <id>https://moonclearner.cn/js/note.html</id>
+    <published>2019-09-19T06:52:51.107Z</published>
+    <updated>2019-09-19T06:52:51.071Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="javascript-Notes"><a href="#javascript-Notes" class="headerlink" title="javascript Notes"></a>javascript Notes</h1><h3 id="jquery-attr-and-prop"><a href="#jquery-attr-and-prop" class="headerlink" title="jquery attr and prop"></a>jquery attr and prop</h3><ul><li>对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。</li><li>对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。</li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才能获得正确的结果。</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"#chk1"</span>).prop(<span class="string">"checked"</span>) == <span class="literal">false</span></span><br><span class="line">$(<span class="string">"#chk2"</span>).prop(<span class="string">"checked"</span>) == <span class="literal">true</span></span><br><span class="line"><span class="comment">//如果上面使用attr方法，则会出现：</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"#chk1"</span>).attr(<span class="string">"checked"</span>) == <span class="literal">undefined</span></span><br><span class="line">$(<span class="string">"#chk2"</span>).attr(<span class="string">"checked"</span>) == <span class="string">"checked"</span></span><br></pre></td></tr></table></figure><h3 id="deep-copy"><a href="#deep-copy" class="headerlink" title="deep copy"></a>deep copy</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//深复制</span><br><span class="line">function copy(obj1,obj2)&#123;</span><br><span class="line">    var obj2=obj2||[];</span><br><span class="line">    for(var name in obj1)&#123;</span><br><span class="line">        if(typeof obj1[name] === &quot;object&quot;)&#123;</span><br><span class="line">            obj2[name]= (obj1[name] instanceof Array)?[]:&#123;&#125;;</span><br><span class="line">            copy(obj1[name],obj2[name]);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            obj2[name]=obj1[name];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return obj2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;javascript-Notes&quot;&gt;&lt;a href=&quot;#javascript-Notes&quot; class=&quot;headerlink&quot; title=&quot;javascript Notes&quot;&gt;&lt;/a&gt;javascript Notes&lt;/h1&gt;&lt;h3 id=&quot;jquery-at
+      
+    
+    </summary>
+    
+      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
+    
+    
+      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
+    
+      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python secure</title>
+    <link href="https://moonclearner.cn/python/python_secure.html"/>
+    <id>https://moonclearner.cn/python/python_secure.html</id>
+    <published>2019-09-16T02:00:25.450Z</published>
+    <updated>2019-09-16T02:00:25.414Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="防止命令注入使用subprocess"><a href="#防止命令注入使用subprocess" class="headerlink" title="防止命令注入使用subprocess"></a>防止命令注入使用subprocess</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cmd = [&apos;ls&apos;, &apos;-al&apos;]</span><br><span class="line">p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)</span><br><span class="line">data = &apos;&apos;.join(p.stdout.readlines())</span><br><span class="line">p.stdout.close()</span><br></pre></td></tr></table></figure><h3 id="替换shell的管道符"><a href="#替换shell的管道符" class="headerlink" title="替换shell的管道符"></a>替换shell的管道符</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># output = `dmesg | grep hda`</span><br><span class="line"></span><br><span class="line">p1 = subprocess.Popen([&apos;dmesg&apos;], stdout=PIPE)</span><br><span class="line">p2 = subprocess.Popen([&apos;grep&apos;, &apos;hda&apos;], stdin=p1.stdout, stdout=PIPE)</span><br><span class="line"></span><br><span class="line">p1.stdout.close()</span><br><span class="line">output = p2.communicate()[0]</span><br></pre></td></tr></table></figure><h2 id="防止sql注入"><a href="#防止sql注入" class="headerlink" title="防止sql注入"></a>防止sql注入</h2><h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><ul><li>1’ or ‘1’ = ‘1</li><li>sqlmap</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sql_cmd = &quot;select * from ?&quot;</span><br><span class="line">cur.execute(sql_cmd, (table_name, ))</span><br></pre></td></tr></table></figure><h2 id="输入参数作为动态代码运行"><a href="#输入参数作为动态代码运行" class="headerlink" title="输入参数作为动态代码运行"></a>输入参数作为动态代码运行</h2><h3 id="python"><a href="#python" class="headerlink" title="python"></a>python</h3><ul><li>eval</li><li>exec</li><li>pickle.loads</li><li>cPickle.loads</li><li>marshal.loads</li><li>yaml.load</li></ul><h3 id="php"><a href="#php" class="headerlink" title="php"></a>php</h3><ul><li>eval</li><li>asset()</li><li>preg_replace + ‘e’</li><li>call_user_func, call_user_func_array, create_function</li><li>array_map</li></ul><h2 id="目录穿越"><a href="#目录穿越" class="headerlink" title="目录穿越"></a>目录穿越</h2><ul><li>过滤掉<code>. and ..</code></li><li><code>os.path.basename(filename)</code></li></ul><h2 id="安全上传文件"><a href="#安全上传文件" class="headerlink" title="安全上传文件"></a>安全上传文件</h2><ul><li>文件后缀过滤</li><li>文件大小过滤-最大最小</li><li>文件名随机化</li><li>上传目录随机化</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;防止命令注入使用subprocess&quot;&gt;&lt;a href=&quot;#防止命令注入使用subprocess&quot; class=&quot;headerlink&quot; title=&quot;防止命令注入使用subprocess&quot;&gt;&lt;/a&gt;防止命令注入使用subprocess&lt;/h2&gt;&lt;figure c
+      
+    
+    </summary>
+    
+      <category term="python" scheme="https://moonclearner.cn/categories/python/"/>
+    
+    
+      <category term="secure" scheme="https://moonclearner.cn/tags/secure/"/>
+    
+      <category term="python" scheme="https://moonclearner.cn/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu notes</title>
+    <link href="https://moonclearner.cn/ubuntu/ubuntu_notes.html"/>
+    <id>https://moonclearner.cn/ubuntu/ubuntu_notes.html</id>
+    <published>2019-08-28T03:01:27.516Z</published>
+    <updated>2019-08-28T03:01:27.468Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="How-to-delete-dash-app-label"><a href="#How-to-delete-dash-app-label" class="headerlink" title="How to delete dash app label"></a>How to delete dash app label</h1><ul><li>/usr/share/applications（全局模式下）</li><li>~/.local/share/applications（用户独立配置）</li></ul><h1 id="compare-expired"><a href="#compare-expired" class="headerlink" title="compare expired"></a>compare expired</h1><p><code>rm /home/agu/.config/bcompare/registry.dat</code></p><h1 id="zip-解压文件里面有中文乱码"><a href="#zip-解压文件里面有中文乱码" class="headerlink" title="zip 解压文件里面有中文乱码"></a>zip 解压文件里面有中文乱码</h1><p><code>unzip -O CP936 xxxx.zip</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;How-to-delete-dash-app-label&quot;&gt;&lt;a href=&quot;#How-to-delete-dash-app-label&quot; class=&quot;headerlink&quot; title=&quot;How to delete dash app label&quot;&gt;&lt;/a&gt;Ho
+      
+    
+    </summary>
+    
+      <category term="zsh" scheme="https://moonclearner.cn/categories/zsh/"/>
+    
+    
+      <category term="ubuntu" scheme="https://moonclearner.cn/tags/ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>代码审计-企业级web代码安全架构</title>
+    <link href="https://moonclearner.cn/ITsecure/code%20audit%20Notes.html"/>
+    <id>https://moonclearner.cn/ITsecure/code audit Notes.html</id>
+    <published>2019-07-27T09:24:36.424Z</published>
+    <updated>2019-07-27T09:24:36.424Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="code-audit-Notes"><a href="#code-audit-Notes" class="headerlink" title="code audit Notes"></a>code audit Notes</h1><h2 id="code-audit-env-built"><a href="#code-audit-env-built" class="headerlink" title="code audit env built"></a>code audit env built</h2><h3 id="php-env-install"><a href="#php-env-install" class="headerlink" title="php env install"></a>php env install</h3><ul><li>phpStudy<ul><li>用于做技术探针，集成了所有php运行的环境，apache nginx</li></ul></li><li>php core secure configure<ul><li>register_globals 全局变量注册开关</li><li>allow_url_include 是否运行包含远程文件<ul><li>include()</li></ul></li><li>magic_quotes_gpc 魔术引号自动过滤<ul><li>filter get post cookie but $_SERVER</li><li>ver 5.4 later abandon</li></ul></li><li>magic_quotes_runtime 魔术引号自动过滤<ul><li>filter database or file</li><li>ver 5.4 later abandon</li></ul></li><li>magic_quotes_sybase 魔术引号自动过滤<ul><li>like magic_quotes_gpc</li></ul></li><li>safe_mode 安全模式<ul><li>限制文件操作</li><li>限制函数执行和外部命令执行</li></ul></li><li>open_basedir PHP可访问目录</li><li>disable_functions 禁用函数<ul><li>phpinfo,eval,assthru,exec,system</li></ul></li><li>display_errors 和 error_reporting 错误显示</li></ul></li></ul><h2 id="audit-auxiliary-tool-or-defect-verification-tool"><a href="#audit-auxiliary-tool-or-defect-verification-tool" class="headerlink" title="audit auxiliary tool or defect verification tool"></a>audit auxiliary tool or defect verification tool</h2><h3 id="code-audit-tool"><a href="#code-audit-tool" class="headerlink" title="code audit tool"></a>code audit tool</h3><ul><li>seay<ul><li>only for php</li></ul></li><li>Fortify SCA</li><li>RIPS<ul><li>only for php</li></ul></li></ul><h3 id="defect-verification-tool"><a href="#defect-verification-tool" class="headerlink" title="defect verification tool"></a>defect verification tool</h3><ul><li>burp suite</li><li></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;code-audit-Notes&quot;&gt;&lt;a href=&quot;#code-audit-Notes&quot; class=&quot;headerlink&quot; title=&quot;code audit Notes&quot;&gt;&lt;/a&gt;code audit Notes&lt;/h1&gt;&lt;h2 id=&quot;code-audi
+      
+    
+    </summary>
+    
+      <category term="ITsecure" scheme="https://moonclearner.cn/categories/ITsecure/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+      <category term="secure" scheme="https://moonclearner.cn/tags/secure/"/>
+    
+      <category term="audit" scheme="https://moonclearner.cn/tags/audit/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP My Cookbook</title>
+    <link href="https://moonclearner.cn/php/php_My_cookbook.html"/>
+    <id>https://moonclearner.cn/php/php_My_cookbook.html</id>
+    <published>2019-07-25T06:11:22.507Z</published>
+    <updated>2019-07-25T06:11:22.475Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="判断变量是否为空"><a href="#判断变量是否为空" class="headerlink" title="判断变量是否为空"></a>判断变量是否为空</h1><p>empty() 函数用于检查一个变量是否为空。</p><p>empty() 判断一个变量是否被认为是空的。当一个变量并不存在，或者它的值等同于 FALSE，那么它会被认为不存在。如果变量不存在的话，empty()并不会产生警告。</p><p>empty() 5.5 版本之后支持表达式了，而不仅仅是变量。</p><p>版本要求：PHP 4, PHP 5, PHP 7</p><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>bool empty ( mixed $var )</p><p>参数说明：</p><p>$var：待检查的变量。</p><p><strong>注意：在 PHP 5.5 之前，empty() 仅支持变量；任何其他东西将会导致一个解析错误。换言之，下列代码不会生效：</strong></p><p>empty(trim($name))</p><p>作为替代，应该使用:</p><p>trim($name) == false</p><p>empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。</p><h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>当 var 存在，并且是一个非空非零的值时返回 FALSE 否则返回 TRUE。</p><p>以下的变量会被认为是空的：</p><ul><li>“” (空字符串)</li><li>0 (作为整数的0)</li><li>0.0 (作为浮点数的0)</li><li>“0” (作为字符串的0)</li><li>NULL</li><li>FALSE</li><li>array() (一个空数组)</li><li>$var; (一个声明了，但是没有值的变量)</li></ul><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$ivar1=0;</span><br><span class="line">$istr1=&apos;Runoob&apos;;</span><br><span class="line">if (empty($ivar1))</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$ivar1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$ivar1&apos; . &quot; 不为空或不为 0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">if (empty($istr1))</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$istr1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$istr1&apos; . &quot; 字符串不为空或不为0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure><h3 id="执行结果如下所示："><a href="#执行结果如下所示：" class="headerlink" title="执行结果如下所示："></a>执行结果如下所示：</h3><p>$ivar1 为空或为 0。</p><p>$istr1 字符串不为空或不为0。</p><h2 id="读取文件，得到状态码"><a href="#读取文件，得到状态码" class="headerlink" title="读取文件，得到状态码"></a>读取文件，得到状态码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(file_exists(<span class="string">"/absolution path"</span>))&#123;</span><br><span class="line">    $res = file_get_contents(<span class="string">"/absolution path"</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="string">"0"</span> != $res)&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="判断字符串a是否存在某字符串b"><a href="#判断字符串a是否存在某字符串b" class="headerlink" title="判断字符串a是否存在某字符串b"></a>判断字符串a是否存在某字符串b</h2><p>strpos 会返回0即从a的第一个位置就找到了b<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">false</span> !== strpos(<span class="string">"a"</span>, <span class="string">"b"</span>))&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="用strlen来替代empty"><a href="#用strlen来替代empty" class="headerlink" title="用strlen来替代empty"></a>用strlen来替代empty</h2><p>当form var填入0的时候, empty($_POST[‘var’])</p><h2 id="empty-为空"><a href="#empty-为空" class="headerlink" title="empty 为空"></a>empty 为空</h2><ul><li>“” (空字符串)</li><li>0 (作为整数的0)</li><li>0.0 (作为浮点数的0)</li><li>“0” (作为字符串的0)</li><li>NULL</li><li>FALSE</li><li>array() (一个空数组)</li><li>$var; (一个声明了，但是没有值的变量)</li></ul><p>empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。</p><p><strong>empty(trim($name)) is wrong, empty cant contain func but a variable before version 5.3</strong></p><h2 id="产生随机数做id"><a href="#产生随机数做id" class="headerlink" title="产生随机数做id"></a>产生随机数做id</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (function_exists(<span class="string">'mcrypt_create_iv'</span>)) &#123;</span><br><span class="line">    $_SESSION[<span class="string">'token'</span>] = bin2hex(mcrypt_create_iv(<span class="number">32</span>, MCRYPT_DEV_URANDOM));</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    $_SESSION[<span class="string">'token'</span>] = bin2hex(openssl_random_pseudo_bytes(<span class="number">32</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">md5(uniqid())</span><br></pre></td></tr></table></figure><h2 id="replace-string-or-characters"><a href="#replace-string-or-characters" class="headerlink" title="replace string or characters"></a>replace string or characters</h2><p>strtr</p><p>sql special characters % and _</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strtr($string, <span class="keyword">array</span>(<span class="string">'_'</span>=&gt;<span class="string">'\_'</span>, <span class="string">'%'</span>=&gt;<span class="string">'\%'</span>));</span><br></pre></td></tr></table></figure><h2 id="the-list-of-php-extension"><a href="#the-list-of-php-extension" class="headerlink" title="the list of php extension"></a>the list of php extension</h2><ul><li>php -m</li><li>php -i</li><li>php -r “print_r(get_loaded_extensions());”</li></ul><h2 id="php-7-change-log"><a href="#php-7-change-log" class="headerlink" title="php 7 change log"></a>php 7 change log</h2><ul><li>openssl built in (not need install)</li><li>bcmath built in (in archlinux)</li></ul><h1 id="php-Daily-Discovery"><a href="#php-Daily-Discovery" class="headerlink" title="php Daily Discovery"></a>php Daily Discovery</h1><h2 id="php-gengerate-pie-or-line-or-column-image"><a href="#php-gengerate-pie-or-line-or-column-image" class="headerlink" title="php gengerate pie or line or column image"></a>php gengerate pie or line or column image</h2><ul><li>pChart</li></ul><h2 id="根据字节数计算单位"><a href="#根据字节数计算单位" class="headerlink" title="根据字节数计算单位"></a>根据字节数计算单位</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">private function formatBytes($size)&#123;</span><br><span class="line">    $units = array(&apos;&apos;,&apos;K&apos;,&apos;M&apos;,&apos;G&apos;,&apos;T&apos;);</span><br><span class="line">    $i = 0;</span><br><span class="line">    for( ; $size&gt;=1024 &amp;&amp; $i&lt;count($units); $i++)&#123;</span><br><span class="line">        $size /= 1024;</span><br><span class="line">    &#125;</span><br><span class="line">    return round($size,2).$units[$i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="calculated-the-disk-space"><a href="#calculated-the-disk-space" class="headerlink" title="calculated the disk space"></a>calculated the disk space</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">disk_total_space()</span><br><span class="line">disk_free_space()</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;判断变量是否为空&quot;&gt;&lt;a href=&quot;#判断变量是否为空&quot; class=&quot;headerlink&quot; title=&quot;判断变量是否为空&quot;&gt;&lt;/a&gt;判断变量是否为空&lt;/h1&gt;&lt;p&gt;empty() 函数用于检查一个变量是否为空。&lt;/p&gt;
+&lt;p&gt;empty() 判断一个变量是
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+      <category term="cookbook" scheme="https://moonclearner.cn/tags/cookbook/"/>
+    
+  </entry>
   
   <entry>
     <title>PHP download</title>
@@ -86,9 +276,9 @@
       <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
     
     
-      <category term="configure" scheme="https://moonclearner.cn/tags/configure/"/>
-    
       <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+      <category term="configure" scheme="https://moonclearner.cn/tags/configure/"/>
     
   </entry>
   
@@ -119,31 +309,6 @@
       <category term="wine" scheme="https://moonclearner.cn/tags/wine/"/>
     
       <category term="deep-win" scheme="https://moonclearner.cn/tags/deep-win/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu notes</title>
-    <link href="https://moonclearner.cn/ubuntu/ubuntu_notes.html"/>
-    <id>https://moonclearner.cn/ubuntu/ubuntu_notes.html</id>
-    <published>2019-07-08T03:12:52.985Z</published>
-    <updated>2019-07-08T03:12:52.961Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="How-to-delete-dash-app-label"><a href="#How-to-delete-dash-app-label" class="headerlink" title="How to delete dash app label"></a>How to delete dash app label</h1><ul><li>/usr/share/applications（全局模式下）</li><li>~/.local/share/applications（用户独立配置）</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;How-to-delete-dash-app-label&quot;&gt;&lt;a href=&quot;#How-to-delete-dash-app-label&quot; class=&quot;headerlink&quot; title=&quot;How to delete dash app label&quot;&gt;&lt;/a&gt;Ho
-      
-    
-    </summary>
-    
-      <category term="zsh" scheme="https://moonclearner.cn/categories/zsh/"/>
-    
-    
-      <category term="ubuntu" scheme="https://moonclearner.cn/tags/ubuntu/"/>
     
   </entry>
   
@@ -228,61 +393,6 @@
   </entry>
   
   <entry>
-    <title>js Note</title>
-    <link href="https://moonclearner.cn/js/note.html"/>
-    <id>https://moonclearner.cn/js/note.html</id>
-    <published>2019-06-26T08:55:45.755Z</published>
-    <updated>2019-06-26T08:55:45.703Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="javascript-Notes"><a href="#javascript-Notes" class="headerlink" title="javascript Notes"></a>javascript Notes</h1><h3 id="jquery-attr-and-prop"><a href="#jquery-attr-and-prop" class="headerlink" title="jquery attr and prop"></a>jquery attr and prop</h3><ul><li>对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。</li><li>对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。</li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才能获得正确的结果。</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"#chk1"</span>).prop(<span class="string">"checked"</span>) == <span class="literal">false</span></span><br><span class="line">$(<span class="string">"#chk2"</span>).prop(<span class="string">"checked"</span>) == <span class="literal">true</span></span><br><span class="line"><span class="comment">//如果上面使用attr方法，则会出现：</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"#chk1"</span>).attr(<span class="string">"checked"</span>) == <span class="literal">undefined</span></span><br><span class="line">$(<span class="string">"#chk2"</span>).attr(<span class="string">"checked"</span>) == <span class="string">"checked"</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;javascript-Notes&quot;&gt;&lt;a href=&quot;#javascript-Notes&quot; class=&quot;headerlink&quot; title=&quot;javascript Notes&quot;&gt;&lt;/a&gt;javascript Notes&lt;/h1&gt;&lt;h3 id=&quot;jquery-at
-      
-    
-    </summary>
-    
-      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
-    
-    
-      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
-    
-      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP My Cookbook</title>
-    <link href="https://moonclearner.cn/php/php_My_cookbook.html"/>
-    <id>https://moonclearner.cn/php/php_My_cookbook.html</id>
-    <published>2019-06-25T10:32:56.975Z</published>
-    <updated>2019-06-25T10:32:56.923Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="判断变量是否为空"><a href="#判断变量是否为空" class="headerlink" title="判断变量是否为空"></a>判断变量是否为空</h1><p>empty() 函数用于检查一个变量是否为空。</p><p>empty() 判断一个变量是否被认为是空的。当一个变量并不存在，或者它的值等同于 FALSE，那么它会被认为不存在。如果变量不存在的话，empty()并不会产生警告。</p><p>empty() 5.5 版本之后支持表达式了，而不仅仅是变量。</p><p>版本要求：PHP 4, PHP 5, PHP 7</p><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>bool empty ( mixed $var )</p><p>参数说明：</p><p>$var：待检查的变量。</p><p><strong>注意：在 PHP 5.5 之前，empty() 仅支持变量；任何其他东西将会导致一个解析错误。换言之，下列代码不会生效：</strong></p><p>empty(trim($name))</p><p>作为替代，应该使用:</p><p>trim($name) == false</p><p>empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。</p><h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>当 var 存在，并且是一个非空非零的值时返回 FALSE 否则返回 TRUE。</p><p>以下的变量会被认为是空的：</p><ul><li>“” (空字符串)</li><li>0 (作为整数的0)</li><li>0.0 (作为浮点数的0)</li><li>“0” (作为字符串的0)</li><li>NULL</li><li>FALSE</li><li>array() (一个空数组)</li><li>$var; (一个声明了，但是没有值的变量)</li></ul><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$ivar1=0;</span><br><span class="line">$istr1=&apos;Runoob&apos;;</span><br><span class="line">if (empty($ivar1))</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$ivar1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$ivar1&apos; . &quot; 不为空或不为 0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">if (empty($istr1))</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$istr1&apos; . &quot; 为空或为 0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    echo &apos;$istr1&apos; . &quot; 字符串不为空或不为0。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure><h3 id="执行结果如下所示："><a href="#执行结果如下所示：" class="headerlink" title="执行结果如下所示："></a>执行结果如下所示：</h3><p>$ivar1 为空或为 0。</p><p>$istr1 字符串不为空或不为0。</p><h2 id="读取文件，得到状态码"><a href="#读取文件，得到状态码" class="headerlink" title="读取文件，得到状态码"></a>读取文件，得到状态码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(file_exists(<span class="string">"/absolution path"</span>))&#123;</span><br><span class="line">    $res = file_get_contents(<span class="string">"/absolution path"</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="string">"0"</span> != $res)&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="判断字符串a是否存在某字符串b"><a href="#判断字符串a是否存在某字符串b" class="headerlink" title="判断字符串a是否存在某字符串b"></a>判断字符串a是否存在某字符串b</h2><p>strpos 会返回0即从a的第一个位置就找到了b<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">false</span> !== strpos(<span class="string">"a"</span>, <span class="string">"b"</span>))&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="用strlen来替代empty"><a href="#用strlen来替代empty" class="headerlink" title="用strlen来替代empty"></a>用strlen来替代empty</h2><p>当form var填入0的时候, empty($_POST[‘var’])</p><h2 id="empty-为空"><a href="#empty-为空" class="headerlink" title="empty 为空"></a>empty 为空</h2><ul><li>“” (空字符串)</li><li>0 (作为整数的0)</li><li>0.0 (作为浮点数的0)</li><li>“0” (作为字符串的0)</li><li>NULL</li><li>FALSE</li><li>array() (一个空数组)</li><li>$var; (一个声明了，但是没有值的变量)</li></ul><p>empty() 并不会产生警告，哪怕变量并不存在。 这意味着 empty() 本质上与 !isset($var) || $var == false 等价。</p><p><strong>empty(trim($name)) is wrong, empty cant contain func but a variable before version 5.3</strong></p><h2 id="产生随机数做id"><a href="#产生随机数做id" class="headerlink" title="产生随机数做id"></a>产生随机数做id</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (function_exists(<span class="string">'mcrypt_create_iv'</span>)) &#123;</span><br><span class="line">    $_SESSION[<span class="string">'token'</span>] = bin2hex(mcrypt_create_iv(<span class="number">32</span>, MCRYPT_DEV_URANDOM));</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    $_SESSION[<span class="string">'token'</span>] = bin2hex(openssl_random_pseudo_bytes(<span class="number">32</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">md5(uniqid())</span><br></pre></td></tr></table></figure><h2 id="replace-string-or-characters"><a href="#replace-string-or-characters" class="headerlink" title="replace string or characters"></a>replace string or characters</h2><p>strtr</p><p>sql special characters % and _</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strtr($string, <span class="keyword">array</span>(<span class="string">'_'</span>=&gt;<span class="string">'\_'</span>, <span class="string">'%'</span>=&gt;<span class="string">'\%'</span>));</span><br></pre></td></tr></table></figure><h2 id="the-list-of-php-extension"><a href="#the-list-of-php-extension" class="headerlink" title="the list of php extension"></a>the list of php extension</h2><ul><li>php -m</li><li>php -i</li><li>php -r “print_r(get_loaded_extensions());”</li></ul><h2 id="php-7-change-log"><a href="#php-7-change-log" class="headerlink" title="php 7 change log"></a>php 7 change log</h2><ul><li>openssl built in (not need install)</li><li>bcmath built in (in archlinux)</li></ul><h1 id="php-Daily-Discovery"><a href="#php-Daily-Discovery" class="headerlink" title="php Daily Discovery"></a>php Daily Discovery</h1><h2 id="php-gengerate-pie-or-line-or-column-image"><a href="#php-gengerate-pie-or-line-or-column-image" class="headerlink" title="php gengerate pie or line or column image"></a>php gengerate pie or line or column image</h2><ul><li>pChart</li></ul><h2 id="根据字节数计算单位"><a href="#根据字节数计算单位" class="headerlink" title="根据字节数计算单位"></a>根据字节数计算单位</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">private function formatBytes($size)&#123;</span><br><span class="line">    $units = array(&apos;&apos;,&apos;K&apos;,&apos;M&apos;,&apos;G&apos;,&apos;T&apos;);</span><br><span class="line">    $i = 0;</span><br><span class="line">    for( ; $size&gt;=1024 &amp;&amp; $i&lt;count($units); $i++)&#123;</span><br><span class="line">        $size /= 1024;</span><br><span class="line">    &#125;</span><br><span class="line">    return round($size,2).$units[$i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;判断变量是否为空&quot;&gt;&lt;a href=&quot;#判断变量是否为空&quot; class=&quot;headerlink&quot; title=&quot;判断变量是否为空&quot;&gt;&lt;/a&gt;判断变量是否为空&lt;/h1&gt;&lt;p&gt;empty() 函数用于检查一个变量是否为空。&lt;/p&gt;
-&lt;p&gt;empty() 判断一个变量是
-      
-    
-    </summary>
-    
-      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
-    
-    
-      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
-    
-      <category term="cookbook" scheme="https://moonclearner.cn/tags/cookbook/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Apache cookbook</title>
     <link href="https://moonclearner.cn/apache/php_My_cookbook.html"/>
     <id>https://moonclearner.cn/apache/php_My_cookbook.html</id>
@@ -303,9 +413,9 @@
       <category term="apache" scheme="https://moonclearner.cn/categories/apache/"/>
     
     
-      <category term="setting" scheme="https://moonclearner.cn/tags/setting/"/>
-    
       <category term="apache" scheme="https://moonclearner.cn/tags/apache/"/>
+    
+      <category term="setting" scheme="https://moonclearner.cn/tags/setting/"/>
     
   </entry>
   
@@ -330,9 +440,9 @@
       <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
     
     
-      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
-    
       <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
+    
+      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
     
   </entry>
   
@@ -437,114 +547,6 @@
     
     
       <category term="ubuntu" scheme="https://moonclearner.cn/tags/ubuntu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>adaptively set iframe height after iframe onloaded</title>
-    <link href="https://moonclearner.cn/js/self_adaption_set_iframe_height.html"/>
-    <id>https://moonclearner.cn/js/self_adaption_set_iframe_height.html</id>
-    <published>2019-04-22T03:00:00.058Z</published>
-    <updated>2019-04-22T03:00:00.030Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="adaptively-set-iframe-height-after-iframe-onloaded"><a href="#adaptively-set-iframe-height-after-iframe-onloaded" class="headerlink" title="adaptively set iframe height after iframe onloaded"></a>adaptively set iframe height after iframe onloaded</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setIframeHeight</span>(<span class="params">iframe</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (iframe) &#123;</span><br><span class="line">    <span class="keyword">var</span> iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;</span><br><span class="line">    <span class="keyword">if</span> (iframeWin.document.body) &#123;</span><br><span class="line">      iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getIframeHeight</span>(<span class="params">iframe</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;</span><br><span class="line">    <span class="keyword">var</span> height    = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;</span><br><span class="line">    <span class="keyword">return</span> height</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// use tim to set iframe height after iframe onloaded</span></span><br><span class="line">jQuery(<span class="built_in">document</span>.getElementById(<span class="string">'iframe_id'</span>)).load(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> iframe = <span class="built_in">document</span>.getElementById(<span class="string">'iframe_id'</span>);</span><br><span class="line">    <span class="keyword">var</span> height = getIframeHeight(iframe);</span><br><span class="line">    <span class="keyword">var</span> tim    = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        setIframeHeight(iframe);</span><br><span class="line">        <span class="keyword">var</span> after_height = getIframeHeight(iframe);</span><br><span class="line">        <span class="keyword">if</span>(after_height &gt; height)&#123;</span><br><span class="line">            <span class="built_in">window</span>.clearInterval(tim);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,<span class="number">100</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;adaptively-set-iframe-height-after-iframe-onloaded&quot;&gt;&lt;a href=&quot;#adaptively-set-iframe-height-after-iframe-onloaded&quot; class=&quot;headerlink&quot;
-      
-    
-    </summary>
-    
-      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
-    
-    
-      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
-    
-      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>how to show zero value in bar</title>
-    <link href="https://moonclearner.cn/highchart/highchart_bar_show_zero_value.html"/>
-    <id>https://moonclearner.cn/highchart/highchart_bar_show_zero_value.html</id>
-    <published>2019-04-10T06:34:34.982Z</published>
-    <updated>2019-04-10T06:34:34.946Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="how-to-show-zero-value-in-bar"><a href="#how-to-show-zero-value-in-bar" class="headerlink" title="how to show zero value in bar"></a>how to show zero value in bar</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plotOptions: &#123;</span><br><span class="line">    column: &#123;</span><br><span class="line">    minPointLength: <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;how-to-show-zero-value-in-bar&quot;&gt;&lt;a href=&quot;#how-to-show-zero-value-in-bar&quot; class=&quot;headerlink&quot; title=&quot;how to show zero value in bar&quot;&gt;&lt;/a
-      
-    
-    </summary>
-    
-      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
-    
-    
-      <category term="highchart" scheme="https://moonclearner.cn/tags/highchart/"/>
-    
-      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>table border collapse</title>
-    <link href="https://moonclearner.cn/css/tabel_border_collapse.html"/>
-    <id>https://moonclearner.cn/css/tabel_border_collapse.html</id>
-    <published>2019-04-09T08:26:43.825Z</published>
-    <updated>2019-04-09T08:26:43.789Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="the-table-border-is-displayed-as-a-separate-border"><a href="#the-table-border-is-displayed-as-a-separate-border" class="headerlink" title="the table border is displayed as a separate border"></a>the table border is displayed as a separate border</h1><p>to achieve the effect of td or th border covering the outer border of the table</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">table</span></span><br><span class="line">  &#123;</span><br><span class="line">  <span class="attribute">border-collapse</span>:collapse;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">2px</span> solid red;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">table</span>, <span class="selector-tag">td</span>, <span class="selector-tag">th</span></span><br><span class="line">  &#123;</span><br><span class="line">  <span class="attribute">border-bottom</span>:<span class="number">2px</span> solid black;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;the-table-border-is-displayed-as-a-separate-border&quot;&gt;&lt;a href=&quot;#the-table-border-is-displayed-as-a-separate-border&quot; class=&quot;headerlink&quot;
-      
-    
-    </summary>
-    
-      <category term="css" scheme="https://moonclearner.cn/categories/css/"/>
-    
-    
-      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
-    
-      <category term="css" scheme="https://moonclearner.cn/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>checkbox as radio input</title>
-    <link href="https://moonclearner.cn/js/checkbox_as_radio.html"/>
-    <id>https://moonclearner.cn/js/checkbox_as_radio.html</id>
-    <published>2019-04-09T07:41:45.453Z</published>
-    <updated>2019-04-09T07:41:45.409Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="checkbox-as-radio-input"><a href="#checkbox-as-radio-input" class="headerlink" title="checkbox as radio input"></a>checkbox as radio input</h1><p>将checkbox 作为 单选框来使用</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input style="vertical-align: middle;" id="Checkbox" type="checkbox" name="switch" &lt;?=$isChecked?&gt; /&gt;&lt;span&gt;启用&lt;/span&gt;</span><br></pre></td></tr></table></figure><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当form表单提交的时候执行该语句</span></span><br><span class="line"><span class="keyword">var</span> enable_use = <span class="built_in">document</span>.getElementById(<span class="string">"Checkbox"</span>).checked;</span><br><span class="line"><span class="keyword">var</span> val = (enable_use == <span class="literal">true</span>)?<span class="string">'true'</span>:<span class="string">'false'</span>;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"Checkbox"</span>).value = val;</span><br></pre></td></tr></table></figure><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!<span class="keyword">empty</span>($switch))&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;updateJMREnable($switch);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;updateJMREnable(<span class="string">"false"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;checkbox-as-radio-input&quot;&gt;&lt;a href=&quot;#checkbox-as-radio-input&quot; class=&quot;headerlink&quot; title=&quot;checkbox as radio input&quot;&gt;&lt;/a&gt;checkbox as radio
-      
-    
-    </summary>
-    
-      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
-    
-    
-      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
-    
-      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
     
   </entry>
   

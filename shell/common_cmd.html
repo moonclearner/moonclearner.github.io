@@ -119,7 +119,7 @@
 <meta property="og:site_name" content="moonclearner page">
 <meta property="og:description" content="common cmddelete all files in the current path except file A1234find ./* |grep -v A |xargs rm -r# second methodrm -rf !(keep1 | keep2) delete all file except py file1find . -name &amp;quot;*&amp;quot; -type f">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-11T08:32:14.428Z">
+<meta property="og:updated_time" content="2019-12-25T03:02:41.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="common cmd">
 <meta name="twitter:description" content="common cmddelete all files in the current path except file A1234find ./* |grep -v A |xargs rm -r# second methodrm -rf !(keep1 | keep2) delete all file except py file1find . -name &amp;quot;*&amp;quot; -type f">
@@ -456,7 +456,7 @@
                 
               
 
-              <time title="Created: 2019-07-11 16:32:14" itemprop="dateCreated datePublished" datetime="2019-07-11T16:32:14+08:00">2019-07-11</time>
+              <time title="Created: 2019-12-25 11:02:41" itemprop="dateCreated datePublished" datetime="2019-12-25T11:02:41+08:00">2019-12-25</time>
             
 
             
@@ -502,7 +502,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">371</span>
+                <span title="Symbols count in article">1.2k</span>
               
 
               
@@ -539,6 +539,36 @@
         <h1 id="common-cmd"><a href="#common-cmd" class="headerlink" title="common cmd"></a>common cmd</h1><h2 id="delete-all-files-in-the-current-path-except-file-A"><a href="#delete-all-files-in-the-current-path-except-file-A" class="headerlink" title="delete all files in the current path except file A"></a>delete all files in the current path except file A</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">find ./* |grep -v A |xargs rm -r</span><br><span class="line"></span><br><span class="line"># second method</span><br><span class="line">rm -rf !(keep1 | keep2)</span><br></pre></td></tr></table></figure>
 <h2 id="delete-all-file-except-py-file"><a href="#delete-all-file-except-py-file" class="headerlink" title="delete all file except py file"></a>delete all file except py file</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*&quot; -type f |grep -v &quot;.py&quot; |grep  &quot;\.&quot; |xargs rm -rf</span><br></pre></td></tr></table></figure>
 <h2 id="kill-all-python-process"><a href="#kill-all-python-process" class="headerlink" title="kill all python process"></a>kill all python process</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep python |grep -v grep|awk  &apos;&#123;print $2&#125;&apos;|xargs kill -9</span><br></pre></td></tr></table></figure>
+<h2 id="bash-shortkey"><a href="#bash-shortkey" class="headerlink" title="bash shortkey"></a>bash shortkey</h2><ul>
+<li>Ctrl + l ：清除屏幕，同clear</li>
+<li>Ctrl + a ：将光标定位到命令的开头</li>
+<li>Ctrl + e ：与上一个快捷键相反，将光标定位到命令的结尾</li>
+<li>Ctrl + u ：删除当前命令</li>
+<li>Ctrl + k ：与上一个快捷键相反，剪切光标之后的内容</li>
+<li>Ctrl + y ：粘贴以上两个快捷键所剪切的内容。Alt+y粘贴更早的内容</li>
+<li>Ctrl + w ：删除光标左边的参数（选项）或内容（实际是以空格为单位向前剪切一个word）</li>
+<li><p>Ctrl + / ：撤销，同Ctrl+x + Ctrl+u</p>
+</li>
+<li><p>Ctrl + f ：按字符前移（右向），同→</p>
+</li>
+<li><p>Ctrl + b ：按字符后移（左向），同←</p>
+</li>
+<li><p>Alt + f ：按单词前移，标点等特殊字符与空格一样分隔单词（右向），同Ctrl+→</p>
+</li>
+<li>Alt + b ：按单词后移（左向），同Ctrl+←</li>
+<li>Alt + d ：从光标处删除至字尾。可以Ctrl+y粘贴回来</li>
+<li>Alt + \ ：删除当前光标前面所有的空白字符</li>
+<li>Ctrl + d ：删除光标处的字符，同Del键。没有命令是表示注销用户</li>
+<li><p>Ctrl + h ：删除光标前的字符</p>
+</li>
+<li><p>Ctrl + r ：逆向搜索命令历史，比history好用</p>
+</li>
+<li><p>Ctrl + g ：从历史搜索模式退出，同ESC</p>
+</li>
+<li>Ctrl + p ：历史中的上一条命令，同↑</li>
+<li>Ctrl + n ：历史中的下一条命令，同↓</li>
+<li>Alt + .：同!$，输出上一个命令的最后一个参数（选项or单词）。 还有如Alt+0 Alt+. Alt+.，表示输出上上一条命令的的第一个单词（即命令）。 另外有一种写法 !:n，表示上一命令的第n个参数，如你刚备份一个配置文件，马上编辑它：cp nginx.conf nginx.conf，vi !:1，同vi !^。!^表示命令的第一个参数，!$最后一个参数（一般是使用Alt + .代替）。</li>
+</ul>
 
       
     </div>
@@ -584,8 +614,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/php/configure/php_extension_compile_fail.html" rel="next" title="build php extension fail phpizse">
-                <i class="fa fa-chevron-left"></i> build php extension fail phpizse
+              <a href="/ITsecure/www_trace_request.html" rel="next" title="www trace request test">
+                <i class="fa fa-chevron-left"></i> www trace request test
               </a>
             
           </div>
@@ -594,8 +624,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/php/php_download.html" rel="prev" title="PHP download">
-                PHP download <i class="fa fa-chevron-right"></i>
+              <a href="/databases/postgresql/postgresqlLearningResource.html" rel="prev" title="postgresql Learning resource map">
+                postgresql Learning resource map <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -670,7 +700,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -719,7 +749,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -820,7 +856,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">44</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -889,7 +935,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#common-cmd"><span class="nav-number">1.</span> <span class="nav-text">common cmd</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-all-files-in-the-current-path-except-file-A"><span class="nav-number">1.1.</span> <span class="nav-text">delete all files in the current path except file A</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-all-file-except-py-file"><span class="nav-number">1.2.</span> <span class="nav-text">delete all file except py file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kill-all-python-process"><span class="nav-number">1.3.</span> <span class="nav-text">kill all python process</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#common-cmd"><span class="nav-number">1.</span> <span class="nav-text">common cmd</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-all-files-in-the-current-path-except-file-A"><span class="nav-number">1.1.</span> <span class="nav-text">delete all files in the current path except file A</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-all-file-except-py-file"><span class="nav-number">1.2.</span> <span class="nav-text">delete all file except py file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kill-all-python-process"><span class="nav-number">1.3.</span> <span class="nav-text">kill all python process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-shortkey"><span class="nav-number">1.4.</span> <span class="nav-text">bash shortkey</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -910,7 +956,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -922,7 +968,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">39k</span>
+    <span title="Symbols count total">96k</span>
   
 
   
@@ -931,7 +977,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">35 mins.</span>
+    <span title="Reading time total">1:27</span>
   
 </div>
 

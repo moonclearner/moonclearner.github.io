@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Jq ajax]]></title>
+    <url>%2Fjs%2Fjquery%2Fjq_ajax.html</url>
+    <content type="text"><![CDATA[jquery Ajaxajax 请求question 1ajax请求成功后，success返回看不到data A：可能是因为服务器返回的数据不是json格式数据]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>jquery</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[The notes of Reading Modern PHP book]]></title>
+    <url>%2Fphp%2FmodernPHPNote.html</url>
+    <content type="text"><![CDATA[The notes of Reading Modern PHP book前言author’s project: http://www.phptherightway.com, 目的是为了让php程序员轻易找到php社区中权威成员最新编写的高质量文档 目前开发流程 使用git来维护一个可以审查的代码历史 使用虚拟化工具varangt以及配置工具例如ansible、chef、puppet来搭建与生产服务器一样的开发环境 使用composer来管理php组件 php代码遵循PSR代码标准 phpUnit进行单元测试 php 引擎 Zend Engine (php4) PHP引擎是解析、解释和执行php代码的程序 Hack是建立在PHP之上的变成语言，引入了静态类型、新的数据结构、额外的接口，同时向后兼容所有的动态类型php代码 hiphop virtual machine(facebook)， HHVM，是php和hack的解释器，使用即时(just in time, JIT)编译器提高应用的性能，减少内存用量 新的特性命名空间 引入5.3 其作用是按照一种虚拟的层次结构组织php代码，避免类名以及变量冲突 接口1234567891011121314151617181920212223242526272829interface Documentable&#123; public function getId();&#125;class StreamDocument implements Documentable&#123; public function __construct($id) &#123; $this-&gt;id = $id; &#125; public function getId() &#123; return $this-&gt;id; &#125;&#125;class DocumentStore&#123; protected $data = []; public function addDocument(Documentable $document) &#123; $id = $document-&gt;getId(); $this-&gt;data[] = $id; &#125;&#125;$documentObject = new DocumentStore();$stream = new StreamDocument();$documentObject-&gt;addDocument($stream); 性状-traitphp5.4引入 性状是类的部分实现（即常量、属性和方法）, 可以混入一个或者多个现有的PHP类中 作用： 表明类可以做什么（像接口）；提供模板化实现（像类） 将两个没有共同父类的类具有类似行为，比如商店和猫，在地图上应该都有地标，如果将其都继承父类地理，这样就没有继承层次结构。使用接口的话，虽然可以保留自然的继承层次结构，但是我们需要实现相同的地理代码，不符合DRY原则，即Dont Repeat yourself 1234567891011121314trait MyGeo&#123; //性状实现 public function getGeo() &#123;&#125;&#125;class Cat&#123; use MyGeo; //类的实现&#125;$xiaobai = new Cat();$xiaobai-&gt;getGeo(); php解释器在编译的时候，会把性状复制粘贴到类的定义体里面，但是不会处理引入的不兼容问题，所以要确保类里面有性状使用的特定属性或者方法。 生成器php5.5 省内容1234567891011121314function getRow($file)&#123; $handle = fopen($file, &quot;rb&quot;); if($handle === false)&#123; throw new Exception(); &#125; while(feof($handle) === false)&#123; yield fgetcsv($handle); &#125; fclose($handle);&#125;foreach(getRow(&quot;test.csv&quot;) as $row)&#123; print_r($row);&#125; 匿名函数 和 闭包php5.3 php将匿名函数和闭包作为相同的概念，其实是伪装成函数的对象，都是Closure类的实例 12345$closure = function($name)&#123; return sprintf('Hello %s', $name)&#125;echo $closure("josh"); 闭包是指创建时封装周围状态的函数，即便闭包所在的环境不存在了，闭包中封装的状态依旧存在 我们之所以可以调用$closure变量，因为这个变量的值是一个闭包，而且闭包对象实现了一个_invoke()魔术方法，只要变量后面有()，php就会调用_invoke()方法 1array_map(function($number)&#123;return $number + 1;&#125;, [1,2,3]); 附加状态在php中需要手动调用bindTo()方法或者使用use将状态附加到php闭包中12345678function enclosePerson($name)&#123; return function($doCommand) use ($name)&#123; return sprintf('$s, $s', $name, $doCommand); &#125;&#125;$clay = enclosePerson('Clay');echo $clay("hello"); // Clay, hello enclosePerson()有个name参数，函数返回一个闭包对象，这个闭包封装了name参数，即便返回的对象跳出了enclosePerson()函数的作用域，它仍然会记住name的值，因为name仍在闭包里面。 可以用use将做个参数传入闭包里面 php闭包是对象，因此闭包实例都可以使用$this关键字来获取闭包内部的状态bindTo()方法，第二个参数为绑定闭包的那个对象所属的php类，因此绑定this，可以访问绑定闭包的对象中受保护和私有成员变量 123456789101112131415161718192021222324252627282930313233class App&#123; protected $routes = array(); protected $responseStatus = '200 ok'; protected $responseContentType = 'text/html'; protected $responseBody = 'Hello word'; public function addRoute($routePath, $routeCallback) &#123; $this-&gt;routes[$routePath] = $routeCallback-&gt;bindTo($this, __CLASS__); &#125; public function dispatch($currentPath) &#123; foreach ($this-&gt;routes as $routePath =&gt; $callback) &#123; if($routePath === $currentPath) &#123; $callback(); &#125; &#125; header('HTTP/1.1 '.$this-&gt;responseStatus); header('Content-type '.$this-&gt;responseContentType); header('Content-length '.mb_strlen($this-&gt;responseBody)); echo $this-&gt;responseBody; &#125;&#125;$app = new App();$app-&gt;addRoute('/users/josh', function()&#123; $this-&gt;responseContentType = 'application/json;charset=utf-8'; $this-&gt;responseBody = '&#123;"name":"josh"&#125;';&#125;)$app-&gt;dispatch('/users/josh'); Zend Opcache字节码缓存，php5.5 php是解释性语言，php解释器执行php脚本时，会解析php代码，将php代码编译成一系列Zend操作码，然后执行操作码。缓存预先编译好的字节码 1opcache.validate_timestamps = 1 //在生产环境中设为“0” 内置web服务器1php -S 0.0.0.0:4000 -c php.ini 良好实践PHP-FIG 实现框架的互操作性，通过接口，自动加载机制和标准的风格，让框架互相合作。 组件查找组件网站https://packagist.org 最好的组件 awesome php https://github.com/ziadoz/awesome-php 使用组件使用composer来管理php组件 安装：curl -sS https://getcomposer.org/installer | php]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[PHP XML]]></title>
     <url>%2Fphp%2Fphp_xml.html</url>
     <content type="text"><![CDATA[php XMLDOMDocument遍历删除节点遍历删除节点的时候，会出现删除节点删除不干净，当你使用foreach来遍历的时候12foreach($nodes as $node)&#123;&#125; 是因为即当删除了第2个节点之后第3个节点会变成第2个节点，遍历的下个节点变成了第4个节点，跳过了对第3个节点的检查 当你使用foreach来遍历的时候123for($i=0; $i &lt; $nodes-&gt;length; $i++)&#123;&#125; 是因为即当删除了第2个节点之后第3个节点会变成第2个节点，遍历的下个节点变成了第4个节点，跳过了对第3个节点的检查并且节点的nodes-&gt;length会实时变化，导致最后的几个节点检查不到 solution方法1 额外使用一个指示器，来记录指向节点的位置，当删除节点的是指示器值不加1，这样就指向了下个节点123456789101112$dom = new DOMDocument();$dom-&gt;load($this-&gt;xmlfile);$nodes = $dom-&gt;getElementsByTagName('nodes');$index = 0;while($index &lt; $nodes-&gt;length) &#123; if (in_array($nodes-&gt;item($index)-&gt;getAttribute("id"), $ids)) &#123; $objectNode = $nodes-&gt;item($index); $objectNode-&gt;parentNode-&gt;removeChild($objectNode); &#125;else&#123; $index ++; &#125;&#125; 方法2先将所有节点遍历一遍，将要删除的节点存在一个数组里面，然后统一删除12345678foreach($nodes as $node)&#123; if (in_array($node-&gt;getAttribute("id"), $ids)) &#123; $delete[] = $node; &#125;&#125;foreach($delete as $val)&#123; $val-&gt;parentNode-&gt;removeChild($val);&#125; simplexml_load_file保存1234567function save($dom)&#123; if($dom-&gt;asXML("/test.xml"))&#123; return "success"; &#125;else&#123; return "fail"; &#125;&#125; 修改标签的值1234567891011121314151617181920212223242526$xml = @simplexml_load_file("/test.xml");//用xpath快速查找值$node = $xml-&gt;xpath("/node/config[@name='enable_tmp_files']")[0];/*&lt;node&gt;&lt;config name="test"&gt;&lt;/config&gt;&lt;/node&gt;*///读取标签间的值(string)$node-&gt;config;//读取标签的属性(string)$node-&gt;config["name"]//修改标签间的值dom_import_simplexml($node)-&gt;nodeValue = "true";/*&lt;node&gt; &lt;config enable="true"/&gt; &lt;config enable="true"/&gt; &lt;config enable="true"/&gt;&lt;/node&gt;*/foreach($node-&gt;config as $config)&#123; //修改标签的属性 $config["enable"] = "true";&#125; 删除某个节点内所有节点内容1dom_import_simplexml($node)-&gt;nodeValue = &quot;&quot;; 创建节点solution 1123$newnode = $node-&gt;addChild(&quot;newnode&quot;);$newnode = $node-&gt;addChild(&quot;newnode2&quot;, &quot;nodeValue&quot;);$newnode-&gt;addAttribute(&quot;newAttr&quot;, &quot;attrValue&quot;); solution 212$newnode = simplexml_load_string(&quot;&lt;newnode newAttr=&quot;attrValue&quot;&gt;nodeValue&lt;/newnode&gt;&quot;);dom_import_simplexml($node)-&gt;nodeValue = $newAttr; XMLReader简介此扩展需要 libxml PHP 扩展。这表示需要使用 –enable-libxml ，尽管这将隐式完成因为 libxml 是缺省开启的。 特点XMLReader是以Stream的形式读取数据，即纵然面对超大的xml文件用于读取大型xml，可以逐个节点进行读取操作，节约内存 用法1234567891011121314151617181920//读取bignode节点下的node节点,bignode后面的是smallnode节点不读取$z = new XMLReader();$z-&gt;open(&quot;/big.xml&quot;);$doc = new DOMDocument;// move to the first &lt;product /&gt; nodewhile ($z-&gt;read() &amp;&amp; $z-&gt;name !== &apos;product&apos;);// now that we&apos;re at the right depth, hop to the next &lt;product/&gt; until the end of the treewhile ($z-&gt;nodeType == XMLReader::ELEMENT &amp;&amp; $z-&gt;name === &apos;product&apos;)&#123; // either one should work //$node = new SimpleXMLElement($z-&gt;readOuterXML()); $node = simplexml_import_dom($doc-&gt;importNode($z-&gt;expand(), true)); // now you can use $node without going insane about parsing var_dump($node-&gt;element_1); // go to next &lt;product /&gt; $z-&gt;next(&apos;product&apos;);&#125; 读取单节点的方法使用simplexml的方法solution 112$xml = $z-&gt;readOuterXML();$xml = simplexml_load_string($xml); solution 21$node = new SimpleXMLElement($z-&gt;readOuterXML()); solution 312$doc = new DOMDocument;$node = simplexml_import_dom($doc-&gt;importNode($z-&gt;expand(), true)); 读取节点间的内容xml文件12345678910111213141516&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;rss xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; version=&quot;2.0&quot;&gt; &lt;channel&gt; &lt;title&gt;拍拍看科技&lt;/title&gt; &lt;link&gt;http://blog.limiwu.com/&lt;/link&gt; &lt;description&gt;关注科技产品和个人博客发展,注重用户体验和界面优化&lt;/description&gt; &lt;item&gt; &lt;title&gt;新购买了一个域名：losehub.com&lt;/title&gt; &lt;link&gt;http://blog.limiwu.com/537.html&lt;/link&gt; &lt;description&gt;最近新购买了一个域名losehub.com。准备来做一个PHP项目， 具体的还在谋划中。不知道什么时候能开始制作呢。&lt;/description&gt; &lt;pubDate&gt;Tue, 27 Dec 2016 14:47:25 +0800&lt;/pubDate&gt; &lt;/item&gt; ... &lt;/channel&gt;&lt;/rss&gt; 123456789101112131415161718192021222324252627while ($reader-&gt;read())&#123; if($reader-&gt;nodeType == XMLReader::ELEMENT)&#123; $nodeName = $reader-&gt;name; &#125; //注意XMLReader::TEXT 是识别不了CDATA，如果需要读取CDATA 可以改成$reader-&gt;nodeType == XMLReader::CDATA if($reader-&gt;nodeType == XMLReader::TEXT &amp;&amp; !empty($nodeName))&#123; switch($nodeName)&#123; case &apos;title&apos;: if ($reader -&gt; depth == &apos;4&apos;)&#123; $title = $reader-&gt;value; &#125; break; case &apos;link&apos;: if ($reader -&gt; depth == &apos;4&apos;)&#123; $link = $reader-&gt;value; &#125; break; case &apos;description&apos;: $description = $reader-&gt;value; break; case &apos;pubDate&apos;: $pubDate = $reader-&gt;value; break; &#125; &#125; &#125; $reader-&gt;close(); XMLReader 常量12345678910111213141516171819202122XMLReader::NONE = 0 ;XMLReader::ELEMENT = 1 ;XMLReader::ATTRIBUTE = 2 ;XMLReader::TEXT = 3 ;XMLReader::CDATA = 4 ;XMLReader::ENTITY_REF = 5 ;XMLReader::ENTITY = 6 ;XMLReader::PI = 7 ;XMLReader::COMMENT = 8 ;XMLReader::DOC = 9 ;XMLReader::DOC_TYPE = 10 ;XMLReader::DOC_FRAGMENT = 11 ;XMLReader::NOTATION = 12 ;XMLReader::WHITESPACE = 13 ;XMLReader::SIGNIFICANT_WHITESPACE = 14 ;XMLReader::END_ELEMENT = 15 ;XMLReader::END_ENTITY = 16 ;XMLReader::XML_DECLARATION = 17 ;XMLReader::LOADDTD = 1 ;XMLReader::DEFAULTATTRS = 2 ;XMLReader::VALIDATE = 3 ;XMLReader::SUBST_ENTITIES = 4 ; XMLReader 方法1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859a、XMLReader::XML作用：载入 xml 字符串用法：XMLReader::xml(string source [, string encoding [, int options]] )参数：source，xml string；encoding，document encoding or NULL返回：如果成功则返回 TRUE，失败则返回 FALSE。b、XMLReader::open作用：载入xml文件用法：XMLReader::open(string url [, string encoding [, int options]] )参数：url，连接到xml的链接；encoding，document encoding or NULL返回：如果成功则返回 TRUE，失败则返回 FALSE。c、XMLReader::read作用：读取 xml，使解析器前进到下一个标记用法：XMLReader::read()，在 while 循环中遍历整个文档参数：NULL返回：如果成功则返回 TRUE，失败则返回 FALSE。d、XMLReader::getAttribute作用：获取属性用法：XMLReader::getAttribute(string name)参数：name，属性名称返回：如果成功则返回 属性值，失败则返回 FALSE。e、XMLReader::isValid作用：检验xml是否合法用法：XMLReader::isValid()参数：无返回：如果成功则返回 true，失败则返回 FALSE。f、XMLReader::moveToAttribute作用：移动焦点到所指的属性上用法：XMLReader::moveToAttribute(string name)参数：name，属性名称返回：如果成功则返回 true，失败则返回 FALSE。g、XMLReader::moveToFirstAttribute作用：移动焦点到第一个属性上用法：XMLReader::moveToFirstAttribute()参数：无返回：如果成功则返回 true，失败则返回 FALSE。h、XMLReader::moveToNextAttribute作用：移动焦点到下一个属性上用法：XMLReader::moveToNextAttribute()参数：无返回：如果成功则返回 true，失败则返回 FALSE。i、XMLReader::moveToElement作用：移动焦点到父节点当前属性上用法：XMLReader::moveToElement()参数：无返回：如果成功则返回 true，失败则返回 FALSE。j、XMLReader::close作用：关闭xml输入用法：XMLReader::close()参数：无返回：如果成功则返回 true，失败则返回 FALSE。 XMLReader属性1234567891011121314151617181920212223242526272829a、XMLReader-&gt;attributeCount ;作用：属性数量b、XMLReader-&gt;baseURI ;作用：节点的urlc、XMLReader-&gt;depth ;作用：节点树的层数d、XMLReader-&gt;hasAttributes ;作用：检测是否有属性e、XMLReader-&gt;hasValue ;作用：是否有值f、XMLReader-&gt;isEmptyElement ;作用：是否是空标签g、XMLReader-&gt;localName ;作用：标签内部明h、XMLReader-&gt;name ;作用：标签名i、XMLReader-&gt;nodeType ;作用：节点类型j、XMLReader-&gt;value ;作用：节点文本内容 ————————————————版权声明：本文为CSDN博主「安南子.com」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。原文链接：https://blog.csdn.net/weixin_45578749/article/details/100131799]]></content>
@@ -276,8 +299,8 @@
         <category>php</category>
       </categories>
       <tags>
-        <tag>php</tag>
         <tag>configure</tag>
+        <tag>php</tag>
       </tags>
   </entry>
   <entry>
@@ -361,8 +384,8 @@
         <category>ubuntu</category>
       </categories>
       <tags>
-        <tag>zsh</tag>
         <tag>ubuntu</tag>
+        <tag>zsh</tag>
       </tags>
   </entry>
   <entry>
@@ -480,20 +503,7 @@
         <category>zsh</category>
       </categories>
       <tags>
-        <tag>zsh</tag>
         <tag>ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[cmder 各类配置以及问题解决]]></title>
-    <url>%2Fcmder%2Fcmder.html</url>
-    <content type="text"><![CDATA[cmder 配置cmder 显示 oh my zsh会出现乱码 去网站nerdfonts最下面下载hack字体，解压安装hack字体 在cmder 的setting中 font是 选择hack字体 启动quake模式，使得cmder能够从window最上面一键呼出 cmder的setting，general 的quake style，勾选 quake style slide down , always on top , restore inactive .. , restore to active monitor setting的 keys &amp;macro 修改 minimize/restore quake style hotkey 快捷键]]></content>
-      <categories>
-        <category>cmder</category>
-      </categories>
-      <tags>
-        <tag>cmder</tag>
-        <tag>oh my zsh</tag>
         <tag>zsh</tag>
       </tags>
   </entry>
@@ -505,20 +515,8 @@
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>setting</tag>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[onclick lanuch a post request，解决get参数太长，导致请求失败]]></title>
-    <url>%2Fjs%2Fonclick_for_post.html</url>
-    <content type="text"><![CDATA[onclick lanuch post request有时候，由于get请求下载文件，请求参数超过了2048字符，在IE等浏览器就会导致参数不完整 因此使用post请求，其参数就没有限制长度， 然后，使用ajax发起post请求，无法触发文件下载，因此使用模拟form表单发起post请求 原生onclick 发起post请求 12345678910111213141516function onclickpost(URL, PARAMS) &#123; var temp = document.createElement("form"); temp.action = URL; temp.method = "post"; temp.style.display = "none"; for (var x in PARAMS) &#123; var opt = document.createElement("textarea"); opt.name = x; opt.value = PARAMS[x]; temp.appendChild(opt); &#125; document.body.appendChild(temp); temp.submit(); temp.parentNode.removeChild(temp);&#125;onclickpost(url, &#123;cat:rawinfo&#125;)]]></content>
-      <categories>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>html</tag>
-        <tag>js</tag>
+        <tag>setting</tag>
       </tags>
   </entry>
   <entry>
@@ -547,15 +545,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[PHP filter func]]></title>
-    <url>%2Fphp%2Fphp_filter_fuc.html</url>
-    <content type="text"><![CDATA[php filter function filter_has_var() 检查是否存在指定输入类型的变量 filter_id() 返回指定过滤器的 ID 号。 filter_input() 从脚本外部获取输入，并进行过滤。 filter_input_array() 从脚本外部获取多项输入，并进行过滤。 filter_list() 返回包含所有得到支持的过滤器的一个数组。 filter_var_array() 获取多个变量，并进行过滤。 filter_var() 获取一个变量，并进行过滤。 type INPUT_GET INPUT_POST INPUT_COOKIE INPUT_SERVER INPUT_ENV INPUT_SERVER INPUT_SESSION INPUT_REQUEST filter FILTER_CALLBACK 调用用户自定义函数来过滤数据。 FILTER_SANITIZE_STRING 去除标签，去除或编码特殊字符。 FILTER_SANITIZE_STRIPPED “string” 过滤器的别名。 FILTER_SANITIZE_ENCODED URL-encode 字符串，去除或编码特殊字符。 FILTER_SANITIZE_SPECIAL_CHARS HTML 转义字符 ‘“&lt;&gt;&amp; 以及 ASCII 值小于 32 的字符。 FILTER_SANITIZE_EMAIL 删除所有字符，除了字母、数字以及 !#$%&amp;’*+-/=?^_`{|}~@.[] FILTER_SANITIZE_URL 删除所有字符，除了字母、数字以及 $-_.+!*’(),{}|\^~[]`&lt;&gt;#%”;/?:@&amp;= FILTER_SANITIZE_NUMBER_INT 删除所有字符，除了数字和 +- FILTER_SANITIZE_NUMBER_FLOAT 删除所有字符，除了数字、+- 以及 .,eE FILTER_SANITIZE_MAGIC_QUOTES 应用 addslashes()。 FILTER_UNSAFE_RAW 不进行任何过滤，去除或编码特殊字符。 FILTER_VALIDATE_INT 把值作为整数来验证。 FILTER_VALIDATE_BOOLEAN 把值作为布尔选项来验证。如果是 “1”、”true”、”on” 和 “yes”，则返回 TRUE。如果是 “0”、”false”、”off”、”no” 和 “”，则返回 FALSE。否则返回 NULL。 FILTER_VALIDATE_FLOAT 把值作为浮点数来验证。 FILTER_VALIDATE_REGEXP 根据 regexp（一种兼容 Perl 的正则表达式）来验证值。 FILTER_VALIDATE_URL 把值作为 URL 来验证。 FILTER_VALIDATE_EMAIL 把值作为 e-mail 地址来验证。 FILTER_VALIDATE_IP 把值作为 IP 地址来验证，只限 IPv4 或 IPv6 或 不是来自私有或者保留的范围。 reference参考]]></content>
+    <title><![CDATA[PHP quotes]]></title>
+    <url>%2Fphp%2Fphp_quotes.html</url>
+    <content type="text"><![CDATA[php quote魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符都会被自动加上一个反斜线进行转义，这和 addslashes() 作用完全相同 相关的函数 set_magic_quotes_runtime magic_quotes_gpc addslashes stripslashes set_magic_quotes_runtime()设置当前magic_quotes_runtime 配置选项的激活状态，0为关闭，1为开启。set_magic_quotes_runtime(1)或是配置文件中magic_quotes_runtime为true（这个在php.ini中配置），那么php脚本读取文件或是从数据库中读取数据，遇到反斜线（\）、单引号（’）、双引号（”）、NULL时，会在前面自动加上转义字符，变成\、\’、\”、\NULL；若是关闭的话，也就是set_magic_quotes_runtime(0)magic_quotes_runtime为false，那么便会转义，此时可以借助addslashes进行转义。 magic_quotes_gpc()当此值为1时，会对HTTP请求中的G（$_GET）、P（$_POST）、C（$_COOKIE）单双引号和反斜线进行转义；反之则不会。该操作一般见于表单提交的数据库操作，若是值为0时，便用addslashes进行转义存入数据库中，取出时再用stripslashes函数把反斜线给去掉。 特别注意的是在PHP 5.4版本时，魔术引号被移除了，因此转义都需要加上addslashes函数。 12345678910$_GET['des'] = "she's a beauty";foreach (array('_GET', '_POST', '_COOKIE') as $_request)&#123; echo $_request; // _GET_POST _COOKIE foreach ($$_request as $_key=&gt; $_value)&#123; // $_key为键，如_GET，$$_key为$_GET // $$_key=$_value意思就是把$_GET['des'] = 1111便为$des=she\'s a beauty $_key&#123;0&#125; != '_' &amp;&amp; $$_key=addslashes($_value); echo $$_key; &#125;&#125; 12345if(get_magic_quotes_gpc() &amp;&amp; (! ini_get('magic_quotes_sybase')))&#123; $value = stripslashes($_GET['value']);&#125;else&#123; $value = $_GET['value'];&#125;]]></content>
       <categories>
         <category>php</category>
       </categories>
       <tags>
         <tag>php</tag>
-        <tag>filter</tag>
       </tags>
   </entry>
   <entry>
@@ -572,14 +569,40 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[PHP quotes]]></title>
-    <url>%2Fphp%2Fphp_quotes.html</url>
-    <content type="text"><![CDATA[php quote魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符都会被自动加上一个反斜线进行转义，这和 addslashes() 作用完全相同 相关的函数 set_magic_quotes_runtime magic_quotes_gpc addslashes stripslashes set_magic_quotes_runtime()设置当前magic_quotes_runtime 配置选项的激活状态，0为关闭，1为开启。set_magic_quotes_runtime(1)或是配置文件中magic_quotes_runtime为true（这个在php.ini中配置），那么php脚本读取文件或是从数据库中读取数据，遇到反斜线（\）、单引号（’）、双引号（”）、NULL时，会在前面自动加上转义字符，变成\、\’、\”、\NULL；若是关闭的话，也就是set_magic_quotes_runtime(0)magic_quotes_runtime为false，那么便会转义，此时可以借助addslashes进行转义。 magic_quotes_gpc()当此值为1时，会对HTTP请求中的G（$_GET）、P（$_POST）、C（$_COOKIE）单双引号和反斜线进行转义；反之则不会。该操作一般见于表单提交的数据库操作，若是值为0时，便用addslashes进行转义存入数据库中，取出时再用stripslashes函数把反斜线给去掉。 特别注意的是在PHP 5.4版本时，魔术引号被移除了，因此转义都需要加上addslashes函数。 12345678910$_GET['des'] = "she's a beauty";foreach (array('_GET', '_POST', '_COOKIE') as $_request)&#123; echo $_request; // _GET_POST _COOKIE foreach ($$_request as $_key=&gt; $_value)&#123; // $_key为键，如_GET，$$_key为$_GET // $$_key=$_value意思就是把$_GET['des'] = 1111便为$des=she\'s a beauty $_key&#123;0&#125; != '_' &amp;&amp; $$_key=addslashes($_value); echo $$_key; &#125;&#125; 12345if(get_magic_quotes_gpc() &amp;&amp; (! ini_get('magic_quotes_sybase')))&#123; $value = stripslashes($_GET['value']);&#125;else&#123; $value = $_GET['value'];&#125;]]></content>
+    <title><![CDATA[PHP filter func]]></title>
+    <url>%2Fphp%2Fphp_filter_fuc.html</url>
+    <content type="text"><![CDATA[php filter function filter_has_var() 检查是否存在指定输入类型的变量 filter_id() 返回指定过滤器的 ID 号。 filter_input() 从脚本外部获取输入，并进行过滤。 filter_input_array() 从脚本外部获取多项输入，并进行过滤。 filter_list() 返回包含所有得到支持的过滤器的一个数组。 filter_var_array() 获取多个变量，并进行过滤。 filter_var() 获取一个变量，并进行过滤。 type INPUT_GET INPUT_POST INPUT_COOKIE INPUT_SERVER INPUT_ENV INPUT_SERVER INPUT_SESSION INPUT_REQUEST filter FILTER_CALLBACK 调用用户自定义函数来过滤数据。 FILTER_SANITIZE_STRING 去除标签，去除或编码特殊字符。 FILTER_SANITIZE_STRIPPED “string” 过滤器的别名。 FILTER_SANITIZE_ENCODED URL-encode 字符串，去除或编码特殊字符。 FILTER_SANITIZE_SPECIAL_CHARS HTML 转义字符 ‘“&lt;&gt;&amp; 以及 ASCII 值小于 32 的字符。 FILTER_SANITIZE_EMAIL 删除所有字符，除了字母、数字以及 !#$%&amp;’*+-/=?^_`{|}~@.[] FILTER_SANITIZE_URL 删除所有字符，除了字母、数字以及 $-_.+!*’(),{}|\^~[]`&lt;&gt;#%”;/?:@&amp;= FILTER_SANITIZE_NUMBER_INT 删除所有字符，除了数字和 +- FILTER_SANITIZE_NUMBER_FLOAT 删除所有字符，除了数字、+- 以及 .,eE FILTER_SANITIZE_MAGIC_QUOTES 应用 addslashes()。 FILTER_UNSAFE_RAW 不进行任何过滤，去除或编码特殊字符。 FILTER_VALIDATE_INT 把值作为整数来验证。 FILTER_VALIDATE_BOOLEAN 把值作为布尔选项来验证。如果是 “1”、”true”、”on” 和 “yes”，则返回 TRUE。如果是 “0”、”false”、”off”、”no” 和 “”，则返回 FALSE。否则返回 NULL。 FILTER_VALIDATE_FLOAT 把值作为浮点数来验证。 FILTER_VALIDATE_REGEXP 根据 regexp（一种兼容 Perl 的正则表达式）来验证值。 FILTER_VALIDATE_URL 把值作为 URL 来验证。 FILTER_VALIDATE_EMAIL 把值作为 e-mail 地址来验证。 FILTER_VALIDATE_IP 把值作为 IP 地址来验证，只限 IPv4 或 IPv6 或 不是来自私有或者保留的范围。 reference参考]]></content>
       <categories>
         <category>php</category>
       </categories>
       <tags>
         <tag>php</tag>
+        <tag>filter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[onclick lanuch a post request，解决get参数太长，导致请求失败]]></title>
+    <url>%2Fjs%2Fonclick_for_post.html</url>
+    <content type="text"><![CDATA[onclick lanuch post request有时候，由于get请求下载文件，请求参数超过了2048字符，在IE等浏览器就会导致参数不完整 因此使用post请求，其参数就没有限制长度， 然后，使用ajax发起post请求，无法触发文件下载，因此使用模拟form表单发起post请求 原生onclick 发起post请求 12345678910111213141516function onclickpost(URL, PARAMS) &#123; var temp = document.createElement("form"); temp.action = URL; temp.method = "post"; temp.style.display = "none"; for (var x in PARAMS) &#123; var opt = document.createElement("textarea"); opt.name = x; opt.value = PARAMS[x]; temp.appendChild(opt); &#125; document.body.appendChild(temp); temp.submit(); temp.parentNode.removeChild(temp);&#125;onclickpost(url, &#123;cat:rawinfo&#125;)]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[cmder 各类配置以及问题解决]]></title>
+    <url>%2Fcmder%2Fcmder.html</url>
+    <content type="text"><![CDATA[cmder 配置cmder 显示 oh my zsh会出现乱码 去网站nerdfonts最下面下载hack字体，解压安装hack字体 在cmder 的setting中 font是 选择hack字体 启动quake模式，使得cmder能够从window最上面一键呼出 cmder的setting，general 的quake style，勾选 quake style slide down , always on top , restore inactive .. , restore to active monitor setting的 keys &amp;macro 修改 minimize/restore quake style hotkey 快捷键]]></content>
+      <categories>
+        <category>cmder</category>
+      </categories>
+      <tags>
+        <tag>cmder</tag>
+        <tag>oh my zsh</tag>
+        <tag>zsh</tag>
       </tags>
   </entry>
   <entry>
@@ -595,28 +618,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[PHP Laravel]]></title>
-    <url>%2Fphp%2Flaravel%2Ftimeline.html</url>
-    <content type="text"><![CDATA[learning laravel install homestead vagrant box git clone https://github.com/laravel/homestead.git Homestead laravel local server init php artisan serve –host=0.0.0.0 –port=8000]]></content>
+    <title><![CDATA[PHP dynamically create object]]></title>
+    <url>%2Fphp%2Fcookbook%2Fphp_dynamic_create_object.html</url>
+    <content type="text"><![CDATA[PHP dynamically create object123$object = new ReflectionClass('PDO');$object-&gt;newInstanceArgs(array('arg1'=&gt;$arg1, 'arg2'=&gt;$arg2)); PHP dynamically calling func1234567$classname = "TestClassName";$object = new #classname();$methodname = "getData";$object-&gt;$methodname("arg1", "arg2");]]></content>
       <categories>
         <category>php</category>
       </categories>
       <tags>
         <tag>php</tag>
-        <tag>laravel</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[sqlite common cmd 常用命令]]></title>
-    <url>%2Fdatabases%2Fsqlite%2Fsqlite_common_cmd.html</url>
-    <content type="text"><![CDATA[sqlite common cmd 常用命令查看列表名 pragma table_info(tablename); .schema tablename select * from sqlite_master where type=”table” and name=”tablename”; 退出sqlite shel.exit 显示所有table.tables]]></content>
-      <categories>
-        <category>sqlite</category>
-      </categories>
-      <tags>
-        <tag>sqlite</tag>
-        <tag>sql</tag>
-        <tag>common</tag>
       </tags>
   </entry>
   <entry>
@@ -629,17 +638,6 @@
       <tags>
         <tag>php</tag>
         <tag>database</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[PHP dynamically create object]]></title>
-    <url>%2Fphp%2Fcookbook%2Fphp_dynamic_create_object.html</url>
-    <content type="text"><![CDATA[PHP dynamically create object123$object = new ReflectionClass('PDO');$object-&gt;newInstanceArgs(array('arg1'=&gt;$arg1, 'arg2'=&gt;$arg2)); PHP dynamically calling func1234567$classname = "TestClassName";$object = new #classname();$methodname = "getData";$object-&gt;$methodname("arg1", "arg2");]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
       </tags>
   </entry>
   <entry>
@@ -667,15 +665,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[django basic commands]]></title>
-    <url>%2Fpython%2Fdjango%2Fbasic_command.html</url>
-    <content type="text"><![CDATA[django basic commandscreate projectdjango-admin.py startproject project_name create appdjango-admin.py startapp appname synchro database python manange.py makemigrations python manange.py migrate run by test serverpython manange.py runserver 127.0.0.1:8888 clear databasepython manange.py flush create super userpython manange.py createsuperuser change user passwordpython manange.py changepassword username dump databasepython manange.py dumpdata appname &gt; appname.json load databasepython manange.py loaddata appname.json django shellpython manange.py shell database sql shellpython manange.py dbshell]]></content>
+    <title><![CDATA[PHP Laravel]]></title>
+    <url>%2Fphp%2Flaravel%2Ftimeline.html</url>
+    <content type="text"><![CDATA[learning laravel install homestead vagrant box git clone https://github.com/laravel/homestead.git Homestead laravel local server init php artisan serve –host=0.0.0.0 –port=8000]]></content>
       <categories>
-        <category>Python</category>
+        <category>php</category>
       </categories>
       <tags>
-        <tag>python</tag>
-        <tag>django</tag>
+        <tag>php</tag>
+        <tag>laravel</tag>
       </tags>
   </entry>
   <entry>
@@ -705,6 +703,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[django basic commands]]></title>
+    <url>%2Fpython%2Fdjango%2Fbasic_command.html</url>
+    <content type="text"><![CDATA[django basic commandscreate projectdjango-admin.py startproject project_name create appdjango-admin.py startapp appname synchro database python manange.py makemigrations python manange.py migrate run by test serverpython manange.py runserver 127.0.0.1:8888 clear databasepython manange.py flush create super userpython manange.py createsuperuser change user passwordpython manange.py changepassword username dump databasepython manange.py dumpdata appname &gt; appname.json load databasepython manange.py loaddata appname.json django shellpython manange.py shell database sql shellpython manange.py dbshell]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>django</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[install pip]]></title>
     <url>%2Fpython%2Finstall%2FPip.html</url>
     <content type="text"><![CDATA[install pip2 and pip3123wget https://bootstrap.pypa.io/get-pip.pysudo python2 get-pip.pysudo python get-pip.py]]></content>
@@ -714,6 +724,19 @@
       <tags>
         <tag>python</tag>
         <tag>pip</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[sqlite common cmd 常用命令]]></title>
+    <url>%2Fdatabases%2Fsqlite%2Fsqlite_common_cmd.html</url>
+    <content type="text"><![CDATA[sqlite common cmd 常用命令查看列表名 pragma table_info(tablename); .schema tablename select * from sqlite_master where type=”table” and name=”tablename”; 退出sqlite shel.exit 显示所有table.tables]]></content>
+      <categories>
+        <category>sqlite</category>
+      </categories>
+      <tags>
+        <tag>sqlite</tag>
+        <tag>sql</tag>
+        <tag>common</tag>
       </tags>
   </entry>
 </search>

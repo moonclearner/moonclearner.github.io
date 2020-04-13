@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://moonclearner.cn/"/>
-  <updated>2020-02-14T01:29:17.771Z</updated>
+  <updated>2020-03-11T06:28:03.775Z</updated>
   <id>https://moonclearner.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cmd return var</title>
+    <link href="https://moonclearner.cn/shell/cmd_return.html"/>
+    <id>https://moonclearner.cn/shell/cmd_return.html</id>
+    <published>2020-03-11T06:28:03.803Z</published>
+    <updated>2020-03-11T06:28:03.775Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="cmd-retutn-var"><a href="#cmd-retutn-var" class="headerlink" title="cmd retutn var"></a>cmd retutn var</h1><p> 如果为 0，则表示命令执行成功，其它值则表示错误，具体的错误码含义如下：<br> “OS error code   1:  Operation not permitted”<br> “OS error code   2:  No such file or directory”<br> “OS error code   3:  No such process”<br> “OS error code   4:  Interrupted system call”<br> “OS error code   5:  Input/output error”<br> “OS error code   6:  No such device or address”<br> “OS error code   7:  Argument list too long”<br> “OS error code   8:  Exec format error”<br> “OS error code   9:  Bad file descriptor”<br> “OS error code  10:  No child processes”<br> “OS error code  11:  Resource temporarily unavailable”<br> “OS error code  12:  Cannot allocate memory”<br> “OS error code  13:  Permission denied”<br> “OS error code  14:  Bad address”<br> “OS error code  15:  Block device required”<br> “OS error code  16:  Device or resource busy”<br> “OS error code  17:  File exists”<br> “OS error code  18:  Invalid cross-device link”<br> “OS error code  19:  No such device”<br> “OS error code  20:  Not a directory”<br> “OS error code  21:  Is a directory”<br> “OS error code  22:  Invalid argument”<br> “OS error code  23:  Too many open files in system”<br> “OS error code  24:  Too many open files”<br> “OS error code  25:  Inappropriate ioctl for device”<br> “OS error code  26:  Text file busy”<br> “OS error code  27:  File too large”<br> “OS error code  28:  No space left on device”<br> “OS error code  29:  Illegal seek”<br> “OS error code  30:  Read-only file system”<br> “OS error code  31:  Too many links”<br> “OS error code  32:  Broken pipe”<br> “OS error code  33:  Numerical argument out of domain”<br> “OS error code  34:  Numerical result out of range”<br> “OS error code  35:  Resource deadlock avoided”<br> “OS error code  36:  File name too long”<br> “OS error code  37:  No locks available”<br> “OS error code  38:  Function not implemented”<br> “OS error code  39:  Directory not empty”<br> “OS error code  40:  Too many levels of symbolic links”<br> “OS error code  42:  No message of desired type”<br> “OS error code  43:  Identifier removed”<br> “OS error code  44:  Channel number out of range”<br> “OS error code  45:  Level 2 not synchronized”<br> “OS error code  46:  Level 3 halted”<br> “OS error code  47:  Level 3 reset”<br> “OS error code  48:  Link number out of range”<br> “OS error code  49:  Protocol driver not attached”<br> “OS error code  50:  No CSI structure available”<br> “OS error code  51:  Level 2 halted”<br> “OS error code  52:  Invalid exchange”<br> “OS error code  53:  Invalid request descriptor”<br> “OS error code  54:  Exchange full”<br> “OS error code  55:  No anode”<br> “OS error code  56:  Invalid request code”<br> “OS error code  57:  Invalid slot”<br> “OS error code  59:  Bad font file format”<br> “OS error code  60:  Device not a stream”<br> “OS error code  61:  No data available”<br> “OS error code  62:  Timer expired”<br> “OS error code  63:  Out of streams resources”<br> “OS error code  64:  Machine is not on the network”<br> “OS error code  65:  Package not installed”<br> “OS error code  66:  Object is remote”<br> “OS error code  67:  Link has been severed”<br> “OS error code  68:  Advertise error”<br> “OS error code  69:  Srmount error”<br> “OS error code  70:  Communication error on send”<br> “OS error code  71:  Protocol error”<br> “OS error code  72:  Multihop attempted”<br> “OS error code  73:  RFS specific error”<br> “OS error code  74:  Bad message”<br> “OS error code  75:  Value too large for defined data type”<br> “OS error code  76:  Name not unique on network”<br> “OS error code  77:  File descriptor in bad state”<br> “OS error code  78:  Remote address changed”<br> “OS error code  79:  Can not access a needed shared library”<br> “OS error code  80:  Accessing a corrupted shared library”<br> “OS error code  81:  .lib section in a.out corrupted”<br> “OS error code  82:  Attempting to link in too many shared libraries”<br> “OS error code  83:  Cannot exec a shared library directly”<br> “OS error code  84:  Invalid or incomplete multibyte or wide character”<br> “OS error code  85:  Interrupted system call should be restarted”<br> “OS error code  86:  Streams pipe error”<br> “OS error code  87:  Too many users”<br> “OS error code  88:  Socket operation on non-socket”<br> “OS error code  89:  Destination address required”<br> “OS error code  90:  Message too long”<br> “OS error code  91:  Protocol wrong type for socket”<br> “OS error code  92:  Protocol not available”<br> “OS error code  93:  Protocol not supported”<br> “OS error code  94:  Socket type not supported”<br> “OS error code  95:  Operation not supported”<br> “OS error code  96:  Protocol family not supported”<br> “OS error code  97:  Address family not supported by protocol”<br> “OS error code  98:  Address already in use”<br> “OS error code  99:  Cannot assign requested address”<br> “OS error code 100:  Network is down”<br> “OS error code 101:  Network is unreachable”<br> “OS error code 102:  Network dropped connection on reset”<br> “OS error code 103:  Software caused connection abort”<br> “OS error code 104:  Connection reset by peer”<br> “OS error code 105:  No buffer space available”<br> “OS error code 106:  Transport endpoint is already connected”<br> “OS error code 107:  Transport endpoint is not connected”<br> “OS error code 108:  Cannot send after transport endpoint shutdown”<br> “OS error code 109:  Too many references: cannot splice”<br> “OS error code 110:  Connection timed out”<br> “OS error code 111:  Connection refused”<br> “OS error code 112:  Host is down”<br> “OS error code 113:  No route to host”<br> “OS error code 114:  Operation already in progress”<br> “OS error code 115:  Operation now in progress”<br> “OS error code 116:  Stale NFS file handle”<br> “OS error code 117:  Structure needs cleaning”<br> “OS error code 118:  Not a XENIX named type file”<br> “OS error code 119:  No XENIX semaphores available”<br> “OS error code 120:  Is a named type file”<br> “OS error code 121:  Remote I/O error”<br> “OS error code 122:  Disk quota exceeded”<br> “OS error code 123:  No medium found”<br> “OS error code 124:  Wrong medium type”<br> “OS error code 125:  Operation canceled”<br> “OS error code 126:  Required key not available”<br> “OS error code 127:  Key has expired”<br> “OS error code 128:  Key has been revoked”<br> “OS error code 129:  Key was rejected by service”<br> “OS error code 130:  Owner died”<br> “OS error code 131:  State not recoverable” </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;cmd-retutn-var&quot;&gt;&lt;a href=&quot;#cmd-retutn-var&quot; class=&quot;headerlink&quot; title=&quot;cmd retutn var&quot;&gt;&lt;/a&gt;cmd retutn var&lt;/h1&gt;&lt;p&gt; 如果为 0，则表示命令执行成功，其它值则表
+      
+    
+    </summary>
+    
+      <category term="shell" scheme="https://moonclearner.cn/categories/shell/"/>
+    
+    
+      <category term="linux" scheme="https://moonclearner.cn/tags/linux/"/>
+    
+      <category term="shell" scheme="https://moonclearner.cn/tags/shell/"/>
+    
+  </entry>
   
   <entry>
     <title>Jq ajax</title>
@@ -503,33 +530,6 @@
       
       
         &lt;h1 id=&quot;jQuery-html-and-interHtml-method-run-very-slowly-on-IE-8-or-IE-9-browser&quot;&gt;&lt;a href=&quot;#jQuery-html-and-interHtml-method-run-very-slowly
-      
-    
-    </summary>
-    
-      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
-    
-    
-      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
-    
-      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js将div截图发送到后台生成图片</title>
-    <link href="https://moonclearner.cn/js/html2cavas.html"/>
-    <id>https://moonclearner.cn/js/html2cavas.html</id>
-    <published>2019-11-12T10:14:30.463Z</published>
-    <updated>2019-06-11T10:42:03.607Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="html2canvas"><a href="#html2canvas" class="headerlink" title="html2canvas"></a>html2canvas</h1><p>需要导入html2canvas.min.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementById(<span class="string">'div'</span>);</span><br><span class="line"><span class="keyword">var</span> opts = &#123;</span><br><span class="line">scale:<span class="number">10</span>,</span><br><span class="line">width:oDiv.offsetWidth,</span><br><span class="line">height:oDiv.offsetHeight</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">html2canvas(oDiv, opts).then(<span class="function"><span class="keyword">function</span>(<span class="params">canvas</span>)</span>&#123;</span><br><span class="line">canvas.getContext(<span class="string">'2d'</span>).mozImageSmoothingEnabled    = <span class="literal">false</span>;</span><br><span class="line">canvas.getContext(<span class="string">'2d'</span>).webkitImageSmoothingEnabled = <span class="literal">false</span>;</span><br><span class="line">canvas.getContext(<span class="string">'2d'</span>).msImageSmoothingEnabled     = <span class="literal">false</span>;</span><br><span class="line">canvas.getContext(<span class="string">'2d'</span>).imageSmoothingEnabled       = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">var</span> strDataURI = canvas.toDataURL();</span><br><span class="line"><span class="keyword">var</span> location_url = <span class="string">"/download/"</span></span><br><span class="line">param = &#123;<span class="string">'img'</span>:strDataURI&#125;;</span><br><span class="line"><span class="keyword">new</span> Ajax.Request(location_url, &#123;</span><br><span class="line">method:<span class="string">'post'</span>,</span><br><span class="line">parameters:param,</span><br><span class="line">onComplete:<span class="function"><span class="keyword">function</span>(<span class="params">req</span>)</span>&#123;</span><br><span class="line"><span class="built_in">window</span>.location=location_url;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line">&#125;);</span><br><span class="line">&#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">jQuery(<span class="string">"#export"</span>).show();</span><br><span class="line"><span class="keyword">var</span> location_url = <span class="string">"/download/"</span></span><br><span class="line">param = &#123;&#125;;</span><br><span class="line"><span class="keyword">new</span> Ajax.Request(location_url, &#123;</span><br><span class="line">method:<span class="string">'post'</span>,</span><br><span class="line">parameters:param,</span><br><span class="line">onComplete:<span class="function"><span class="keyword">function</span>(<span class="params">req</span>)</span>&#123;</span><br><span class="line"><span class="built_in">window</span>.location=location_url;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>server<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">download</span><span class="params">()</span></span>&#123;</span><br><span class="line">$img       = $_POST[<span class="string">'img'</span>];</span><br><span class="line">$file      = <span class="string">"/tmp.png"</span>;</span><br><span class="line">$img       = str_replace(<span class="string">'data:image/png;base64,'</span>, <span class="string">''</span>, $img);</span><br><span class="line">$img       = str_replace(<span class="string">' '</span>, <span class="string">'+'</span>, $img);</span><br><span class="line">$data      = base64_decode($img);</span><br><span class="line">file_put_contents($file, $data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;html2canvas&quot;&gt;&lt;a href=&quot;#html2canvas&quot; class=&quot;headerlink&quot; title=&quot;html2canvas&quot;&gt;&lt;/a&gt;html2canvas&lt;/h1&gt;&lt;p&gt;需要导入html2canvas.min.js&lt;br&gt;&lt;figure 
       
     
     </summary>

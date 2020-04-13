@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[cmd return var]]></title>
+    <url>%2Fshell%2Fcmd_return.html</url>
+    <content type="text"><![CDATA[cmd retutn var 如果为 0，则表示命令执行成功，其它值则表示错误，具体的错误码含义如下： “OS error code 1: Operation not permitted” “OS error code 2: No such file or directory” “OS error code 3: No such process” “OS error code 4: Interrupted system call” “OS error code 5: Input/output error” “OS error code 6: No such device or address” “OS error code 7: Argument list too long” “OS error code 8: Exec format error” “OS error code 9: Bad file descriptor” “OS error code 10: No child processes” “OS error code 11: Resource temporarily unavailable” “OS error code 12: Cannot allocate memory” “OS error code 13: Permission denied” “OS error code 14: Bad address” “OS error code 15: Block device required” “OS error code 16: Device or resource busy” “OS error code 17: File exists” “OS error code 18: Invalid cross-device link” “OS error code 19: No such device” “OS error code 20: Not a directory” “OS error code 21: Is a directory” “OS error code 22: Invalid argument” “OS error code 23: Too many open files in system” “OS error code 24: Too many open files” “OS error code 25: Inappropriate ioctl for device” “OS error code 26: Text file busy” “OS error code 27: File too large” “OS error code 28: No space left on device” “OS error code 29: Illegal seek” “OS error code 30: Read-only file system” “OS error code 31: Too many links” “OS error code 32: Broken pipe” “OS error code 33: Numerical argument out of domain” “OS error code 34: Numerical result out of range” “OS error code 35: Resource deadlock avoided” “OS error code 36: File name too long” “OS error code 37: No locks available” “OS error code 38: Function not implemented” “OS error code 39: Directory not empty” “OS error code 40: Too many levels of symbolic links” “OS error code 42: No message of desired type” “OS error code 43: Identifier removed” “OS error code 44: Channel number out of range” “OS error code 45: Level 2 not synchronized” “OS error code 46: Level 3 halted” “OS error code 47: Level 3 reset” “OS error code 48: Link number out of range” “OS error code 49: Protocol driver not attached” “OS error code 50: No CSI structure available” “OS error code 51: Level 2 halted” “OS error code 52: Invalid exchange” “OS error code 53: Invalid request descriptor” “OS error code 54: Exchange full” “OS error code 55: No anode” “OS error code 56: Invalid request code” “OS error code 57: Invalid slot” “OS error code 59: Bad font file format” “OS error code 60: Device not a stream” “OS error code 61: No data available” “OS error code 62: Timer expired” “OS error code 63: Out of streams resources” “OS error code 64: Machine is not on the network” “OS error code 65: Package not installed” “OS error code 66: Object is remote” “OS error code 67: Link has been severed” “OS error code 68: Advertise error” “OS error code 69: Srmount error” “OS error code 70: Communication error on send” “OS error code 71: Protocol error” “OS error code 72: Multihop attempted” “OS error code 73: RFS specific error” “OS error code 74: Bad message” “OS error code 75: Value too large for defined data type” “OS error code 76: Name not unique on network” “OS error code 77: File descriptor in bad state” “OS error code 78: Remote address changed” “OS error code 79: Can not access a needed shared library” “OS error code 80: Accessing a corrupted shared library” “OS error code 81: .lib section in a.out corrupted” “OS error code 82: Attempting to link in too many shared libraries” “OS error code 83: Cannot exec a shared library directly” “OS error code 84: Invalid or incomplete multibyte or wide character” “OS error code 85: Interrupted system call should be restarted” “OS error code 86: Streams pipe error” “OS error code 87: Too many users” “OS error code 88: Socket operation on non-socket” “OS error code 89: Destination address required” “OS error code 90: Message too long” “OS error code 91: Protocol wrong type for socket” “OS error code 92: Protocol not available” “OS error code 93: Protocol not supported” “OS error code 94: Socket type not supported” “OS error code 95: Operation not supported” “OS error code 96: Protocol family not supported” “OS error code 97: Address family not supported by protocol” “OS error code 98: Address already in use” “OS error code 99: Cannot assign requested address” “OS error code 100: Network is down” “OS error code 101: Network is unreachable” “OS error code 102: Network dropped connection on reset” “OS error code 103: Software caused connection abort” “OS error code 104: Connection reset by peer” “OS error code 105: No buffer space available” “OS error code 106: Transport endpoint is already connected” “OS error code 107: Transport endpoint is not connected” “OS error code 108: Cannot send after transport endpoint shutdown” “OS error code 109: Too many references: cannot splice” “OS error code 110: Connection timed out” “OS error code 111: Connection refused” “OS error code 112: Host is down” “OS error code 113: No route to host” “OS error code 114: Operation already in progress” “OS error code 115: Operation now in progress” “OS error code 116: Stale NFS file handle” “OS error code 117: Structure needs cleaning” “OS error code 118: Not a XENIX named type file” “OS error code 119: No XENIX semaphores available” “OS error code 120: Is a named type file” “OS error code 121: Remote I/O error” “OS error code 122: Disk quota exceeded” “OS error code 123: No medium found” “OS error code 124: Wrong medium type” “OS error code 125: Operation canceled” “OS error code 126: Required key not available” “OS error code 127: Key has expired” “OS error code 128: Key has been revoked” “OS error code 129: Key was rejected by service” “OS error code 130: Owner died” “OS error code 131: State not recoverable”]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Jq ajax]]></title>
     <url>%2Fjs%2Fjquery%2Fjq_ajax.html</url>
     <content type="text"><![CDATA[jquery Ajaxajax 请求question 1ajax请求成功后，success返回看不到data A：可能是因为服务器返回的数据不是json格式数据]]></content>
@@ -299,8 +311,8 @@
         <category>php</category>
       </categories>
       <tags>
-        <tag>configure</tag>
         <tag>php</tag>
+        <tag>configure</tag>
       </tags>
   </entry>
   <entry>
@@ -384,8 +396,8 @@
         <category>ubuntu</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
         <tag>zsh</tag>
+        <tag>ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -503,7 +515,20 @@
         <category>zsh</category>
       </categories>
       <tags>
+        <tag>zsh</tag>
         <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[cmder 各类配置以及问题解决]]></title>
+    <url>%2Fcmder%2Fcmder.html</url>
+    <content type="text"><![CDATA[cmder 配置cmder 显示 oh my zsh会出现乱码 去网站nerdfonts最下面下载hack字体，解压安装hack字体 在cmder 的setting中 font是 选择hack字体 启动quake模式，使得cmder能够从window最上面一键呼出 cmder的setting，general 的quake style，勾选 quake style slide down , always on top , restore inactive .. , restore to active monitor setting的 keys &amp;macro 修改 minimize/restore quake style hotkey 快捷键]]></content>
+      <categories>
+        <category>cmder</category>
+      </categories>
+      <tags>
+        <tag>cmder</tag>
+        <tag>oh my zsh</tag>
         <tag>zsh</tag>
       </tags>
   </entry>
@@ -515,8 +540,20 @@
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
         <tag>setting</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[onclick lanuch a post request，解决get参数太长，导致请求失败]]></title>
+    <url>%2Fjs%2Fonclick_for_post.html</url>
+    <content type="text"><![CDATA[onclick lanuch post request有时候，由于get请求下载文件，请求参数超过了2048字符，在IE等浏览器就会导致参数不完整 因此使用post请求，其参数就没有限制长度， 然后，使用ajax发起post请求，无法触发文件下载，因此使用模拟form表单发起post请求 原生onclick 发起post请求 12345678910111213141516function onclickpost(URL, PARAMS) &#123; var temp = document.createElement("form"); temp.action = URL; temp.method = "post"; temp.style.display = "none"; for (var x in PARAMS) &#123; var opt = document.createElement("textarea"); opt.name = x; opt.value = PARAMS[x]; temp.appendChild(opt); &#125; document.body.appendChild(temp); temp.submit(); temp.parentNode.removeChild(temp);&#125;onclickpost(url, &#123;cat:rawinfo&#125;)]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -545,14 +582,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[PHP quotes]]></title>
-    <url>%2Fphp%2Fphp_quotes.html</url>
-    <content type="text"><![CDATA[php quote魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符都会被自动加上一个反斜线进行转义，这和 addslashes() 作用完全相同 相关的函数 set_magic_quotes_runtime magic_quotes_gpc addslashes stripslashes set_magic_quotes_runtime()设置当前magic_quotes_runtime 配置选项的激活状态，0为关闭，1为开启。set_magic_quotes_runtime(1)或是配置文件中magic_quotes_runtime为true（这个在php.ini中配置），那么php脚本读取文件或是从数据库中读取数据，遇到反斜线（\）、单引号（’）、双引号（”）、NULL时，会在前面自动加上转义字符，变成\、\’、\”、\NULL；若是关闭的话，也就是set_magic_quotes_runtime(0)magic_quotes_runtime为false，那么便会转义，此时可以借助addslashes进行转义。 magic_quotes_gpc()当此值为1时，会对HTTP请求中的G（$_GET）、P（$_POST）、C（$_COOKIE）单双引号和反斜线进行转义；反之则不会。该操作一般见于表单提交的数据库操作，若是值为0时，便用addslashes进行转义存入数据库中，取出时再用stripslashes函数把反斜线给去掉。 特别注意的是在PHP 5.4版本时，魔术引号被移除了，因此转义都需要加上addslashes函数。 12345678910$_GET['des'] = "she's a beauty";foreach (array('_GET', '_POST', '_COOKIE') as $_request)&#123; echo $_request; // _GET_POST _COOKIE foreach ($$_request as $_key=&gt; $_value)&#123; // $_key为键，如_GET，$$_key为$_GET // $$_key=$_value意思就是把$_GET['des'] = 1111便为$des=she\'s a beauty $_key&#123;0&#125; != '_' &amp;&amp; $$_key=addslashes($_value); echo $$_key; &#125;&#125; 12345if(get_magic_quotes_gpc() &amp;&amp; (! ini_get('magic_quotes_sybase')))&#123; $value = stripslashes($_GET['value']);&#125;else&#123; $value = $_GET['value'];&#125;]]></content>
+    <title><![CDATA[PHP filter func]]></title>
+    <url>%2Fphp%2Fphp_filter_fuc.html</url>
+    <content type="text"><![CDATA[php filter function filter_has_var() 检查是否存在指定输入类型的变量 filter_id() 返回指定过滤器的 ID 号。 filter_input() 从脚本外部获取输入，并进行过滤。 filter_input_array() 从脚本外部获取多项输入，并进行过滤。 filter_list() 返回包含所有得到支持的过滤器的一个数组。 filter_var_array() 获取多个变量，并进行过滤。 filter_var() 获取一个变量，并进行过滤。 type INPUT_GET INPUT_POST INPUT_COOKIE INPUT_SERVER INPUT_ENV INPUT_SERVER INPUT_SESSION INPUT_REQUEST filter FILTER_CALLBACK 调用用户自定义函数来过滤数据。 FILTER_SANITIZE_STRING 去除标签，去除或编码特殊字符。 FILTER_SANITIZE_STRIPPED “string” 过滤器的别名。 FILTER_SANITIZE_ENCODED URL-encode 字符串，去除或编码特殊字符。 FILTER_SANITIZE_SPECIAL_CHARS HTML 转义字符 ‘“&lt;&gt;&amp; 以及 ASCII 值小于 32 的字符。 FILTER_SANITIZE_EMAIL 删除所有字符，除了字母、数字以及 !#$%&amp;’*+-/=?^_`{|}~@.[] FILTER_SANITIZE_URL 删除所有字符，除了字母、数字以及 $-_.+!*’(),{}|\^~[]`&lt;&gt;#%”;/?:@&amp;= FILTER_SANITIZE_NUMBER_INT 删除所有字符，除了数字和 +- FILTER_SANITIZE_NUMBER_FLOAT 删除所有字符，除了数字、+- 以及 .,eE FILTER_SANITIZE_MAGIC_QUOTES 应用 addslashes()。 FILTER_UNSAFE_RAW 不进行任何过滤，去除或编码特殊字符。 FILTER_VALIDATE_INT 把值作为整数来验证。 FILTER_VALIDATE_BOOLEAN 把值作为布尔选项来验证。如果是 “1”、”true”、”on” 和 “yes”，则返回 TRUE。如果是 “0”、”false”、”off”、”no” 和 “”，则返回 FALSE。否则返回 NULL。 FILTER_VALIDATE_FLOAT 把值作为浮点数来验证。 FILTER_VALIDATE_REGEXP 根据 regexp（一种兼容 Perl 的正则表达式）来验证值。 FILTER_VALIDATE_URL 把值作为 URL 来验证。 FILTER_VALIDATE_EMAIL 把值作为 e-mail 地址来验证。 FILTER_VALIDATE_IP 把值作为 IP 地址来验证，只限 IPv4 或 IPv6 或 不是来自私有或者保留的范围。 reference参考]]></content>
       <categories>
         <category>php</category>
       </categories>
       <tags>
         <tag>php</tag>
+        <tag>filter</tag>
       </tags>
   </entry>
   <entry>
@@ -569,40 +607,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[PHP filter func]]></title>
-    <url>%2Fphp%2Fphp_filter_fuc.html</url>
-    <content type="text"><![CDATA[php filter function filter_has_var() 检查是否存在指定输入类型的变量 filter_id() 返回指定过滤器的 ID 号。 filter_input() 从脚本外部获取输入，并进行过滤。 filter_input_array() 从脚本外部获取多项输入，并进行过滤。 filter_list() 返回包含所有得到支持的过滤器的一个数组。 filter_var_array() 获取多个变量，并进行过滤。 filter_var() 获取一个变量，并进行过滤。 type INPUT_GET INPUT_POST INPUT_COOKIE INPUT_SERVER INPUT_ENV INPUT_SERVER INPUT_SESSION INPUT_REQUEST filter FILTER_CALLBACK 调用用户自定义函数来过滤数据。 FILTER_SANITIZE_STRING 去除标签，去除或编码特殊字符。 FILTER_SANITIZE_STRIPPED “string” 过滤器的别名。 FILTER_SANITIZE_ENCODED URL-encode 字符串，去除或编码特殊字符。 FILTER_SANITIZE_SPECIAL_CHARS HTML 转义字符 ‘“&lt;&gt;&amp; 以及 ASCII 值小于 32 的字符。 FILTER_SANITIZE_EMAIL 删除所有字符，除了字母、数字以及 !#$%&amp;’*+-/=?^_`{|}~@.[] FILTER_SANITIZE_URL 删除所有字符，除了字母、数字以及 $-_.+!*’(),{}|\^~[]`&lt;&gt;#%”;/?:@&amp;= FILTER_SANITIZE_NUMBER_INT 删除所有字符，除了数字和 +- FILTER_SANITIZE_NUMBER_FLOAT 删除所有字符，除了数字、+- 以及 .,eE FILTER_SANITIZE_MAGIC_QUOTES 应用 addslashes()。 FILTER_UNSAFE_RAW 不进行任何过滤，去除或编码特殊字符。 FILTER_VALIDATE_INT 把值作为整数来验证。 FILTER_VALIDATE_BOOLEAN 把值作为布尔选项来验证。如果是 “1”、”true”、”on” 和 “yes”，则返回 TRUE。如果是 “0”、”false”、”off”、”no” 和 “”，则返回 FALSE。否则返回 NULL。 FILTER_VALIDATE_FLOAT 把值作为浮点数来验证。 FILTER_VALIDATE_REGEXP 根据 regexp（一种兼容 Perl 的正则表达式）来验证值。 FILTER_VALIDATE_URL 把值作为 URL 来验证。 FILTER_VALIDATE_EMAIL 把值作为 e-mail 地址来验证。 FILTER_VALIDATE_IP 把值作为 IP 地址来验证，只限 IPv4 或 IPv6 或 不是来自私有或者保留的范围。 reference参考]]></content>
+    <title><![CDATA[PHP quotes]]></title>
+    <url>%2Fphp%2Fphp_quotes.html</url>
+    <content type="text"><![CDATA[php quote魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符都会被自动加上一个反斜线进行转义，这和 addslashes() 作用完全相同 相关的函数 set_magic_quotes_runtime magic_quotes_gpc addslashes stripslashes set_magic_quotes_runtime()设置当前magic_quotes_runtime 配置选项的激活状态，0为关闭，1为开启。set_magic_quotes_runtime(1)或是配置文件中magic_quotes_runtime为true（这个在php.ini中配置），那么php脚本读取文件或是从数据库中读取数据，遇到反斜线（\）、单引号（’）、双引号（”）、NULL时，会在前面自动加上转义字符，变成\、\’、\”、\NULL；若是关闭的话，也就是set_magic_quotes_runtime(0)magic_quotes_runtime为false，那么便会转义，此时可以借助addslashes进行转义。 magic_quotes_gpc()当此值为1时，会对HTTP请求中的G（$_GET）、P（$_POST）、C（$_COOKIE）单双引号和反斜线进行转义；反之则不会。该操作一般见于表单提交的数据库操作，若是值为0时，便用addslashes进行转义存入数据库中，取出时再用stripslashes函数把反斜线给去掉。 特别注意的是在PHP 5.4版本时，魔术引号被移除了，因此转义都需要加上addslashes函数。 12345678910$_GET['des'] = "she's a beauty";foreach (array('_GET', '_POST', '_COOKIE') as $_request)&#123; echo $_request; // _GET_POST _COOKIE foreach ($$_request as $_key=&gt; $_value)&#123; // $_key为键，如_GET，$$_key为$_GET // $$_key=$_value意思就是把$_GET['des'] = 1111便为$des=she\'s a beauty $_key&#123;0&#125; != '_' &amp;&amp; $$_key=addslashes($_value); echo $$_key; &#125;&#125; 12345if(get_magic_quotes_gpc() &amp;&amp; (! ini_get('magic_quotes_sybase')))&#123; $value = stripslashes($_GET['value']);&#125;else&#123; $value = $_GET['value'];&#125;]]></content>
       <categories>
         <category>php</category>
       </categories>
       <tags>
         <tag>php</tag>
-        <tag>filter</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[onclick lanuch a post request，解决get参数太长，导致请求失败]]></title>
-    <url>%2Fjs%2Fonclick_for_post.html</url>
-    <content type="text"><![CDATA[onclick lanuch post request有时候，由于get请求下载文件，请求参数超过了2048字符，在IE等浏览器就会导致参数不完整 因此使用post请求，其参数就没有限制长度， 然后，使用ajax发起post请求，无法触发文件下载，因此使用模拟form表单发起post请求 原生onclick 发起post请求 12345678910111213141516function onclickpost(URL, PARAMS) &#123; var temp = document.createElement("form"); temp.action = URL; temp.method = "post"; temp.style.display = "none"; for (var x in PARAMS) &#123; var opt = document.createElement("textarea"); opt.name = x; opt.value = PARAMS[x]; temp.appendChild(opt); &#125; document.body.appendChild(temp); temp.submit(); temp.parentNode.removeChild(temp);&#125;onclickpost(url, &#123;cat:rawinfo&#125;)]]></content>
-      <categories>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>html</tag>
-        <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[cmder 各类配置以及问题解决]]></title>
-    <url>%2Fcmder%2Fcmder.html</url>
-    <content type="text"><![CDATA[cmder 配置cmder 显示 oh my zsh会出现乱码 去网站nerdfonts最下面下载hack字体，解压安装hack字体 在cmder 的setting中 font是 选择hack字体 启动quake模式，使得cmder能够从window最上面一键呼出 cmder的setting，general 的quake style，勾选 quake style slide down , always on top , restore inactive .. , restore to active monitor setting的 keys &amp;macro 修改 minimize/restore quake style hotkey 快捷键]]></content>
-      <categories>
-        <category>cmder</category>
-      </categories>
-      <tags>
-        <tag>cmder</tag>
-        <tag>oh my zsh</tag>
-        <tag>zsh</tag>
       </tags>
   </entry>
   <entry>
@@ -615,6 +627,19 @@
       <tags>
         <tag>vim</tag>
         <tag>text</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[sqlite common cmd 常用命令]]></title>
+    <url>%2Fdatabases%2Fsqlite%2Fsqlite_common_cmd.html</url>
+    <content type="text"><![CDATA[sqlite common cmd 常用命令查看列表名 pragma table_info(tablename); .schema tablename select * from sqlite_master where type=”table” and name=”tablename”; 退出sqlite shel.exit 显示所有table.tables]]></content>
+      <categories>
+        <category>sqlite</category>
+      </categories>
+      <tags>
+        <tag>sqlite</tag>
+        <tag>sql</tag>
+        <tag>common</tag>
       </tags>
   </entry>
   <entry>
@@ -724,19 +749,6 @@
       <tags>
         <tag>python</tag>
         <tag>pip</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[sqlite common cmd 常用命令]]></title>
-    <url>%2Fdatabases%2Fsqlite%2Fsqlite_common_cmd.html</url>
-    <content type="text"><![CDATA[sqlite common cmd 常用命令查看列表名 pragma table_info(tablename); .schema tablename select * from sqlite_master where type=”table” and name=”tablename”; 退出sqlite shel.exit 显示所有table.tables]]></content>
-      <categories>
-        <category>sqlite</category>
-      </categories>
-      <tags>
-        <tag>sqlite</tag>
-        <tag>sql</tag>
-        <tag>common</tag>
       </tags>
   </entry>
 </search>

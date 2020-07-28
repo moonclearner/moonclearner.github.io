@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://moonclearner.cn/php/php_view_file.html</loc>
+    
+    <lastmod>2020-07-23T03:09:08.823Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://moonclearner.cn/databases/postgresql/postgresqlLearningNote.html</loc>
+    
+    <lastmod>2020-06-17T10:42:24.429Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://moonclearner.cn/shell/common_cmd.html</loc>
+    
+    <lastmod>2020-05-25T06:16:36.864Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://moonclearner.cn/php/configure/php_extension_compile_fail.html</loc>
+    
+    <lastmod>2020-04-30T07:29:54.868Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://moonclearner.cn/ubuntu/pkg-config.html</loc>
+    
+    <lastmod>2020-04-13T09:19:50.357Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://moonclearner.cn/shell/cmd_return.html</loc>
     
     <lastmod>2020-03-11T06:28:03.775Z</lastmod>
@@ -68,13 +103,6 @@
     <loc>https://moonclearner.cn/databases/postgresql/postgresqlLearningResource.html</loc>
     
     <lastmod>2019-12-30T10:40:17.433Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://moonclearner.cn/shell/common_cmd.html</loc>
-    
-    <lastmod>2019-12-25T03:02:41.036Z</lastmod>
     
   </url>
   
@@ -173,13 +201,6 @@
     <loc>https://moonclearner.cn/php/php_download.html</loc>
     
     <lastmod>2019-07-12T09:08:13.463Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://moonclearner.cn/php/configure/php_extension_compile_fail.html</loc>
-    
-    <lastmod>2019-07-09T07:14:54.875Z</lastmod>
     
   </url>
   
@@ -394,14 +415,14 @@
   </url>
   
   <url>
-    <loc>https://moonclearner.cn/php/cookbook/php_dynamic_create_object.html</loc>
+    <loc>https://moonclearner.cn/php/cookbook/php_database_transaction.html</loc>
     
     <lastmod>2019-02-27T05:33:54.374Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://moonclearner.cn/php/cookbook/php_database_transaction.html</loc>
+    <loc>https://moonclearner.cn/php/cookbook/php_dynamic_create_object.html</loc>
     
     <lastmod>2019-02-27T05:33:54.374Z</lastmod>
     

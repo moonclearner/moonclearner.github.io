@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://moonclearner.cn/"/>
-  <updated>2020-03-11T06:28:03.775Z</updated>
+  <updated>2020-07-23T03:09:08.823Z</updated>
   <id>https://moonclearner.cn/</id>
   
   <author>
@@ -15,6 +15,132 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PHP View File</title>
+    <link href="https://moonclearner.cn/php/php_view_file.html"/>
+    <id>https://moonclearner.cn/php/php_view_file.html</id>
+    <published>2020-07-23T03:09:08.823Z</published>
+    <updated>2020-07-23T03:09:08.823Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="php-读取文件返回给浏览器直接预览而不是下载"><a href="#php-读取文件返回给浏览器直接预览而不是下载" class="headerlink" title="php 读取文件返回给浏览器直接预览而不是下载"></a>php 读取文件返回给浏览器直接预览而不是下载</h1><h2 id="预览PDF"><a href="#预览PDF" class="headerlink" title="预览PDF"></a>预览PDF</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">header(&quot;Content-Type: application/pdf&quot;);</span><br><span class="line">header(&apos;Content-Disposition: inline; filename=&quot;test.pdf&quot;&apos;);</span><br><span class="line">header(&apos;Content-Transfer-Encoding: binary&apos;);</span><br><span class="line">header(&apos;Accept-Ranges: bytes&apos;);</span><br><span class="line">@readfile($filePath);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;php-读取文件返回给浏览器直接预览而不是下载&quot;&gt;&lt;a href=&quot;#php-读取文件返回给浏览器直接预览而不是下载&quot; class=&quot;headerlink&quot; title=&quot;php 读取文件返回给浏览器直接预览而不是下载&quot;&gt;&lt;/a&gt;php 读取文件返回给浏览器直接预
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>postgresql Learning Note</title>
+    <link href="https://moonclearner.cn/databases/postgresql/postgresqlLearningNote.html"/>
+    <id>https://moonclearner.cn/databases/postgresql/postgresqlLearningNote.html</id>
+    <published>2020-06-17T10:42:24.429Z</published>
+    <updated>2020-06-17T10:42:24.429Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="postgresql-LearningNote"><a href="#postgresql-LearningNote" class="headerlink" title="postgresql LearningNote"></a>postgresql LearningNote</h1><h2 id="时间相关"><a href="#时间相关" class="headerlink" title="时间相关"></a>时间相关</h2><h3 id="查询当天的数据"><a href="#查询当天的数据" class="headerlink" title="查询当天的数据"></a>查询当天的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'00:00:00'</span>;</span><br></pre></td></tr></table></figure><h3 id="查询当月的数据"><a href="#查询当月的数据" class="headerlink" title="查询当月的数据"></a>查询当月的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'1 mons'</span>;</span><br></pre></td></tr></table></figure><h3 id="查询当年的数据"><a href="#查询当年的数据" class="headerlink" title="查询当年的数据"></a>查询当年的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'1 years'</span>;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;postgresql-LearningNote&quot;&gt;&lt;a href=&quot;#postgresql-LearningNote&quot; class=&quot;headerlink&quot; title=&quot;postgresql LearningNote&quot;&gt;&lt;/a&gt;postgresql Learni
+      
+    
+    </summary>
+    
+      <category term="postgresql" scheme="https://moonclearner.cn/categories/postgresql/"/>
+    
+    
+      <category term="postgresql" scheme="https://moonclearner.cn/tags/postgresql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>common cmd</title>
+    <link href="https://moonclearner.cn/shell/common_cmd.html"/>
+    <id>https://moonclearner.cn/shell/common_cmd.html</id>
+    <published>2020-05-25T06:16:36.896Z</published>
+    <updated>2020-05-25T06:16:36.864Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="common-cmd"><a href="#common-cmd" class="headerlink" title="common cmd"></a>common cmd</h1><h2 id="delete-all-files-in-the-current-path-except-file-A"><a href="#delete-all-files-in-the-current-path-except-file-A" class="headerlink" title="delete all files in the current path except file A"></a>delete all files in the current path except file A</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">find ./* |grep -v A |xargs rm -r</span><br><span class="line"></span><br><span class="line"># second method</span><br><span class="line">rm -rf !(keep1 | keep2)</span><br></pre></td></tr></table></figure><h2 id="delete-all-file-except-py-file"><a href="#delete-all-file-except-py-file" class="headerlink" title="delete all file except py file"></a>delete all file except py file</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*&quot; -type f |grep -v &quot;.py&quot; |grep  &quot;\.&quot; |xargs rm -rf</span><br></pre></td></tr></table></figure><h2 id="kill-all-python-process"><a href="#kill-all-python-process" class="headerlink" title="kill all python process"></a>kill all python process</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep python |grep -v grep|awk  &apos;&#123;print $2&#125;&apos;|xargs kill -9</span><br></pre></td></tr></table></figure><h2 id="bash-shortkey"><a href="#bash-shortkey" class="headerlink" title="bash shortkey"></a>bash shortkey</h2><ul><li><p>history 显示命令历史列表</p></li><li><p>↑(Ctrl+p) 显示上一条命令</p></li><li><p>↓(Ctrl+n) 显示下一条命令</p></li><li><p>!num 执行命令历史列表的第num条命令</p></li><li><p>!! 执行上一条命令</p></li><li><p>!?string? 执行含有string字符串的最新命令</p></li><li><p>Ctrl+r 然后输入若干字符，开始向上搜索包含该字符的命令，继续按Ctrl+r，搜索上一条匹配的命令</p></li><li><p>Ctrl+s 与Ctrl+r类似,只是正向检索</p></li><li><p>Alt+&lt; 历史列表第一项</p></li><li><p>Alt+&gt; 历史列表最后一项</p></li><li><p>Ctrl+f 光标向前移动一个字符,相当与-&gt;</p></li><li><p>Ctrl+b 光标向后移动一个字符,相当与&lt;-</p></li><li><p>Alt+f 光标向前移动一个单词</p></li><li><p>Alt+b 光标向后移动一个单词</p></li><li><p>ls !$ 执行命令ls，并以上一条命令的参数为其参数</p></li><li><p>Ctrl+a 移动到当前行的开头</p></li><li><p>Ctrl+e 移动到当前行的结尾</p></li><li><p>Esc+b 移动到当前单词的开头</p></li><li><p>Esc+f 移动到当前单词的结尾</p></li><li><p>Ctrl+l 清屏</p></li><li><p>Ctrl+u 剪切命令行中光标所在处之前的所有字符（不包括自身）</p></li><li><p>Ctrl+k 剪切命令行中光标所在处之后的所有字符（包括自身）</p></li><li><p>Ctrl+d 删除光标所在处字符</p></li><li><p>Ctrl+h 删除光标所在处前一个字符</p></li><li><p>Ctrl+y 粘贴刚才所删除的字符</p></li><li><p>Ctrl+w 剪切光标所在处之前的一个词（以空格、标点等为分隔符）</p></li><li><p>Alt+d 剪切光标之后的词</p></li><li><p>Esc+w 删除光标所在处之前的字符至其单词尾（以空格、标点等为分隔符）</p></li><li><p>Ctrl+t 颠倒光标所在处及其之前的字符位置，并将光标移动到下一个字符</p></li><li><p>Alt+t 交换当前与以前单词的位置</p></li><li><p>Alt+u 把当前词转化为大写</p></li><li><p>Alt+l 把当前词转化为小写</p></li><li><p>Alt+c 把当前词汇变成首字符大写</p></li><li><p>Ctrl+v 插入特殊字符,如Ctrl+v+Tab加入Tab字符键</p></li><li><p>Esc+t 颠倒光标所在处及其相邻单词的位置</p></li><li><p>Ctrl+c 删除整行</p></li><li><p>Ctrl+(x u) 按住Ctrl的同时再先后按x和u，撤销刚才的操作</p></li><li><p>Ctrl+s 挂起当前shell</p></li><li><p>Ctrl+q 重新启用挂起的shell</p></li><li><p>[Ctrl] + [Alt] + [Backspace] = 杀死你当前的 X 会话。杀死图形化桌面会话，把你返回到登录屏幕。如果正常退出步骤不起作用，你可以使用这种方法。</p></li><li><p>[Ctrl] + [Alt] + [Delete] = 关机和重新引导 Red Hat Linux。关闭你当前的会话然后重新引导 OS。只有在正常关机步骤不起作用时才使用这种方法。</p></li><li><p>[Ctrl] + [Alt] + [Fn] = 切换屏幕。 [Ctrl] + [Alt] + 功能键之一会显示一个新屏幕。根据默认设置，从 [F1] 到 [F6] 是 shell 提示屏幕， [F7] 是图形化屏幕。</p></li><li><p>[Alt] + [Tab] = 在图形化桌面环境中切换任务。如果你同时打开了不止一个应用程序，你可以使用 [Alt] + [Tab] 来在打开的任务和应用程序间切换。</p></li><li><p>[Ctrl] + [a] = 把光标移到行首。它在多数文本编辑器和 Mozilla 的 URL 字段内可以使用。</p></li><li><p>[Ctrl] + [d] = 从 shell 提示中注销（并关闭）。使用该快捷键，你就不必键入 exit 或 logout 。</p></li><li><p>[Ctrl] + [e] = 把光标移到行尾。它在多数文本编辑器和 Mozilla 的 URL 字段内都可使用。</p></li><li><p>[Ctrl] + [l] = 清除终端。该快捷操作与在命令行键入 clear 作用相同。</p></li><li><p>[Ctrl] + = 清除当前行。如果你在终端下工作，使用这一快捷操作可以清除从光标处到行首的字符。</p></li><li><p>[鼠标中间键] = 粘贴突出显示的文本。使用鼠标左键来突出显示文本。把光标指向你想粘贴文本的地方。点击鼠标中间键来粘贴它。在两键鼠标系统中，如果你把鼠标配置成模拟第三键，你可以同时点击鼠标的左右两键来执行粘贴。</p></li><li><p>[Tab] =命令行自动补全。使用 shell 提示时可使用这一命令。键入命令或文件名的前几个字符，然后按 [Tab] 键，它会自动补全命令或显示匹配你键入字符的所有命令。</p></li><li><p>[向上] 和 [向下] 箭头 = 显示命令历史。当你使用 shell 提示时，按 [向上] 或 [向下] 箭头来前后查看你在当前目录下键入的命令历史。当你看到你想使用的命令时，按 [Enter] 键。</p></li><li><p>clear = 清除 shell 提示屏幕。在命令行下键入它会清除所有这个 shell 提示屏幕中显示的数据。</p></li><li><p>exit = 注销。在 shell 提示中键入它会注销当前的用户或根用户帐号。</p></li><li><p>history = 显示命令历史。在 shell 提示中键入它来显示你所键入的被编号的前 1000 个命令。要显示较短的命令历史，键入 history f之后，空一格，在键入一个数字。例如： history 20 。</p></li><li><p>reset = 刷新 shell 提示屏幕。如果字符不清晰或乱码的话，在 shell 提示下键入这个命令会刷新屏幕。</p></li><li><h1 id="Ctrl-U-擦除一行光标前面的部分。"><a href="#Ctrl-U-擦除一行光标前面的部分。" class="headerlink" title="Ctrl-U: 擦除一行光标前面的部分。"></a>Ctrl-U: 擦除一行光标前面的部分。</h1></li><li><h1 id="Ctrl-H-擦除光标前面的一个字符。"><a href="#Ctrl-H-擦除光标前面的一个字符。" class="headerlink" title="Ctrl-H: 擦除光标前面的一个字符。"></a>Ctrl-H: 擦除光标前面的一个字符。</h1></li><li><h1 id="Ctrl-D-终止输入。-退出-shell，如果您正在使用-shell-的话-。"><a href="#Ctrl-D-终止输入。-退出-shell，如果您正在使用-shell-的话-。" class="headerlink" title="Ctrl-D: 终止输入。(退出 shell，如果您正在使用 shell 的话)。"></a>Ctrl-D: 终止输入。(退出 shell，如果您正在使用 shell 的话)。</h1></li><li><h1 id="Ctrl-C-终止当前正在运行的程序。"><a href="#Ctrl-C-终止当前正在运行的程序。" class="headerlink" title="Ctrl-C: 终止当前正在运行的程序。"></a>Ctrl-C: 终止当前正在运行的程序。</h1></li><li><h1 id="Ctrl-Z-暂停程序。"><a href="#Ctrl-Z-暂停程序。" class="headerlink" title="Ctrl-Z: 暂停程序。"></a>Ctrl-Z: 暂停程序。</h1></li><li><h1 id="Ctrl-S-停止向屏幕输出。"><a href="#Ctrl-S-停止向屏幕输出。" class="headerlink" title="Ctrl-S: 停止向屏幕输出。"></a>Ctrl-S: 停止向屏幕输出。</h1></li><li><h1 id="Ctrl-Q-重新激活向屏幕输出。"><a href="#Ctrl-Q-重新激活向屏幕输出。" class="headerlink" title="Ctrl-Q: 重新激活向屏幕输出。"></a>Ctrl-Q: 重新激活向屏幕输出。</h1></li><li><h1 id="up-arrow-开始历史命令搜索。"><a href="#up-arrow-开始历史命令搜索。" class="headerlink" title="up-arrow: 开始历史命令搜索。"></a>up-arrow: 开始历史命令搜索。</h1></li><li><h1 id="Ctrl-R-开始增量历史命令搜索，可以按照关键字查查自己用过哪些命令。"><a href="#Ctrl-R-开始增量历史命令搜索，可以按照关键字查查自己用过哪些命令。" class="headerlink" title="Ctrl-R: 开始增量历史命令搜索，可以按照关键字查查自己用过哪些命令。"></a>Ctrl-R: 开始增量历史命令搜索，可以按照关键字查查自己用过哪些命令。</h1></li><li><h1 id="TAB-完整的把文件名输入到命令行。"><a href="#TAB-完整的把文件名输入到命令行。" class="headerlink" title="TAB: 完整的把文件名输入到命令行。"></a>TAB: 完整的把文件名输入到命令行。</h1></li><li><h1 id="Ctrl-V-TAB-输入-TAB-而不是扩展命令行。"><a href="#Ctrl-V-TAB-输入-TAB-而不是扩展命令行。" class="headerlink" title="Ctrl-V TAB: 输入 TAB 而不是扩展命令行。"></a>Ctrl-V TAB: 输入 TAB 而不是扩展命令行。</h1></li><li><h1 id="Ctrl-P-上一条命令"><a href="#Ctrl-P-上一条命令" class="headerlink" title="Ctrl + P - 上一条命令"></a>Ctrl + P - 上一条命令</h1></li><li><h1 id="Ctrl-N-下一条命令"><a href="#Ctrl-N-下一条命令" class="headerlink" title="Ctrl + N - 下一条命令"></a>Ctrl + N - 下一条命令</h1></li><li><h1 id="Ctrl-U-擦除一行光标前面的部分。-1"><a href="#Ctrl-U-擦除一行光标前面的部分。-1" class="headerlink" title="Ctrl-U: 擦除一行光标前面的部分。"></a>Ctrl-U: 擦除一行光标前面的部分。</h1></li><li><h1 id="Ctrl-Y-粘贴前一Ctrl-U类命令删除的字符-，是粘贴不是撤销啊！"><a href="#Ctrl-Y-粘贴前一Ctrl-U类命令删除的字符-，是粘贴不是撤销啊！" class="headerlink" title="Ctrl + Y - 粘贴前一Ctrl+U类命令删除的字符 ，是粘贴不是撤销啊！"></a>Ctrl + Y - 粘贴前一Ctrl+U类命令删除的字符 ，是粘贴不是撤销啊！</h1></li><li><h1 id="上一条命令"><a href="#上一条命令" class="headerlink" title="!! - 上一条命令"></a>!! - 上一条命令</h1></li><li><h1 id="n-倒数第N条历史命令"><a href="#n-倒数第N条历史命令" class="headerlink" title="!-n - 倒数第N条历史命令"></a>!-n - 倒数第N条历史命令</h1></li><li><h1 id="n-p-打印上一条命令（不执行）"><a href="#n-p-打印上一条命令（不执行）" class="headerlink" title="!-n:p - 打印上一条命令（不执行）"></a>!-n:p - 打印上一条命令（不执行）</h1></li><li><h1 id="string？-最新一条含有“string”的命令"><a href="#string？-最新一条含有“string”的命令" class="headerlink" title="!?string？- 最新一条含有“string”的命令"></a>!?string？- 最新一条含有“string”的命令</h1></li><li><h1 id="n-gs-str1-str2-将倒数第N条命令的str1替换为str2，并执行（若不加g-则仅替换第一个）"><a href="#n-gs-str1-str2-将倒数第N条命令的str1替换为str2，并执行（若不加g-则仅替换第一个）" class="headerlink" title="!-n:gs/str1/str2/ - 将倒数第N条命令的str1替换为str2，并执行（若不加g,则仅替换第一个）"></a>!-n:gs/str1/str2/ - 将倒数第N条命令的str1替换为str2，并执行（若不加g,则仅替换第一个）</h1></li><li><h1 id="Ctrl-l-清屏"><a href="#Ctrl-l-清屏" class="headerlink" title="Ctrl + l - 清屏"></a>Ctrl + l - 清屏</h1></li><li><h1 id="Ctrl-A-光标移到行首"><a href="#Ctrl-A-光标移到行首" class="headerlink" title="Ctrl + A - 光标移到行首"></a>Ctrl + A - 光标移到行首</h1></li><li><h1 id="Ctrl-E-光标移到行尾"><a href="#Ctrl-E-光标移到行尾" class="headerlink" title="Ctrl + E - 光标移到行尾"></a>Ctrl + E - 光标移到行尾</h1></li><li><h1 id="Ctrl-W-清除光标之前一个单词"><a href="#Ctrl-W-清除光标之前一个单词" class="headerlink" title="Ctrl + W - 清除光标之前一个单词"></a>Ctrl + W - 清除光标之前一个单词</h1></li><li><h1 id="Ctrl-K-清除光标到行尾的字符"><a href="#Ctrl-K-清除光标到行尾的字符" class="headerlink" title="Ctrl + K - 清除光标到行尾的字符"></a>Ctrl + K - 清除光标到行尾的字符</h1></li><li><h1 id="Ctrl-T-交换光标前两个字符"><a href="#Ctrl-T-交换光标前两个字符" class="headerlink" title="Ctrl + T - 交换光标前两个字符"></a>Ctrl + T - 交换光标前两个字符</h1></li><li><h1 id="Ctrl-V-输入控制字符-如Ctrl-v-会输入-M"><a href="#Ctrl-V-输入控制字符-如Ctrl-v-会输入-M" class="headerlink" title="Ctrl + V - 输入控制字符 如Ctrl+v ,会输入^M"></a>Ctrl + V - 输入控制字符 如Ctrl+v ,会输入^M</h1></li><li><h1 id="Ctrl-F-光标后移一个字符"><a href="#Ctrl-F-光标后移一个字符" class="headerlink" title="Ctrl + F - 光标后移一个字符"></a>Ctrl + F - 光标后移一个字符</h1></li><li><h1 id="Ctrl-B-光标前移一个字符"><a href="#Ctrl-B-光标前移一个字符" class="headerlink" title="Ctrl + B - 光标前移一个字符"></a>Ctrl + B - 光标前移一个字符</h1></li><li><h1 id="Ctrl-H-删除光标前一个字符"><a href="#Ctrl-H-删除光标前一个字符" class="headerlink" title="Ctrl + H - 删除光标前一个字符"></a>Ctrl + H - 删除光标前一个字符</h1></li><li><h1 id="N-F-光标后移N个单词，N为1时可省略"><a href="#N-F-光标后移N个单词，N为1时可省略" class="headerlink" title="N++F - 光标后移N个单词，N为1时可省略"></a>N++F - 光标后移N个单词，N为1时可省略</h1></li><li><h1 id="N-B-光标前移N个单词，N为1时可省略"><a href="#N-B-光标前移N个单词，N为1时可省略" class="headerlink" title="N++B - 光标前移N个单词，N为1时可省略"></a>N++B - 光标前移N个单词，N为1时可省略</h1></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;common-cmd&quot;&gt;&lt;a href=&quot;#common-cmd&quot; class=&quot;headerlink&quot; title=&quot;common cmd&quot;&gt;&lt;/a&gt;common cmd&lt;/h1&gt;&lt;h2 id=&quot;delete-all-files-in-the-current-p
+      
+    
+    </summary>
+    
+      <category term="shell" scheme="https://moonclearner.cn/categories/shell/"/>
+    
+    
+      <category term="linux" scheme="https://moonclearner.cn/tags/linux/"/>
+    
+      <category term="shell" scheme="https://moonclearner.cn/tags/shell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>build php extension fail phpizse</title>
+    <link href="https://moonclearner.cn/php/configure/php_extension_compile_fail.html"/>
+    <id>https://moonclearner.cn/php/configure/php_extension_compile_fail.html</id>
+    <published>2020-04-30T07:29:54.868Z</published>
+    <updated>2020-04-30T07:29:54.868Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="CDPATH-command-not-found"><a href="#CDPATH-command-not-found" class="headerlink" title="CDPATH command not found"></a>CDPATH command not found</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">$</span> make </span><br><span class="line">/home/user/libtool: line 482: CDPATH: command not found</span><br><span class="line">libtool: Version mismatch error.  This is libtool 2.4.2, but the</span><br><span class="line">libtool: definition of this LT_INIT comes from an older release.</span><br><span class="line">libtool: You should recreate aclocal.m4 with macros from libtool 2.4.2</span><br><span class="line">libtool: and run autoconf again.</span><br><span class="line">make: *** [xdebug.lo] Error 63</span><br></pre></td></tr></table></figure><h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><ul><li>aclocal</li><li>libtoolize –force</li><li>autoheader</li><li>autoconf</li></ul><h2 id="solution2"><a href="#solution2" class="headerlink" title="solution2"></a>solution2</h2><ul><li>rm –rf aclocal.m4</li><li>autoreconf</li></ul><h2 id="solution3"><a href="#solution3" class="headerlink" title="solution3"></a>solution3</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">If you have error with libtool version after make - way to install:</span><br><span class="line">phpize --clean &amp;&amp; phpize</span><br><span class="line">rm aclocal.m4</span><br><span class="line">aclocal</span><br><span class="line">autoconf</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure><h1 id="undefined-reference-to-symbol-‘ber-strdup’"><a href="#undefined-reference-to-symbol-‘ber-strdup’" class="headerlink" title="undefined reference to symbol ‘ber_strdup’"></a>undefined reference to symbol ‘ber_strdup’</h1><p>./configure 」沒抓好一些环境变数值</p><h2 id="solution-1"><a href="#solution-1" class="headerlink" title="solution"></a>solution</h2><p>在PHP源码目录下 vi Makefile 找到 EXTRA_LIBS 行，在行末添加 ‘ -llber ‘ 保存退出再次make即可。</p>]]></content>
+    
+    <summary type="html">
+    
+      CDPATH command not found
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+      <category term="configure" scheme="https://moonclearner.cn/tags/configure/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Package **** was not found in the pkg-config search path.</title>
+    <link href="https://moonclearner.cn/ubuntu/pkg-config.html"/>
+    <id>https://moonclearner.cn/ubuntu/pkg-config.html</id>
+    <published>2020-04-13T09:19:50.357Z</published>
+    <updated>2020-04-13T09:19:50.357Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Package-was-not-found-in-the-pkg-config-search-path"><a href="#Package-was-not-found-in-the-pkg-config-search-path" class="headerlink" title="Package ** was not found in the pkg-config search path."></a>Package <em>**</em> was not found in the pkg-config search path.</h1><p>configure: error: Unable to find libzmq installation</p><p><code>#pkg-config libzmq --libs</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Package libzmq was not found in the pkg-config search path.</span><br><span class="line">Perhaps you should add the directory containing `libzmq.pc&apos;</span><br><span class="line">to the PKG_CONFIG_PATH environment variable</span><br><span class="line">No package &apos;libzmq&apos; found</span><br></pre></td></tr></table></figure></p><h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><ul><li><code>locate libzmq.pc</code> or <code>find / -name &quot;libzmq.pc&quot;</code><ul><li>找.pc文件路径</li></ul></li><li><code>find / -name pkgconfig</code><ul><li>找到pkgconfig的路径</li></ul></li><li><p>将libzmq.pc复制到没有这个文件的pkgconfig路径下</p></li><li><p>sudo ldconfig</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Package-was-not-found-in-the-pkg-config-search-path&quot;&gt;&lt;a href=&quot;#Package-was-not-found-in-the-pkg-config-search-path&quot; class=&quot;headerlin
+      
+    
+    </summary>
+    
+      <category term="compile" scheme="https://moonclearner.cn/categories/compile/"/>
+    
+    
+      <category term="ubuntu" scheme="https://moonclearner.cn/tags/ubuntu/"/>
+    
+  </entry>
   
   <entry>
     <title>cmd return var</title>
@@ -274,33 +400,6 @@
   </entry>
   
   <entry>
-    <title>common cmd</title>
-    <link href="https://moonclearner.cn/shell/common_cmd.html"/>
-    <id>https://moonclearner.cn/shell/common_cmd.html</id>
-    <published>2019-12-25T03:02:41.036Z</published>
-    <updated>2019-12-25T03:02:41.036Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="common-cmd"><a href="#common-cmd" class="headerlink" title="common cmd"></a>common cmd</h1><h2 id="delete-all-files-in-the-current-path-except-file-A"><a href="#delete-all-files-in-the-current-path-except-file-A" class="headerlink" title="delete all files in the current path except file A"></a>delete all files in the current path except file A</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">find ./* |grep -v A |xargs rm -r</span><br><span class="line"></span><br><span class="line"># second method</span><br><span class="line">rm -rf !(keep1 | keep2)</span><br></pre></td></tr></table></figure><h2 id="delete-all-file-except-py-file"><a href="#delete-all-file-except-py-file" class="headerlink" title="delete all file except py file"></a>delete all file except py file</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*&quot; -type f |grep -v &quot;.py&quot; |grep  &quot;\.&quot; |xargs rm -rf</span><br></pre></td></tr></table></figure><h2 id="kill-all-python-process"><a href="#kill-all-python-process" class="headerlink" title="kill all python process"></a>kill all python process</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep python |grep -v grep|awk  &apos;&#123;print $2&#125;&apos;|xargs kill -9</span><br></pre></td></tr></table></figure><h2 id="bash-shortkey"><a href="#bash-shortkey" class="headerlink" title="bash shortkey"></a>bash shortkey</h2><ul><li>Ctrl + l ：清除屏幕，同clear</li><li>Ctrl + a ：将光标定位到命令的开头</li><li>Ctrl + e ：与上一个快捷键相反，将光标定位到命令的结尾</li><li>Ctrl + u ：删除当前命令</li><li>Ctrl + k ：与上一个快捷键相反，剪切光标之后的内容</li><li>Ctrl + y ：粘贴以上两个快捷键所剪切的内容。Alt+y粘贴更早的内容</li><li>Ctrl + w ：删除光标左边的参数（选项）或内容（实际是以空格为单位向前剪切一个word）</li><li><p>Ctrl + / ：撤销，同Ctrl+x + Ctrl+u</p></li><li><p>Ctrl + f ：按字符前移（右向），同→</p></li><li><p>Ctrl + b ：按字符后移（左向），同←</p></li><li><p>Alt + f ：按单词前移，标点等特殊字符与空格一样分隔单词（右向），同Ctrl+→</p></li><li>Alt + b ：按单词后移（左向），同Ctrl+←</li><li>Alt + d ：从光标处删除至字尾。可以Ctrl+y粘贴回来</li><li>Alt + \ ：删除当前光标前面所有的空白字符</li><li>Ctrl + d ：删除光标处的字符，同Del键。没有命令是表示注销用户</li><li><p>Ctrl + h ：删除光标前的字符</p></li><li><p>Ctrl + r ：逆向搜索命令历史，比history好用</p></li><li><p>Ctrl + g ：从历史搜索模式退出，同ESC</p></li><li>Ctrl + p ：历史中的上一条命令，同↑</li><li>Ctrl + n ：历史中的下一条命令，同↓</li><li>Alt + .：同!$，输出上一个命令的最后一个参数（选项or单词）。 还有如Alt+0 Alt+. Alt+.，表示输出上上一条命令的的第一个单词（即命令）。 另外有一种写法 !:n，表示上一命令的第n个参数，如你刚备份一个配置文件，马上编辑它：cp nginx.conf nginx.conf，vi !:1，同vi !^。!^表示命令的第一个参数，!$最后一个参数（一般是使用Alt + .代替）。</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;common-cmd&quot;&gt;&lt;a href=&quot;#common-cmd&quot; class=&quot;headerlink&quot; title=&quot;common cmd&quot;&gt;&lt;/a&gt;common cmd&lt;/h1&gt;&lt;h2 id=&quot;delete-all-files-in-the-current-p
-      
-    
-    </summary>
-    
-      <category term="shell" scheme="https://moonclearner.cn/categories/shell/"/>
-    
-    
-      <category term="linux" scheme="https://moonclearner.cn/tags/linux/"/>
-    
-      <category term="shell" scheme="https://moonclearner.cn/tags/shell/"/>
-    
-  </entry>
-  
-  <entry>
     <title>www trace request test</title>
     <link href="https://moonclearner.cn/ITsecure/www_trace_request.html"/>
     <id>https://moonclearner.cn/ITsecure/www_trace_request.html</id>
@@ -432,114 +531,6 @@
       <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
     
       <category term="web attack" scheme="https://moonclearner.cn/tags/web-attack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php possible variable overwrite global scope</title>
-    <link href="https://moonclearner.cn/php/secure/php_Possible_variable_overwrite_Global_scope.html"/>
-    <id>https://moonclearner.cn/php/secure/php_Possible_variable_overwrite_Global_scope.html</id>
-    <published>2019-11-20T03:39:21.908Z</published>
-    <updated>2019-11-20T03:39:21.908Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="php-password-Management-Empty-Password"><a href="#php-password-Management-Empty-Password" class="headerlink" title="php password Management Empty Password"></a>php password Management Empty Password</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extract($rows[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure><h1 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extract($rows[<span class="number">0</span>], EXTR_SKIP);</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;php-password-Management-Empty-Password&quot;&gt;&lt;a href=&quot;#php-password-Management-Empty-Password&quot; class=&quot;headerlink&quot; title=&quot;php password Man
-      
-    
-    </summary>
-    
-      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
-    
-    
-      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
-    
-      <category term="web attack" scheme="https://moonclearner.cn/tags/web-attack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php password Management Hardcoded Password</title>
-    <link href="https://moonclearner.cn/php/secure/php_password_Management_Hardcoded_password.html"/>
-    <id>https://moonclearner.cn/php/secure/php_password_Management_Hardcoded_password.html</id>
-    <published>2019-11-20T03:37:03.495Z</published>
-    <updated>2019-11-20T03:37:03.495Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="php-password-Management-Hardcoded-Password"><a href="#php-password-Management-Hardcoded-Password" class="headerlink" title="php password Management Hardcoded Password"></a>php password Management Hardcoded Password</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$tmp = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">"password"</span>=&gt;<span class="string">"**********"</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure><h1 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$tmp = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">"password"</span>=&gt;strval(<span class="string">"*******"</span>),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;php-password-Management-Hardcoded-Password&quot;&gt;&lt;a href=&quot;#php-password-Management-Hardcoded-Password&quot; class=&quot;headerlink&quot; title=&quot;php pass
-      
-    
-    </summary>
-    
-      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
-    
-    
-      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
-    
-      <category term="web attack" scheme="https://moonclearner.cn/tags/web-attack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php password Management Empty Password</title>
-    <link href="https://moonclearner.cn/php/secure/php_password_Management_Empty_Password.html"/>
-    <id>https://moonclearner.cn/php/secure/php_password_Management_Empty_Password.html</id>
-    <published>2019-11-20T03:27:58.950Z</published>
-    <updated>2019-11-20T03:27:58.950Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="php-password-Management-Empty-Password"><a href="#php-password-Management-Empty-Password" class="headerlink" title="php password Management Empty Password"></a>php password Management Empty Password</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$tmp = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">"password"</span>=&gt;<span class="string">""</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure><h1 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$tmp = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">"password"</span>=&gt;strval(<span class="keyword">null</span>),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;php-password-Management-Empty-Password&quot;&gt;&lt;a href=&quot;#php-password-Management-Empty-Password&quot; class=&quot;headerlink&quot; title=&quot;php password Man
-      
-    
-    </summary>
-    
-      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
-    
-    
-      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
-    
-      <category term="web attack" scheme="https://moonclearner.cn/tags/web-attack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IE compatible</title>
-    <link href="https://moonclearner.cn/js/IECompatible.html"/>
-    <id>https://moonclearner.cn/js/IECompatible.html</id>
-    <published>2019-11-13T03:11:31.098Z</published>
-    <updated>2019-11-13T03:11:31.098Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="jQuery-html-and-interHtml-method-run-very-slowly-on-IE-8-or-IE-9-browser"><a href="#jQuery-html-and-interHtml-method-run-very-slowly-on-IE-8-or-IE-9-browser" class="headerlink" title="jQuery().html() and interHtml method run very slowly on IE 8 or IE 9 browser"></a>jQuery().html() and interHtml method run very slowly on IE 8 or IE 9 browser</h1><h2 id="phenomenon"><a href="#phenomenon" class="headerlink" title="phenomenon"></a>phenomenon</h2><p>when run the method below, It costs too much time.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> htmlString = <span class="string">"&lt;div&gt;&lt;span&gt;test&lt;/span&gt;&lt;/div&gt;"</span>;</span><br><span class="line">jQuery().html(htmlString)</span><br><span class="line">domcument.getElementById().interHtml = htmlString;</span><br></pre></td></tr></table></figure></p><h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>replace jQuery.html() or interHtml with dom method to solve the problem<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> htmlString = <span class="string">"&lt;div&gt;&lt;span&gt;test&lt;/span&gt;&lt;/div&gt;"</span>;</span><br><span class="line"><span class="comment">//turn the string into a dom object </span></span><br><span class="line"><span class="keyword">var</span> domObj = jQuery(htmlString).get(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(); </span><br><span class="line"><span class="keyword">var</span> childs = el.childNodes; </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = childs .length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">    <span class="comment">//delete all child node</span></span><br><span class="line">    el.removeChild(childs[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.getElementById().appendChild(domObj);</span><br></pre></td></tr></table></figure></p><h1 id="JSON-module-missing"><a href="#JSON-module-missing" class="headerlink" title="JSON module missing"></a>JSON module missing</h1><h2 id="phenomenon-1"><a href="#phenomenon-1" class="headerlink" title="phenomenon"></a>phenomenon</h2><p>such as JSON.parse or JSON.stringify method cant use</p><h2 id="solution-1"><a href="#solution-1" class="headerlink" title="solution"></a>solution</h2><p>download the json2.js or json3.js, and import <code>&lt;script src=&quot;/js/json3.min.js&quot;&gt;&lt;/script&gt;</code></p><h1 id="str-trim-missing"><a href="#str-trim-missing" class="headerlink" title="str.trim() missing"></a>str.trim() missing</h1><h2 id="solution-2"><a href="#solution-2" class="headerlink" title="solution"></a>solution</h2><p>replace str.trim() with jQuery.trim();</p><h1 id="jQuery-width-method-calculates-the-error-width"><a href="#jQuery-width-method-calculates-the-error-width" class="headerlink" title="jQuery().width() method calculates the error width"></a>jQuery().width() method calculates the error width</h1><h2 id="solution-3"><a href="#solution-3" class="headerlink" title="solution"></a>solution</h2><p>replace jQuery.outerWidth() width jQuery().width()</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;jQuery-html-and-interHtml-method-run-very-slowly-on-IE-8-or-IE-9-browser&quot;&gt;&lt;a href=&quot;#jQuery-html-and-interHtml-method-run-very-slowly
-      
-    
-    </summary>
-    
-      <category term="js" scheme="https://moonclearner.cn/categories/js/"/>
-    
-    
-      <category term="html" scheme="https://moonclearner.cn/tags/html/"/>
-    
-      <category term="js" scheme="https://moonclearner.cn/tags/js/"/>
     
   </entry>
   

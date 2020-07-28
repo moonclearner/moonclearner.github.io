@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://moonclearner.cn/php/php_view_file.html</loc>
+    <lastmod>2020-07-23</lastmod>
+  </url>  <url>
+    <loc>https://moonclearner.cn/databases/postgresql/postgresqlLearningNote.html</loc>
+    <lastmod>2020-06-17</lastmod>
+  </url>  <url>
+    <loc>https://moonclearner.cn/shell/common_cmd.html</loc>
+    <lastmod>2020-05-25</lastmod>
+  </url>  <url>
+    <loc>https://moonclearner.cn/php/configure/php_extension_compile_fail.html</loc>
+    <lastmod>2020-04-30</lastmod>
+  </url>  <url>
+    <loc>https://moonclearner.cn/ubuntu/pkg-config.html</loc>
+    <lastmod>2020-04-13</lastmod>
+  </url>  <url>
     <loc>https://moonclearner.cn/shell/cmd_return.html</loc>
     <lastmod>2020-03-11</lastmod>
   </url>  <url>
@@ -30,9 +45,6 @@
   </url>  <url>
     <loc>https://moonclearner.cn/databases/postgresql/postgresqlLearningResource.html</loc>
     <lastmod>2019-12-30</lastmod>
-  </url>  <url>
-    <loc>https://moonclearner.cn/shell/common_cmd.html</loc>
-    <lastmod>2019-12-25</lastmod>
   </url>  <url>
     <loc>https://moonclearner.cn/ITsecure/www_trace_request.html</loc>
     <lastmod>2019-12-16</lastmod>
@@ -75,9 +87,6 @@
   </url>  <url>
     <loc>https://moonclearner.cn/php/php_download.html</loc>
     <lastmod>2019-07-12</lastmod>
-  </url>  <url>
-    <loc>https://moonclearner.cn/php/configure/php_extension_compile_fail.html</loc>
-    <lastmod>2019-07-09</lastmod>
   </url>  <url>
     <loc>https://moonclearner.cn/ubuntu/deepin-wine.html</loc>
     <lastmod>2019-07-08</lastmod>
@@ -163,10 +172,10 @@
     <loc>https://moonclearner.cn/databases/sqlite/sqlite_common_cmd.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
-    <loc>https://moonclearner.cn/php/cookbook/php_dynamic_create_object.html</loc>
+    <loc>https://moonclearner.cn/php/cookbook/php_database_transaction.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
-    <loc>https://moonclearner.cn/php/cookbook/php_database_transaction.html</loc>
+    <loc>https://moonclearner.cn/php/cookbook/php_dynamic_create_object.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
     <loc>https://moonclearner.cn/php/cookbook/php_pdo_error_info.html</loc>

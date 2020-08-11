@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[postgresql Learning Note]]></title>
+    <url>%2Fdatabases%2Fpostgresql%2FpostgresqlLearningNote.html</url>
+    <content type="text"><![CDATA[postgresql LearningNote时间相关查询昨天的数据1select * from audit where current_date- DATE(to_char(to_timestamp(time), 'YYYY-MM-DD 00:00:00'))=1; 查询当天的数据1select * from audit where age(current_date, DATE(to_char(to_timestamp(time), 'YYYY-MM-DD 00:00:00')))='00:00:00'; 查询当月的数据1select * from audit where age(current_date, DATE(to_char(to_timestamp(time), 'YYYY-MM-DD 00:00:00')))='1 mons'; 查询当年的数据1select * from audit where age(current_date, DATE(to_char(to_timestamp(time), 'YYYY-MM-DD 00:00:00')))='1 years';]]></content>
+      <categories>
+        <category>postgresql</category>
+      </categories>
+      <tags>
+        <tag>postgresql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[PHP View File]]></title>
     <url>%2Fphp%2Fphp_view_file.html</url>
     <content type="text"><![CDATA[php 读取文件返回给浏览器直接预览而不是下载预览PDF12345header(&quot;Content-Type: application/pdf&quot;);header(&apos;Content-Disposition: inline; filename=&quot;test.pdf&quot;&apos;);header(&apos;Content-Transfer-Encoding: binary&apos;);header(&apos;Accept-Ranges: bytes&apos;);@readfile($filePath);]]></content>
@@ -9,17 +20,6 @@
       </categories>
       <tags>
         <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[postgresql Learning Note]]></title>
-    <url>%2Fdatabases%2Fpostgresql%2FpostgresqlLearningNote.html</url>
-    <content type="text"><![CDATA[postgresql LearningNote时间相关查询当天的数据1select * from audit where age(current_date, DATE(to_char(to_timestamp(time), 'YYYY-MM-DD 00:00:00')))='00:00:00'; 查询当月的数据1select * from audit where age(current_date, DATE(to_char(to_timestamp(time), 'YYYY-MM-DD 00:00:00')))='1 mons'; 查询当年的数据1select * from audit where age(current_date, DATE(to_char(to_timestamp(time), 'YYYY-MM-DD 00:00:00')))='1 years';]]></content>
-      <categories>
-        <category>postgresql</category>
-      </categories>
-      <tags>
-        <tag>postgresql</tag>
       </tags>
   </entry>
   <entry>
@@ -274,8 +274,8 @@
         <category>js</category>
       </categories>
       <tags>
-        <tag>js</tag>
         <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -286,8 +286,8 @@
         <category>js</category>
       </categories>
       <tags>
-        <tag>js</tag>
         <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -298,8 +298,8 @@
         <category>js</category>
       </categories>
       <tags>
-        <tag>js</tag>
         <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -405,8 +405,8 @@
         <category>js</category>
       </categories>
       <tags>
-        <tag>js</tag>
         <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -452,8 +452,8 @@
         <category>js</category>
       </categories>
       <tags>
-        <tag>js</tag>
         <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -476,8 +476,8 @@
         <category>css</category>
       </categories>
       <tags>
-        <tag>html</tag>
         <tag>css</tag>
+        <tag>html</tag>
       </tags>
   </entry>
   <entry>
@@ -488,8 +488,8 @@
         <category>js</category>
       </categories>
       <tags>
-        <tag>js</tag>
         <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -500,8 +500,8 @@
         <category>js</category>
       </categories>
       <tags>
-        <tag>js</tag>
         <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -585,8 +585,8 @@
         <category>js</category>
       </categories>
       <tags>
-        <tag>js</tag>
         <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -615,15 +615,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[PHP filter func]]></title>
-    <url>%2Fphp%2Fphp_filter_fuc.html</url>
-    <content type="text"><![CDATA[php filter function filter_has_var() 检查是否存在指定输入类型的变量 filter_id() 返回指定过滤器的 ID 号。 filter_input() 从脚本外部获取输入，并进行过滤。 filter_input_array() 从脚本外部获取多项输入，并进行过滤。 filter_list() 返回包含所有得到支持的过滤器的一个数组。 filter_var_array() 获取多个变量，并进行过滤。 filter_var() 获取一个变量，并进行过滤。 type INPUT_GET INPUT_POST INPUT_COOKIE INPUT_SERVER INPUT_ENV INPUT_SERVER INPUT_SESSION INPUT_REQUEST filter FILTER_CALLBACK 调用用户自定义函数来过滤数据。 FILTER_SANITIZE_STRING 去除标签，去除或编码特殊字符。 FILTER_SANITIZE_STRIPPED “string” 过滤器的别名。 FILTER_SANITIZE_ENCODED URL-encode 字符串，去除或编码特殊字符。 FILTER_SANITIZE_SPECIAL_CHARS HTML 转义字符 ‘“&lt;&gt;&amp; 以及 ASCII 值小于 32 的字符。 FILTER_SANITIZE_EMAIL 删除所有字符，除了字母、数字以及 !#$%&amp;’*+-/=?^_`{|}~@.[] FILTER_SANITIZE_URL 删除所有字符，除了字母、数字以及 $-_.+!*’(),{}|\^~[]`&lt;&gt;#%”;/?:@&amp;= FILTER_SANITIZE_NUMBER_INT 删除所有字符，除了数字和 +- FILTER_SANITIZE_NUMBER_FLOAT 删除所有字符，除了数字、+- 以及 .,eE FILTER_SANITIZE_MAGIC_QUOTES 应用 addslashes()。 FILTER_UNSAFE_RAW 不进行任何过滤，去除或编码特殊字符。 FILTER_VALIDATE_INT 把值作为整数来验证。 FILTER_VALIDATE_BOOLEAN 把值作为布尔选项来验证。如果是 “1”、”true”、”on” 和 “yes”，则返回 TRUE。如果是 “0”、”false”、”off”、”no” 和 “”，则返回 FALSE。否则返回 NULL。 FILTER_VALIDATE_FLOAT 把值作为浮点数来验证。 FILTER_VALIDATE_REGEXP 根据 regexp（一种兼容 Perl 的正则表达式）来验证值。 FILTER_VALIDATE_URL 把值作为 URL 来验证。 FILTER_VALIDATE_EMAIL 把值作为 e-mail 地址来验证。 FILTER_VALIDATE_IP 把值作为 IP 地址来验证，只限 IPv4 或 IPv6 或 不是来自私有或者保留的范围。 reference参考]]></content>
+    <title><![CDATA[PHP quotes]]></title>
+    <url>%2Fphp%2Fphp_quotes.html</url>
+    <content type="text"><![CDATA[php quote魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符都会被自动加上一个反斜线进行转义，这和 addslashes() 作用完全相同 相关的函数 set_magic_quotes_runtime magic_quotes_gpc addslashes stripslashes set_magic_quotes_runtime()设置当前magic_quotes_runtime 配置选项的激活状态，0为关闭，1为开启。set_magic_quotes_runtime(1)或是配置文件中magic_quotes_runtime为true（这个在php.ini中配置），那么php脚本读取文件或是从数据库中读取数据，遇到反斜线（\）、单引号（’）、双引号（”）、NULL时，会在前面自动加上转义字符，变成\、\’、\”、\NULL；若是关闭的话，也就是set_magic_quotes_runtime(0)magic_quotes_runtime为false，那么便会转义，此时可以借助addslashes进行转义。 magic_quotes_gpc()当此值为1时，会对HTTP请求中的G（$_GET）、P（$_POST）、C（$_COOKIE）单双引号和反斜线进行转义；反之则不会。该操作一般见于表单提交的数据库操作，若是值为0时，便用addslashes进行转义存入数据库中，取出时再用stripslashes函数把反斜线给去掉。 特别注意的是在PHP 5.4版本时，魔术引号被移除了，因此转义都需要加上addslashes函数。 12345678910$_GET['des'] = "she's a beauty";foreach (array('_GET', '_POST', '_COOKIE') as $_request)&#123; echo $_request; // _GET_POST _COOKIE foreach ($$_request as $_key=&gt; $_value)&#123; // $_key为键，如_GET，$$_key为$_GET // $$_key=$_value意思就是把$_GET['des'] = 1111便为$des=she\'s a beauty $_key&#123;0&#125; != '_' &amp;&amp; $$_key=addslashes($_value); echo $$_key; &#125;&#125; 12345if(get_magic_quotes_gpc() &amp;&amp; (! ini_get('magic_quotes_sybase')))&#123; $value = stripslashes($_GET['value']);&#125;else&#123; $value = $_GET['value'];&#125;]]></content>
       <categories>
         <category>php</category>
       </categories>
       <tags>
         <tag>php</tag>
-        <tag>filter</tag>
       </tags>
   </entry>
   <entry>
@@ -640,14 +639,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[PHP quotes]]></title>
-    <url>%2Fphp%2Fphp_quotes.html</url>
-    <content type="text"><![CDATA[php quote魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符都会被自动加上一个反斜线进行转义，这和 addslashes() 作用完全相同 相关的函数 set_magic_quotes_runtime magic_quotes_gpc addslashes stripslashes set_magic_quotes_runtime()设置当前magic_quotes_runtime 配置选项的激活状态，0为关闭，1为开启。set_magic_quotes_runtime(1)或是配置文件中magic_quotes_runtime为true（这个在php.ini中配置），那么php脚本读取文件或是从数据库中读取数据，遇到反斜线（\）、单引号（’）、双引号（”）、NULL时，会在前面自动加上转义字符，变成\、\’、\”、\NULL；若是关闭的话，也就是set_magic_quotes_runtime(0)magic_quotes_runtime为false，那么便会转义，此时可以借助addslashes进行转义。 magic_quotes_gpc()当此值为1时，会对HTTP请求中的G（$_GET）、P（$_POST）、C（$_COOKIE）单双引号和反斜线进行转义；反之则不会。该操作一般见于表单提交的数据库操作，若是值为0时，便用addslashes进行转义存入数据库中，取出时再用stripslashes函数把反斜线给去掉。 特别注意的是在PHP 5.4版本时，魔术引号被移除了，因此转义都需要加上addslashes函数。 12345678910$_GET['des'] = "she's a beauty";foreach (array('_GET', '_POST', '_COOKIE') as $_request)&#123; echo $_request; // _GET_POST _COOKIE foreach ($$_request as $_key=&gt; $_value)&#123; // $_key为键，如_GET，$$_key为$_GET // $$_key=$_value意思就是把$_GET['des'] = 1111便为$des=she\'s a beauty $_key&#123;0&#125; != '_' &amp;&amp; $$_key=addslashes($_value); echo $$_key; &#125;&#125; 12345if(get_magic_quotes_gpc() &amp;&amp; (! ini_get('magic_quotes_sybase')))&#123; $value = stripslashes($_GET['value']);&#125;else&#123; $value = $_GET['value'];&#125;]]></content>
+    <title><![CDATA[PHP filter func]]></title>
+    <url>%2Fphp%2Fphp_filter_fuc.html</url>
+    <content type="text"><![CDATA[php filter function filter_has_var() 检查是否存在指定输入类型的变量 filter_id() 返回指定过滤器的 ID 号。 filter_input() 从脚本外部获取输入，并进行过滤。 filter_input_array() 从脚本外部获取多项输入，并进行过滤。 filter_list() 返回包含所有得到支持的过滤器的一个数组。 filter_var_array() 获取多个变量，并进行过滤。 filter_var() 获取一个变量，并进行过滤。 type INPUT_GET INPUT_POST INPUT_COOKIE INPUT_SERVER INPUT_ENV INPUT_SERVER INPUT_SESSION INPUT_REQUEST filter FILTER_CALLBACK 调用用户自定义函数来过滤数据。 FILTER_SANITIZE_STRING 去除标签，去除或编码特殊字符。 FILTER_SANITIZE_STRIPPED “string” 过滤器的别名。 FILTER_SANITIZE_ENCODED URL-encode 字符串，去除或编码特殊字符。 FILTER_SANITIZE_SPECIAL_CHARS HTML 转义字符 ‘“&lt;&gt;&amp; 以及 ASCII 值小于 32 的字符。 FILTER_SANITIZE_EMAIL 删除所有字符，除了字母、数字以及 !#$%&amp;’*+-/=?^_`{|}~@.[] FILTER_SANITIZE_URL 删除所有字符，除了字母、数字以及 $-_.+!*’(),{}|\^~[]`&lt;&gt;#%”;/?:@&amp;= FILTER_SANITIZE_NUMBER_INT 删除所有字符，除了数字和 +- FILTER_SANITIZE_NUMBER_FLOAT 删除所有字符，除了数字、+- 以及 .,eE FILTER_SANITIZE_MAGIC_QUOTES 应用 addslashes()。 FILTER_UNSAFE_RAW 不进行任何过滤，去除或编码特殊字符。 FILTER_VALIDATE_INT 把值作为整数来验证。 FILTER_VALIDATE_BOOLEAN 把值作为布尔选项来验证。如果是 “1”、”true”、”on” 和 “yes”，则返回 TRUE。如果是 “0”、”false”、”off”、”no” 和 “”，则返回 FALSE。否则返回 NULL。 FILTER_VALIDATE_FLOAT 把值作为浮点数来验证。 FILTER_VALIDATE_REGEXP 根据 regexp（一种兼容 Perl 的正则表达式）来验证值。 FILTER_VALIDATE_URL 把值作为 URL 来验证。 FILTER_VALIDATE_EMAIL 把值作为 e-mail 地址来验证。 FILTER_VALIDATE_IP 把值作为 IP 地址来验证，只限 IPv4 或 IPv6 或 不是来自私有或者保留的范围。 reference参考]]></content>
       <categories>
         <category>php</category>
       </categories>
       <tags>
         <tag>php</tag>
+        <tag>filter</tag>
       </tags>
   </entry>
   <entry>
@@ -743,8 +743,8 @@
       </categories>
       <tags>
         <tag>php</tag>
-        <tag>crsf</tag>
         <tag>web attack</tag>
+        <tag>crsf</tag>
       </tags>
   </entry>
   <entry>

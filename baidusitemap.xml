@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://moonclearner.cn/databases/postgresql/postgresqlLearningNote.html</loc>
+    <lastmod>2020-08-10</lastmod>
+  </url>  <url>
     <loc>https://moonclearner.cn/php/php_view_file.html</loc>
     <lastmod>2020-07-23</lastmod>
-  </url>  <url>
-    <loc>https://moonclearner.cn/databases/postgresql/postgresqlLearningNote.html</loc>
-    <lastmod>2020-06-17</lastmod>
   </url>  <url>
     <loc>https://moonclearner.cn/shell/common_cmd.html</loc>
     <lastmod>2020-05-25</lastmod>
@@ -157,13 +157,13 @@
     <loc>https://moonclearner.cn/php/php_delete_array_element.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
-    <loc>https://moonclearner.cn/php/php_filter_fuc.html</loc>
+    <loc>https://moonclearner.cn/php/php_quotes.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
     <loc>https://moonclearner.cn/php/php_get_path_filename.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
-    <loc>https://moonclearner.cn/php/php_quotes.html</loc>
+    <loc>https://moonclearner.cn/php/php_filter_fuc.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>  <url>
     <loc>https://moonclearner.cn/vim/vim.html</loc>

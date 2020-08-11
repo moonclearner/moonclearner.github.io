@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://moonclearner.cn/"/>
-  <updated>2020-07-23T03:09:08.823Z</updated>
+  <updated>2020-08-10T12:24:13.771Z</updated>
   <id>https://moonclearner.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>postgresql Learning Note</title>
+    <link href="https://moonclearner.cn/databases/postgresql/postgresqlLearningNote.html"/>
+    <id>https://moonclearner.cn/databases/postgresql/postgresqlLearningNote.html</id>
+    <published>2020-08-10T12:24:13.771Z</published>
+    <updated>2020-08-10T12:24:13.771Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="postgresql-LearningNote"><a href="#postgresql-LearningNote" class="headerlink" title="postgresql LearningNote"></a>postgresql LearningNote</h1><h2 id="时间相关"><a href="#时间相关" class="headerlink" title="时间相关"></a>时间相关</h2><h3 id="查询昨天的数据"><a href="#查询昨天的数据" class="headerlink" title="查询昨天的数据"></a>查询昨天的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> <span class="keyword">current_date</span>- <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>))=<span class="number">1</span>;</span><br></pre></td></tr></table></figure><h3 id="查询当天的数据"><a href="#查询当天的数据" class="headerlink" title="查询当天的数据"></a>查询当天的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'00:00:00'</span>;</span><br></pre></td></tr></table></figure><h3 id="查询当月的数据"><a href="#查询当月的数据" class="headerlink" title="查询当月的数据"></a>查询当月的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'1 mons'</span>;</span><br></pre></td></tr></table></figure><h3 id="查询当年的数据"><a href="#查询当年的数据" class="headerlink" title="查询当年的数据"></a>查询当年的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'1 years'</span>;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;postgresql-LearningNote&quot;&gt;&lt;a href=&quot;#postgresql-LearningNote&quot; class=&quot;headerlink&quot; title=&quot;postgresql LearningNote&quot;&gt;&lt;/a&gt;postgresql Learni
+      
+    
+    </summary>
+    
+      <category term="postgresql" scheme="https://moonclearner.cn/categories/postgresql/"/>
+    
+    
+      <category term="postgresql" scheme="https://moonclearner.cn/tags/postgresql/"/>
+    
+  </entry>
   
   <entry>
     <title>PHP View File</title>
@@ -38,31 +63,6 @@
     
     
       <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>postgresql Learning Note</title>
-    <link href="https://moonclearner.cn/databases/postgresql/postgresqlLearningNote.html"/>
-    <id>https://moonclearner.cn/databases/postgresql/postgresqlLearningNote.html</id>
-    <published>2020-06-17T10:42:24.429Z</published>
-    <updated>2020-06-17T10:42:24.429Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="postgresql-LearningNote"><a href="#postgresql-LearningNote" class="headerlink" title="postgresql LearningNote"></a>postgresql LearningNote</h1><h2 id="时间相关"><a href="#时间相关" class="headerlink" title="时间相关"></a>时间相关</h2><h3 id="查询当天的数据"><a href="#查询当天的数据" class="headerlink" title="查询当天的数据"></a>查询当天的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'00:00:00'</span>;</span><br></pre></td></tr></table></figure><h3 id="查询当月的数据"><a href="#查询当月的数据" class="headerlink" title="查询当月的数据"></a>查询当月的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'1 mons'</span>;</span><br></pre></td></tr></table></figure><h3 id="查询当年的数据"><a href="#查询当年的数据" class="headerlink" title="查询当年的数据"></a>查询当年的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'1 years'</span>;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;postgresql-LearningNote&quot;&gt;&lt;a href=&quot;#postgresql-LearningNote&quot; class=&quot;headerlink&quot; title=&quot;postgresql LearningNote&quot;&gt;&lt;/a&gt;postgresql Learni
-      
-    
-    </summary>
-    
-      <category term="postgresql" scheme="https://moonclearner.cn/categories/postgresql/"/>
-    
-    
-      <category term="postgresql" scheme="https://moonclearner.cn/tags/postgresql/"/>
     
   </entry>
   

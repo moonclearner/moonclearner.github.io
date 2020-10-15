@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://moonclearner.cn/"/>
-  <updated>2020-08-10T12:24:13.771Z</updated>
+  <updated>2020-10-15T06:11:49.577Z</updated>
   <id>https://moonclearner.cn/</id>
   
   <author>
@@ -17,13 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>postgresql tablespace</title>
+    <link href="https://moonclearner.cn/databases/postgresql/tablespace.html"/>
+    <id>https://moonclearner.cn/databases/postgresql/tablespace.html</id>
+    <published>2020-10-15T06:11:49.577Z</published>
+    <updated>2020-10-15T06:11:49.577Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Table-Space"><a href="#Table-Space" class="headerlink" title="Table Space"></a>Table Space</h1><h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>设备上有两块存储单元A（ROM）和B（RAM）都有一个表空间存放在AB上</p><p>由于B随着设备重启会重置，数据库的初始化应该放在A上</p><p>然后在A和B上创建对应的表空间</p><p>创建表放在A和B上的表空间上，但是注意，如果只是在表创建时，指定表空间，其约束也要指定表空间，或者设置一个默认表空间设置，然后在执行创建表，这样整个表的所有信息都指定到这个表空间上,这些约束包括，分表、id自增、外键等等</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Table-Space&quot;&gt;&lt;a href=&quot;#Table-Space&quot; class=&quot;headerlink&quot; title=&quot;Table Space&quot;&gt;&lt;/a&gt;Table Space&lt;/h1&gt;&lt;h2 id=&quot;应用场景&quot;&gt;&lt;a href=&quot;#应用场景&quot; class=&quot;
+      
+    
+    </summary>
+    
+      <category term="postgresql" scheme="https://moonclearner.cn/categories/postgresql/"/>
+    
+    
+      <category term="postgresql" scheme="https://moonclearner.cn/tags/postgresql/"/>
+    
+  </entry>
+  
+  <entry>
     <title>postgresql Learning Note</title>
     <link href="https://moonclearner.cn/databases/postgresql/postgresqlLearningNote.html"/>
     <id>https://moonclearner.cn/databases/postgresql/postgresqlLearningNote.html</id>
-    <published>2020-08-10T12:24:13.771Z</published>
-    <updated>2020-08-10T12:24:13.771Z</updated>
+    <published>2020-10-15T06:02:19.687Z</published>
+    <updated>2020-10-15T06:02:19.687Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="postgresql-LearningNote"><a href="#postgresql-LearningNote" class="headerlink" title="postgresql LearningNote"></a>postgresql LearningNote</h1><h2 id="时间相关"><a href="#时间相关" class="headerlink" title="时间相关"></a>时间相关</h2><h3 id="查询昨天的数据"><a href="#查询昨天的数据" class="headerlink" title="查询昨天的数据"></a>查询昨天的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> <span class="keyword">current_date</span>- <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>))=<span class="number">1</span>;</span><br></pre></td></tr></table></figure><h3 id="查询当天的数据"><a href="#查询当天的数据" class="headerlink" title="查询当天的数据"></a>查询当天的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'00:00:00'</span>;</span><br></pre></td></tr></table></figure><h3 id="查询当月的数据"><a href="#查询当月的数据" class="headerlink" title="查询当月的数据"></a>查询当月的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'1 mons'</span>;</span><br></pre></td></tr></table></figure><h3 id="查询当年的数据"><a href="#查询当年的数据" class="headerlink" title="查询当年的数据"></a>查询当年的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'1 years'</span>;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="postgresql-LearningNote"><a href="#postgresql-LearningNote" class="headerlink" title="postgresql LearningNote"></a>postgresql LearningNote</h1><h2 id="时间相关"><a href="#时间相关" class="headerlink" title="时间相关"></a>时间相关</h2><h3 id="查询昨天的数据"><a href="#查询昨天的数据" class="headerlink" title="查询昨天的数据"></a>查询昨天的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> <span class="keyword">current_date</span>- <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>))=<span class="number">1</span>;</span><br></pre></td></tr></table></figure><h3 id="查询当天的数据"><a href="#查询当天的数据" class="headerlink" title="查询当天的数据"></a>查询当天的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'00:00:00'</span>;</span><br></pre></td></tr></table></figure><h3 id="查询当月的数据"><a href="#查询当月的数据" class="headerlink" title="查询当月的数据"></a>查询当月的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'1 mons'</span>;</span><br></pre></td></tr></table></figure><h3 id="查询当年的数据"><a href="#查询当年的数据" class="headerlink" title="查询当年的数据"></a>查询当年的数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'1 years'</span>;</span><br></pre></td></tr></table></figure><h2 id="timestamp-转化为时间戳"><a href="#timestamp-转化为时间戳" class="headerlink" title="timestamp 转化为时间戳"></a>timestamp 转化为时间戳</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">postgresql=<span class="comment"># select time, EXTRACT(epoch FROM time), to_timestamp(EXTRACT(epoch FROM time)) from table； alert_type='ip';</span></span><br><span class="line">     time      | date_part  |      to_timestamp      </span><br><span class="line"><span class="comment">---------------------+------------+------------------------</span></span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08</span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">postgresql=<span class="comment"># \d table;</span></span><br><span class="line">+<span class="comment">----------------------------------------------------</span></span><br><span class="line"> id            | integer                     |           | not null | nextval('tac_callback_id_seq'::regclass)</span><br><span class="line"> time    | timestamp without time zone |           | not null | '1970-01-01 08:00:00'::timestamp without time zone</span><br></pre></td></tr></table></figure><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">postgresql=<span class="comment"># select time, EXTRACT(epoch FROM time), to_timestamp(EXTRACT(epoch FROM time)), to_timestamp(to_char(time , 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS'), EXTRACT(epoch FROM to_timestamp(to_char(time , 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS')) from tac_callback where alert_type='ip';</span></span><br><span class="line">     time      | date_part  |      to_timestamp      |      to_timestamp      | date_part  </span><br><span class="line"><span class="comment">---------------------+------------+------------------------+------------------------+------------</span></span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08 | 2020-08-24 14:30:44+08 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08 | 2020-08-24 14:30:44+08 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08 | 2020-08-24 14:30:44+08 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08 | 2020-08-24 14:30:44+08 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08 | 2020-08-24 14:30:44+08 | 1598250644</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">postgresql=<span class="comment"># select time, time::TIMESTAMP WITH TIME ZONE, EXTRACT(epoch FROM time), EXTRACT(epoch FROM time::TIMESTAMP WITH TIME ZONE) from tac_callback where alert_type='ip';</span></span><br><span class="line">     time      |       time       | date_part  | date_part  </span><br><span class="line"><span class="comment">---------------------+------------------------+------------+------------</span></span><br><span class="line"> 2020-08-24 14:30:44 | 2020-08-24 14:30:44+08 | 1598279444 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 2020-08-24 14:30:44+08 | 1598279444 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 2020-08-24 14:30:44+08 | 1598279444 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 2020-08-24 14:30:44+08 | 1598279444 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 2020-08-24 14:30:44+08 | 1598279444 | 1598250644</span><br></pre></td></tr></table></figure><p><strong>注意</strong>  EXTRACT(epoch FROM time) 返回的时间戳是double型</p><h2 id="数据类型转化"><a href="#数据类型转化" class="headerlink" title="数据类型转化"></a>数据类型转化</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CAST( 字段 AS 你要转换为的数据类型 )</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> <span class="keyword">id</span> = <span class="keyword">cast</span>(<span class="number">1003</span> <span class="keyword">as</span> <span class="built_in">VARCHAR</span>);</span><br><span class="line"></span><br><span class="line">字段 :: 你要转换为的数据类型</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> <span class="keyword">id</span> = <span class="number">1002</span> :: <span class="built_in">VARCHAR</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> sip::inet &lt;&lt;= $<span class="number">1</span>::inet;</span><br></pre></td></tr></table></figure><h2 id="数据某表备份和恢复"><a href="#数据某表备份和恢复" class="headerlink" title="数据某表备份和恢复"></a>数据某表备份和恢复</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dump</span></span><br><span class="line">pg_dump -U postgresql -t web -Fp -f web.sql</span><br><span class="line"></span><br><span class="line"><span class="comment"># restore</span></span><br><span class="line">psql -U postgresql -f web.sql</span><br></pre></td></tr></table></figure><h2 id="字符串转时间戳"><a href="#字符串转时间戳" class="headerlink" title="字符串转时间戳"></a>字符串转时间戳</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXTRACT(epoch from to_timestamp(time_string, 'yyyy-MM-dd hh24:mi:ss'))</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -38,6 +63,122 @@
     
     
       <category term="postgresql" scheme="https://moonclearner.cn/tags/postgresql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu best software</title>
+    <link href="https://moonclearner.cn/ubuntu/best_software.html"/>
+    <id>https://moonclearner.cn/ubuntu/best_software.html</id>
+    <published>2020-09-09T03:15:34.606Z</published>
+    <updated>2020-09-09T03:15:34.606Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="cpu-内存-网速显示"><a href="#cpu-内存-网速显示" class="headerlink" title="cpu 内存 网速显示"></a>cpu 内存 网速显示</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install indicator-sysmonitor</span><br><span class="line"></span><br><span class="line">indicator-sysmonitor</span><br></pre></td></tr></table></figure><h2 id="远程连接windos"><a href="#远程连接windos" class="headerlink" title="远程连接windos"></a>远程连接windos</h2><h3 id="rdesktop"><a href="#rdesktop" class="headerlink" title="rdesktop"></a>rdesktop</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdesktop -g 1800x1000 10.66.1.1 -r disk:linuxShare=/home/user/share -x 0x80 -r clipboard:PRIMARYCLIPBOARD -r sound:local</span><br></pre></td></tr></table></figure><p><code>-r disk:linuxShare=/home/user/share</code> 用于共享文件</p><p><code>-r clipboard:PRIMARYCLIPBOARD</code>  粘贴板共享</p><p><strong>当出现粘贴板失灵</strong> 需要关闭远程win的rdpclip.exe进程，然后再远程即可完成进行重启</p><p><code>-r sound:local</code> 开启远程的声音</p><h3 id="teamview"><a href="#teamview" class="headerlink" title="teamview"></a>teamview</h3><h3 id="向日葵"><a href="#向日葵" class="headerlink" title="向日葵"></a>向日葵</h3><h2 id="百度云有linux版本"><a href="#百度云有linux版本" class="headerlink" title="百度云有linux版本"></a>百度云有linux版本</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;cpu-内存-网速显示&quot;&gt;&lt;a href=&quot;#cpu-内存-网速显示&quot; class=&quot;headerlink&quot; title=&quot;cpu 内存 网速显示&quot;&gt;&lt;/a&gt;cpu 内存 网速显示&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;tabl
+      
+    
+    </summary>
+    
+      <category term="tool" scheme="https://moonclearner.cn/categories/tool/"/>
+    
+    
+      <category term="ubuntu" scheme="https://moonclearner.cn/tags/ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP PHPSessionID not change on login</title>
+    <link href="https://moonclearner.cn/php/secure/php_SessionID_on_login.html"/>
+    <id>https://moonclearner.cn/php/secure/php_SessionID_on_login.html</id>
+    <published>2020-08-25T09:18:22.214Z</published>
+    <updated>2020-08-25T09:18:22.214Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="登录的时候phpsessionid没有变化"><a href="#登录的时候phpsessionid没有变化" class="headerlink" title="登录的时候phpsessionid没有变化"></a>登录的时候phpsessionid没有变化</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">check_login();</span><br><span class="line">session_regenerate_id();</span><br><span class="line">write_session_info()</span><br></pre></td></tr></table></figure><p>在检查密码之后，准备写入session登录信息之前 调用            session_regenerate_id()就可以改变用户的sessionid</p><h2 id="危害"><a href="#危害" class="headerlink" title="危害"></a>危害</h2><p>存在session克隆的危险</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;登录的时候phpsessionid没有变化&quot;&gt;&lt;a href=&quot;#登录的时候phpsessionid没有变化&quot; class=&quot;headerlink&quot; title=&quot;登录的时候phpsessionid没有变化&quot;&gt;&lt;/a&gt;登录的时候phpsessionid没有变化&lt;/
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+      <category term="web attack" scheme="https://moonclearner.cn/tags/web-attack/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP ipv6</title>
+    <link href="https://moonclearner.cn/php/php_ipv6.html"/>
+    <id>https://moonclearner.cn/php/php_ipv6.html</id>
+    <published>2020-08-21T10:35:49.200Z</published>
+    <updated>2020-08-21T10:35:49.200Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="php-ipv6"><a href="#php-ipv6" class="headerlink" title="php ipv6"></a>php ipv6</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ip2long6</span><span class="params">($ipv6)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $ip_n = inet_pton($ipv6);</span><br><span class="line">    $bits = <span class="number">15</span>; <span class="comment">// 16 x 8 bit = 128bit</span></span><br><span class="line">    <span class="keyword">while</span> ($bits &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        $bin      = sprintf(<span class="string">"%08b"</span>, (ord($ip_n[$bits])));</span><br><span class="line">        $ipv6long = $bin . $ipv6long;</span><br><span class="line">        $bits--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> gmp_strval(gmp_init($ipv6long, <span class="number">2</span>), <span class="number">10</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">long2ip6</span><span class="params">($ipv6long)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $bin = gmp_strval(gmp_init($ipv6long, <span class="number">10</span>), <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (strlen($bin) &lt; <span class="number">128</span>) &#123;</span><br><span class="line">        $pad = <span class="number">128</span> - strlen($bin);</span><br><span class="line">        <span class="keyword">for</span> ($i = <span class="number">1</span>; $i &lt;= $pad; $i++) &#123;</span><br><span class="line">            $bin = <span class="string">"0"</span> . $bin;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $bits = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> ($bits &lt;= <span class="number">7</span>) &#123;</span><br><span class="line">        $bin_part = substr($bin, ($bits * <span class="number">16</span>), <span class="number">16</span>);</span><br><span class="line">        $ipv6 .= dechex(bindec($bin_part)) . <span class="string">":"</span>;</span><br><span class="line">        $bits++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> inet_ntop(inet_pton(substr($ipv6, <span class="number">0</span>, <span class="number">-1</span>)));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ip6mask</span><span class="params">($ipv6, $mask_len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $allowed_ip_mask = gmp_div_q(ip2long6(<span class="string">"FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF"</span>), gmp_pow(<span class="string">"2"</span>, <span class="number">128</span> - $mask_len));</span><br><span class="line">    $begin = gmp_and(ip2long6($ipv6) , $allowed_ip_mask) + <span class="number">1</span>;</span><br><span class="line">    $end   = gmp_or(ip2long6($ipv6), ( gmp_xor($allowed_ip_mask, gmp_init(<span class="string">"0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"</span>, <span class="number">16</span>)))) - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">array</span>($begin, $end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;php-ipv6&quot;&gt;&lt;a href=&quot;#php-ipv6&quot; class=&quot;headerlink&quot; title=&quot;php ipv6&quot;&gt;&lt;/a&gt;php ipv6&lt;/h1&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td clas
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP download</title>
+    <link href="https://moonclearner.cn/php/php_download.html"/>
+    <id>https://moonclearner.cn/php/php_download.html</id>
+    <published>2020-08-21T10:33:47.662Z</published>
+    <updated>2020-08-21T10:33:47.666Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="php-download"><a href="#php-download" class="headerlink" title="php download"></a>php download</h1><h2 id="php-download-big-file"><a href="#php-download-big-file" class="headerlink" title="php download big file"></a>php download big file</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">if (file_exists($path)) &#123;</span><br><span class="line">$file_size = filesize($path);</span><br><span class="line">if (FALSE!== ($handler = fopen($path, &apos;r&apos;)))&#123;</span><br><span class="line">header(&apos;Content-Description: File Transfer&apos;);</span><br><span class="line">header(&apos;Content-Type: application/octet-stream&apos;);</span><br><span class="line">header(&apos;Accept-Ranges: bytes&apos;);</span><br><span class="line">header(&apos;Content-Disposition: attachment; filename=&apos;.basename($path));</span><br><span class="line">header(&apos;Accept-Length:&apos;. $file_size);</span><br><span class="line">header(&apos;Content-Transfer-Encoding: chunked&apos;);</span><br><span class="line">header(&apos;Expires: 0&apos;);</span><br><span class="line">header(&apos;Cache-Control: must-revalidate, post-check=0, pre-check=0&apos;);</span><br><span class="line">header(&apos;Pragma: public&apos;);</span><br><span class="line">$buffer_size = 4096*20;</span><br><span class="line">while(!feof($handler))&#123;</span><br><span class="line">$chunk = fread($handler,$buffer_size);</span><br><span class="line">echo $chunk;</span><br><span class="line">&#125;</span><br><span class="line">fclose($handler);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="php-upload-big-file"><a href="#php-upload-big-file" class="headerlink" title="php upload big file"></a>php upload big file</h2><p>第一步： Apache环境中的档案上传大小控制<br>修改httpd.conf<br>添加下面内容<br>LimitRequestBody 10485760<br>即10M=1010241024，有的文章中提到应改为 600000000<br>重新启动apache，就可以在设置里看到你要的大小</p><p>第二步：修改在php5下POST文件大小的限制<br>修改php.ini<br>找到 File Uploadsh区域修改以下几个参数： file_uploads = on ;是否允许通过HTTP上传文件的开关。<br>默认为ON即是开 upload_tmp_dir ;文件上传至服务器上存储临时文件的地方，如果没指定就会用系统默认的临时文件夹(moodle可以不改)<br>upload_max_filesize = 8m ;允许上传文件大小的最大值.<br>找到 Data Handling区域，修改 post_max_size = 8m ;指通过表单POST给PHP的所能接收的最大值，包括表单里的所有值。<br>默认为8M<br>设上述四个参数后，上传小于8M的文件一般不成问题。但如果上传大于8M的文件，只还得设置以下参数：<br>在Resource Limits 区域: max_execution_time = 600 ;<br>每个PHP页面运行的最大时间值(秒)，默认30秒 max_input_time = 600 ;<br>每个PHP页面接收数据所需的最大时间，默认60秒 memory_limit = 8m ;<br>每个PHP页面所吃掉的最大内存，默认8M</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;php-download&quot;&gt;&lt;a href=&quot;#php-download&quot; class=&quot;headerlink&quot; title=&quot;php download&quot;&gt;&lt;/a&gt;php download&lt;/h1&gt;&lt;h2 id=&quot;php-download-big-file&quot;&gt;&lt;a
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://moonclearner.cn/leetcode/tree/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.html"/>
+    <id>https://moonclearner.cn/leetcode/tree/平衡二叉树.html</id>
+    <published>2020-08-19T12:44:45.843Z</published>
+    <updated>2020-08-19T12:44:45.843Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
     
   </entry>
   
@@ -297,31 +438,6 @@
   </entry>
   
   <entry>
-    <title>ubuntu best software</title>
-    <link href="https://moonclearner.cn/ubuntu/best_software.html"/>
-    <id>https://moonclearner.cn/ubuntu/best_software.html</id>
-    <published>2020-01-06T03:12:10.594Z</published>
-    <updated>2020-01-06T03:12:10.594Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="cpu-内存-网速显示"><a href="#cpu-内存-网速显示" class="headerlink" title="cpu 内存 网速显示"></a>cpu 内存 网速显示</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install indicator-sysmonitor</span><br><span class="line"></span><br><span class="line">indicator-sysmonitor</span><br></pre></td></tr></table></figure><h2 id="远程连接windos"><a href="#远程连接windos" class="headerlink" title="远程连接windos"></a>远程连接windos</h2><ul><li>rdesktop</li><li>teamview</li></ul><h2 id="百度云有linux版本"><a href="#百度云有linux版本" class="headerlink" title="百度云有linux版本"></a>百度云有linux版本</h2>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;cpu-内存-网速显示&quot;&gt;&lt;a href=&quot;#cpu-内存-网速显示&quot; class=&quot;headerlink&quot; title=&quot;cpu 内存 网速显示&quot;&gt;&lt;/a&gt;cpu 内存 网速显示&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;tabl
-      
-    
-    </summary>
-    
-      <category term="tool" scheme="https://moonclearner.cn/categories/tool/"/>
-    
-    
-      <category term="ubuntu" scheme="https://moonclearner.cn/tags/ubuntu/"/>
-    
-  </entry>
-  
-  <entry>
     <title>sogou input method install</title>
     <link href="https://moonclearner.cn/ubuntu/sogouInputMethod.html"/>
     <id>https://moonclearner.cn/ubuntu/sogouInputMethod.html</id>
@@ -396,141 +512,6 @@
     
     
       <category term="postgresql" scheme="https://moonclearner.cn/tags/postgresql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>www trace request test</title>
-    <link href="https://moonclearner.cn/ITsecure/www_trace_request.html"/>
-    <id>https://moonclearner.cn/ITsecure/www_trace_request.html</id>
-    <published>2019-12-16T08:28:45.963Z</published>
-    <updated>2019-12-16T08:28:45.963Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="远程WWW服务支持TRACE请求"><a href="#远程WWW服务支持TRACE请求" class="headerlink" title="远程WWW服务支持TRACE请求"></a>远程WWW服务支持TRACE请求</h1><h2 id="test-method"><a href="#test-method" class="headerlink" title="test method"></a>test method</h2><p> ‘’’</p><h1 id="http"><a href="#http" class="headerlink" title="http"></a>http</h1><p>  curl -v -X TRACE <a href="http://www.yourserver.com" target="_blank" rel="noopener">http://www.yourserver.com</a></p><h1 id="https"><a href="#https" class="headerlink" title="https"></a>https</h1><p>  curl –insecure -v -X TRACE <a href="https://www.yourserver.com" target="_blank" rel="noopener">https://www.yourserver.com</a></p><p> ‘’’<br> return msg is “HTTP/1.1 405 Method Not Allowed”<br> It works</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;远程WWW服务支持TRACE请求&quot;&gt;&lt;a href=&quot;#远程WWW服务支持TRACE请求&quot; class=&quot;headerlink&quot; title=&quot;远程WWW服务支持TRACE请求&quot;&gt;&lt;/a&gt;远程WWW服务支持TRACE请求&lt;/h1&gt;&lt;h2 id=&quot;test-meth
-      
-    
-    </summary>
-    
-      <category term="ITsecure" scheme="https://moonclearner.cn/categories/ITsecure/"/>
-    
-    
-      <category term="apache" scheme="https://moonclearner.cn/tags/apache/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>代码审计-企业级web代码安全架构</title>
-    <link href="https://moonclearner.cn/ITsecure/code%20audit%20Notes.html"/>
-    <id>https://moonclearner.cn/ITsecure/code audit Notes.html</id>
-    <published>2019-12-16T08:22:12.125Z</published>
-    <updated>2019-12-16T08:22:12.125Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="code-audit-Notes"><a href="#code-audit-Notes" class="headerlink" title="code audit Notes"></a>code audit Notes</h1><h2 id="code-audit-env-built"><a href="#code-audit-env-built" class="headerlink" title="code audit env built"></a>code audit env built</h2><h3 id="php-env-install"><a href="#php-env-install" class="headerlink" title="php env install"></a>php env install</h3><ul><li>phpStudy<ul><li>用于做技术探针，集成了所有php运行的环境，apache nginx</li></ul></li><li>php core secure configure<ul><li>register_globals 全局变量注册开关</li><li>allow_url_include 是否运行包含远程文件<ul><li>include()</li></ul></li><li>magic_quotes_gpc 魔术引号自动过滤<ul><li>filter get post cookie but $_SERVER</li><li>ver 5.4 later abandon</li></ul></li><li>magic_quotes_runtime 魔术引号自动过滤<ul><li>filter database or file</li><li>ver 5.4 later abandon</li></ul></li><li>magic_quotes_sybase 魔术引号自动过滤<ul><li>like magic_quotes_gpc</li></ul></li><li>safe_mode 安全模式<ul><li>限制文件操作</li><li>限制函数执行和外部命令执行</li></ul></li><li>open_basedir PHP可访问目录</li><li>disable_functions 禁用函数<ul><li>phpinfo,eval,assthru,exec,system</li></ul></li><li>display_errors 和 error_reporting 错误显示</li></ul></li></ul><h2 id="audit-auxiliary-tool-or-defect-verification-tool"><a href="#audit-auxiliary-tool-or-defect-verification-tool" class="headerlink" title="audit auxiliary tool or defect verification tool"></a>audit auxiliary tool or defect verification tool</h2><h3 id="code-audit-tool"><a href="#code-audit-tool" class="headerlink" title="code audit tool"></a>code audit tool</h3><ul><li>seay<ul><li>only for php</li></ul></li><li>Fortify SCA</li><li>RIPS<ul><li>only for php</li></ul></li></ul><h3 id="defect-verification-tool"><a href="#defect-verification-tool" class="headerlink" title="defect verification tool"></a>defect verification tool</h3><ul><li>burp suite</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;code-audit-Notes&quot;&gt;&lt;a href=&quot;#code-audit-Notes&quot; class=&quot;headerlink&quot; title=&quot;code audit Notes&quot;&gt;&lt;/a&gt;code audit Notes&lt;/h1&gt;&lt;h2 id=&quot;code-audi
-      
-    
-    </summary>
-    
-      <category term="ITsecure" scheme="https://moonclearner.cn/categories/ITsecure/"/>
-    
-    
-      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
-    
-      <category term="secure" scheme="https://moonclearner.cn/tags/secure/"/>
-    
-      <category term="audit" scheme="https://moonclearner.cn/tags/audit/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP dangerous function</title>
-    <link href="https://moonclearner.cn/php/secure/php_dangerous_function_unsafe_regular_expression.html"/>
-    <id>https://moonclearner.cn/php/secure/php_dangerous_function_unsafe_regular_expression.html</id>
-    <published>2019-11-28T11:35:53.185Z</published>
-    <updated>2019-11-28T11:35:53.185Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="PHP-dangerous-function"><a href="#PHP-dangerous-function" class="headerlink" title="PHP dangerous function"></a>PHP dangerous function</h1><h2 id="split"><a href="#split" class="headerlink" title="split"></a>split</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">explode</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;PHP-dangerous-function&quot;&gt;&lt;a href=&quot;#PHP-dangerous-function&quot; class=&quot;headerlink&quot; title=&quot;PHP dangerous function&quot;&gt;&lt;/a&gt;PHP dangerous functi
-      
-    
-    </summary>
-    
-      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
-    
-    
-      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
-    
-      <category term="web attack" scheme="https://moonclearner.cn/tags/web-attack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP XSS</title>
-    <link href="https://moonclearner.cn/php/secure/php_XSS.html"/>
-    <id>https://moonclearner.cn/php/secure/php_XSS.html</id>
-    <published>2019-11-28T09:21:24.872Z</published>
-    <updated>2019-11-28T09:21:24.872Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="PHP-XSS"><a href="#PHP-XSS" class="headerlink" title="PHP XSS"></a>PHP XSS</h1><h2 id="Persistent"><a href="#Persistent" class="headerlink" title="Persistent"></a>Persistent</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> htmlspecialchars($data, ENT_QUOTES);</span><br></pre></td></tr></table></figure><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">"location.replace("</span>/index/<span class="string">'.urlencode($type).'</span><span class="string">");"</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;PHP-XSS&quot;&gt;&lt;a href=&quot;#PHP-XSS&quot; class=&quot;headerlink&quot; title=&quot;PHP XSS&quot;&gt;&lt;/a&gt;PHP XSS&lt;/h1&gt;&lt;h2 id=&quot;Persistent&quot;&gt;&lt;a href=&quot;#Persistent&quot; class=&quot;head
-      
-    
-    </summary>
-    
-      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
-    
-    
-      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
-    
-      <category term="web attack" scheme="https://moonclearner.cn/tags/web-attack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>open redirect</title>
-    <link href="https://moonclearner.cn/php/secure/Open_Redirect.html"/>
-    <id>https://moonclearner.cn/php/secure/Open_Redirect.html</id>
-    <published>2019-11-20T05:58:39.499Z</published>
-    <updated>2019-11-20T05:58:39.499Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="open-redirect"><a href="#open-redirect" class="headerlink" title="open redirect"></a>open redirect</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">header(<span class="string">"Location: $url"</span>);</span><br></pre></td></tr></table></figure><h1 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">header(<span class="string">"Location: "</span>.filter_var($url, FILTER_SANITIZE_URL));</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;open-redirect&quot;&gt;&lt;a href=&quot;#open-redirect&quot; class=&quot;headerlink&quot; title=&quot;open redirect&quot;&gt;&lt;/a&gt;open redirect&lt;/h1&gt;&lt;figure class=&quot;highlight php&quot;
-      
-    
-    </summary>
-    
-      <category term="php" scheme="https://moonclearner.cn/categories/php/"/>
-    
-    
-      <category term="php" scheme="https://moonclearner.cn/tags/php/"/>
-    
-      <category term="web attack" scheme="https://moonclearner.cn/tags/web-attack/"/>
     
   </entry>
   

@@ -1,214 +1,303 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://moonclearner.cn/ubuntu/kvm.html</loc>
+    <lastmod>2020-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/ubuntu/sogou.html</loc>
+    <lastmod>2020-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/%E7%B4%A2%E5%BC%95%E8%A6%86%E7%9B%96%E4%B8%8E%E5%9B%9E%E8%A1%A8.html</loc>
+    <lastmod>2020-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/databases/sql/sqlzooNote.html</loc>
+    <lastmod>2020-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/databases/sql/index_and_like.html</loc>
+    <lastmod>2020-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/ubuntu/ubuntu_notes.html</loc>
+    <lastmod>2020-11-03</lastmod>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/databases/postgresql/tablespace.html</loc>
     <lastmod>2020-10-15</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/databases/postgresql/postgresqlLearningNote.html</loc>
     <lastmod>2020-10-15</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/ubuntu/best_software.html</loc>
     <lastmod>2020-09-09</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/secure/php_SessionID_on_login.html</loc>
     <lastmod>2020-08-25</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/php_ipv6.html</loc>
     <lastmod>2020-08-21</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/php_download.html</loc>
     <lastmod>2020-08-21</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/leetcode/tree/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.html</loc>
     <lastmod>2020-08-19</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/php_view_file.html</loc>
     <lastmod>2020-07-23</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/shell/common_cmd.html</loc>
     <lastmod>2020-05-25</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/configure/php_extension_compile_fail.html</loc>
     <lastmod>2020-04-30</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/ubuntu/pkg-config.html</loc>
     <lastmod>2020-04-13</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/shell/cmd_return.html</loc>
     <lastmod>2020-03-11</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/js/jquery/jq_ajax.html</loc>
     <lastmod>2020-02-14</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/modernPHPNote.html</loc>
     <lastmod>2020-02-03</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/php_xml.html</loc>
     <lastmod>2020-01-10</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/python/libDescription.html</loc>
     <lastmod>2020-01-07</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/databases/mysql/notes.html</loc>
     <lastmod>2020-01-07</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/ubuntu/sogouInputMethod.html</loc>
     <lastmod>2020-01-06</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/sublimeText/sublimeText_license.html</loc>
     <lastmod>2019-12-31</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/databases/postgresql/postgresqlLearningResource.html</loc>
     <lastmod>2019-12-30</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/ITsecure/www_trace_request.html</loc>
     <lastmod>2019-12-16</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/ITsecure/code%20audit%20Notes.html</loc>
     <lastmod>2019-12-16</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/secure/php_dangerous_function_unsafe_regular_expression.html</loc>
     <lastmod>2019-11-28</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/secure/php_XSS.html</loc>
     <lastmod>2019-11-28</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/secure/Open_Redirect.html</loc>
     <lastmod>2019-11-20</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/secure/php_Possible_variable_overwrite_Global_scope.html</loc>
     <lastmod>2019-11-20</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/secure/php_password_Management_Hardcoded_password.html</loc>
     <lastmod>2019-11-20</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/secure/php_password_Management_Empty_Password.html</loc>
     <lastmod>2019-11-20</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/js/IECompatible.html</loc>
     <lastmod>2019-11-13</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/js/note.html</loc>
     <lastmod>2019-09-19</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/python/python_secure.html</loc>
     <lastmod>2019-09-16</lastmod>
-  </url>  <url>
-    <loc>https://moonclearner.cn/ubuntu/ubuntu_notes.html</loc>
-    <lastmod>2019-08-28</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/php_My_cookbook.html</loc>
     <lastmod>2019-07-25</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/ubuntu/deepin-wine.html</loc>
     <lastmod>2019-07-08</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/vim/configure.html</loc>
     <lastmod>2019-06-28</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/git/configure.html</loc>
     <lastmod>2019-06-27</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/apache/php_My_cookbook.html</loc>
     <lastmod>2019-06-18</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/js/use_this.html</loc>
     <lastmod>2019-06-12</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/js/jquery/jq_get_name.html</loc>
     <lastmod>2019-06-12</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/js/html2cavas.html</loc>
     <lastmod>2019-06-11</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/ubuntu/addAppTOdash.html</loc>
     <lastmod>2019-05-09</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/ubuntu/best_tool.html</loc>
     <lastmod>2019-04-24</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/js/self_adaption_set_iframe_height.html</loc>
     <lastmod>2019-04-22</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/highchart/highchart_bar_show_zero_value.html</loc>
     <lastmod>2019-04-10</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/css/tabel_border_collapse.html</loc>
     <lastmod>2019-04-09</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/js/checkbox_as_radio.html</loc>
     <lastmod>2019-04-09</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/js/get_actual_char_length.html</loc>
     <lastmod>2019-04-08</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/js/jquery/jq_select.html</loc>
     <lastmod>2019-03-29</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/ubuntu/sudo_nopasswd.html</loc>
     <lastmod>2019-03-18</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/ubuntu/restore_ubuntu_system.html</loc>
     <lastmod>2019-03-18</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/ubuntu/zsh_setting.html</loc>
     <lastmod>2019-03-18</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/hexo/hexo_post_header.html</loc>
     <lastmod>2019-02-27</lastmod>
-  </url>  <url>
-    <loc>https://moonclearner.cn/cmder/cmder.html</loc>
-    <lastmod>2019-02-27</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/js/onclick_for_post.html</loc>
     <lastmod>2019-02-27</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/php_deal_ip_and_mask.html</loc>
     <lastmod>2019-02-27</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/php_delete_array_element.html</loc>
     <lastmod>2019-02-27</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/php_get_path_filename.html</loc>
     <lastmod>2019-02-27</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/php_filter_fuc.html</loc>
     <lastmod>2019-02-27</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/php_quotes.html</loc>
     <lastmod>2019-02-27</lastmod>
-  </url>  <url>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/cmder/cmder.html</loc>
+    <lastmod>2019-02-27</lastmod>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/vim/vim.html</loc>
     <lastmod>2019-02-27</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/databases/sqlite/sqlite_common_cmd.html</loc>
     <lastmod>2019-02-27</lastmod>
-  </url>  <url>
-    <loc>https://moonclearner.cn/php/laravel/timeline.html</loc>
-    <lastmod>2019-02-27</lastmod>
-  </url>  <url>
-    <loc>https://moonclearner.cn/php/cookbook/php_database_transaction.html</loc>
-    <lastmod>2019-02-27</lastmod>
-  </url>  <url>
-    <loc>https://moonclearner.cn/php/cookbook/php_dynamic_create_object.html</loc>
-    <lastmod>2019-02-27</lastmod>
-  </url>  <url>
-    <loc>https://moonclearner.cn/php/cookbook/php_pdo_error_info.html</loc>
-    <lastmod>2019-02-27</lastmod>
-  </url>  <url>
-    <loc>https://moonclearner.cn/php/cookbook/php_session.html</loc>
-    <lastmod>2019-02-27</lastmod>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/python/django/basic_command.html</loc>
     <lastmod>2019-02-27</lastmod>
-  </url>  <url>
-    <loc>https://moonclearner.cn/python/install/Pip.html</loc>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/php/laravel/timeline.html</loc>
     <lastmod>2019-02-27</lastmod>
-  </url>  <url>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/php/cookbook/php_database_transaction.html</loc>
+    <lastmod>2019-02-27</lastmod>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/secure/php_CRSF_TOKEN.html</loc>
     <lastmod>2019-02-27</lastmod>
-  </url>  <url>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/php/cookbook/php_pdo_error_info.html</loc>
+    <lastmod>2019-02-27</lastmod>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/secure/php_SQL_inject.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>
-</urlset>
+  <url>
+    <loc>https://moonclearner.cn/php/cookbook/php_dynamic_create_object.html</loc>
+    <lastmod>2019-02-27</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/python/install/Pip.html</loc>
+    <lastmod>2019-02-27</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/php/cookbook/php_session.html</loc>
+    <lastmod>2019-02-27</lastmod>
+  </url>
+</urlset> 

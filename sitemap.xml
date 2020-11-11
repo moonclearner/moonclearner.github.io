@@ -2,6 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://moonclearner.cn/ubuntu/kvm.html</loc>
+    
+    <lastmod>2020-11-11T06:08:50.680Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://moonclearner.cn/ubuntu/sogou.html</loc>
+    
+    <lastmod>2020-11-11T06:08:43.076Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://moonclearner.cn/%E7%B4%A2%E5%BC%95%E8%A6%86%E7%9B%96%E4%B8%8E%E5%9B%9E%E8%A1%A8.html</loc>
+    
+    <lastmod>2020-11-11T05:48:53.577Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://moonclearner.cn/databases/sql/sqlzooNote.html</loc>
+    
+    <lastmod>2020-11-10T13:07:03.685Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://moonclearner.cn/databases/sql/index_and_like.html</loc>
+    
+    <lastmod>2020-11-10T13:07:01.665Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://moonclearner.cn/ubuntu/ubuntu_notes.html</loc>
+    
+    <lastmod>2020-11-03T07:01:21.773Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://moonclearner.cn/databases/postgresql/tablespace.html</loc>
     
     <lastmod>2020-10-15T06:11:49.577Z</lastmod>
@@ -219,13 +261,6 @@
   </url>
   
   <url>
-    <loc>https://moonclearner.cn/ubuntu/ubuntu_notes.html</loc>
-    
-    <lastmod>2019-08-28T03:01:27.468Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://moonclearner.cn/php/php_My_cookbook.html</loc>
     
     <lastmod>2019-07-25T06:11:22.475Z</lastmod>
@@ -359,13 +394,6 @@
   </url>
   
   <url>
-    <loc>https://moonclearner.cn/tags/index.html</loc>
-    
-    <lastmod>2019-02-27T05:33:54.390Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://moonclearner.cn/categories/index.html</loc>
     
     <lastmod>2019-02-27T05:33:54.390Z</lastmod>
@@ -373,14 +401,14 @@
   </url>
   
   <url>
-    <loc>https://moonclearner.cn/hexo/hexo_post_header.html</loc>
+    <loc>https://moonclearner.cn/tags/index.html</loc>
     
-    <lastmod>2019-02-27T05:33:54.374Z</lastmod>
+    <lastmod>2019-02-27T05:33:54.390Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://moonclearner.cn/cmder/cmder.html</loc>
+    <loc>https://moonclearner.cn/hexo/hexo_post_header.html</loc>
     
     <lastmod>2019-02-27T05:33:54.374Z</lastmod>
     
@@ -429,6 +457,13 @@
   </url>
   
   <url>
+    <loc>https://moonclearner.cn/cmder/cmder.html</loc>
+    
+    <lastmod>2019-02-27T05:33:54.374Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://moonclearner.cn/vim/vim.html</loc>
     
     <lastmod>2019-02-27T05:33:54.374Z</lastmod>
@@ -437,6 +472,13 @@
   
   <url>
     <loc>https://moonclearner.cn/databases/sqlite/sqlite_common_cmd.html</loc>
+    
+    <lastmod>2019-02-27T05:33:54.374Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://moonclearner.cn/python/django/basic_command.html</loc>
     
     <lastmod>2019-02-27T05:33:54.374Z</lastmod>
     
@@ -457,7 +499,7 @@
   </url>
   
   <url>
-    <loc>https://moonclearner.cn/php/cookbook/php_dynamic_create_object.html</loc>
+    <loc>https://moonclearner.cn/php/secure/php_CRSF_TOKEN.html</loc>
     
     <lastmod>2019-02-27T05:33:54.374Z</lastmod>
     
@@ -471,14 +513,14 @@
   </url>
   
   <url>
-    <loc>https://moonclearner.cn/php/cookbook/php_session.html</loc>
+    <loc>https://moonclearner.cn/php/secure/php_SQL_inject.html</loc>
     
     <lastmod>2019-02-27T05:33:54.374Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://moonclearner.cn/python/django/basic_command.html</loc>
+    <loc>https://moonclearner.cn/php/cookbook/php_dynamic_create_object.html</loc>
     
     <lastmod>2019-02-27T05:33:54.374Z</lastmod>
     
@@ -492,14 +534,7 @@
   </url>
   
   <url>
-    <loc>https://moonclearner.cn/php/secure/php_CRSF_TOKEN.html</loc>
-    
-    <lastmod>2019-02-27T05:33:54.374Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://moonclearner.cn/php/secure/php_SQL_inject.html</loc>
+    <loc>https://moonclearner.cn/php/cookbook/php_session.html</loc>
     
     <lastmod>2019-02-27T05:33:54.374Z</lastmod>
     

@@ -111,18 +111,18 @@
     <meta name="baidu-site-verification" content="8NezAkUO3s">
 
 
-  <meta name="description" content="软件文字显示方块（如企业微信） 去windows 系统 上去复制一份Fonts字体 复制到你要修复的wine容器 将字体放入~/.wine/drive_c/windows/Fonts 里面，如果是deepin的话，就放在~/.deepinwine/XXX/drive_c/windows/Fonts里面（XXX指deepin下的你安装的程序） touch zh.reg  1234567891011R">
+  <meta name="description" content="软件文字显示方块（如企业微信） 去windows 系统 上去复制一份Fonts字体 复制到你要修复的wine容器 将字体放入~/.wine/drive_c/windows/Fonts 里面，如果是deepin的话，就放在~/.deepinwine/XXX/drive_c/windows/Fonts里面（XXX指deepin下的你安装的程序） 创建一份字体加载注册脚本 touch zh.reg 12">
 <meta name="keywords" content="ubuntu,wine,deep-win">
 <meta property="og:type" content="article">
 <meta property="og:title" content="wine setting">
 <meta property="og:url" content="https://moonclearner.cn/ubuntu/deepin-wine.html">
 <meta property="og:site_name" content="moonclearner page">
-<meta property="og:description" content="软件文字显示方块（如企业微信） 去windows 系统 上去复制一份Fonts字体 复制到你要修复的wine容器 将字体放入~/.wine/drive_c/windows/Fonts 里面，如果是deepin的话，就放在~/.deepinwine/XXX/drive_c/windows/Fonts里面（XXX指deepin下的你安装的程序） touch zh.reg  1234567891011R">
+<meta property="og:description" content="软件文字显示方块（如企业微信） 去windows 系统 上去复制一份Fonts字体 复制到你要修复的wine容器 将字体放入~/.wine/drive_c/windows/Fonts 里面，如果是deepin的话，就放在~/.deepinwine/XXX/drive_c/windows/Fonts里面（XXX指deepin下的你安装的程序） 创建一份字体加载注册脚本 touch zh.reg 12">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-08T05:11:08.408Z">
+<meta property="og:updated_time" content="2021-01-04T02:40:06.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wine setting">
-<meta name="twitter:description" content="软件文字显示方块（如企业微信） 去windows 系统 上去复制一份Fonts字体 复制到你要修复的wine容器 将字体放入~/.wine/drive_c/windows/Fonts 里面，如果是deepin的话，就放在~/.deepinwine/XXX/drive_c/windows/Fonts里面（XXX指deepin下的你安装的程序） touch zh.reg  1234567891011R">
+<meta name="twitter:description" content="软件文字显示方块（如企业微信） 去windows 系统 上去复制一份Fonts字体 复制到你要修复的wine容器 将字体放入~/.wine/drive_c/windows/Fonts 里面，如果是deepin的话，就放在~/.deepinwine/XXX/drive_c/windows/Fonts里面（XXX指deepin下的你安装的程序） 创建一份字体加载注册脚本 touch zh.reg 12">
 
 
 
@@ -456,7 +456,7 @@
                 
               
 
-              <time title="Created: 2019-07-08 13:11:08" itemprop="dateCreated datePublished" datetime="2019-07-08T13:11:08+08:00">2019-07-08</time>
+              <time title="Created: 2021-01-04 10:40:06" itemprop="dateCreated datePublished" datetime="2021-01-04T10:40:06+08:00">2021-01-04</time>
             
 
             
@@ -502,7 +502,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">725</span>
+                <span title="Symbols count in article">738</span>
               
 
               
@@ -539,11 +539,11 @@
         <h1 id="软件文字显示方块（如企业微信）"><a href="#软件文字显示方块（如企业微信）" class="headerlink" title="软件文字显示方块（如企业微信）"></a>软件文字显示方块（如企业微信）</h1><ul>
 <li>去windows 系统 上去复制一份Fonts字体</li>
 <li>复制到你要修复的wine容器 将字体放入~/.wine/drive_c/windows/Fonts 里面，如果是deepin的话，就放在~/.deepinwine/XXX/drive_c/windows/Fonts里面（XXX指deepin下的你安装的程序）</li>
-<li><code>touch zh.reg</code></li>
-</ul>
+<li><p>创建一份字体加载注册脚本 <code>touch zh.reg</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">REGEDIT4</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink]</span><br><span class="line">&quot;Lucida Sans Unicode&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Microsoft Sans Serif&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;MS Sans Serif&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Tahoma&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Tahoma Bold&quot;=&quot;msyhbd.ttc&quot;</span><br><span class="line">&quot;msyh&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Arial&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Arial Black&quot;=&quot;msyh.ttc&quot;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>WINEPREFIX=~/.deepinwine/Deepin-WXWork /usr/bin/deepin-wine regedit zh.reg</code></li>
+</li>
+<li><p><code>WINEPREFIX=~/.deepinwine/Deepin-WXWork /usr/bin/deepin-wine regedit zh.reg</code></p>
+</li>
 </ul>
 
       
@@ -592,8 +592,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/vim/configure.html" rel="next" title="vim configure">
-                <i class="fa fa-chevron-left"></i> vim configure
+              <a href="/databases/sql/sqlNote.html" rel="next" title="sqlNote">
+                <i class="fa fa-chevron-left"></i> sqlNote
               </a>
             
           </div>
@@ -602,8 +602,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/php/php_My_cookbook.html" rel="prev" title="PHP My Cookbook">
-                PHP My Cookbook <i class="fa fa-chevron-right"></i>
+              <a href="/ubuntu/best_software.html" rel="prev" title="ubuntu best software">
+                ubuntu best software <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -678,7 +678,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-count">88</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -739,7 +739,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -852,7 +854,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">50</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -942,7 +948,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -954,7 +960,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">120k</span>
+    <span title="Symbols count total">132k</span>
   
 
   
@@ -963,7 +969,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">1:49</span>
+    <span title="Reading time total">2:01</span>
   
 </div>
 

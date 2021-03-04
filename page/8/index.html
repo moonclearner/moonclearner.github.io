@@ -413,7 +413,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/php/cookbook/php_pdo_error_info.html">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/php/php_deal_ip_and_mask.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="moonclearner">
@@ -433,7 +433,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/php/cookbook/php_pdo_error_info.html" class="post-title-link" itemprop="url">PHP PDO error info</a>
+                <a href="/php/php_deal_ip_and_mask.html" class="post-title-link" itemprop="url">PHP deal with ip and mask</a>
               
             
           </h1>
@@ -504,7 +504,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">395</span>
+                <span title="Symbols count in article">1.1k</span>
               
 
               
@@ -541,14 +541,13 @@
         
           
             <p>
-              PHP PDO catch error info`php
-try{    $db = new PDO(‘sqlite:/tmp/tmp.db’);    $db-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    $st =
+              PHP deal with ip and maskfunction ip_parse($ip_str) &#123;    $mark_len = 32;    if (strpos($ip_str, "/") &gt; 0) &#123;        list($ip_str, $mark_le
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/php/cookbook/php_pdo_error_info.html#more" rel="contents">
+              <a class="btn" href="/php/php_deal_ip_and_mask.html#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -610,7 +609,7 @@ try{    $db = new PDO(‘sqlite:/tmp/tmp.db’);    $db-&gt;setAttribute(PDO::AT
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/php/secure/php_SQL_inject.html">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/php/php_delete_array_element.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="moonclearner">
@@ -630,7 +629,7 @@ try{    $db = new PDO(‘sqlite:/tmp/tmp.db’);    $db-&gt;setAttribute(PDO::AT
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/php/secure/php_SQL_inject.html" class="post-title-link" itemprop="url">PHP protected from sql inject</a>
+                <a href="/php/php_delete_array_element.html" class="post-title-link" itemprop="url">PHP delete array element删除数组元素</a>
               
             
           </h1>
@@ -701,7 +700,7 @@ try{    $db = new PDO(‘sqlite:/tmp/tmp.db’);    $db-&gt;setAttribute(PDO::AT
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">496</span>
+                <span title="Symbols count in article">614</span>
               
 
               
@@ -738,13 +737,14 @@ try{    $db = new PDO(‘sqlite:/tmp/tmp.db’);    $db-&gt;setAttribute(PDO::AT
         
           
             <p>
-              PHP protected from sql injectPDOinsert$db    = new PDO("sqlite:/tmp.db");$sql   = "insert into auth (time, user) values(?, ?)";$query = $db-&gt;prepar
+              PHP删除数组元素unset from keyunset($array['key'])//将数组的引索重新排列array_values($array)
+array_search from value$arr1 = array(1,3, 5,7,8);$key = array_search(3, $a
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/php/secure/php_SQL_inject.html#more" rel="contents">
+              <a class="btn" href="/php/php_delete_array_element.html#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -806,7 +806,7 @@ try{    $db = new PDO(‘sqlite:/tmp/tmp.db’);    $db-&gt;setAttribute(PDO::AT
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/php/cookbook/php_dynamic_create_object.html">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/php/php_filter_fuc.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="moonclearner">
@@ -826,7 +826,7 @@ try{    $db = new PDO(‘sqlite:/tmp/tmp.db’);    $db-&gt;setAttribute(PDO::AT
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/php/cookbook/php_dynamic_create_object.html" class="post-title-link" itemprop="url">PHP dynamically create object</a>
+                <a href="/php/php_filter_fuc.html" class="post-title-link" itemprop="url">PHP filter func</a>
               
             
           </h1>
@@ -897,7 +897,7 @@ try{    $db = new PDO(‘sqlite:/tmp/tmp.db’);    $db-&gt;setAttribute(PDO::AT
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">297</span>
+                <span title="Symbols count in article">1.4k</span>
               
 
               
@@ -932,16 +932,11 @@ try{    $db = new PDO(‘sqlite:/tmp/tmp.db’);    $db-&gt;setAttribute(PDO::AT
 
       
         
-          
-            <p>
-              PHP dynamically create object$object = new ReflectionClass('PDO');$object-&gt;newInstanceArgs(array('arg1'=&gt;$arg1, 'arg2'=&gt;$arg2));
-PHP dynamica
-              ...
-            </p>
+          manual for php filter function
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/php/cookbook/php_dynamic_create_object.html#more" rel="contents">
+              <a class="btn" href="/php/php_filter_fuc.html">
                 Read more &raquo;
               </a>
             </div>
@@ -1003,7 +998,7 @@ PHP dynamica
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/python/install/Pip.html">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/php/php_quotes.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="moonclearner">
@@ -1023,204 +1018,7 @@ PHP dynamica
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/python/install/Pip.html" class="post-title-link" itemprop="url">install pip</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-02-27 13:33:54" itemprop="dateCreated datePublished" datetime="2019-02-27T13:33:54+08:00">2019-02-27</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">111</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              install pip2 and pip3wget https://bootstrap.pypa.io/get-pip.pysudo python2 get-pip.pysudo python get-pip.py
-
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/python/install/Pip.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-
-    
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/php/cookbook/php_session.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="moonclearner">
-      <meta itemprop="description" content="moonclearner record code skill and my feeling">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="moonclearner page">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/php/cookbook/php_session.html" class="post-title-link" itemprop="url">PHP session</a>
+                <a href="/php/php_quotes.html" class="post-title-link" itemprop="url">PHP quotes</a>
               
             
           </h1>
@@ -1291,7 +1089,7 @@ PHP dynamica
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">617</span>
+                <span title="Symbols count in article">1.3k</span>
               
 
               
@@ -1328,13 +1126,1204 @@ PHP dynamica
         
           
             <p>
-              PHP SessionPHP redirect url need add phpsessionidSID is constant value replace phpsessionid$redirect_url = 'http://www.example.com';if(defined('SID') 
+              php quote魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符都会被自动加上一个反斜线进行转义，这和 addslashes() 作用完全相同
+相关的函数
+set_magic_quotes_runtime
+magic_quotes_gpc
+addslashes
+
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/php/cookbook/php_session.html#more" rel="contents">
+              <a class="btn" href="/php/php_quotes.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+
+    
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/php/php_get_path_filename.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moonclearner">
+      <meta itemprop="description" content="moonclearner record code skill and my feeling">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="moonclearner page">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/php/php_get_path_filename.html" class="post-title-link" itemprop="url">PHP Filesystem</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-27 13:33:54" itemprop="dateCreated datePublished" datetime="2019-02-27T13:33:54+08:00">2019-02-27</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/php/" itemprop="url" rel="index"><span itemprop="name">php</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">2.3k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">2 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          php operate filesystem
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/php/php_get_path_filename.html">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+
+    
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/js/onclick_for_post.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moonclearner">
+      <meta itemprop="description" content="moonclearner record code skill and my feeling">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="moonclearner page">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/js/onclick_for_post.html" class="post-title-link" itemprop="url">onclick lanuch a post request，解决get参数太长，导致请求失败</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-27 13:33:54" itemprop="dateCreated datePublished" datetime="2019-02-27T13:33:54+08:00">2019-02-27</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/js/" itemprop="url" rel="index"><span itemprop="name">js</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">674</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              onclick lanuch post request有时候，由于get请求下载文件，请求参数超过了2048字符，在IE等浏览器就会导致参数不完整
+因此使用post请求，其参数就没有限制长度，
+然后，使用ajax发起post请求，无法触发文件下载，因此使用模拟form表单发起post请求
+原生onc
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/js/onclick_for_post.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+
+    
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/hexo/hexo_post_header.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moonclearner">
+      <meta itemprop="description" content="moonclearner record code skill and my feeling">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="moonclearner page">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/hexo/hexo_post_header.html" class="post-title-link" itemprop="url">Hexo head setting</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-27 13:33:54" itemprop="dateCreated datePublished" datetime="2019-02-27T13:33:54+08:00">2019-02-27</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">290</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              hexo post文件头设置---title: Hexo head settingcategories: hexocopyright: truetags:  - hexo  - settingkeywords:description:---
+hexo abstract settingabstract
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/hexo/hexo_post_header.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+
+    
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/vim/vim.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moonclearner">
+      <meta itemprop="description" content="moonclearner record code skill and my feeling">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="moonclearner page">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/vim/vim.html" class="post-title-link" itemprop="url">vim</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-27 13:33:54" itemprop="dateCreated datePublished" datetime="2019-02-27T13:33:54+08:00">2019-02-27</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Vim/" itemprop="url" rel="index"><span itemprop="name">Vim</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">5.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">5 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              vim
+不按 Esc 而是按 ^『或者 ^c，速度快很多
+学会几个定位键的区别：0, $, {, }, g, G, w, e, b…
+Shift+V 选定几行，然后用 一起移动
+Ctrl+V 选定行首或行尾的字符，然后用 shift+i 做插入，或者 shift+x 做删除
+学会用 y,d 和 p,
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/vim/vim.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+
+    
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/databases/sqlite/sqlite_common_cmd.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moonclearner">
+      <meta itemprop="description" content="moonclearner record code skill and my feeling">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="moonclearner page">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/databases/sqlite/sqlite_common_cmd.html" class="post-title-link" itemprop="url">sqlite common cmd 常用命令</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-27 13:33:54" itemprop="dateCreated datePublished" datetime="2019-02-27T13:33:54+08:00">2019-02-27</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/sqlite/" itemprop="url" rel="index"><span itemprop="name">sqlite</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">182</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              sqlite common cmd 常用命令查看列表名
+pragma table_info(tablename);
+.schema tablename
+select * from sqlite_master where type=”table” and name=”tablename”;
+
+退出sq
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/databases/sqlite/sqlite_common_cmd.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+
+    
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/php/cookbook/php_database_transaction.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moonclearner">
+      <meta itemprop="description" content="moonclearner record code skill and my feeling">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="moonclearner page">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/php/cookbook/php_database_transaction.html" class="post-title-link" itemprop="url">PHP database transaction</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-27 13:33:54" itemprop="dateCreated datePublished" datetime="2019-02-27T13:33:54+08:00">2019-02-27</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/php/" itemprop="url" rel="index"><span itemprop="name">php</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">879</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              PHP database transactionclass Message&#123;    protected $db;    // $form_errors save post validate error for showing error in pages    protected $for
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/php/cookbook/php_database_transaction.html#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1385,7 +2374,7 @@ PHP dynamica
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1428,7 +2417,7 @@ PHP dynamica
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-count">88</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1489,7 +2478,9 @@ PHP dynamica
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1602,7 +2593,11 @@ PHP dynamica
                     
                       
                     
-                    <span class="site-state-item-count">50</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1675,7 +2670,7 @@ PHP dynamica
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1687,7 +2682,7 @@ PHP dynamica
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">120k</span>
+    <span title="Symbols count total">132k</span>
   
 
   
@@ -1696,7 +2691,7 @@ PHP dynamica
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">1:49</span>
+    <span title="Reading time total">2:01</span>
   
 </div>
 

@@ -1,6 +1,375 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>github加快</title>
+    <url>/github%E5%8A%A0%E5%BF%AB.html</url>
+    <content><![CDATA[<h1 id="加快github-clone速度"><a href="#加快github-clone速度" class="headerlink" title="加快github clone速度"></a>加快github clone速度</h1><p>执行以下配置命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global url.&quot;https://github.com.cnpmjs.org/&quot;.insteadOf &quot;https://github.com/&quot;</span><br></pre></td></tr></table></figure>
+<p>或直接修改~/.gitconfig文件，添加以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[url &quot;https://github.com.cnpmjs.org/&quot;]</span><br><span class="line">	insteadOf = https://github.com/</span><br></pre></td></tr></table></figure>
+<p>以上配置，仅对https协议生效，对SSH协议不生效。 在URL替换后，仓库里的配置直接时基于<a href="https://github.com.cnpmjs.org/的。" target="_blank" rel="noopener">https://github.com.cnpmjs.org/的。</a> 如果需要换回来，或者换成SSH协议，则需要使用：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote set-url origin ...</span><br></pre></td></tr></table></figure>
+<p>或者：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add github ...</span><br></pre></td></tr></table></figure></p>
+<p>由于GitHub增量下载，还是勉强能接受的，因此在clone后把URL换回来，或者多remote管理，也是可行方案。</p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>pytho</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python 操作大小端十六进制</title>
+    <url>/python-%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%B0%8F%E7%AB%AF%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6.html</url>
+    <content><![CDATA[<h1 id="整形大小端转化和输出ip16进制"><a href="#整形大小端转化和输出ip16进制" class="headerlink" title="整形大小端转化和输出ip16进制"></a>整形大小端转化和输出ip16进制</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> fcntl</span><br><span class="line"><span class="keyword">import</span> struc</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">int_bytes_reverse</span><span class="params">(self, int_data, byte_num)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    int_data = 202  byte_num=4</span></span><br><span class="line"><span class="string">    1. raw_str = "00000000ca"</span></span><br><span class="line"><span class="string">    2. byte_reverse = "ca000000"</span></span><br><span class="line"><span class="string">    3. retutn "\xca\00\00\00"</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    raw_str = <span class="string">""</span>.join([<span class="string">"00"</span>]*byte_num) + hex(int_data)[<span class="number">2</span>:]</span><br><span class="line">    byte_reverse = raw_str[-byte_num*<span class="number">2</span>:].decode(<span class="string">"hex"</span>)[::<span class="number">-1</span>].encode(<span class="string">"hex"</span>)</span><br><span class="line">    <span class="keyword">return</span> binascii.unhexlify(byte_reverse)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_ipv6_str</span><span class="params">(self, ipv6_addr, reverse=False)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    ipv6_addr -&gt; 1::1</span></span><br><span class="line"><span class="string">    return '\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01'</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> reverse:</span><br><span class="line">            <span class="keyword">return</span> socket.inet_pton(socket.AF_INET6, ipv6_addr)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> socket.inet_pton(socket.AF_INET6, ipv6_addr)[::<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">except</span> socket.error:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> reverse:</span><br><span class="line">            <span class="keyword">return</span> socket.inet_pton(socket.AF_INET6, <span class="string">"::"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> socket.inet_pton(socket.AF_INET6, <span class="string">"::"</span>)[::<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_ipv4_str</span><span class="params">(self, ipv4_addr, reverse=False)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    ipv6_addr -&gt; 192.168.42.231</span></span><br><span class="line"><span class="string">    return '\xe7*\xa8\xc0'</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> reverse:</span><br><span class="line">            <span class="keyword">return</span> socket.inet_pton(socket.AF_INET, ipv4_addr)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> socket.inet_pton(socket.AF_INET, ipv4_addr)[::<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">except</span> socket.error:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> reverse:</span><br><span class="line">            <span class="keyword">return</span> socket.inet_pton(socket.AF_INET, <span class="string">"0.0.0.0"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> socket.inet_pton(socket.AF_INET, <span class="string">"0.0.0.0"</span>)[::<span class="number">-1</span></span><br></pre></td></tr></table></figure>
+<h2 id="字符串大小端转化"><a href="#字符串大小端转化" class="headerlink" title="字符串大小端转化"></a>字符串大小端转化</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">"017f00373137323a333233323234363530333a303a34333630353a333339363038313239333a303a38303a363a2f6d74782f64617461"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">''</span>.join([hex(ord(c)).replace(<span class="string">'0x'</span>, <span class="string">''</span>) <span class="keyword">for</span> c <span class="keyword">in</span> a]).decode(<span class="string">"hex"</span>)[::<span class="number">-1</span>].encode(<span class="string">"hex"</span>)</span><br><span class="line"><span class="string">'303030323a706163702e32312d3732303030303030312d3634313238312d33313530303230322d303637373734363236332f3134312e32322e3830312e3230322f302f73656c69667061632f617461642f78746d2f3a363a30383a303a333932313830363933333a35303633343a303a333035363432323332333a32373137'</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">''</span>.join([hex(ord(c)).replace(<span class="string">'0x'</span>, <span class="string">''</span>) <span class="keyword">for</span> c <span class="keyword">in</span> a])   </span><br><span class="line"><span class="string">"373137323a333233323234363530333a303a34333630353a333339363038313239333a303a38303a363a2f6d74782f646174612f63617066696c65732f302f3230322e3130382e32322e3134312f333632363437373736302d32303230303531332d3138323134362d3130303030303032372d31322e706361703a32303030"</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WireSharkNote</title>
+    <url>/WireSharkNote.html</url>
+    <content><![CDATA[<h1 id="wireshark-基础篇"><a href="#wireshark-基础篇" class="headerlink" title="wireshark 基础篇"></a>wireshark 基础篇</h1><h2 id="常见功能"><a href="#常见功能" class="headerlink" title="常见功能"></a>常见功能</h2><h2 id="显示过滤器"><a href="#显示过滤器" class="headerlink" title="显示过滤器"></a>显示过滤器</h2><h3 id="常见协议"><a href="#常见协议" class="headerlink" title="常见协议"></a>常见协议</h3><p>传输层：tcp udp sctp<br>数据链路层：Eter，lan，PPPOE<br>应-传输层：SSL<br>网-数据层：ARP</p>
+<h3 id="协议字段"><a href="#协议字段" class="headerlink" title="协议字段"></a>协议字段</h3><h3 id="过滤关系"><a href="#过滤关系" class="headerlink" title="过滤关系"></a>过滤关系</h3><h3 id="常见的过滤"><a href="#常见的过滤" class="headerlink" title="常见的过滤"></a>常见的过滤</h3><ul>
+<li>eth.src == 04:f9:38:11:11:11<ul>
+<li>筛选源mac</li>
+</ul>
+</li>
+<li>eth.type == 0x00<ul>
+<li>筛选网络层使用ip协议的数据包</li>
+</ul>
+</li>
+<li>ip.src != 192.168.1.1<ul>
+<li>源ip不是</li>
+<li>ip.addr</li>
+<li>ip.dst</li>
+</ul>
+</li>
+<li>http contains “test”<ul>
+<li>查询http协议里面payload包含test字符串的包</li>
+</ul>
+</li>
+<li>http.request.method</li>
+</ul>
+<h2 id="复合表达式过滤规则"><a href="#复合表达式过滤规则" class="headerlink" title="复合表达式过滤规则"></a>复合表达式过滤规则</h2><h3 id="连接词"><a href="#连接词" class="headerlink" title="连接词"></a>连接词</h3><ul>
+<li>and , &amp;&amp;</li>
+<li>or , ||</li>
+<li>not , !</li>
+<li>xor, ^^<ul>
+<li>异或，相同出0 不同出1</li>
+</ul>
+</li>
+<li>[…]<ul>
+<li>分片</li>
+</ul>
+</li>
+</ul>
+<h3 id="常见复合式过滤器"><a href="#常见复合式过滤器" class="headerlink" title="常见复合式过滤器"></a>常见复合式过滤器</h3><ul>
+<li>ip.src == 192.168.1.1 &amp;&amp; tcp[13]&amp;2<ul>
+<li>筛选出源地址为192.168.1.1并且为syn的数据包</li>
+</ul>
+</li>
+</ul>
+<h2 id="捕获过滤器"><a href="#捕获过滤器" class="headerlink" title="捕获过滤器"></a>捕获过滤器</h2><p>ip src host 192.168.1.1</p>
+<h3 id="捕获项"><a href="#捕获项" class="headerlink" title="捕获项"></a>捕获项</h3><h3 id="捕获参数"><a href="#捕获参数" class="headerlink" title="捕获参数"></a>捕获参数</h3><h3 id="捕获值"><a href="#捕获值" class="headerlink" title="捕获值"></a>捕获值</h3><h2 id="抓包简单分析"><a href="#抓包简单分析" class="headerlink" title="抓包简单分析"></a>抓包简单分析</h2><h3 id="快速查看整个包的协议框架"><a href="#快速查看整个包的协议框架" class="headerlink" title="快速查看整个包的协议框架"></a>快速查看整个包的协议框架</h3><ul>
+<li>Frame -&gt;  protocols in frame: eth:ethertype:ip:tcp:http<ul>
+<li>数据链路层 eth -&gt; ip协议  tcp协议 -&gt; http协议</li>
+</ul>
+</li>
+<li>Ethernet <ul>
+<li>type：IPv4<ul>
+<li>告诉网络层用的什么协议</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Internet Protocol<ul>
+<li>Protocol:TCP<ul>
+<li>告诉传输层使用什么协议</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Transmission</li>
+</ul>
+<h3 id="如何查看更具体信息"><a href="#如何查看更具体信息" class="headerlink" title="如何查看更具体信息"></a>如何查看更具体信息</h3><p>右键追踪流</p>
+<h1 id="https取证"><a href="#https取证" class="headerlink" title="https取证"></a>https取证</h1><h2 id="远程数据包捕获"><a href="#远程数据包捕获" class="headerlink" title="远程数据包捕获"></a>远程数据包捕获</h2><ul>
+<li>远程windows系统需要安装winpcap,运行该程序，其对外端口默认为2002</li>
+<li>本地有张网卡要与远程通信，添加一个远程网卡<ul>
+<li>捕获》选项》管理接口》远程接口》加入远程设备端口为2002以及账号密码</li>
+</ul>
+</li>
+</ul>
+<h2 id="https解码"><a href="#https解码" class="headerlink" title="https解码"></a>https解码</h2><ul>
+<li>使用捕获过滤器抓包</li>
+<li>tlsv1包<ul>
+<li>获取私钥，并且解压,获取pem文件<ul>
+<li>openssl rsa -in server.key -out test.pem</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>选择要解密的流》编辑》首选项》protocols&gt;SSL&gt;RSA keys list&gt;Editors&gt;+&gt;<ul>
+<li>wireshark 添加对应key用于解密，对应ip和端口 http协议以及key</li>
+</ul>
+</li>
+<li>tlsv1包就会变成http包了</li>
+</ul>
+<h2 id="图片取证分析"><a href="#图片取证分析" class="headerlink" title="图片取证分析"></a>图片取证分析</h2><ul>
+<li>抓包，找到流</li>
+<li>右键追踪流-》http</li>
+<li>显示和保存数据为 原始数据-》保存 保存为.bin文件</li>
+<li>删除保留的文件的请求头</li>
+<li>使用winhex 打开下载的bin文件，恢复成图片文件<h2 id="音频取证分析"><a href="#音频取证分析" class="headerlink" title="音频取证分析"></a>音频取证分析</h2></li>
+</ul>
+<h1 id="通信软件实时取证"><a href="#通信软件实时取证" class="headerlink" title="通信软件实时取证"></a>通信软件实时取证</h1><h2 id="包解密"><a href="#包解密" class="headerlink" title="包解密"></a>包解密</h2><p>wireshark自带解密工具</p>
+<p>选择流&gt;解码为》</p>
+<h3 id="qq解码"><a href="#qq解码" class="headerlink" title="qq解码"></a>qq解码</h3><p>UDP ， 8000 , OICQ</p>
+<h3 id="找文件包"><a href="#找文件包" class="headerlink" title="找文件包"></a>找文件包</h3><p>过滤条件：data</p>
+<h2 id="文件恢复"><a href="#文件恢复" class="headerlink" title="文件恢复"></a>文件恢复</h2><p>找到流-&gt;右键流追踪-&gt;保持为原始数据-&gt;保持为bin文件-&gt;winhex来恢复文件</p>
+<p>http包可以删除请求头和返回头来恢复文件，但是tcp包整个没有头信息不用去删除</p>
+<h3 id="winhex恢复文件"><a href="#winhex恢复文件" class="headerlink" title="winhex恢复文件"></a>winhex恢复文件</h3><p>加载bin文件之后&gt;File&gt;save as&gt;保持为对应的文件(可以从流里面查看文件格式)</p>
+<h1 id="邮件取证"><a href="#邮件取证" class="headerlink" title="邮件取证"></a>邮件取证</h1><p>找到流：smtp</p>
+<p>第一个334 下面是用户名<br>第二个 334 下面是密码<br>base64加密</p>
+<h1 id="统计工具"><a href="#统计工具" class="headerlink" title="统计工具"></a>统计工具</h1><h2 id="部分文件统计"><a href="#部分文件统计" class="headerlink" title="部分文件统计"></a>部分文件统计</h2><p>用于统计当前网络有多少包，配合过滤器来知道当前网络什么包最多</p>
+<p>统计》捕获文件属性</p>
+<h2 id="协议分级统计"><a href="#协议分级统计" class="headerlink" title="协议分级统计"></a>协议分级统计</h2><p>根据tcp/ip模型来知道统计</p>
+<p>统计》协议分级</p>
+<h2 id="端点统计"><a href="#端点统计" class="headerlink" title="端点统计"></a>端点统计</h2><p>端到端的统计, 可以知道端口，以及包的大小</p>
+<p>统计》endpoint</p>
+<h2 id="对话统计"><a href="#对话统计" class="headerlink" title="对话统计"></a>对话统计</h2><p>类似端点统计多了持续时间</p>
+<h2 id="http统计"><a href="#http统计" class="headerlink" title="http统计"></a>http统计</h2><ul>
+<li>分组<ul>
+<li>显示响应</li>
+</ul>
+</li>
+<li>请求消息<ul>
+<li>显示请求头的信息</li>
+</ul>
+</li>
+<li>负载分配<ul>
+<li>显示那些服务器回包</li>
+</ul>
+</li>
+</ul>
+<h2 id="tcp数据流"><a href="#tcp数据流" class="headerlink" title="tcp数据流"></a>tcp数据流</h2><p>统计》流量图</p>
+<h2 id="IP属性"><a href="#IP属性" class="headerlink" title="IP属性"></a>IP属性</h2><p>统计》IPV4 统计</p>
+<h1 id="信息统计"><a href="#信息统计" class="headerlink" title="信息统计"></a>信息统计</h1><h2 id="网络性能判定"><a href="#网络性能判定" class="headerlink" title="网络性能判定"></a>网络性能判定</h2><p>统计》IO图表</p>
+<h2 id="链路吞吐量测算"><a href="#链路吞吐量测算" class="headerlink" title="链路吞吐量测算"></a>链路吞吐量测算</h2><h2 id="TCP吞吐量测算"><a href="#TCP吞吐量测算" class="headerlink" title="TCP吞吐量测算"></a>TCP吞吐量测算</h2><h2 id="TCP重传判断"><a href="#TCP重传判断" class="headerlink" title="TCP重传判断"></a>TCP重传判断</h2>]]></content>
+      <categories>
+        <category>wireshark</category>
+      </categories>
+      <tags>
+        <tag>wireshark</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pythony优化</title>
+    <url>/pythony%E4%BC%98%E5%8C%96.html</url>
+    <content><![CDATA[<h1 id="python优化"><a href="#python优化" class="headerlink" title="python优化"></a>python优化</h1><h2 id="处理文本-Unicode-三明治"><a href="#处理文本-Unicode-三明治" class="headerlink" title="处理文本-Unicode 三明治"></a>处理文本-Unicode 三明治</h2><ul>
+<li>读取：将字节序列解码为字符串</li>
+<li>处理：程序仅处理字符串</li>
+<li>输出：将字符串编码为字节序列</li>
+</ul>
+<h3 id="编码建议"><a href="#编码建议" class="headerlink" title="编码建议"></a>编码建议</h3><ul>
+<li>别依赖默认值</li>
+<li>明确指定encoding</li>
+</ul>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>python2中<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">open(&quot;test.txt&quot;).read() ---&gt; 返回的是字节序列</span><br><span class="line">open(&quot;test.txt&quot;).read().decode() ---&gt; 返回的是字节序列</span><br><span class="line"></span><br><span class="line">需要使用encode()将unicode转化为字节序列,然后写write()</span><br></pre></td></tr></table></figure></p>
+<p>python3中<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">open(&quot;test.txt&quot;).read() ---&gt; 返回的解码的串, 隐含了decode到unicode的操作</span><br><span class="line">open(&quot;test.txt&quot;,&quot;rb&quot;).read() ---&gt; 返回字节序列，禁用默认decode</span><br><span class="line"></span><br><span class="line">write() 隐含了unicode到字节序列的操作</span><br></pre></td></tr></table></figure></p>
+<p>UTF-8可以用来表示Unicode标准中的任意字符</p>
+<h2 id="内存优化"><a href="#内存优化" class="headerlink" title="内存优化"></a>内存优化</h2><h3 id="当程序里面有大量的实例"><a href="#当程序里面有大量的实例" class="headerlink" title="当程序里面有大量的实例"></a>当程序里面有大量的实例</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class A(object):</span><br><span class="line">    pass</span><br><span class="line">a = A()</span><br><span class="line">a.addr = &quot;test&quot;</span><br><span class="line">a.name = &quot;test2&quot;</span><br><span class="line"></span><br><span class="line">print a.__dict__</span><br><span class="line">&#123;&apos;addr&apos;:&apos;test&apos;, &apos;name&apos;:&apos;test2&apos;&#125;</span><br></pre></td></tr></table></figure>
+<p>当程序里面有大量的实例，就会存在大量字典</p>
+<p>通过查看python源码，dict对象即pyDictObject对象 其本质是(hash table) + 开发定址法</p>
+<p>因此，dict本质是一个稀疏数组，内存利用率很低 当大量实例就存在大量稀疏数组，导致内存浪费</p>
+<h4 id="使用-slots-优化内存占用"><a href="#使用-slots-优化内存占用" class="headerlink" title="使用_slots_优化内存占用"></a>使用_slots_优化内存占用</h4><p>python中提供_slots_类属性，如果要处理数大量属性不多的实例时候，使用元组的格式存储实例，而不是字典</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class student(object):</span><br><span class="line">    __slots__ = (&apos;name&apos;, &apos;age&apos;)</span><br><span class="line">s = student()</span><br><span class="line">s.name = &quot;tom&quot;</span><br><span class="line">s.age = 15</span><br></pre></td></tr></table></figure>
+<p>可以让解释器使用类似元组的格式存储实例属性，而不是字典</p>
+<h4 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class A(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.a = &quot;string&quot;</span><br><span class="line">        self.b = 10</span><br><span class="line">        self.c = True</span><br><span class="line">class B(object):</span><br><span class="line">    __slots__ = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.a = &quot;string&quot;</span><br><span class="line">        self.b = 10</span><br><span class="line">        self.c = True</span><br></pre></td></tr></table></figure>
+<p>测试：使用<strong>dict</strong>对比<strong>slots</strong>内存比为4：1</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>仅仅对当前类起作用，继承之类不起作用</li>
+<li>实例只能拥有<em>slots</em>中列出的属性</li>
+</ul>
+<h3 id="set-or-list"><a href="#set-or-list" class="headerlink" title="set or list"></a>set or list</h3><p>大量 in 操作符，以及循环嵌套in，和在较多的集合中in</p>
+<h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><p>list：连续的数组 非链表<br>set : 类似dict hash结构</p>
+<h4 id="查找速度"><a href="#查找速度" class="headerlink" title="查找速度"></a>查找速度</h4><p>hash肯定比 连续数组快</p>
+<h2 id="python调用第三方程序"><a href="#python调用第三方程序" class="headerlink" title="python调用第三方程序"></a>python调用第三方程序</h2><p>对于一个可执行程序，经常被python调用</p>
+<h3 id="subprocess源码"><a href="#subprocess源码" class="headerlink" title="subprocess源码"></a>subprocess源码</h3><p>可以看出这个原理是操作系统fork()进程，执行/bin/sh -c 来执行第三方命令</p>
+<h3 id="用c封装py库来提高性能"><a href="#用c封装py库来提高性能" class="headerlink" title="用c封装py库来提高性能"></a>用c封装py库来提高性能</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">static pyMethodDef GreateModuleMethods[] = &#123;</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;check&quot;,</span><br><span class="line">        _check,</span><br><span class="line">        METH_VARARGS,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;NULL, NULL,0,NULL&#125;</span><br><span class="line">&#125;</span><br><span class="line">PyMODINIT_FUNC initpng_check(void)&#123;</span><br><span class="line">    (void) Py_InitModule(&quot;png_check&quot;, GreateModuleMethods);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Python 代码import一次，加载到python进程的内存空间，得到调用接口，相比前面的方式性能高了很多<br>因此无需频繁fork()</p>
+<h3 id="对比-1"><a href="#对比-1" class="headerlink" title="对比"></a>对比</h3><p>10w次，提升了4w多倍</p>
+<h2 id="计算密集型场景的性能提升"><a href="#计算密集型场景的性能提升" class="headerlink" title="计算密集型场景的性能提升"></a>计算密集型场景的性能提升</h2><ul>
+<li>Cpython</li>
+<li>jython</li>
+<li>pypy<ul>
+<li>使用python实现的python解释器</li>
+<li>集成了一种即时（JIT）编译器</li>
+<li>当某方法或者代码块运行特别频繁是否，会将代码认定为热点代码，为了提高热点代码的执行效率，pypy会把这些代码变异为本地平台相关的机器码</li>
+</ul>
+</li>
+</ul>
+<h3 id="对比-2"><a href="#对比-2" class="headerlink" title="对比"></a>对比</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def add(x,y):</span><br><span class="line">    return x+y</span><br><span class="line">1000万次</span><br><span class="line">python test.py</span><br><span class="line">pypy test.py</span><br><span class="line"></span><br><span class="line">提升了104倍</span><br></pre></td></tr></table></figure>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>pypy与官方python并不兼容</li>
+<li>不支持某些cpython的库 比如pandas</li>
+<li>并不是运行所有程序都快</li>
+</ul>
+<h2 id="善用LINUX-API"><a href="#善用LINUX-API" class="headerlink" title="善用LINUX API"></a>善用LINUX API</h2><h3 id="读取大文件，修改文件的定点位置"><a href="#读取大文件，修改文件的定点位置" class="headerlink" title="读取大文件，修改文件的定点位置"></a>读取大文件，修改文件的定点位置</h3><ul>
+<li>将文件全部读取到内存里面<ul>
+<li>大量IO+内存占用</li>
+</ul>
+</li>
+<li>找到定点,并且修改之后</li>
+<li>将内存写到新文件里面<ul>
+<li>大量IO操作</li>
+</ul>
+</li>
+</ul>
+<h4 id="使用linux自带的API"><a href="#使用linux自带的API" class="headerlink" title="使用linux自带的API"></a>使用linux自带的API</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f = open(big_file, &quot;rb+&quot;)</span><br><span class="line">f.seek(0, os.SEEK_END)</span><br><span class="line">file_size = f.tell()</span><br><span class="line">f.seek(0,0)</span><br><span class="line">f.truncate(file_size-32)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<p>使用linux自带的API来操作文件，直接根据当前文件偏移量来定位操作</p>
+<p>seek调用仅将当前的文件偏移量记录在内核中，并不会带来IO操作</p>
+<h3 id="获取网卡的IP"><a href="#获取网卡的IP" class="headerlink" title="获取网卡的IP"></a>获取网卡的IP</h3><ol>
+<li>subprocess “ifconfig M”</li>
+<li>利用python封装的LINUX提供的API</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line">socket.inet_ntoa(fcntl.ioctl(s.fileno(), 0x8915, struct.pack(&quot;256s&quot;, ifname[:15])[20:24]))</span><br></pre></td></tr></table></figure>
+<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p>性能问题符合2/8法则。即20%代码引起了80%的性能损耗</p>
+<p>可以用是用profile来定位瓶颈代码</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>python -m Cprofile test.py</p>
+<p>ncalls 函数总的调用次数<br>ottime 函数内部（不包含子函数）的占用时间<br>percall (第一个) tottime/ncalls<br>cumtime 函数包含子函数所占用的时间<br>percall (第二个) cumtime/ncalls<br>filename:lineno(function) 文件：行号（函数）</p>
+<h2 id="高性能容器collection"><a href="#高性能容器collection" class="headerlink" title="高性能容器collection"></a>高性能容器collection</h2><h3 id="deque-双向队列"><a href="#deque-双向队列" class="headerlink" title="deque 双向队列"></a>deque 双向队列</h3><p>通过源码知道deque保护了两个指针，指向上和下</p>
+<p>比list对象insert快</p>
+<h3 id="Counter-计数器"><a href="#Counter-计数器" class="headerlink" title="Counter 计数器"></a>Counter 计数器</h3><h3 id="OrderDict-有序字典"><a href="#OrderDict-有序字典" class="headerlink" title="OrderDict 有序字典"></a>OrderDict 有序字典</h3><h3 id="defaultdic-值带默认类型的字典"><a href="#defaultdic-值带默认类型的字典" class="headerlink" title="defaultdic 值带默认类型的字典"></a>defaultdic 值带默认类型的字典</h3><h3 id="namedtuple-可命名元组，通过名字来访问元组元素"><a href="#namedtuple-可命名元组，通过名字来访问元组元素" class="headerlink" title="namedtuple 可命名元组，通过名字来访问元组元素"></a>namedtuple 可命名元组，通过名字来访问元组元素</h3><h2 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h2><ul>
+<li>xrange 代替range  python3的range()默认为迭代器</li>
+<li>使用join而不是+连接字符串</li>
+<li>使用生成器表达式</li>
+</ul>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mysql force function</title>
+    <url>/Mysql-force-function.html</url>
+    <content><![CDATA[<h1 id="Mysql-强制函数"><a href="#Mysql-强制函数" class="headerlink" title="Mysql 强制函数"></a>Mysql 强制函数</h1><h2 id="强制索引-FORCE-INDEX"><a href="#强制索引-FORCE-INDEX" class="headerlink" title="强制索引  FORCE INDEX"></a>强制索引  FORCE INDEX</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM TABLE1 FORCE INDEX (FIELD1) …</span><br></pre></td></tr></table></figure>
+<h2 id="忽略索引-IGNORE-INDEX"><a href="#忽略索引-IGNORE-INDEX" class="headerlink" title="忽略索引 IGNORE INDEX"></a>忽略索引 IGNORE INDEX</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM TABLE1 IGNORE INDEX (FIELD1, FIELD2) …</span><br></pre></td></tr></table></figure>
+<h2 id="关闭查询缓冲-SQL-NO-CACHE"><a href="#关闭查询缓冲-SQL-NO-CACHE" class="headerlink" title="关闭查询缓冲 SQL_NO_CACHE"></a>关闭查询缓冲 SQL_NO_CACHE</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT SQL_NO_CACHE field1, field2 FROM TABLE1;</span><br></pre></td></tr></table></figure>
+<p>有一些SQL语句需要实时地查询数据，或者并不经常使用（可能一天就执行一两次）,这样就需要把缓冲关了,不管这条SQL语句是否被执行过，服务器都不会在缓冲区中查找，每次都会执行它。</p>
+<h2 id="强制查询缓冲-SQL-CACHE"><a href="#强制查询缓冲-SQL-CACHE" class="headerlink" title="强制查询缓冲 SQL_CACHE"></a>强制查询缓冲 SQL_CACHE</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT SQL_CALHE * FROM TABLE1;</span><br></pre></td></tr></table></figure>
+<p>如果在my.ini中的query_cache_type设成2，这样只有在使用了SQL_CACHE后，才使用查询缓冲。</p>
+<h2 id="优先操作-HIGH-PRIORITY"><a href="#优先操作-HIGH-PRIORITY" class="headerlink" title="优先操作 HIGH_PRIORITY"></a>优先操作 HIGH_PRIORITY</h2><p>HIGH_PRIORITY可以使用在select和insert操作中，让MySQL知道，这个操作优先进行。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT HIGH_PRIORITY * FROM TABLE1;</span><br></pre></td></tr></table></figure>
+<h2 id="滞后操作-LOW-PRIORITY"><a href="#滞后操作-LOW-PRIORITY" class="headerlink" title="滞后操作 LOW_PRIORITY"></a>滞后操作 LOW_PRIORITY</h2><p>LOW_PRIORITY可以使用在insert和update操作中，让MySQL知道，这个操作滞后。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">update LOW_PRIORITY table1 set field1= where field1= …</span><br></pre></td></tr></table></figure>
+<h2 id="延时插入-INSERT-DELAYED"><a href="#延时插入-INSERT-DELAYED" class="headerlink" title="延时插入 INSERT DELAYED"></a>延时插入 INSERT DELAYED</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">INSERT DELAYED INTO table1 set field1= …</span><br></pre></td></tr></table></figure>
+<p>INSERT DELAYED INTO，是客户端提交数据给MySQL，MySQL返回OK状态给客户端。而这是并不是已经将数据插入表，而是存储在内存里面等待排队。当MySQL有 空余时，再插入。另一个重要的好处是，来自许多客户端的插入被集中在一起，并被编写入一个块。这比执行许多独立的插入要快很多。坏处是，不能返回自动递增 的ID，以及系统崩溃时，MySQL还没有来得及插入数据的话，这些数据将会丢失。</p>
+<h2 id="强制连接顺序-STRAIGHT-JOIN"><a href="#强制连接顺序-STRAIGHT-JOIN" class="headerlink" title="强制连接顺序 STRAIGHT_JOIN"></a>强制连接顺序 STRAIGHT_JOIN</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT TABLE1.FIELD1, TABLE2.FIELD2 FROM TABLE1 STRAIGHT_JOIN TABLE2 WHERE …</span><br></pre></td></tr></table></figure>
+<p>由上面的SQL语句可知，通过STRAIGHT_JOIN强迫MySQL按TABLE1、TABLE2的顺序连接表。如果你认为按自己的顺序比MySQL推荐的顺序进行连接的效率高的话，就可以通过STRAIGHT_JOIN来确定连接顺序</p>
+<h2 id="强制使用临时表-SQL-BUFFER-RESULT"><a href="#强制使用临时表-SQL-BUFFER-RESULT" class="headerlink" title="强制使用临时表 SQL_BUFFER_RESULT"></a>强制使用临时表 SQL_BUFFER_RESULT</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT SQL_BUFFER_RESULT * FROM TABLE1 WHERE …</span><br></pre></td></tr></table></figure>
+<p>当我们查询的结果集中的数据比较多时，可以通过SQL_BUFFER_RESULT.选项强制将结果集放到临时表中，这样就可以很快地释放MySQL的表锁（这样其它的SQL语句就可以对这些记录进行查询了），并且可以长时间地为客户端提供大记录集</p>
+<h2 id="分组使用临时表-SQL-BIG-RESULT和SQL-SMALL-RESULT"><a href="#分组使用临时表-SQL-BIG-RESULT和SQL-SMALL-RESULT" class="headerlink" title="分组使用临时表 SQL_BIG_RESULT和SQL_SMALL_RESULT"></a>分组使用临时表 SQL_BIG_RESULT和SQL_SMALL_RESULT</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT SQL_BUFFER_RESULT FIELD1, COUNT(*) FROM TABLE1 GROUP BY FIELD1;</span><br></pre></td></tr></table></figure>
+<p>一般用于分组或DISTINCT关键字，这个选项通知MySQL，如果有必要，就将查询结果放到临时表中，甚至在临时表中进行排序。SQL_SMALL_RESULT比起SQL_BIG_RESULT差不多，很少使用。</p>
+]]></content>
+      <categories>
+        <category>sql</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ssl卸载</title>
+    <url>/ssl%E5%8D%B8%E8%BD%BD.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>php xdebug note</title>
+    <url>/php-xdebug-note.html</url>
+    <content><![CDATA[<h2 id="php-ini"><a href="#php-ini" class="headerlink" title="php.ini"></a>php.ini</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Xdebug]</span><br><span class="line">xdebug.remote_enable = on</span><br><span class="line">xdebug.remote_host = 10.66.35.88</span><br><span class="line">xdebug.remote_port = 9001</span><br><span class="line">xdebug.remote_log = /tmp/xdebug.log</span><br><span class="line"></span><br><span class="line">xdebug.default_enable=on</span><br><span class="line">xdebug.collect_params=4</span><br><span class="line">xdebug.collect_return=1</span><br><span class="line">xdebug.trace_enable_trigger=1</span><br><span class="line">xdebug.trace_output_dir=&quot;/tmp/xdebug&quot;</span><br><span class="line">xdebug.trace_output_name=trace.%c.%p</span><br><span class="line"></span><br><span class="line">xdebug.profiler_enable_trigger=1</span><br><span class="line">xdebug.profiler_output_dir=&quot;/tmp/xdebug&quot;</span><br><span class="line">xdebug.profiler_output_name=&quot;cachegrind.out.%s&quot;</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>国密</title>
+    <url>/%E5%9B%BD%E5%AF%86.html</url>
+    <content><![CDATA[<h1 id="国密"><a href="#国密" class="headerlink" title="国密"></a>国密</h1><h2 id="国密算法"><a href="#国密算法" class="headerlink" title="国密算法"></a>国密算法</h2><p>SM1、SM4、SM7 是分组对称密码算法，分组长度和密钥长度为128bit</p>
+<p>SM1 算法安全保密强度于AES相当</p>
+<p>SM4安全性高于3DES(加密文件)(16个字节)</p>
+<p>SM7适用于非接触式IC卡</p>
+<p>SM2 为椭圆曲线公钥密码算法，基于ECC。签名速度与密钥生产速度快与RSA。256位的SM2密码强度比2048位的RSA密码强度高</p>
+<p>SM3是密码杂凑算法(摘要算法,32个字节)，适用于商业密码应用中的数字签名和验证消息认证码的生成和验证以及随机数的生成，SM3算法的安全性要高与MD5(16个字节)算法和SHA-1算法</p>
+<p>SM9是与SM2、RSA类似的非对称加密算法。基于身份的密码体质，也就是公钥与用户的身份信息即标识相关，SM9的加密强度等同于3072位密钥的RSA加密算法</p>
+<p>祖冲之序列密码算法是流密码算法，用于移动通信4G网络中的国际标准密码算法</p>
+<h2 id="算法使用"><a href="#算法使用" class="headerlink" title="算法使用"></a>算法使用</h2><p>SM1 和SM7算法不公开,需要通过加密芯片的接口进行调用</p>
+<p>SM2、SM3、SM4可通过加密芯片调用，也可以通过OpenSSL(1.1.1)、GMSSL、TaSSL调用实现</p>
+<h2 id="标识"><a href="#标识" class="headerlink" title="标识"></a>标识</h2><p>由于国密是新的，很多识别不了国密算法</p>
+<p>SM1   unknown 128<br>SM4   unknown 129<br>SM3   unknown 20<br>公钥数字信封鉴别方式 unknown 10</p>
+<h2 id="国密双因子验证"><a href="#国密双因子验证" class="headerlink" title="国密双因子验证"></a>国密双因子验证</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ol>
+<li>ukey产生SM2签名密钥对，把公钥传给设备，设备与用户对应进行存储</li>
+<li>设备生产随机数，并用公钥进行签名</li>
+<li>设备把随机数与签名值传给ukey，ukey用私钥进行验签</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>tornado</title>
+    <url>/web%E5%B9%B6%E5%8F%91.html</url>
+    <content><![CDATA[<h1 id="Tornado"><a href="#Tornado" class="headerlink" title="Tornado"></a>Tornado</h1><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul>
+<li>提升硬件</li>
+<li>关系型数据库-》内存数据库</li>
+<li>采用类似tornado异步非阻塞框架</li>
+<li>认证由单台memcache换成redis集群</li>
+<li>日志改为定时写</li>
+<li>机器数量单台改为多台</li>
+</ul>
+<h2 id="tornado"><a href="#tornado" class="headerlink" title="tornado"></a>tornado</h2><h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><h4 id="IOLoop"><a href="#IOLoop" class="headerlink" title="IOLoop"></a>IOLoop</h4><p>使用IOLoop来处理socket读写事件，IOLoop是基于epoll,可以高效的响应网络事件</p>
+<h4 id="IOStream"><a href="#IOStream" class="headerlink" title="IOStream"></a>IOStream</h4><p>使用IOStream为对socket进行异步处理，</p>
+<h4 id="HTTPConnection"><a href="#HTTPConnection" class="headerlink" title="HTTPConnection"></a>HTTPConnection</h4><p>处理Http头以及读取post的数据</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>单进程单线程</li>
+<li>非阻塞式异步请求</li>
+</ol>
+<h3 id="处理流程"><a href="#处理流程" class="headerlink" title="处理流程"></a>处理流程</h3><img src="/web并发/2013_10_14_05.gif" title="img">]]></content>
+  </entry>
+  <entry>
+    <title>pythonyNote</title>
+    <url>/pythonyNote.html</url>
+    <content><![CDATA[<h1 id="python-Notes"><a href="#python-Notes" class="headerlink" title="python Notes"></a>python Notes</h1><h2 id="python2-and-python3"><a href="#python2-and-python3" class="headerlink" title="python2 and python3"></a>python2 and python3</h2><h3 id="pirnt"><a href="#pirnt" class="headerlink" title="pirnt"></a>pirnt</h3><h3 id="input"><a href="#input" class="headerlink" title="input"></a>input</h3><p>python3 input <- 123 -> str:123</-></p>
+<p>python2 input <- 123 -> int:123</-></p>
+<p>python2 raw_input <- 123 -> int:123</-></p>
+<h3 id="整除"><a href="#整除" class="headerlink" title="整除"></a>整除</h3><p>python3 / 真除(返回整形) ； % 取余； // 取整</p>
+<p>python2 / 带小数点真除(返回浮点)；  % 取余； // 取整</p>
+<h3 id="range"><a href="#range" class="headerlink" title="range"></a>range</h3><p>python3没有xrange</p>
+<h3 id="try-except"><a href="#try-except" class="headerlink" title="try except"></a>try except</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">try:</span><br><span class="line">    pass</span><br><span class="line">except Exception,e:</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    pass</span><br><span class="line">except Exception as e:</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
+<h3 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h3><p>python2  file 和open<br>python3 只能open</p>
+<h3 id="bytes数据类型"><a href="#bytes数据类型" class="headerlink" title="bytes数据类型"></a>bytes数据类型</h3><p>python3： 字符串以unicode编码存储，当写入二进制文件的时候，字符串无法直接写入（或者读取）<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#coding=gbk</span></span><br><span class="line">f = open(<span class="string">"test"</span>, <span class="string">"wb"</span>)</span><br><span class="line">s = <span class="string">"测试123abc"</span></span><br><span class="line">f.write(s) 在python2 可以直接写入</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在python3 需要将unicode加密为gbk才能写入</span></span><br><span class="line">b = s.encode(<span class="string">"gbk"</span>)</span><br><span class="line">f.write(s)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure></p>
+<h3 id="async-and-await-python3-5引入"><a href="#async-and-await-python3-5引入" class="headerlink" title="async and await(python3.5引入)"></a>async and await(python3.5引入)</h3><p>异步函数<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">async def async_function():</span><br><span class="line">    return 1</span><br></pre></td></tr></table></figure></p>
+<p>异步生成器<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">async def async_generator():</span><br><span class="line">    yield 1</span><br></pre></td></tr></table></figure></p>
+<h4 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h4><p>直接调用异步函数不会返回结果，而是返回一个coroutine对象</p>
+<p>协程需要通过其他方式驱动，因此可以使用这个协程对象的send方法发送一个值<br>async_function().send(None)</p>
+<h4 id="IO密集型应用和CPU密集型应用"><a href="#IO密集型应用和CPU密集型应用" class="headerlink" title="IO密集型应用和CPU密集型应用"></a>IO密集型应用和CPU密集型应用</h4><p>IO密集型应用：多进程-》多线程-》事件驱动-》协程<br>CPU密集应用：多进程-》多线程</p>
+<h3 id="分布式开发"><a href="#分布式开发" class="headerlink" title="分布式开发"></a>分布式开发</h3><h4 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h4><ul>
+<li>gearman</li>
+<li>rabbitmq</li>
+</ul>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>索引覆盖与回表</title>
     <url>/%E7%B4%A2%E5%BC%95%E8%A6%86%E7%9B%96%E4%B8%8E%E5%9B%9E%E8%A1%A8.html</url>
     <content><![CDATA[<h1 id="Mysql的覆盖索引与回表"><a href="#Mysql的覆盖索引与回表" class="headerlink" title="Mysql的覆盖索引与回表"></a>Mysql的覆盖索引与回表</h1><p>##两大类索引<br>使用的存储引擎：MySQL5.7 InnoDB</p>
@@ -60,74 +429,77 @@
 <img src="/索引覆盖与回表/20201111-110100.png">
 <p>使用索引覆盖：建组合索引idx_age_name(age,name)</p>
 <img src="/索引覆盖与回表/20201111-110105.png">
+<p>引用作者 <a href="https://zhuanlan.zhihu.com/p/107125866" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/107125866</a></p>
 ]]></content>
+      <categories>
+        <category>sql</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+      </tags>
   </entry>
   <entry>
-    <title>Apache cookbook</title>
-    <url>/apache/php_My_cookbook.html</url>
-    <content><![CDATA[<h1 id="apache-cookbook"><a href="#apache-cookbook" class="headerlink" title="apache cookbook"></a>apache cookbook</h1><h2 id="query-apache-default-user-or-group"><a href="#query-apache-default-user-or-group" class="headerlink" title="query apache default user or group"></a>query apache default user or group</h2><ul>
-<li>ps aux | egrep ‘(apache|httpd)’</li>
+    <title>漏洞验证</title>
+    <url>/%E6%BC%8F%E6%B4%9E%E9%AA%8C%E8%AF%81.html</url>
+    <content><![CDATA[<h1 id="漏洞验证"><a href="#漏洞验证" class="headerlink" title="漏洞验证"></a>漏洞验证</h1><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<li>火狐浏览器及其插件 hackbar proxySwitcher</li>
+<li>Curl</li>
+<li>telnet</li>
+<li>sqlmap</li>
+<li>burpsuite</li>
+<li>nmap<ul>
+<li>网络扫描和嗅探工具包</li>
 </ul>
-<h2 id="ca认证的时候有时候出现了403"><a href="#ca认证的时候有时候出现了403" class="headerlink" title="ca认证的时候有时候出现了403"></a>ca认证的时候有时候出现了403</h2><p>首先需要开启apahce ssl trace 3级别的日志,配置<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;IfModule mod_ssl.c&gt;</span><br><span class="line">    ErrorLog /var/log/apache2/ssl_engine.log</span><br><span class="line">    LogLevel trace3</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure></p>
-<p>apache重启</p>
-<p>然后去复现bug的过程，查看/var/log/apache2/ssl_engine.log日志，见图ssl error 发现正常认证过程是full renegotiation 而错误的认证过程是 quick renegotiation。quick renegotiation会导致认证过程找到不到peer chain 导致认证失败 返回403。</p>
-<p><a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=55786" target="_blank" rel="noopener">https://bz.apache.org/bugzilla/show_bug.cgi?id=55786</a></p>
-<p>在apache官方bugzilla查看 这个bug在version 2.4.24 已经修复了，但是我们的设备是2.4.16，所以解决办法是：</p>
-<p>a) Removing “OptRenegotiate” on /cert/. We need this feature to prevent client certificate requests with every access to /cert</p>
-<p>b) Setting SSLVerifyClient to require or optional on the whole virtual host: Not possible because requests to /nocert should not trigger a certificate request.</p>
-<p>c) Disable keep-alive.</p>
-<p>因此，我关闭了OptRenegotiate</p>
-<p>优化Renegotiate过程，让每次Renegotiate都是full的状态，这样改会降低一点速度，如果需要优化版本只能升级apahce到2.4.24以上</p>
-]]></content>
-      <categories>
-        <category>apache</category>
-      </categories>
-      <tags>
-        <tag>apache</tag>
-        <tag>setting</tag>
-      </tags>
+</li>
+<li>pentestbox</li>
+<li>mobaxterm</li>
+</ul>
+<h2 id="the-ssl-dos攻击"><a href="#the-ssl-dos攻击" class="headerlink" title="the ssl dos攻击"></a>the ssl dos攻击</h2>]]></content>
   </entry>
   <entry>
-    <title>table border collapse</title>
-    <url>/css/tabel_border_collapse.html</url>
-    <content><![CDATA[<h1 id="the-table-border-is-displayed-as-a-separate-border"><a href="#the-table-border-is-displayed-as-a-separate-border" class="headerlink" title="the table border is displayed as a separate border"></a>the table border is displayed as a separate border</h1><p>to achieve the effect of td or th border covering the outer border of the table</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">table</span></span><br><span class="line">  &#123;</span><br><span class="line">  <span class="attribute">border-collapse</span>:collapse;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">2px</span> solid red;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">table</span>, <span class="selector-tag">td</span>, <span class="selector-tag">th</span></span><br><span class="line">  &#123;</span><br><span class="line">  <span class="attribute">border-bottom</span>:<span class="number">2px</span> solid black;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+    <title>沙箱</title>
+    <url>/%E6%B2%99%E7%AE%B1.html</url>
+    <content><![CDATA[<h1 id="沙箱"><a href="#沙箱" class="headerlink" title="沙箱"></a>沙箱</h1><h2 id="基于信誉"><a href="#基于信誉" class="headerlink" title="基于信誉"></a>基于信誉</h2><p>包含 URL、文件</p>
+<h2 id="基于病毒库"><a href="#基于病毒库" class="headerlink" title="基于病毒库"></a>基于病毒库</h2><h2 id="基于静态检测"><a href="#基于静态检测" class="headerlink" title="基于静态检测"></a>基于静态检测</h2><h3 id="yara"><a href="#yara" class="headerlink" title="yara"></a>yara</h3><p>用于识别和分类恶意软件样本的开源工具</p>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><ul>
+<li>office文件</li>
+<li>flash文件</li>
+<li>pdf文件</li>
+<li>网页文件</li>
+</ul>
+<h2 id="动态检测"><a href="#动态检测" class="headerlink" title="动态检测"></a>动态检测</h2><h3 id="基于虚拟机或者容器"><a href="#基于虚拟机或者容器" class="headerlink" title="基于虚拟机或者容器"></a>基于虚拟机或者容器</h3><h3 id="沙箱逃逸"><a href="#沙箱逃逸" class="headerlink" title="沙箱逃逸"></a>沙箱逃逸</h3><p>由于沙箱不是真实物理环境，恶意软件当发现不是真实环境，则会反调试、反虚拟化，这个就是沙箱逃避</p>
+<h4 id="常见手段"><a href="#常见手段" class="headerlink" title="常见手段"></a>常见手段</h4><ul>
+<li>恶意软件会休眠很久在开始攻击<ul>
+<li>加快沙箱的运行速度</li>
+</ul>
+</li>
+<li>恶意软件通过查看注册表来看是否为沙箱<ul>
+<li>屏蔽注册表的查看权限</li>
+</ul>
+</li>
+</ul>
+<h3 id="HOOk技术"><a href="#HOOk技术" class="headerlink" title="HOOk技术"></a>HOOk技术</h3><p>恶意软件在windows攻击都是调用Windows API进行相关的攻击，使用HOOK来监控系统调用知道攻击</p>
 ]]></content>
-      <categories>
-        <category>css</category>
-      </categories>
-      <tags>
-        <tag>css</tag>
-        <tag>html</tag>
-      </tags>
   </entry>
   <entry>
-    <title>git</title>
-    <url>/git/configure.html</url>
-    <content><![CDATA[<h1 id="查看git的远端路径"><a href="#查看git的远端路径" class="headerlink" title="查看git的远端路径"></a>查看git的远端路径</h1><p><code>git remote -v</code></p>
-<h1 id="查看从哪个分支拉下了的"><a href="#查看从哪个分支拉下了的" class="headerlink" title="查看从哪个分支拉下了的"></a>查看从哪个分支拉下了的</h1><p><code>git remote show origin</code></p>
+    <title>cmder 各类配置以及问题解决</title>
+    <url>/cmder/cmder.html</url>
+    <content><![CDATA[<h1 id="cmder-配置"><a href="#cmder-配置" class="headerlink" title="cmder 配置"></a>cmder 配置</h1><h2 id="cmder-显示-oh-my-zsh会出现乱码"><a href="#cmder-显示-oh-my-zsh会出现乱码" class="headerlink" title="cmder 显示 oh my zsh会出现乱码"></a>cmder 显示 oh my zsh会出现乱码</h2><ul>
+<li>去网站<a href="http://nerdfonts.com/" target="_blank" rel="noopener">nerdfonts</a>最下面下载hack字体，解压安装hack字体</li>
+<li>在cmder 的setting中 font是 选择hack字体</li>
+</ul>
+<h2 id="启动quake模式，使得cmder能够从window最上面一键呼出"><a href="#启动quake模式，使得cmder能够从window最上面一键呼出" class="headerlink" title="启动quake模式，使得cmder能够从window最上面一键呼出"></a>启动quake模式，使得cmder能够从window最上面一键呼出</h2><ul>
+<li>cmder的setting，general 的quake style，勾选 quake style slide down ,  always on top , restore inactive .. , restore to active monitor</li>
+<li>setting的 keys &amp;macro 修改 minimize/restore quake style hotkey 快捷键</li>
+</ul>
 ]]></content>
       <categories>
-        <category>git</category>
+        <category>cmder</category>
       </categories>
       <tags>
-        <tag>git</tag>
-        <tag>configure</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo head setting</title>
-    <url>/hexo/hexo_post_header.html</url>
-    <content><![CDATA[<h1 id="hexo-post文件头设置"><a href="#hexo-post文件头设置" class="headerlink" title="hexo post文件头设置"></a>hexo post文件头设置</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo head setting</span><br><span class="line">categories: hexo</span><br><span class="line">copyright: true</span><br><span class="line">tags:</span><br><span class="line">  - hexo</span><br><span class="line">  - setting</span><br><span class="line">keywords:</span><br><span class="line">description:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<h1 id="hexo-abstract-setting"><a href="#hexo-abstract-setting" class="headerlink" title="hexo abstract setting"></a>hexo abstract setting</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">abstract content</span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="multi-level-categories"><a href="#multi-level-categories" class="headerlink" title="multi level categories"></a>multi level categories</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">categories: [no 1 categories, no 2 categories]</span><br><span class="line"></span><br><span class="line">categories:</span><br><span class="line">  - no 1</span><br><span class="line">  - no 2</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>setting</tag>
-        <tag>hexo</tag>
+        <tag>cmder</tag>
+        <tag>oh my zsh</tag>
+        <tag>zsh</tag>
       </tags>
   </entry>
   <entry>
@@ -143,68 +515,6 @@
       </categories>
       <tags>
         <tag>apache</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>get string actual length include Chinese</title>
-    <url>/js/get_actual_char_length.html</url>
-    <content><![CDATA[<h1 id="get-string-actual-length-include-Chinese"><a href="#get-string-actual-length-include-Chinese" class="headerlink" title="get string actual length include Chinese"></a>get string actual length include Chinese</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//先把中文替换成一个字节的英文，在计算长度</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCharLength</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.replace(<span class="regexp">/[\u0391-\uFFE5]/g</span>,<span class="string">"a"</span>).length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>html</tag>
-        <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>how to show zero value in bar</title>
-    <url>/highchart/highchart_bar_show_zero_value.html</url>
-    <content><![CDATA[<h1 id="how-to-show-zero-value-in-bar"><a href="#how-to-show-zero-value-in-bar" class="headerlink" title="how to show zero value in bar"></a>how to show zero value in bar</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">plotOptions: &#123;</span><br><span class="line">    column: &#123;</span><br><span class="line">    minPointLength: <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>js</tag>
-        <tag>highchart</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>IE compatible</title>
-    <url>/js/IECompatible.html</url>
-    <content><![CDATA[<h1 id="jQuery-html-and-interHtml-method-run-very-slowly-on-IE-8-or-IE-9-browser"><a href="#jQuery-html-and-interHtml-method-run-very-slowly-on-IE-8-or-IE-9-browser" class="headerlink" title="jQuery().html() and interHtml method run very slowly on IE 8 or IE 9 browser"></a>jQuery().html() and interHtml method run very slowly on IE 8 or IE 9 browser</h1><h2 id="phenomenon"><a href="#phenomenon" class="headerlink" title="phenomenon"></a>phenomenon</h2><p>when run the method below, It costs too much time.<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> htmlString = <span class="string">"&lt;div&gt;&lt;span&gt;test&lt;/span&gt;&lt;/div&gt;"</span>;</span><br><span class="line">jQuery().html(htmlString)</span><br><span class="line">domcument.getElementById().interHtml = htmlString;</span><br></pre></td></tr></table></figure></p>
-<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>replace jQuery.html() or interHtml with dom method to solve the problem<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> htmlString = <span class="string">"&lt;div&gt;&lt;span&gt;test&lt;/span&gt;&lt;/div&gt;"</span>;</span><br><span class="line"><span class="comment">//turn the string into a dom object </span></span><br><span class="line"><span class="keyword">var</span> domObj = jQuery(htmlString).get(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(); </span><br><span class="line"><span class="keyword">var</span> childs = el.childNodes; </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = childs .length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">    <span class="comment">//delete all child node</span></span><br><span class="line">    el.removeChild(childs[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.getElementById().appendChild(domObj);</span><br></pre></td></tr></table></figure></p>
-<h1 id="JSON-module-missing"><a href="#JSON-module-missing" class="headerlink" title="JSON module missing"></a>JSON module missing</h1><h2 id="phenomenon-1"><a href="#phenomenon-1" class="headerlink" title="phenomenon"></a>phenomenon</h2><p>such as JSON.parse or JSON.stringify method cant use</p>
-<h2 id="solution-1"><a href="#solution-1" class="headerlink" title="solution"></a>solution</h2><p>download the json2.js or json3.js, and import <code>&lt;script src=&quot;/js/json3.min.js&quot;&gt;&lt;/script&gt;</code></p>
-<h1 id="str-trim-missing"><a href="#str-trim-missing" class="headerlink" title="str.trim() missing"></a>str.trim() missing</h1><h2 id="solution-2"><a href="#solution-2" class="headerlink" title="solution"></a>solution</h2><p>replace str.trim() with jQuery.trim();</p>
-<h1 id="jQuery-width-method-calculates-the-error-width"><a href="#jQuery-width-method-calculates-the-error-width" class="headerlink" title="jQuery().width() method calculates the error width"></a>jQuery().width() method calculates the error width</h1><h2 id="solution-3"><a href="#solution-3" class="headerlink" title="solution"></a>solution</h2><p>replace jQuery.outerWidth() width jQuery().width()</p>
-]]></content>
-      <categories>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>html</tag>
-        <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>js Note</title>
-    <url>/js/note.html</url>
-    <content><![CDATA[<h1 id="javascript-Notes"><a href="#javascript-Notes" class="headerlink" title="javascript Notes"></a>javascript Notes</h1><h3 id="jquery-attr-and-prop"><a href="#jquery-attr-and-prop" class="headerlink" title="jquery attr and prop"></a>jquery attr and prop</h3><ul>
-<li>对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。</li>
-<li>对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才能获得正确的结果。</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"#chk1"</span>).prop(<span class="string">"checked"</span>) == <span class="literal">false</span></span><br><span class="line">$(<span class="string">"#chk2"</span>).prop(<span class="string">"checked"</span>) == <span class="literal">true</span></span><br><span class="line"><span class="comment">//如果上面使用attr方法，则会出现：</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"#chk1"</span>).attr(<span class="string">"checked"</span>) == <span class="literal">undefined</span></span><br><span class="line">$(<span class="string">"#chk2"</span>).attr(<span class="string">"checked"</span>) == <span class="string">"checked"</span></span><br></pre></td></tr></table></figure>
-<h3 id="deep-copy"><a href="#deep-copy" class="headerlink" title="deep copy"></a>deep copy</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//深复制</span><br><span class="line">function copy(obj1,obj2)&#123;</span><br><span class="line">    var obj2=obj2||[];</span><br><span class="line">    for(var name in obj1)&#123;</span><br><span class="line">        if(typeof obj1[name] === &quot;object&quot;)&#123;</span><br><span class="line">            obj2[name]= (obj1[name] instanceof Array)?[]:&#123;&#125;;</span><br><span class="line">            copy(obj1[name],obj2[name]);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            obj2[name]=obj1[name];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return obj2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>html</tag>
-        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -274,6 +584,105 @@
       </tags>
   </entry>
   <entry>
+    <title>table border collapse</title>
+    <url>/css/tabel_border_collapse.html</url>
+    <content><![CDATA[<h1 id="the-table-border-is-displayed-as-a-separate-border"><a href="#the-table-border-is-displayed-as-a-separate-border" class="headerlink" title="the table border is displayed as a separate border"></a>the table border is displayed as a separate border</h1><p>to achieve the effect of td or th border covering the outer border of the table</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">table</span></span><br><span class="line">  &#123;</span><br><span class="line">  <span class="attribute">border-collapse</span>:collapse;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">2px</span> solid red;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">table</span>, <span class="selector-tag">td</span>, <span class="selector-tag">th</span></span><br><span class="line">  &#123;</span><br><span class="line">  <span class="attribute">border-bottom</span>:<span class="number">2px</span> solid black;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>css</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+        <tag>html</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Apache cookbook</title>
+    <url>/apache/php_My_cookbook.html</url>
+    <content><![CDATA[<h1 id="apache-cookbook"><a href="#apache-cookbook" class="headerlink" title="apache cookbook"></a>apache cookbook</h1><h2 id="query-apache-default-user-or-group"><a href="#query-apache-default-user-or-group" class="headerlink" title="query apache default user or group"></a>query apache default user or group</h2><ul>
+<li>ps aux | egrep ‘(apache|httpd)’</li>
+</ul>
+<h2 id="ca认证的时候有时候出现了403"><a href="#ca认证的时候有时候出现了403" class="headerlink" title="ca认证的时候有时候出现了403"></a>ca认证的时候有时候出现了403</h2><p>首先需要开启apahce ssl trace 3级别的日志,配置<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;IfModule mod_ssl.c&gt;</span><br><span class="line">    ErrorLog /var/log/apache2/ssl_engine.log</span><br><span class="line">    LogLevel trace3</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure></p>
+<p>apache重启</p>
+<p>然后去复现bug的过程，查看/var/log/apache2/ssl_engine.log日志，见图ssl error 发现正常认证过程是full renegotiation 而错误的认证过程是 quick renegotiation。quick renegotiation会导致认证过程找到不到peer chain 导致认证失败 返回403。</p>
+<p><a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=55786" target="_blank" rel="noopener">https://bz.apache.org/bugzilla/show_bug.cgi?id=55786</a></p>
+<p>在apache官方bugzilla查看 这个bug在version 2.4.24 已经修复了，但是我们的设备是2.4.16，所以解决办法是：</p>
+<p>a) Removing “OptRenegotiate” on /cert/. We need this feature to prevent client certificate requests with every access to /cert</p>
+<p>b) Setting SSLVerifyClient to require or optional on the whole virtual host: Not possible because requests to /nocert should not trigger a certificate request.</p>
+<p>c) Disable keep-alive.</p>
+<p>因此，我关闭了OptRenegotiate</p>
+<p>优化Renegotiate过程，让每次Renegotiate都是full的状态，这样改会降低一点速度，如果需要优化版本只能升级apahce到2.4.24以上</p>
+]]></content>
+      <categories>
+        <category>apache</category>
+      </categories>
+      <tags>
+        <tag>apache</tag>
+        <tag>setting</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>how to show zero value in bar</title>
+    <url>/highchart/highchart_bar_show_zero_value.html</url>
+    <content><![CDATA[<h1 id="how-to-show-zero-value-in-bar"><a href="#how-to-show-zero-value-in-bar" class="headerlink" title="how to show zero value in bar"></a>how to show zero value in bar</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">plotOptions: &#123;</span><br><span class="line">    column: &#123;</span><br><span class="line">    minPointLength: <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>highchart</tag>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>checkbox as radio input</title>
+    <url>/js/checkbox_as_radio.html</url>
+    <content><![CDATA[<h1 id="checkbox-as-radio-input"><a href="#checkbox-as-radio-input" class="headerlink" title="checkbox as radio input"></a>checkbox as radio input</h1><p>将checkbox 作为 单选框来使用</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;input style="vertical-align: middle;" id="Checkbox" type="checkbox" name="switch" &lt;?=$isChecked?&gt; /&gt;&lt;span&gt;启用&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//当form表单提交的时候执行该语句</span></span><br><span class="line"><span class="keyword">var</span> enable_use = <span class="built_in">document</span>.getElementById(<span class="string">"Checkbox"</span>).checked;</span><br><span class="line"><span class="keyword">var</span> val = (enable_use == <span class="literal">true</span>)?<span class="string">'true'</span>:<span class="string">'false'</span>;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"Checkbox"</span>).value = val;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(!<span class="keyword">empty</span>($switch))&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;updateJMREnable($switch);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;updateJMREnable(<span class="string">"false"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>js Note</title>
+    <url>/js/note.html</url>
+    <content><![CDATA[<h1 id="javascript-Notes"><a href="#javascript-Notes" class="headerlink" title="javascript Notes"></a>javascript Notes</h1><h3 id="jquery-attr-and-prop"><a href="#jquery-attr-and-prop" class="headerlink" title="jquery attr and prop"></a>jquery attr and prop</h3><ul>
+<li>对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。</li>
+<li>对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才能获得正确的结果。</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"#chk1"</span>).prop(<span class="string">"checked"</span>) == <span class="literal">false</span></span><br><span class="line">$(<span class="string">"#chk2"</span>).prop(<span class="string">"checked"</span>) == <span class="literal">true</span></span><br><span class="line"><span class="comment">//如果上面使用attr方法，则会出现：</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"#chk1"</span>).attr(<span class="string">"checked"</span>) == <span class="literal">undefined</span></span><br><span class="line">$(<span class="string">"#chk2"</span>).attr(<span class="string">"checked"</span>) == <span class="string">"checked"</span></span><br></pre></td></tr></table></figure>
+<h3 id="deep-copy"><a href="#deep-copy" class="headerlink" title="deep copy"></a>deep copy</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//深复制</span><br><span class="line">function copy(obj1,obj2)&#123;</span><br><span class="line">    var obj2=obj2||[];</span><br><span class="line">    for(var name in obj1)&#123;</span><br><span class="line">        if(typeof obj1[name] === &quot;object&quot;)&#123;</span><br><span class="line">            obj2[name]= (obj1[name] instanceof Array)?[]:&#123;&#125;;</span><br><span class="line">            copy(obj1[name],obj2[name]);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            obj2[name]=obj1[name];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return obj2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>get string actual length include Chinese</title>
+    <url>/js/get_actual_char_length.html</url>
+    <content><![CDATA[<h1 id="get-string-actual-length-include-Chinese"><a href="#get-string-actual-length-include-Chinese" class="headerlink" title="get string actual length include Chinese"></a>get string actual length include Chinese</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//先把中文替换成一个字节的英文，在计算长度</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCharLength</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.replace(<span class="regexp">/[\u0391-\uFFE5]/g</span>,<span class="string">"a"</span>).length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>js将div截图发送到后台生成图片</title>
     <url>/js/html2cavas.html</url>
     <content><![CDATA[<h1 id="html2canvas"><a href="#html2canvas" class="headerlink" title="html2canvas"></a>html2canvas</h1><p>需要导入html2canvas.min.js<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementById(<span class="string">'div'</span>);</span><br><span class="line"><span class="keyword">var</span> opts = &#123;</span><br><span class="line">	scale:<span class="number">10</span>,</span><br><span class="line">	width:oDiv.offsetWidth,</span><br><span class="line">	height:oDiv.offsetHeight</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	html2canvas(oDiv, opts).then(<span class="function"><span class="keyword">function</span>(<span class="params">canvas</span>)</span>&#123;</span><br><span class="line">		canvas.getContext(<span class="string">'2d'</span>).mozImageSmoothingEnabled    = <span class="literal">false</span>;</span><br><span class="line">		canvas.getContext(<span class="string">'2d'</span>).webkitImageSmoothingEnabled = <span class="literal">false</span>;</span><br><span class="line">		canvas.getContext(<span class="string">'2d'</span>).msImageSmoothingEnabled     = <span class="literal">false</span>;</span><br><span class="line">		canvas.getContext(<span class="string">'2d'</span>).imageSmoothingEnabled       = <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">var</span> strDataURI = canvas.toDataURL();</span><br><span class="line">		<span class="keyword">var</span> location_url = <span class="string">"/download/"</span></span><br><span class="line">		param = &#123;<span class="string">'img'</span>:strDataURI&#125;;</span><br><span class="line">		<span class="keyword">new</span> Ajax.Request(location_url, &#123;</span><br><span class="line">			method:<span class="string">'post'</span>,</span><br><span class="line">			parameters:param,</span><br><span class="line">			onComplete:<span class="function"><span class="keyword">function</span>(<span class="params">req</span>)</span>&#123;</span><br><span class="line">				<span class="built_in">window</span>.location=location_url;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">	jQuery(<span class="string">"#export"</span>).show();</span><br><span class="line">	<span class="keyword">var</span> location_url = <span class="string">"/download/"</span></span><br><span class="line">	param = &#123;&#125;;</span><br><span class="line">	<span class="keyword">new</span> Ajax.Request(location_url, &#123;</span><br><span class="line">		method:<span class="string">'post'</span>,</span><br><span class="line">		parameters:param,</span><br><span class="line">		onComplete:<span class="function"><span class="keyword">function</span>(<span class="params">req</span>)</span>&#123;</span><br><span class="line">			<span class="built_in">window</span>.location=location_url;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -288,13 +697,23 @@
       </tags>
   </entry>
   <entry>
-    <title>onclick lanuch a post request，解决get参数太长，导致请求失败</title>
-    <url>/js/onclick_for_post.html</url>
-    <content><![CDATA[<h1 id="onclick-lanuch-post-request"><a href="#onclick-lanuch-post-request" class="headerlink" title="onclick lanuch post request"></a>onclick lanuch post request</h1><p>有时候，由于get请求下载文件，请求参数超过了2048字符，在IE等浏览器就会导致参数不完整</p>
-<p>因此使用post请求，其参数就没有限制长度，</p>
-<p>然后，使用ajax发起post请求，无法触发文件下载，因此使用模拟form表单发起post请求</p>
-<p>原生onclick 发起post请求</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onclickpost</span>(<span class="params">URL, PARAMS</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp    = <span class="built_in">document</span>.createElement(<span class="string">"form"</span>);</span><br><span class="line">    temp.action = URL;</span><br><span class="line">    temp.method = <span class="string">"post"</span>;</span><br><span class="line">    temp.style.display = <span class="string">"none"</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> x <span class="keyword">in</span> PARAMS) &#123;</span><br><span class="line">        <span class="keyword">var</span> opt   = <span class="built_in">document</span>.createElement(<span class="string">"textarea"</span>);</span><br><span class="line">        opt.name  = x;</span><br><span class="line">        opt.value = PARAMS[x];</span><br><span class="line">        temp.appendChild(opt);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(temp);</span><br><span class="line">    temp.submit();</span><br><span class="line">    temp.parentNode.removeChild(temp);</span><br><span class="line">&#125;</span><br><span class="line">onclickpost(url, &#123;<span class="attr">cat</span>:rawinfo&#125;)</span><br></pre></td></tr></table></figure>
+    <title>git</title>
+    <url>/git/configure.html</url>
+    <content><![CDATA[<h1 id="查看git的远端路径"><a href="#查看git的远端路径" class="headerlink" title="查看git的远端路径"></a>查看git的远端路径</h1><p><code>git remote -v</code></p>
+<h1 id="查看从哪个分支拉下了的"><a href="#查看从哪个分支拉下了的" class="headerlink" title="查看从哪个分支拉下了的"></a>查看从哪个分支拉下了的</h1><p><code>git remote show origin</code></p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>configure</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>adaptively set iframe height after iframe onloaded</title>
+    <url>/js/self_adaption_set_iframe_height.html</url>
+    <content><![CDATA[<h1 id="adaptively-set-iframe-height-after-iframe-onloaded"><a href="#adaptively-set-iframe-height-after-iframe-onloaded" class="headerlink" title="adaptively set iframe height after iframe onloaded"></a>adaptively set iframe height after iframe onloaded</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setIframeHeight</span>(<span class="params">iframe</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (iframe) &#123;</span><br><span class="line">    <span class="keyword">var</span> iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;</span><br><span class="line">    <span class="keyword">if</span> (iframeWin.document.body) &#123;</span><br><span class="line">      iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getIframeHeight</span>(<span class="params">iframe</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;</span><br><span class="line">    <span class="keyword">var</span> height    = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;</span><br><span class="line">    <span class="keyword">return</span> height</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// use tim to set iframe height after iframe onloaded</span></span><br><span class="line">jQuery(<span class="built_in">document</span>.getElementById(<span class="string">'iframe_id'</span>)).load(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> iframe = <span class="built_in">document</span>.getElementById(<span class="string">'iframe_id'</span>);</span><br><span class="line">    <span class="keyword">var</span> height = getIframeHeight(iframe);</span><br><span class="line">    <span class="keyword">var</span> tim    = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        setIframeHeight(iframe);</span><br><span class="line">        <span class="keyword">var</span> after_height = getIframeHeight(iframe);</span><br><span class="line">        <span class="keyword">if</span>(after_height &gt; height)&#123;</span><br><span class="line">            <span class="built_in">window</span>.clearInterval(tim);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,<span class="number">100</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>js</category>
@@ -315,50 +734,6 @@
       <tags>
         <tag>html</tag>
         <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python secure</title>
-    <url>/python/python_secure.html</url>
-    <content><![CDATA[<h2 id="防止命令注入使用subprocess"><a href="#防止命令注入使用subprocess" class="headerlink" title="防止命令注入使用subprocess"></a>防止命令注入使用subprocess</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cmd = [&apos;ls&apos;, &apos;-al&apos;]</span><br><span class="line">p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)</span><br><span class="line">data = &apos;&apos;.join(p.stdout.readlines())</span><br><span class="line">p.stdout.close()</span><br></pre></td></tr></table></figure>
-<h3 id="替换shell的管道符"><a href="#替换shell的管道符" class="headerlink" title="替换shell的管道符"></a>替换shell的管道符</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># output = `dmesg | grep hda`</span><br><span class="line"></span><br><span class="line">p1 = subprocess.Popen([&apos;dmesg&apos;], stdout=PIPE)</span><br><span class="line">p2 = subprocess.Popen([&apos;grep&apos;, &apos;hda&apos;], stdin=p1.stdout, stdout=PIPE)</span><br><span class="line"></span><br><span class="line">p1.stdout.close()</span><br><span class="line">output = p2.communicate()[0]</span><br></pre></td></tr></table></figure>
-<h2 id="防止sql注入"><a href="#防止sql注入" class="headerlink" title="防止sql注入"></a>防止sql注入</h2><h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><ul>
-<li>1’ or ‘1’ = ‘1</li>
-<li>sqlmap</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sql_cmd = &quot;select * from ?&quot;</span><br><span class="line">cur.execute(sql_cmd, (table_name, ))</span><br></pre></td></tr></table></figure>
-<h2 id="输入参数作为动态代码运行"><a href="#输入参数作为动态代码运行" class="headerlink" title="输入参数作为动态代码运行"></a>输入参数作为动态代码运行</h2><h3 id="python"><a href="#python" class="headerlink" title="python"></a>python</h3><ul>
-<li>eval</li>
-<li>exec</li>
-<li>pickle.loads</li>
-<li>cPickle.loads</li>
-<li>marshal.loads</li>
-<li>yaml.load</li>
-</ul>
-<h3 id="php"><a href="#php" class="headerlink" title="php"></a>php</h3><ul>
-<li>eval</li>
-<li>asset()</li>
-<li>preg_replace + ‘e’</li>
-<li>call_user_func, call_user_func_array, create_function</li>
-<li>array_map</li>
-</ul>
-<h2 id="目录穿越"><a href="#目录穿越" class="headerlink" title="目录穿越"></a>目录穿越</h2><ul>
-<li>过滤掉<code>. and ..</code></li>
-<li><code>os.path.basename(filename)</code></li>
-</ul>
-<h2 id="安全上传文件"><a href="#安全上传文件" class="headerlink" title="安全上传文件"></a>安全上传文件</h2><ul>
-<li>文件后缀过滤</li>
-<li>文件大小过滤-最大最小</li>
-<li>文件名随机化</li>
-<li>上传目录随机化</li>
-</ul>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>secure</tag>
-        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -524,19 +899,125 @@
       </tags>
   </entry>
   <entry>
-    <title>checkbox as radio input</title>
-    <url>/js/checkbox_as_radio.html</url>
-    <content><![CDATA[<h1 id="checkbox-as-radio-input"><a href="#checkbox-as-radio-input" class="headerlink" title="checkbox as radio input"></a>checkbox as radio input</h1><p>将checkbox 作为 单选框来使用</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;input style="vertical-align: middle;" id="Checkbox" type="checkbox" name="switch" &lt;?=$isChecked?&gt; /&gt;&lt;span&gt;启用&lt;/span&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//当form表单提交的时候执行该语句</span></span><br><span class="line"><span class="keyword">var</span> enable_use = <span class="built_in">document</span>.getElementById(<span class="string">"Checkbox"</span>).checked;</span><br><span class="line"><span class="keyword">var</span> val = (enable_use == <span class="literal">true</span>)?<span class="string">'true'</span>:<span class="string">'false'</span>;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"Checkbox"</span>).value = val;</span><br></pre></td></tr></table></figure>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(!<span class="keyword">empty</span>($switch))&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;updateJMREnable($switch);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;updateJMREnable(<span class="string">"false"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>PHP download</title>
+    <url>/php/php_download.html</url>
+    <content><![CDATA[<h1 id="php-download"><a href="#php-download" class="headerlink" title="php download"></a>php download</h1><h2 id="php-download-big-file"><a href="#php-download-big-file" class="headerlink" title="php download big file"></a>php download big file</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (file_exists($path)) &#123;</span><br><span class="line">	$file_size = filesize($path);</span><br><span class="line">	if (FALSE!== ($handler = fopen($path, &apos;r&apos;)))&#123;</span><br><span class="line">		header(&apos;Content-Description: File Transfer&apos;);</span><br><span class="line">		header(&apos;Content-Type: application/octet-stream&apos;);</span><br><span class="line">		header(&apos;Accept-Ranges: bytes&apos;);</span><br><span class="line">		header(&apos;Content-Disposition: attachment; filename=&apos;.basename($path));</span><br><span class="line">		header(&apos;Accept-Length:&apos;. $file_size);</span><br><span class="line">		header(&apos;Content-Transfer-Encoding: chunked&apos;);</span><br><span class="line">		header(&apos;Expires: 0&apos;);</span><br><span class="line">		header(&apos;Cache-Control: must-revalidate, post-check=0, pre-check=0&apos;);</span><br><span class="line">		header(&apos;Pragma: public&apos;);</span><br><span class="line">		$buffer_size = 4096*20;</span><br><span class="line">		while(!feof($handler))&#123;</span><br><span class="line">			$chunk = fread($handler,$buffer_size);</span><br><span class="line">			echo $chunk;</span><br><span class="line">		&#125;</span><br><span class="line">		fclose($handler);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="php-upload-big-file"><a href="#php-upload-big-file" class="headerlink" title="php upload big file"></a>php upload big file</h2><p>第一步： Apache环境中的档案上传大小控制<br>修改httpd.conf<br>添加下面内容<br>LimitRequestBody 10485760<br>即10M=1010241024，有的文章中提到应改为 600000000<br>重新启动apache，就可以在设置里看到你要的大小</p>
+<p>第二步：修改在php5下POST文件大小的限制<br>修改php.ini<br>找到 File Uploadsh区域修改以下几个参数： file_uploads = on ;是否允许通过HTTP上传文件的开关。<br>默认为ON即是开 upload_tmp_dir ;文件上传至服务器上存储临时文件的地方，如果没指定就会用系统默认的临时文件夹(moodle可以不改)<br>upload_max_filesize = 8m ;允许上传文件大小的最大值.<br>找到 Data Handling区域，修改 post_max_size = 8m ;指通过表单POST给PHP的所能接收的最大值，包括表单里的所有值。<br>默认为8M<br>设上述四个参数后，上传小于8M的文件一般不成问题。但如果上传大于8M的文件，只还得设置以下参数：<br>在Resource Limits 区域: max_execution_time = 600 ;<br>每个PHP页面运行的最大时间值(秒)，默认30秒 max_input_time = 600 ;<br>每个PHP页面接收数据所需的最大时间，默认60秒 memory_limit = 8m ;<br>每个PHP页面所吃掉的最大内存，默认8M</p>
 ]]></content>
       <categories>
-        <category>js</category>
+        <category>php</category>
       </categories>
       <tags>
-        <tag>html</tag>
-        <tag>js</tag>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP filter func</title>
+    <url>/php/php_filter_fuc.html</url>
+    <content><![CDATA[<h1 id="php-filter-function"><a href="#php-filter-function" class="headerlink" title="php filter function"></a>php filter function</h1><ul>
+<li>filter_has_var()<ul>
+<li>检查是否存在指定输入类型的变量</li>
+</ul>
+</li>
+<li>filter_id()<ul>
+<li>返回指定过滤器的 ID 号。</li>
+</ul>
+</li>
+<li>filter_input()<ul>
+<li>从脚本外部获取输入，并进行过滤。</li>
+</ul>
+</li>
+<li>filter_input_array()<ul>
+<li>从脚本外部获取多项输入，并进行过滤。</li>
+</ul>
+</li>
+<li>filter_list()<ul>
+<li>返回包含所有得到支持的过滤器的一个数组。</li>
+</ul>
+</li>
+<li>filter_var_array()<ul>
+<li>获取多个变量，并进行过滤。</li>
+</ul>
+</li>
+<li>filter_var()<ul>
+<li>获取一个变量，并进行过滤。</li>
+</ul>
+</li>
+</ul>
+<h2 id="type"><a href="#type" class="headerlink" title="type"></a>type</h2><ul>
+<li>INPUT_GET</li>
+<li>INPUT_POST</li>
+<li>INPUT_COOKIE</li>
+<li>INPUT_SERVER</li>
+<li>INPUT_ENV</li>
+<li>INPUT_SERVER</li>
+<li>INPUT_SESSION</li>
+<li>INPUT_REQUEST</li>
+</ul>
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><ul>
+<li>FILTER_CALLBACK    调用用户自定义函数来过滤数据。</li>
+<li>FILTER_SANITIZE_STRING    去除标签，去除或编码特殊字符。</li>
+<li>FILTER_SANITIZE_STRIPPED    “string” 过滤器的别名。</li>
+<li>FILTER_SANITIZE_ENCODED    URL-encode 字符串，去除或编码特殊字符。</li>
+<li>FILTER_SANITIZE_SPECIAL_CHARS    HTML 转义字符 ‘“&lt;&gt;&amp; 以及 ASCII 值小于 32 的字符。</li>
+<li>FILTER_SANITIZE_EMAIL    删除所有字符，除了字母、数字以及 !#$%&amp;’*+-/=?^_`{|}~@.[]</li>
+<li>FILTER_SANITIZE_URL    删除所有字符，除了字母、数字以及 $-_.+!*’(),{}|\^~[]`&lt;&gt;#%”;/?:@&amp;=</li>
+<li>FILTER_SANITIZE_NUMBER_INT    删除所有字符，除了数字和 +-</li>
+<li>FILTER_SANITIZE_NUMBER_FLOAT    删除所有字符，除了数字、+- 以及 .,eE</li>
+<li>FILTER_SANITIZE_MAGIC_QUOTES    应用 addslashes()。</li>
+<li>FILTER_UNSAFE_RAW    不进行任何过滤，去除或编码特殊字符。</li>
+<li>FILTER_VALIDATE_INT    把值作为整数来验证。</li>
+<li>FILTER_VALIDATE_BOOLEAN    把值作为布尔选项来验证。如果是 “1”、”true”、”on” 和 “yes”，则返回 TRUE。如果是 “0”、”false”、”off”、”no” 和 “”，则返回 FALSE。否则返回 NULL。</li>
+<li>FILTER_VALIDATE_FLOAT    把值作为浮点数来验证。</li>
+<li>FILTER_VALIDATE_REGEXP    根据 regexp（一种兼容 Perl 的正则表达式）来验证值。</li>
+<li>FILTER_VALIDATE_URL    把值作为 URL 来验证。</li>
+<li>FILTER_VALIDATE_EMAIL    把值作为 e-mail 地址来验证。</li>
+<li>FILTER_VALIDATE_IP    把值作为 IP 地址来验证，只限 IPv4 或 IPv6 或 不是来自私有或者保留的范围。</li>
+</ul>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="http://www.runoob.com/php/php-ref-filter.html" target="_blank" rel="noopener">参考</a></p>
+]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>filter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP ipv6</title>
+    <url>/php/php_ipv6.html</url>
+    <content><![CDATA[<h1 id="php-ipv6"><a href="#php-ipv6" class="headerlink" title="php ipv6"></a>php ipv6</h1><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ip2long6</span><span class="params">($ipv6)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $ip_n = inet_pton($ipv6);</span><br><span class="line">    $bits = <span class="number">15</span>; <span class="comment">// 16 x 8 bit = 128bit</span></span><br><span class="line">    <span class="keyword">while</span> ($bits &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        $bin      = sprintf(<span class="string">"%08b"</span>, (ord($ip_n[$bits])));</span><br><span class="line">        $ipv6long = $bin . $ipv6long;</span><br><span class="line">        $bits--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> gmp_strval(gmp_init($ipv6long, <span class="number">2</span>), <span class="number">10</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">long2ip6</span><span class="params">($ipv6long)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $bin = gmp_strval(gmp_init($ipv6long, <span class="number">10</span>), <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (strlen($bin) &lt; <span class="number">128</span>) &#123;</span><br><span class="line">        $pad = <span class="number">128</span> - strlen($bin);</span><br><span class="line">        <span class="keyword">for</span> ($i = <span class="number">1</span>; $i &lt;= $pad; $i++) &#123;</span><br><span class="line">            $bin = <span class="string">"0"</span> . $bin;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $bits = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> ($bits &lt;= <span class="number">7</span>) &#123;</span><br><span class="line">        $bin_part = substr($bin, ($bits * <span class="number">16</span>), <span class="number">16</span>);</span><br><span class="line">        $ipv6 .= dechex(bindec($bin_part)) . <span class="string">":"</span>;</span><br><span class="line">        $bits++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> inet_ntop(inet_pton(substr($ipv6, <span class="number">0</span>, <span class="number">-1</span>)));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ip6mask</span><span class="params">($ipv6, $mask_len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $allowed_ip_mask = gmp_div_q(ip2long6(<span class="string">"FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF"</span>), gmp_pow(<span class="string">"2"</span>, <span class="number">128</span> - $mask_len));</span><br><span class="line">    $begin = gmp_and(ip2long6($ipv6) , $allowed_ip_mask) + <span class="number">1</span>;</span><br><span class="line">    $end   = gmp_or(ip2long6($ipv6), ( gmp_xor($allowed_ip_mask, gmp_init(<span class="string">"0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"</span>, <span class="number">16</span>)))) - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">array</span>($begin, $end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP quotes</title>
+    <url>/php/php_quotes.html</url>
+    <content><![CDATA[<h1 id="php-quote"><a href="#php-quote" class="headerlink" title="php quote"></a>php quote</h1><p>魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符都会被自动加上一个反斜线进行转义，这和 addslashes() 作用完全相同</p>
+<h2 id="相关的函数"><a href="#相关的函数" class="headerlink" title="相关的函数"></a>相关的函数</h2><ul>
+<li>set_magic_quotes_runtime</li>
+<li>magic_quotes_gpc</li>
+<li>addslashes</li>
+<li>stripslashes</li>
+</ul>
+<h3 id="set-magic-quotes-runtime"><a href="#set-magic-quotes-runtime" class="headerlink" title="set_magic_quotes_runtime()"></a>set_magic_quotes_runtime()</h3><p>设置当前magic_quotes_runtime 配置选项的激活状态，0为关闭，1为开启。set_magic_quotes_runtime(1)或是配置文件中magic_quotes_runtime为true（这个在php.ini中配置），那么php脚本读取文件或是从数据库中读取数据，遇到反斜线（\）、单引号（’）、双引号（”）、NULL时，会在前面自动加上转义字符，变成\、\’、\”、\NULL；若是关闭的话，也就是set_magic_quotes_runtime(0)magic_quotes_runtime为false，那么便会转义，此时可以借助addslashes进行转义。</p>
+<h3 id="magic-quotes-gpc"><a href="#magic-quotes-gpc" class="headerlink" title="magic_quotes_gpc()"></a>magic_quotes_gpc()</h3><p>当此值为1时，会对HTTP请求中的G（$_GET）、P（$_POST）、C（$_COOKIE）单双引号和反斜线进行转义；反之则不会。该操作一般见于表单提交的数据库操作，若是值为0时，便用addslashes进行转义存入数据库中，取出时再用stripslashes函数把反斜线给去掉。</p>
+<p><strong>特别注意的是在PHP 5.4版本时，魔术引号被移除了，因此转义都需要加上addslashes函数。</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$_GET[<span class="string">'des'</span>] = <span class="string">"she's a beauty"</span>;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">array</span>(<span class="string">'_GET'</span>, <span class="string">'_POST'</span>, <span class="string">'_COOKIE'</span>) <span class="keyword">as</span> $_request)&#123;</span><br><span class="line">    <span class="keyword">echo</span> $_request; <span class="comment">// _GET_POST _COOKIE</span></span><br><span class="line">    <span class="keyword">foreach</span> ($$_request <span class="keyword">as</span> $_key=&gt; $_value)&#123;</span><br><span class="line">        <span class="comment">// $_key为键，如_GET，$$_key为$_GET</span></span><br><span class="line">        <span class="comment">// $$_key=$_value意思就是把$_GET['des'] = 1111便为$des=she\'s a beauty</span></span><br><span class="line">        $_key&#123;<span class="number">0</span>&#125; != <span class="string">'_'</span> &amp;&amp; $$_key=addslashes($_value);</span><br><span class="line">        <span class="keyword">echo</span> $$_key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(get_magic_quotes_gpc() &amp;&amp; (! ini_get(<span class="string">'magic_quotes_sybase'</span>)))&#123;</span><br><span class="line">    $value = stripslashes($_GET[<span class="string">'value'</span>]);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    $value = $_GET[<span class="string">'value'</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
       </tags>
   </entry>
   <entry>
@@ -945,9 +1426,13 @@
       </tags>
   </entry>
   <entry>
-    <title>adaptively set iframe height after iframe onloaded</title>
-    <url>/js/self_adaption_set_iframe_height.html</url>
-    <content><![CDATA[<h1 id="adaptively-set-iframe-height-after-iframe-onloaded"><a href="#adaptively-set-iframe-height-after-iframe-onloaded" class="headerlink" title="adaptively set iframe height after iframe onloaded"></a>adaptively set iframe height after iframe onloaded</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setIframeHeight</span>(<span class="params">iframe</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (iframe) &#123;</span><br><span class="line">    <span class="keyword">var</span> iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;</span><br><span class="line">    <span class="keyword">if</span> (iframeWin.document.body) &#123;</span><br><span class="line">      iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getIframeHeight</span>(<span class="params">iframe</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;</span><br><span class="line">    <span class="keyword">var</span> height    = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;</span><br><span class="line">    <span class="keyword">return</span> height</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// use tim to set iframe height after iframe onloaded</span></span><br><span class="line">jQuery(<span class="built_in">document</span>.getElementById(<span class="string">'iframe_id'</span>)).load(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> iframe = <span class="built_in">document</span>.getElementById(<span class="string">'iframe_id'</span>);</span><br><span class="line">    <span class="keyword">var</span> height = getIframeHeight(iframe);</span><br><span class="line">    <span class="keyword">var</span> tim    = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        setIframeHeight(iframe);</span><br><span class="line">        <span class="keyword">var</span> after_height = getIframeHeight(iframe);</span><br><span class="line">        <span class="keyword">if</span>(after_height &gt; height)&#123;</span><br><span class="line">            <span class="built_in">window</span>.clearInterval(tim);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,<span class="number">100</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+    <title>onclick lanuch a post request，解决get参数太长，导致请求失败</title>
+    <url>/js/onclick_for_post.html</url>
+    <content><![CDATA[<h1 id="onclick-lanuch-post-request"><a href="#onclick-lanuch-post-request" class="headerlink" title="onclick lanuch post request"></a>onclick lanuch post request</h1><p>有时候，由于get请求下载文件，请求参数超过了2048字符，在IE等浏览器就会导致参数不完整</p>
+<p>因此使用post请求，其参数就没有限制长度，</p>
+<p>然后，使用ajax发起post请求，无法触发文件下载，因此使用模拟form表单发起post请求</p>
+<p>原生onclick 发起post请求</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onclickpost</span>(<span class="params">URL, PARAMS</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp    = <span class="built_in">document</span>.createElement(<span class="string">"form"</span>);</span><br><span class="line">    temp.action = URL;</span><br><span class="line">    temp.method = <span class="string">"post"</span>;</span><br><span class="line">    temp.style.display = <span class="string">"none"</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> x <span class="keyword">in</span> PARAMS) &#123;</span><br><span class="line">        <span class="keyword">var</span> opt   = <span class="built_in">document</span>.createElement(<span class="string">"textarea"</span>);</span><br><span class="line">        opt.name  = x;</span><br><span class="line">        opt.value = PARAMS[x];</span><br><span class="line">        temp.appendChild(opt);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(temp);</span><br><span class="line">    temp.submit();</span><br><span class="line">    temp.parentNode.removeChild(temp);</span><br><span class="line">&#125;</span><br><span class="line">onclickpost(url, &#123;<span class="attr">cat</span>:rawinfo&#125;)</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>js</category>
@@ -955,128 +1440,6 @@
       <tags>
         <tag>html</tag>
         <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP filter func</title>
-    <url>/php/php_filter_fuc.html</url>
-    <content><![CDATA[<h1 id="php-filter-function"><a href="#php-filter-function" class="headerlink" title="php filter function"></a>php filter function</h1><ul>
-<li>filter_has_var()<ul>
-<li>检查是否存在指定输入类型的变量</li>
-</ul>
-</li>
-<li>filter_id()<ul>
-<li>返回指定过滤器的 ID 号。</li>
-</ul>
-</li>
-<li>filter_input()<ul>
-<li>从脚本外部获取输入，并进行过滤。</li>
-</ul>
-</li>
-<li>filter_input_array()<ul>
-<li>从脚本外部获取多项输入，并进行过滤。</li>
-</ul>
-</li>
-<li>filter_list()<ul>
-<li>返回包含所有得到支持的过滤器的一个数组。</li>
-</ul>
-</li>
-<li>filter_var_array()<ul>
-<li>获取多个变量，并进行过滤。</li>
-</ul>
-</li>
-<li>filter_var()<ul>
-<li>获取一个变量，并进行过滤。</li>
-</ul>
-</li>
-</ul>
-<h2 id="type"><a href="#type" class="headerlink" title="type"></a>type</h2><ul>
-<li>INPUT_GET</li>
-<li>INPUT_POST</li>
-<li>INPUT_COOKIE</li>
-<li>INPUT_SERVER</li>
-<li>INPUT_ENV</li>
-<li>INPUT_SERVER</li>
-<li>INPUT_SESSION</li>
-<li>INPUT_REQUEST</li>
-</ul>
-<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><ul>
-<li>FILTER_CALLBACK    调用用户自定义函数来过滤数据。</li>
-<li>FILTER_SANITIZE_STRING    去除标签，去除或编码特殊字符。</li>
-<li>FILTER_SANITIZE_STRIPPED    “string” 过滤器的别名。</li>
-<li>FILTER_SANITIZE_ENCODED    URL-encode 字符串，去除或编码特殊字符。</li>
-<li>FILTER_SANITIZE_SPECIAL_CHARS    HTML 转义字符 ‘“&lt;&gt;&amp; 以及 ASCII 值小于 32 的字符。</li>
-<li>FILTER_SANITIZE_EMAIL    删除所有字符，除了字母、数字以及 !#$%&amp;’*+-/=?^_`{|}~@.[]</li>
-<li>FILTER_SANITIZE_URL    删除所有字符，除了字母、数字以及 $-_.+!*’(),{}|\^~[]`&lt;&gt;#%”;/?:@&amp;=</li>
-<li>FILTER_SANITIZE_NUMBER_INT    删除所有字符，除了数字和 +-</li>
-<li>FILTER_SANITIZE_NUMBER_FLOAT    删除所有字符，除了数字、+- 以及 .,eE</li>
-<li>FILTER_SANITIZE_MAGIC_QUOTES    应用 addslashes()。</li>
-<li>FILTER_UNSAFE_RAW    不进行任何过滤，去除或编码特殊字符。</li>
-<li>FILTER_VALIDATE_INT    把值作为整数来验证。</li>
-<li>FILTER_VALIDATE_BOOLEAN    把值作为布尔选项来验证。如果是 “1”、”true”、”on” 和 “yes”，则返回 TRUE。如果是 “0”、”false”、”off”、”no” 和 “”，则返回 FALSE。否则返回 NULL。</li>
-<li>FILTER_VALIDATE_FLOAT    把值作为浮点数来验证。</li>
-<li>FILTER_VALIDATE_REGEXP    根据 regexp（一种兼容 Perl 的正则表达式）来验证值。</li>
-<li>FILTER_VALIDATE_URL    把值作为 URL 来验证。</li>
-<li>FILTER_VALIDATE_EMAIL    把值作为 e-mail 地址来验证。</li>
-<li>FILTER_VALIDATE_IP    把值作为 IP 地址来验证，只限 IPv4 或 IPv6 或 不是来自私有或者保留的范围。</li>
-</ul>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="http://www.runoob.com/php/php-ref-filter.html" target="_blank" rel="noopener">参考</a></p>
-]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
-        <tag>filter</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP download</title>
-    <url>/php/php_download.html</url>
-    <content><![CDATA[<h1 id="php-download"><a href="#php-download" class="headerlink" title="php download"></a>php download</h1><h2 id="php-download-big-file"><a href="#php-download-big-file" class="headerlink" title="php download big file"></a>php download big file</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (file_exists($path)) &#123;</span><br><span class="line">	$file_size = filesize($path);</span><br><span class="line">	if (FALSE!== ($handler = fopen($path, &apos;r&apos;)))&#123;</span><br><span class="line">		header(&apos;Content-Description: File Transfer&apos;);</span><br><span class="line">		header(&apos;Content-Type: application/octet-stream&apos;);</span><br><span class="line">		header(&apos;Accept-Ranges: bytes&apos;);</span><br><span class="line">		header(&apos;Content-Disposition: attachment; filename=&apos;.basename($path));</span><br><span class="line">		header(&apos;Accept-Length:&apos;. $file_size);</span><br><span class="line">		header(&apos;Content-Transfer-Encoding: chunked&apos;);</span><br><span class="line">		header(&apos;Expires: 0&apos;);</span><br><span class="line">		header(&apos;Cache-Control: must-revalidate, post-check=0, pre-check=0&apos;);</span><br><span class="line">		header(&apos;Pragma: public&apos;);</span><br><span class="line">		$buffer_size = 4096*20;</span><br><span class="line">		while(!feof($handler))&#123;</span><br><span class="line">			$chunk = fread($handler,$buffer_size);</span><br><span class="line">			echo $chunk;</span><br><span class="line">		&#125;</span><br><span class="line">		fclose($handler);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="php-upload-big-file"><a href="#php-upload-big-file" class="headerlink" title="php upload big file"></a>php upload big file</h2><p>第一步： Apache环境中的档案上传大小控制<br>修改httpd.conf<br>添加下面内容<br>LimitRequestBody 10485760<br>即10M=1010241024，有的文章中提到应改为 600000000<br>重新启动apache，就可以在设置里看到你要的大小</p>
-<p>第二步：修改在php5下POST文件大小的限制<br>修改php.ini<br>找到 File Uploadsh区域修改以下几个参数： file_uploads = on ;是否允许通过HTTP上传文件的开关。<br>默认为ON即是开 upload_tmp_dir ;文件上传至服务器上存储临时文件的地方，如果没指定就会用系统默认的临时文件夹(moodle可以不改)<br>upload_max_filesize = 8m ;允许上传文件大小的最大值.<br>找到 Data Handling区域，修改 post_max_size = 8m ;指通过表单POST给PHP的所能接收的最大值，包括表单里的所有值。<br>默认为8M<br>设上述四个参数后，上传小于8M的文件一般不成问题。但如果上传大于8M的文件，只还得设置以下参数：<br>在Resource Limits 区域: max_execution_time = 600 ;<br>每个PHP页面运行的最大时间值(秒)，默认30秒 max_input_time = 600 ;<br>每个PHP页面接收数据所需的最大时间，默认60秒 memory_limit = 8m ;<br>每个PHP页面所吃掉的最大内存，默认8M</p>
-]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP quotes</title>
-    <url>/php/php_quotes.html</url>
-    <content><![CDATA[<h1 id="php-quote"><a href="#php-quote" class="headerlink" title="php quote"></a>php quote</h1><p>魔术引号若是打开的话，所有的反斜线（\）、单引号（’）、双引号（”）、NULL 字符都会被自动加上一个反斜线进行转义，这和 addslashes() 作用完全相同</p>
-<h2 id="相关的函数"><a href="#相关的函数" class="headerlink" title="相关的函数"></a>相关的函数</h2><ul>
-<li>set_magic_quotes_runtime</li>
-<li>magic_quotes_gpc</li>
-<li>addslashes</li>
-<li>stripslashes</li>
-</ul>
-<h3 id="set-magic-quotes-runtime"><a href="#set-magic-quotes-runtime" class="headerlink" title="set_magic_quotes_runtime()"></a>set_magic_quotes_runtime()</h3><p>设置当前magic_quotes_runtime 配置选项的激活状态，0为关闭，1为开启。set_magic_quotes_runtime(1)或是配置文件中magic_quotes_runtime为true（这个在php.ini中配置），那么php脚本读取文件或是从数据库中读取数据，遇到反斜线（\）、单引号（’）、双引号（”）、NULL时，会在前面自动加上转义字符，变成\、\’、\”、\NULL；若是关闭的话，也就是set_magic_quotes_runtime(0)magic_quotes_runtime为false，那么便会转义，此时可以借助addslashes进行转义。</p>
-<h3 id="magic-quotes-gpc"><a href="#magic-quotes-gpc" class="headerlink" title="magic_quotes_gpc()"></a>magic_quotes_gpc()</h3><p>当此值为1时，会对HTTP请求中的G（$_GET）、P（$_POST）、C（$_COOKIE）单双引号和反斜线进行转义；反之则不会。该操作一般见于表单提交的数据库操作，若是值为0时，便用addslashes进行转义存入数据库中，取出时再用stripslashes函数把反斜线给去掉。</p>
-<p><strong>特别注意的是在PHP 5.4版本时，魔术引号被移除了，因此转义都需要加上addslashes函数。</strong></p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$_GET[<span class="string">'des'</span>] = <span class="string">"she's a beauty"</span>;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">array</span>(<span class="string">'_GET'</span>, <span class="string">'_POST'</span>, <span class="string">'_COOKIE'</span>) <span class="keyword">as</span> $_request)&#123;</span><br><span class="line">    <span class="keyword">echo</span> $_request; <span class="comment">// _GET_POST _COOKIE</span></span><br><span class="line">    <span class="keyword">foreach</span> ($$_request <span class="keyword">as</span> $_key=&gt; $_value)&#123;</span><br><span class="line">        <span class="comment">// $_key为键，如_GET，$$_key为$_GET</span></span><br><span class="line">        <span class="comment">// $$_key=$_value意思就是把$_GET['des'] = 1111便为$des=she\'s a beauty</span></span><br><span class="line">        $_key&#123;<span class="number">0</span>&#125; != <span class="string">'_'</span> &amp;&amp; $$_key=addslashes($_value);</span><br><span class="line">        <span class="keyword">echo</span> $$_key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(get_magic_quotes_gpc() &amp;&amp; (! ini_get(<span class="string">'magic_quotes_sybase'</span>)))&#123;</span><br><span class="line">    $value = stripslashes($_GET[<span class="string">'value'</span>]);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    $value = $_GET[<span class="string">'value'</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP ipv6</title>
-    <url>/php/php_ipv6.html</url>
-    <content><![CDATA[<h1 id="php-ipv6"><a href="#php-ipv6" class="headerlink" title="php ipv6"></a>php ipv6</h1><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ip2long6</span><span class="params">($ipv6)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $ip_n = inet_pton($ipv6);</span><br><span class="line">    $bits = <span class="number">15</span>; <span class="comment">// 16 x 8 bit = 128bit</span></span><br><span class="line">    <span class="keyword">while</span> ($bits &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        $bin      = sprintf(<span class="string">"%08b"</span>, (ord($ip_n[$bits])));</span><br><span class="line">        $ipv6long = $bin . $ipv6long;</span><br><span class="line">        $bits--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> gmp_strval(gmp_init($ipv6long, <span class="number">2</span>), <span class="number">10</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">long2ip6</span><span class="params">($ipv6long)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $bin = gmp_strval(gmp_init($ipv6long, <span class="number">10</span>), <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (strlen($bin) &lt; <span class="number">128</span>) &#123;</span><br><span class="line">        $pad = <span class="number">128</span> - strlen($bin);</span><br><span class="line">        <span class="keyword">for</span> ($i = <span class="number">1</span>; $i &lt;= $pad; $i++) &#123;</span><br><span class="line">            $bin = <span class="string">"0"</span> . $bin;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $bits = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> ($bits &lt;= <span class="number">7</span>) &#123;</span><br><span class="line">        $bin_part = substr($bin, ($bits * <span class="number">16</span>), <span class="number">16</span>);</span><br><span class="line">        $ipv6 .= dechex(bindec($bin_part)) . <span class="string">":"</span>;</span><br><span class="line">        $bits++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> inet_ntop(inet_pton(substr($ipv6, <span class="number">0</span>, <span class="number">-1</span>)));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ip6mask</span><span class="params">($ipv6, $mask_len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $allowed_ip_mask = gmp_div_q(ip2long6(<span class="string">"FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF"</span>), gmp_pow(<span class="string">"2"</span>, <span class="number">128</span> - $mask_len));</span><br><span class="line">    $begin = gmp_and(ip2long6($ipv6) , $allowed_ip_mask) + <span class="number">1</span>;</span><br><span class="line">    $end   = gmp_or(ip2long6($ipv6), ( gmp_xor($allowed_ip_mask, gmp_init(<span class="string">"0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"</span>, <span class="number">16</span>)))) - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">array</span>($begin, $end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
       </tags>
   </entry>
   <entry>
@@ -1091,24 +1454,36 @@
       </tags>
   </entry>
   <entry>
-    <title>cmder 各类配置以及问题解决</title>
-    <url>/cmder/cmder.html</url>
-    <content><![CDATA[<h1 id="cmder-配置"><a href="#cmder-配置" class="headerlink" title="cmder 配置"></a>cmder 配置</h1><h2 id="cmder-显示-oh-my-zsh会出现乱码"><a href="#cmder-显示-oh-my-zsh会出现乱码" class="headerlink" title="cmder 显示 oh my zsh会出现乱码"></a>cmder 显示 oh my zsh会出现乱码</h2><ul>
-<li>去网站<a href="http://nerdfonts.com/" target="_blank" rel="noopener">nerdfonts</a>最下面下载hack字体，解压安装hack字体</li>
-<li>在cmder 的setting中 font是 选择hack字体</li>
-</ul>
-<h2 id="启动quake模式，使得cmder能够从window最上面一键呼出"><a href="#启动quake模式，使得cmder能够从window最上面一键呼出" class="headerlink" title="启动quake模式，使得cmder能够从window最上面一键呼出"></a>启动quake模式，使得cmder能够从window最上面一键呼出</h2><ul>
-<li>cmder的setting，general 的quake style，勾选 quake style slide down ,  always on top , restore inactive .. , restore to active monitor</li>
-<li>setting的 keys &amp;macro 修改 minimize/restore quake style hotkey 快捷键</li>
-</ul>
+    <title>Hexo head setting</title>
+    <url>/hexo/hexo_post_header.html</url>
+    <content><![CDATA[<h1 id="hexo-post文件头设置"><a href="#hexo-post文件头设置" class="headerlink" title="hexo post文件头设置"></a>hexo post文件头设置</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo head setting</span><br><span class="line">categories: hexo</span><br><span class="line">copyright: true</span><br><span class="line">tags:</span><br><span class="line">  - hexo</span><br><span class="line">  - setting</span><br><span class="line">keywords:</span><br><span class="line">description:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h1 id="hexo-abstract-setting"><a href="#hexo-abstract-setting" class="headerlink" title="hexo abstract setting"></a>hexo abstract setting</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">abstract content</span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="multi-level-categories"><a href="#multi-level-categories" class="headerlink" title="multi level categories"></a>multi level categories</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">categories: [no 1 categories, no 2 categories]</span><br><span class="line"></span><br><span class="line">categories:</span><br><span class="line">  - no 1</span><br><span class="line">  - no 2</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>cmder</category>
+        <category>hexo</category>
       </categories>
       <tags>
-        <tag>cmder</tag>
-        <tag>oh my zsh</tag>
-        <tag>zsh</tag>
+        <tag>setting</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>IE compatible</title>
+    <url>/js/IECompatible.html</url>
+    <content><![CDATA[<h1 id="jQuery-html-and-interHtml-method-run-very-slowly-on-IE-8-or-IE-9-browser"><a href="#jQuery-html-and-interHtml-method-run-very-slowly-on-IE-8-or-IE-9-browser" class="headerlink" title="jQuery().html() and interHtml method run very slowly on IE 8 or IE 9 browser"></a>jQuery().html() and interHtml method run very slowly on IE 8 or IE 9 browser</h1><h2 id="phenomenon"><a href="#phenomenon" class="headerlink" title="phenomenon"></a>phenomenon</h2><p>when run the method below, It costs too much time.<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> htmlString = <span class="string">"&lt;div&gt;&lt;span&gt;test&lt;/span&gt;&lt;/div&gt;"</span>;</span><br><span class="line">jQuery().html(htmlString)</span><br><span class="line">domcument.getElementById().interHtml = htmlString;</span><br></pre></td></tr></table></figure></p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>replace jQuery.html() or interHtml with dom method to solve the problem<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> htmlString = <span class="string">"&lt;div&gt;&lt;span&gt;test&lt;/span&gt;&lt;/div&gt;"</span>;</span><br><span class="line"><span class="comment">//turn the string into a dom object </span></span><br><span class="line"><span class="keyword">var</span> domObj = jQuery(htmlString).get(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(); </span><br><span class="line"><span class="keyword">var</span> childs = el.childNodes; </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = childs .length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">    <span class="comment">//delete all child node</span></span><br><span class="line">    el.removeChild(childs[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.getElementById().appendChild(domObj);</span><br></pre></td></tr></table></figure></p>
+<h1 id="JSON-module-missing"><a href="#JSON-module-missing" class="headerlink" title="JSON module missing"></a>JSON module missing</h1><h2 id="phenomenon-1"><a href="#phenomenon-1" class="headerlink" title="phenomenon"></a>phenomenon</h2><p>such as JSON.parse or JSON.stringify method cant use</p>
+<h2 id="solution-1"><a href="#solution-1" class="headerlink" title="solution"></a>solution</h2><p>download the json2.js or json3.js, and import <code>&lt;script src=&quot;/js/json3.min.js&quot;&gt;&lt;/script&gt;</code></p>
+<h1 id="str-trim-missing"><a href="#str-trim-missing" class="headerlink" title="str.trim() missing"></a>str.trim() missing</h1><h2 id="solution-2"><a href="#solution-2" class="headerlink" title="solution"></a>solution</h2><p>replace str.trim() with jQuery.trim();</p>
+<h1 id="jQuery-width-method-calculates-the-error-width"><a href="#jQuery-width-method-calculates-the-error-width" class="headerlink" title="jQuery().width() method calculates the error width"></a>jQuery().width() method calculates the error width</h1><h2 id="solution-3"><a href="#solution-3" class="headerlink" title="solution"></a>solution</h2><p>replace jQuery.outerWidth() width jQuery().width()</p>
+]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -1311,6 +1686,45 @@
       </tags>
   </entry>
   <entry>
+    <title>ubuntu best software</title>
+    <url>/ubuntu/best_software.html</url>
+    <content><![CDATA[<h2 id="cpu-内存-网速显示"><a href="#cpu-内存-网速显示" class="headerlink" title="cpu 内存 网速显示"></a>cpu 内存 网速显示</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install indicator-sysmonitor</span><br><span class="line"></span><br><span class="line">indicator-sysmonitor</span><br></pre></td></tr></table></figure>
+<h2 id="远程连接windos"><a href="#远程连接windos" class="headerlink" title="远程连接windos"></a>远程连接windos</h2><h3 id="rdesktop"><a href="#rdesktop" class="headerlink" title="rdesktop"></a>rdesktop</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rdesktop -g 1800x1000 10.66.1.1 -r disk:linuxShare=/home/daijianjian/share -x 0x80 -r clipboard:CLIPBOARD -r sound:local</span><br></pre></td></tr></table></figure>
+<p><code>-r disk:linuxShare=/home/user/share</code> 用于共享文件</p>
+<p><code>-r clipboard:CLIPBOARD</code>  粘贴板共享</p>
+<p><strong>当出现粘贴板失灵</strong> 需要关闭远程win的rdpclip.exe进程，然后再远程即可完成进行重启</p>
+<p><code>-r sound:local</code> 开启远程的声音</p>
+<h3 id="teamview"><a href="#teamview" class="headerlink" title="teamview"></a>teamview</h3><h3 id="向日葵"><a href="#向日葵" class="headerlink" title="向日葵"></a>向日葵</h3><h2 id="百度云有linux版本"><a href="#百度云有linux版本" class="headerlink" title="百度云有linux版本"></a>百度云有linux版本</h2>]]></content>
+      <categories>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>wine setting</title>
+    <url>/ubuntu/deepin-wine.html</url>
+    <content><![CDATA[<h1 id="软件文字显示方块（如企业微信）"><a href="#软件文字显示方块（如企业微信）" class="headerlink" title="软件文字显示方块（如企业微信）"></a>软件文字显示方块（如企业微信）</h1><ul>
+<li>去windows 系统 上去复制一份Fonts字体</li>
+<li>复制到你要修复的wine容器 将字体放入~/.wine/drive_c/windows/Fonts 里面，如果是deepin的话，就放在~/.deepinwine/XXX/drive_c/windows/Fonts里面（XXX指deepin下的你安装的程序）</li>
+<li><p>创建一份字体加载注册脚本 <code>touch zh.reg</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">REGEDIT4</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink]</span><br><span class="line">&quot;Lucida Sans Unicode&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Microsoft Sans Serif&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;MS Sans Serif&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Tahoma&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Tahoma Bold&quot;=&quot;msyhbd.ttc&quot;</span><br><span class="line">&quot;msyh&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Arial&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Arial Black&quot;=&quot;msyh.ttc&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>WINEPREFIX=~/.deepinwine/Deepin-WXWork /usr/bin/deepin-wine regedit zh.reg</code></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>wine</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
+        <tag>wine</tag>
+        <tag>deep-win</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu best tool</title>
     <url>/ubuntu/best_tool.html</url>
     <content><![CDATA[<h1 id="十大好用的Linux实用工具推荐，亲测！"><a href="#十大好用的Linux实用工具推荐，亲测！" class="headerlink" title="十大好用的Linux实用工具推荐，亲测！"></a>十大好用的Linux实用工具推荐，亲测！</h1><p>本文我们收集了对Linux用户非常有用的10个工具，其中包括网络监控、系统审计或其它有用命令，这10个Linux工具可以帮助大家提高工作和使用效率，非常实用。</p>
@@ -1439,25 +1853,30 @@
       </tags>
   </entry>
   <entry>
-    <title>wine setting</title>
-    <url>/ubuntu/deepin-wine.html</url>
-    <content><![CDATA[<h1 id="软件文字显示方块（如企业微信）"><a href="#软件文字显示方块（如企业微信）" class="headerlink" title="软件文字显示方块（如企业微信）"></a>软件文字显示方块（如企业微信）</h1><ul>
-<li>去windows 系统 上去复制一份Fonts字体</li>
-<li>复制到你要修复的wine容器 将字体放入~/.wine/drive_c/windows/Fonts 里面，如果是deepin的话，就放在~/.deepinwine/XXX/drive_c/windows/Fonts里面（XXX指deepin下的你安装的程序）</li>
-<li><code>touch zh.reg</code></li>
+    <title>Package **** was not found in the pkg-config search path.</title>
+    <url>/ubuntu/pkg-config.html</url>
+    <content><![CDATA[<h1 id="Package-was-not-found-in-the-pkg-config-search-path"><a href="#Package-was-not-found-in-the-pkg-config-search-path" class="headerlink" title="Package ** was not found in the pkg-config search path."></a>Package <em>**</em> was not found in the pkg-config search path.</h1><p>configure: error: Unable to find libzmq installation</p>
+<p><code>#pkg-config libzmq --libs</code><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Package libzmq was not found in the pkg-config search path.</span><br><span class="line">Perhaps you should add the directory containing `libzmq.pc&apos;</span><br><span class="line">to the PKG_CONFIG_PATH environment variable</span><br><span class="line">No package &apos;libzmq&apos; found</span><br></pre></td></tr></table></figure></p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><ul>
+<li><code>locate libzmq.pc</code> or <code>find / -name &quot;libzmq.pc&quot;</code><ul>
+<li>找.pc文件路径</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">REGEDIT4</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink]</span><br><span class="line">&quot;Lucida Sans Unicode&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Microsoft Sans Serif&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;MS Sans Serif&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Tahoma&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Tahoma Bold&quot;=&quot;msyhbd.ttc&quot;</span><br><span class="line">&quot;msyh&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Arial&quot;=&quot;msyh.ttc&quot;</span><br><span class="line">&quot;Arial Black&quot;=&quot;msyh.ttc&quot;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>WINEPREFIX=~/.deepinwine/Deepin-WXWork /usr/bin/deepin-wine regedit zh.reg</code></li>
+</li>
+<li><code>find / -name pkgconfig</code><ul>
+<li>找到pkgconfig的路径</li>
+</ul>
+</li>
+<li><p>将libzmq.pc复制到没有这个文件的pkgconfig路径下</p>
+</li>
+<li><p>sudo ldconfig</p>
+</li>
 </ul>
 ]]></content>
       <categories>
-        <category>wine</category>
+        <category>compile</category>
       </categories>
       <tags>
         <tag>ubuntu</tag>
-        <tag>wine</tag>
-        <tag>deep-win</tag>
       </tags>
   </entry>
   <entry>
@@ -1490,47 +1909,84 @@ There has been critical changes in the file system during this operation
       </tags>
   </entry>
   <entry>
-    <title>ubuntu best software</title>
-    <url>/ubuntu/best_software.html</url>
-    <content><![CDATA[<h2 id="cpu-内存-网速显示"><a href="#cpu-内存-网速显示" class="headerlink" title="cpu 内存 网速显示"></a>cpu 内存 网速显示</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install indicator-sysmonitor</span><br><span class="line"></span><br><span class="line">indicator-sysmonitor</span><br></pre></td></tr></table></figure>
-<h2 id="远程连接windos"><a href="#远程连接windos" class="headerlink" title="远程连接windos"></a>远程连接windos</h2><h3 id="rdesktop"><a href="#rdesktop" class="headerlink" title="rdesktop"></a>rdesktop</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rdesktop -g 1800x1000 10.66.1.1 -r disk:linuxShare=/home/user/share -x 0x80 -r clipboard:PRIMARYCLIPBOARD -r sound:local</span><br></pre></td></tr></table></figure>
-<p><code>-r disk:linuxShare=/home/user/share</code> 用于共享文件</p>
-<p><code>-r clipboard:PRIMARYCLIPBOARD</code>  粘贴板共享</p>
-<p><strong>当出现粘贴板失灵</strong> 需要关闭远程win的rdpclip.exe进程，然后再远程即可完成进行重启</p>
-<p><code>-r sound:local</code> 开启远程的声音</p>
-<h3 id="teamview"><a href="#teamview" class="headerlink" title="teamview"></a>teamview</h3><h3 id="向日葵"><a href="#向日葵" class="headerlink" title="向日葵"></a>向日葵</h3><h2 id="百度云有linux版本"><a href="#百度云有linux版本" class="headerlink" title="百度云有linux版本"></a>百度云有linux版本</h2>]]></content>
-      <categories>
-        <category>tool</category>
-      </categories>
-      <tags>
-        <tag>ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Package **** was not found in the pkg-config search path.</title>
-    <url>/ubuntu/pkg-config.html</url>
-    <content><![CDATA[<h1 id="Package-was-not-found-in-the-pkg-config-search-path"><a href="#Package-was-not-found-in-the-pkg-config-search-path" class="headerlink" title="Package ** was not found in the pkg-config search path."></a>Package <em>**</em> was not found in the pkg-config search path.</h1><p>configure: error: Unable to find libzmq installation</p>
-<p><code>#pkg-config libzmq --libs</code><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Package libzmq was not found in the pkg-config search path.</span><br><span class="line">Perhaps you should add the directory containing `libzmq.pc&apos;</span><br><span class="line">to the PKG_CONFIG_PATH environment variable</span><br><span class="line">No package &apos;libzmq&apos; found</span><br></pre></td></tr></table></figure></p>
-<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><ul>
-<li><code>locate libzmq.pc</code> or <code>find / -name &quot;libzmq.pc&quot;</code><ul>
-<li>找.pc文件路径</li>
+    <title>kvm common command</title>
+    <url>/ubuntu/kvm.html</url>
+    <content><![CDATA[<h1 id="kvm-command"><a href="#kvm-command" class="headerlink" title="kvm command"></a>kvm command</h1><ul>
+<li>virsh list –all<ul>
+<li>gets the list of virtual machine info</li>
 </ul>
 </li>
-<li><code>find / -name pkgconfig</code><ul>
-<li>找到pkgconfig的路径</li>
+<li>virsh start “Name”<ul>
+<li>start virtual machine</li>
 </ul>
 </li>
-<li><p>将libzmq.pc复制到没有这个文件的pkgconfig路径下</p>
+<li>virsh shutdown “Id”<ul>
+<li>shutdown virtual machine</li>
+</ul>
 </li>
-<li><p>sudo ldconfig</p>
+<li>virsh console “Id”<ul>
+<li>gets virtual machine console</li>
+</ul>
+</li>
+<li>virsh dumpxml “Id” | grep file<ul>
+<li>gets the image file path</li>
+</ul>
+</li>
+<li>cat /etc/libvirt/qemu/<ul>
+<li>get all virtual machine</li>
+</ul>
 </li>
 </ul>
 ]]></content>
       <categories>
-        <category>compile</category>
+        <category>kvm</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
+        <tag>kvm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python secure</title>
+    <url>/python/python_secure.html</url>
+    <content><![CDATA[<h2 id="防止命令注入使用subprocess"><a href="#防止命令注入使用subprocess" class="headerlink" title="防止命令注入使用subprocess"></a>防止命令注入使用subprocess</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cmd = [&apos;ls&apos;, &apos;-al&apos;]</span><br><span class="line">p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)</span><br><span class="line">data = &apos;&apos;.join(p.stdout.readlines())</span><br><span class="line">p.stdout.close()</span><br></pre></td></tr></table></figure>
+<h3 id="替换shell的管道符"><a href="#替换shell的管道符" class="headerlink" title="替换shell的管道符"></a>替换shell的管道符</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># output = `dmesg | grep hda`</span><br><span class="line"></span><br><span class="line">p1 = subprocess.Popen([&apos;dmesg&apos;], stdout=PIPE)</span><br><span class="line">p2 = subprocess.Popen([&apos;grep&apos;, &apos;hda&apos;], stdin=p1.stdout, stdout=PIPE)</span><br><span class="line"></span><br><span class="line">p1.stdout.close()</span><br><span class="line">output = p2.communicate()[0]</span><br></pre></td></tr></table></figure>
+<h2 id="防止sql注入"><a href="#防止sql注入" class="headerlink" title="防止sql注入"></a>防止sql注入</h2><h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><ul>
+<li>1’ or ‘1’ = ‘1</li>
+<li>sqlmap</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sql_cmd = &quot;select * from ?&quot;</span><br><span class="line">cur.execute(sql_cmd, (table_name, ))</span><br></pre></td></tr></table></figure>
+<h2 id="输入参数作为动态代码运行"><a href="#输入参数作为动态代码运行" class="headerlink" title="输入参数作为动态代码运行"></a>输入参数作为动态代码运行</h2><h3 id="python"><a href="#python" class="headerlink" title="python"></a>python</h3><ul>
+<li>eval</li>
+<li>exec</li>
+<li>pickle.loads</li>
+<li>cPickle.loads</li>
+<li>marshal.loads</li>
+<li>yaml.load</li>
+</ul>
+<h3 id="php"><a href="#php" class="headerlink" title="php"></a>php</h3><ul>
+<li>eval</li>
+<li>asset()</li>
+<li>preg_replace + ‘e’</li>
+<li>call_user_func, call_user_func_array, create_function</li>
+<li>array_map</li>
+</ul>
+<h2 id="目录穿越"><a href="#目录穿越" class="headerlink" title="目录穿越"></a>目录穿越</h2><ul>
+<li>过滤掉<code>. and ..</code></li>
+<li><code>os.path.basename(filename)</code></li>
+</ul>
+<h2 id="安全上传文件"><a href="#安全上传文件" class="headerlink" title="安全上传文件"></a>安全上传文件</h2><ul>
+<li>文件后缀过滤</li>
+<li>文件大小过滤-最大最小</li>
+<li>文件名随机化</li>
+<li>上传目录随机化</li>
+</ul>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>secure</tag>
       </tags>
   </entry>
   <entry>
@@ -1557,6 +2013,28 @@ There has been critical changes in the file system during this operation
       </tags>
   </entry>
   <entry>
+    <title>sogou input method install</title>
+    <url>/ubuntu/sogouInputMethod.html</url>
+    <content><![CDATA[<h1 id="搜狗输入法安装"><a href="#搜狗输入法安装" class="headerlink" title="搜狗输入法安装"></a>搜狗输入法安装</h1><ul>
+<li>先添加源：sudo add-apt-repository ppa:fcitx-team/nightly</li>
+<li>添加源之后更新一下：sudo apt-get update &amp;&amp; apt-get upgrade</li>
+<li>开始安装fcitx: sudo apt-get install fcitx  （可能系统已安装好），如果出现错误提示，就：apt-get -f install,然后再sudo apt-get install fcitx</li>
+<li>安装fcitx的配置工具：sudo apt-get install fcitx-config-gtk</li>
+<li>安装fcitx的table-all:sudo apt-get install fcitx-table-all</li>
+<li>安装im-switch工具：sudo apt-get install im-switch</li>
+<li><a href="https://pinyin.sogou.com/linux/?r=pinyin" target="_blank" rel="noopener">安装包</a> 下载安装包，并且安装sudo dpkg -i sogoupinyin_2.2.0.0108_amd64.deb ，如果出现错误提示，就：apt-get -f install，再安装</li>
+<li>到system settings-&gt;language support,将键盘输入法设置为fcitx</li>
+<li>运行fcitx-configure 设置输入法，如果没有发现搜狗输入法，重启一次电脑</li>
+</ul>
+]]></content>
+      <categories>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>inputMethod</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>zsh setting</title>
     <url>/ubuntu/zsh_setting.html</url>
     <content><![CDATA[<h1 id="How-to-fix-and-recover-a-“corrupt-history-file”-in-zsh"><a href="#How-to-fix-and-recover-a-“corrupt-history-file”-in-zsh" class="headerlink" title="How to fix and recover a “corrupt history file” in zsh"></a>How to fix and recover a “corrupt history file” in zsh</h1><p>Simply removing random characters may also work:</p>
@@ -1568,6 +2046,24 @@ There has been critical changes in the file system during this operation
       </categories>
       <tags>
         <tag>zsh</tag>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sogou install</title>
+    <url>/ubuntu/sogou.html</url>
+    <content><![CDATA[<h1 id="ubuntu-20-04-install-sogou"><a href="#ubuntu-20-04-install-sogou" class="headerlink" title="ubuntu 20.04 install sogou"></a>ubuntu 20.04 install sogou</h1><p>ubuntu 20.04 不支持搜狗官方linux下载的deb</p>
+<h2 id="使用ubuntukylin的-sogou输入法"><a href="#使用ubuntukylin的-sogou输入法" class="headerlink" title="使用ubuntukylin的 sogou输入法"></a>使用ubuntukylin的 sogou输入法</h2><h3 id="添加ubuntukylin源"><a href="#添加ubuntukylin源" class="headerlink" title="添加ubuntukylin源"></a>添加ubuntukylin源</h3><p>根据官方教程添加ukui的官方源，为了安装及后续更新。此源中包含了麒麟版搜狗输入法。</p>
+<p>$ curl -sL ‘<a href="https://keyserver.ubuntu.com/pks/lookup?&amp;op=get&amp;search=0x73BC8FBCF5DE40C6ADFCFFFA9C949F2093F565FF&#39;" target="_blank" rel="noopener">https://keyserver.ubuntu.com/pks/lookup?&amp;op=get&amp;search=0x73BC8FBCF5DE40C6ADFCFFFA9C949F2093F565FF&#39;</a> | sudo apt-key add<br>$ sudo apt-add-repository ‘deb <a href="http://archive.ubuntukylin.com/ukui" target="_blank" rel="noopener">http://archive.ubuntukylin.com/ukui</a> focal main’<br>$ sudo apt upgrade</p>
+<h3 id="安装搜狗输入法"><a href="#安装搜狗输入法" class="headerlink" title="安装搜狗输入法"></a>安装搜狗输入法</h3><p>直接安装软件包，注意包名是sogouimebs而不是原来的sogoupinyin。这个版本在其他地方暂时是找不到的，因为是麒麟社区定制的版本。由于ubuntu和优麒麟一脉相承的关系，我们可以直接拿来用。</p>
+<p>$ sudo apt install sogouimebs</p>
+<h3 id="输入法设置"><a href="#输入法设置" class="headerlink" title="输入法设置"></a>输入法设置</h3><p>根据自身需求针对输入法属性进行设置</p>
+<p>$ sogouIme-configtool </p>
+<h3 id="shift-ctrl-就可以切换语言"><a href="#shift-ctrl-就可以切换语言" class="headerlink" title="shift + ctrl 就可以切换语言"></a>shift + ctrl 就可以切换语言</h3>]]></content>
+      <categories>
+        <category>compile</category>
+      </categories>
+      <tags>
         <tag>ubuntu</tag>
       </tags>
   </entry>
@@ -1626,28 +2122,6 @@ There has been critical changes in the file system during this operation
       </categories>
       <tags>
         <tag>ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>sogou input method install</title>
-    <url>/ubuntu/sogouInputMethod.html</url>
-    <content><![CDATA[<h1 id="搜狗输入法安装"><a href="#搜狗输入法安装" class="headerlink" title="搜狗输入法安装"></a>搜狗输入法安装</h1><ul>
-<li>先添加源：sudo add-apt-repository ppa:fcitx-team/nightly</li>
-<li>添加源之后更新一下：sudo apt-get update &amp;&amp; apt-get upgrade</li>
-<li>开始安装fcitx: sudo apt-get install fcitx  （可能系统已安装好），如果出现错误提示，就：apt-get -f install,然后再sudo apt-get install fcitx</li>
-<li>安装fcitx的配置工具：sudo apt-get install fcitx-config-gtk</li>
-<li>安装fcitx的table-all:sudo apt-get install fcitx-table-all</li>
-<li>安装im-switch工具：sudo apt-get install im-switch</li>
-<li><a href="https://pinyin.sogou.com/linux/?r=pinyin" target="_blank" rel="noopener">安装包</a> 下载安装包，并且安装sudo dpkg -i sogoupinyin_2.2.0.0108_amd64.deb ，如果出现错误提示，就：apt-get -f install，再安装</li>
-<li>到system settings-&gt;language support,将键盘输入法设置为fcitx</li>
-<li>运行fcitx-configure 设置输入法，如果没有发现搜狗输入法，重启一次电脑</li>
-</ul>
-]]></content>
-      <categories>
-        <category>ubuntu</category>
-      </categories>
-      <tags>
-        <tag>inputMethod</tag>
       </tags>
   </entry>
   <entry>
@@ -1912,6 +2386,11 @@ There has been critical changes in the file system during this operation
       </tags>
   </entry>
   <entry>
+    <title></title>
+    <url>/leetcode/tree/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>PHP XML</title>
     <url>/php/php_xml.html</url>
     <content><![CDATA[<h1 id="php-XML"><a href="#php-XML" class="headerlink" title="php XML"></a>php XML</h1><h2 id="DOMDocument"><a href="#DOMDocument" class="headerlink" title="DOMDocument"></a>DOMDocument</h2><h3 id="遍历删除节点"><a href="#遍历删除节点" class="headerlink" title="遍历删除节点"></a>遍历删除节点</h3><p>遍历删除节点的时候，会出现删除节点删除不干净，<br>当你使用foreach来遍历的时候<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">foreach($nodes as $node)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -1946,23 +2425,16 @@ There has been critical changes in the file system during this operation
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/leetcode/tree/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>postgresql Learning Note</title>
-    <url>/databases/postgresql/postgresqlLearningNote.html</url>
-    <content><![CDATA[<h1 id="postgresql-LearningNote"><a href="#postgresql-LearningNote" class="headerlink" title="postgresql LearningNote"></a>postgresql LearningNote</h1><h2 id="时间相关"><a href="#时间相关" class="headerlink" title="时间相关"></a>时间相关</h2><h3 id="查询昨天的数据"><a href="#查询昨天的数据" class="headerlink" title="查询昨天的数据"></a>查询昨天的数据</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> <span class="keyword">current_date</span>- <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>))=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="查询当天的数据"><a href="#查询当天的数据" class="headerlink" title="查询当天的数据"></a>查询当天的数据</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'00:00:00'</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="查询当月的数据"><a href="#查询当月的数据" class="headerlink" title="查询当月的数据"></a>查询当月的数据</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'1 mons'</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="查询当年的数据"><a href="#查询当年的数据" class="headerlink" title="查询当年的数据"></a>查询当年的数据</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'1 years'</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="timestamp-转化为时间戳"><a href="#timestamp-转化为时间戳" class="headerlink" title="timestamp 转化为时间戳"></a>timestamp 转化为时间戳</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">postgresql=<span class="comment"># select time, EXTRACT(epoch FROM time), to_timestamp(EXTRACT(epoch FROM time)) from table； alert_type='ip';</span></span><br><span class="line">     time      | date_part  |      to_timestamp      </span><br><span class="line"><span class="comment">---------------------+------------+------------------------</span></span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08</span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">postgresql=<span class="comment"># \d table;</span></span><br><span class="line">+<span class="comment">----------------------------------------------------</span></span><br><span class="line"> id            | integer                     |           | not null | nextval('tac_callback_id_seq'::regclass)</span><br><span class="line"> time    | timestamp without time zone |           | not null | '1970-01-01 08:00:00'::timestamp without time zone</span><br></pre></td></tr></table></figure>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">postgresql=<span class="comment"># select time, EXTRACT(epoch FROM time), to_timestamp(EXTRACT(epoch FROM time)), to_timestamp(to_char(time , 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS'), EXTRACT(epoch FROM to_timestamp(to_char(time , 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS')) from tac_callback where alert_type='ip';</span></span><br><span class="line">     time      | date_part  |      to_timestamp      |      to_timestamp      | date_part  </span><br><span class="line"><span class="comment">---------------------+------------+------------------------+------------------------+------------</span></span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08 | 2020-08-24 14:30:44+08 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08 | 2020-08-24 14:30:44+08 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08 | 2020-08-24 14:30:44+08 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08 | 2020-08-24 14:30:44+08 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08 | 2020-08-24 14:30:44+08 | 1598250644</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">postgresql=<span class="comment"># select time, time::TIMESTAMP WITH TIME ZONE, EXTRACT(epoch FROM time), EXTRACT(epoch FROM time::TIMESTAMP WITH TIME ZONE) from tac_callback where alert_type='ip';</span></span><br><span class="line">     time      |       time       | date_part  | date_part  </span><br><span class="line"><span class="comment">---------------------+------------------------+------------+------------</span></span><br><span class="line"> 2020-08-24 14:30:44 | 2020-08-24 14:30:44+08 | 1598279444 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 2020-08-24 14:30:44+08 | 1598279444 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 2020-08-24 14:30:44+08 | 1598279444 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 2020-08-24 14:30:44+08 | 1598279444 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 2020-08-24 14:30:44+08 | 1598279444 | 1598250644</span><br></pre></td></tr></table></figure>
-<p><strong>注意</strong>  EXTRACT(epoch FROM time) 返回的时间戳是double型</p>
-<h2 id="数据类型转化"><a href="#数据类型转化" class="headerlink" title="数据类型转化"></a>数据类型转化</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">CAST( 字段 AS 你要转换为的数据类型 )</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> <span class="keyword">id</span> = <span class="keyword">cast</span>(<span class="number">1003</span> <span class="keyword">as</span> <span class="built_in">VARCHAR</span>);</span><br><span class="line"></span><br><span class="line">字段 :: 你要转换为的数据类型</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> <span class="keyword">id</span> = <span class="number">1002</span> :: <span class="built_in">VARCHAR</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> sip::inet &lt;&lt;= $<span class="number">1</span>::inet;</span><br></pre></td></tr></table></figure>
-<h2 id="数据某表备份和恢复"><a href="#数据某表备份和恢复" class="headerlink" title="数据某表备份和恢复"></a>数据某表备份和恢复</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># dump</span></span><br><span class="line">pg_dump -U postgresql -t web -Fp -f web.sql</span><br><span class="line"></span><br><span class="line"><span class="comment"># restore</span></span><br><span class="line">psql -U postgresql -f web.sql</span><br></pre></td></tr></table></figure>
-<h2 id="字符串转时间戳"><a href="#字符串转时间戳" class="headerlink" title="字符串转时间戳"></a>字符串转时间戳</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">EXTRACT(epoch from to_timestamp(time_string, 'yyyy-MM-dd hh24:mi:ss'))</span><br></pre></td></tr></table></figure>]]></content>
+    <title>postgresql tablespace</title>
+    <url>/databases/postgresql/tablespace.html</url>
+    <content><![CDATA[<h1 id="Table-Space"><a href="#Table-Space" class="headerlink" title="Table Space"></a>Table Space</h1><h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>设备上有两块存储单元A（ROM）和B（RAM）都有一个表空间存放在AB上</p>
+<p>由于B随着设备重启会重置，数据库的初始化应该放在A上</p>
+<p>然后在A和B上创建对应的表空间</p>
+<p>创建表放在A和B上的表空间上，但是注意，如果只是在表创建时，指定表空间，其约束也要指定表空间，或者设置一个默认表空间设置，然后在执行创建表，这样整个表的所有信息都指定到这个表空间上,这些约束包括，分表、id自增、外键等等</p>
+<h2 id="如何删除表空间"><a href="#如何删除表空间" class="headerlink" title="如何删除表空间"></a>如何删除表空间</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">drop tablespace spacename</span><br></pre></td></tr></table></figure>
+<p>当表空间里面存在各类表的时候，是不能直接删除表空间的，即使是删除了表空间的路径</p>
+<p>需要先把表空间的表移动到其他表空间里面或者删除表空间里面的表<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select schemaname, tablename from pg_tables where tablespace=&apos;tablespacename&apos;</span><br><span class="line"></span><br><span class="line">在postgresql可以查到所有关于表空间tablespacename的表</span><br><span class="line"></span><br><span class="line">然后可以考虑是删除还是移动到其他表空间里面</span><br></pre></td></tr></table></figure></p>
+]]></content>
       <categories>
         <category>postgresql</category>
       </categories>
@@ -1971,18 +2443,40 @@ There has been critical changes in the file system during this operation
       </tags>
   </entry>
   <entry>
-    <title>postgresql tablespace</title>
-    <url>/databases/postgresql/tablespace.html</url>
-    <content><![CDATA[<h1 id="Table-Space"><a href="#Table-Space" class="headerlink" title="Table Space"></a>Table Space</h1><h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>设备上有两块存储单元A（ROM）和B（RAM）都有一个表空间存放在AB上</p>
-<p>由于B随着设备重启会重置，数据库的初始化应该放在A上</p>
-<p>然后在A和B上创建对应的表空间</p>
-<p>创建表放在A和B上的表空间上，但是注意，如果只是在表创建时，指定表空间，其约束也要指定表空间，或者设置一个默认表空间设置，然后在执行创建表，这样整个表的所有信息都指定到这个表空间上,这些约束包括，分表、id自增、外键等等</p>
+    <title>sqlNote</title>
+    <url>/databases/sql/sqlNote.html</url>
+    <content><![CDATA[<h1 id="sql-Note"><a href="#sql-Note" class="headerlink" title="sql Note"></a>sql Note</h1><h2 id="优化途径"><a href="#优化途径" class="headerlink" title="优化途径"></a>优化途径</h2><h3 id="关联查询，先过滤后关联"><a href="#关联查询，先过滤后关联" class="headerlink" title="关联查询，先过滤后关联"></a>关联查询，先过滤后关联</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">select * from table1,table2 where 这个是先关联后过滤</span><br><span class="line"></span><br><span class="line">select * from table1,table2 where 这个是先关联后过滤</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>postgresql</category>
+        <category>sql</category>
       </categories>
       <tags>
-        <tag>postgresql</tag>
+        <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sqlzoo</title>
+    <url>/databases/sql/sqlzooNote.html</url>
+    <content><![CDATA[<h1 id="sql-Note"><a href="#sql-Note" class="headerlink" title="sql Note"></a>sql Note</h1><h2 id="function"><a href="#function" class="headerlink" title="function"></a>function</h2><ul>
+<li>concat<ul>
+<li>concat(stringa, stringb)</li>
+</ul>
+</li>
+<li>replace<ul>
+<li>replace(column_name,replace_string, dest_replace_string)</li>
+</ul>
+</li>
+<li>mid<ul>
+<li>截取字符串 MID(column_name,start[,length])</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>sql</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
       </tags>
   </entry>
   <entry>
@@ -2038,31 +2532,6 @@ There has been critical changes in the file system during this operation
       </tags>
   </entry>
   <entry>
-    <title>sqlzoo</title>
-    <url>/databases/sql/sqlzooNote.html</url>
-    <content><![CDATA[<h1 id="sql-Note"><a href="#sql-Note" class="headerlink" title="sql Note"></a>sql Note</h1><h2 id="function"><a href="#function" class="headerlink" title="function"></a>function</h2><ul>
-<li>concat<ul>
-<li>concat(stringa, stringb)</li>
-</ul>
-</li>
-<li>replace<ul>
-<li>replace(column_name,replace_string, dest_replace_string)</li>
-</ul>
-</li>
-<li>mid<ul>
-<li>截取字符串 MID(column_name,start[,length])</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>sql</category>
-      </categories>
-      <tags>
-        <tag>sql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>sqlite common cmd 常用命令</title>
     <url>/databases/sqlite/sqlite_common_cmd.html</url>
     <content><![CDATA[<h1 id="sqlite-common-cmd-常用命令"><a href="#sqlite-common-cmd-常用命令" class="headerlink" title="sqlite common cmd 常用命令"></a>sqlite common cmd 常用命令</h1><h2 id="查看列表名"><a href="#查看列表名" class="headerlink" title="查看列表名"></a>查看列表名</h2><ul>
@@ -2096,29 +2565,112 @@ There has been critical changes in the file system during this operation
       </tags>
   </entry>
   <entry>
-    <title>django basic commands</title>
-    <url>/python/django/basic_command.html</url>
-    <content><![CDATA[<h1 id="django-basic-commands"><a href="#django-basic-commands" class="headerlink" title="django basic commands"></a>django basic commands</h1><h2 id="create-project"><a href="#create-project" class="headerlink" title="create project"></a>create project</h2><p>django-admin.py startproject project_name</p>
-<h2 id="create-app"><a href="#create-app" class="headerlink" title="create app"></a>create app</h2><p>django-admin.py startapp appname</p>
-<h2 id="synchro-database"><a href="#synchro-database" class="headerlink" title="synchro database"></a>synchro database</h2><ul>
-<li>python manange.py makemigrations</li>
-<li>python manange.py migrate</li>
+    <title>Jq from label name get</title>
+    <url>/js/jquery/jq_select.html</url>
+    <content><![CDATA[<h1 id="select-in-jquery"><a href="#select-in-jquery" class="headerlink" title="select in jquery"></a>select in jquery</h1><h2 id="增加删除select里面的option"><a href="#增加删除select里面的option" class="headerlink" title="增加删除select里面的option"></a>增加删除select里面的option</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">"#select_id"</span>).append(<span class="string">"&lt;option value='Value'&gt;Text&lt;/option&gt;"</span>); <span class="comment">//为Select追加一个Option(下拉项) </span></span><br><span class="line">$(<span class="string">"#select_id"</span>).prepend(<span class="string">"&lt;option value='0'&gt;请选择&lt;/option&gt;"</span>); <span class="comment">//为Select插入一个Option(第一个位置) </span></span><br><span class="line">$(<span class="string">"#select_id option:last"</span>).remove(); <span class="comment">//删除Select中索引值最大Option(最后一个) </span></span><br><span class="line">$(<span class="string">"#select_id option[index='0']"</span>).remove(); <span class="comment">//删除Select中索引值为0的Option(第一个) </span></span><br><span class="line">$(<span class="string">"#select_id option[value='3']"</span>).remove(); <span class="comment">//删除Select中Value='3'的Option </span></span><br><span class="line">$(<span class="string">"#select_id option[text='4']"</span>).remove(); <span class="comment">//删除Select中Text='4'的Option </span></span><br><span class="line">jQuery(<span class="string">"#link3"</span>).find(<span class="string">"option"</span>).remove();<span class="comment">//删除select里面所有的option</span></span><br></pre></td></tr></table></figure>
+<h2 id="获取select里面的值"><a href="#获取select里面的值" class="headerlink" title="获取select里面的值"></a>获取select里面的值</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">"#select_id"</span>).change(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//code...&#125;); //为Select添加事件，当选择其中一项时触发 </span></span><br><span class="line"><span class="keyword">var</span> checkText=$(<span class="string">"#select_id"</span>).find(<span class="string">"option:selected"</span>).text(); <span class="comment">//获取Select选择的Text </span></span><br><span class="line"><span class="keyword">var</span> checkValue=$(<span class="string">"#select_id"</span>).val(); <span class="comment">//获取Select选择的Value </span></span><br><span class="line"><span class="keyword">var</span> checkIndex=$(<span class="string">"#select_id "</span>).get(<span class="number">0</span>).selectedIndex; <span class="comment">//获取Select选择的索引值 </span></span><br><span class="line"><span class="keyword">var</span> maxIndex=$(<span class="string">"#select_id option:last"</span>).attr(<span class="string">"index"</span>); <span class="comment">//获取Select最大的索引值</span></span><br></pre></td></tr></table></figure>
+<h2 id="select-事件"><a href="#select-事件" class="headerlink" title="select 事件"></a>select 事件</h2><ul>
+<li>onchange 选择option触发的事件</li>
+<li>onfocus  点击下拉框，就会触发的事件</li>
+<li>onclick 不会触发任何事件</li>
 </ul>
-<h2 id="run-by-test-server"><a href="#run-by-test-server" class="headerlink" title="run by test server"></a>run by test server</h2><p>python manange.py runserver 127.0.0.1:8888</p>
-<h2 id="clear-database"><a href="#clear-database" class="headerlink" title="clear database"></a>clear database</h2><p>python manange.py flush</p>
-<h2 id="create-super-user"><a href="#create-super-user" class="headerlink" title="create super user"></a>create super user</h2><p>python manange.py createsuperuser</p>
-<h2 id="change-user-password"><a href="#change-user-password" class="headerlink" title="change user password"></a>change user password</h2><p>python manange.py changepassword username</p>
-<h2 id="dump-database"><a href="#dump-database" class="headerlink" title="dump database"></a>dump database</h2><p>python manange.py dumpdata appname &gt; appname.json</p>
-<h2 id="load-database"><a href="#load-database" class="headerlink" title="load database"></a>load database</h2><p>python manange.py loaddata appname.json</p>
-<h2 id="django-shell"><a href="#django-shell" class="headerlink" title="django shell"></a>django shell</h2><p>python manange.py shell</p>
-<h2 id="database-sql-shell"><a href="#database-sql-shell" class="headerlink" title="database sql shell"></a>database sql shell</h2><p>python manange.py dbshell</p>
 ]]></content>
       <categories>
-        <category>Python</category>
+        <category>js</category>
       </categories>
       <tags>
-        <tag>python</tag>
-        <tag>django</tag>
+        <tag>js</tag>
+        <tag>jquery</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jq ajax</title>
+    <url>/js/jquery/jq_ajax.html</url>
+    <content><![CDATA[<h1 id="jquery-Ajax"><a href="#jquery-Ajax" class="headerlink" title="jquery Ajax"></a>jquery Ajax</h1><h2 id="ajax-请求"><a href="#ajax-请求" class="headerlink" title="ajax 请求"></a>ajax 请求</h2><h3 id="question-1"><a href="#question-1" class="headerlink" title="question 1"></a>question 1</h3><p>ajax请求成功后，success返回看不到data</p>
+<p>A：可能是因为服务器返回的数据不是json格式数据</p>
+]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>jquery</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP database transaction</title>
+    <url>/php/cookbook/php_database_transaction.html</url>
+    <content><![CDATA[<h1 id="PHP-database-transaction"><a href="#PHP-database-transaction" class="headerlink" title="PHP database transaction"></a>PHP database transaction</h1><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Message</span></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> $db;</span><br><span class="line">    <span class="comment">// $form_errors save post validate error for showing error in pages</span></span><br><span class="line">    <span class="keyword">protected</span> $form_errors = <span class="keyword">array</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        set_exception_handler(<span class="keyword">array</span>(<span class="keyword">$this</span>, <span class="string">'logAndDie'</span>));</span><br><span class="line">        <span class="keyword">$this</span>-&gt;db = <span class="keyword">new</span> PDO(<span class="string">"sqlite:/tmp/tmp.db"</span>);</span><br><span class="line">        <span class="keyword">$this</span>-&gt;db-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">save</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;db-&gt;beginTransaction();</span><br><span class="line">        pass</span><br><span class="line">        <span class="keyword">$this</span>-&gt;db-&gt;commit();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">valid</span><span class="params">()</span></span>&#123;</span><br><span class="line">        pass</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">logAndDie</span><span class="params">(Exception $e)</span></span>&#123;</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'ERROR: '</span>. htmlentities($e-&gt;getMessage());</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;db-&gt;inTransaction())&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;db-&gt;rollback();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>database</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP dynamically create object</title>
+    <url>/php/cookbook/php_dynamic_create_object.html</url>
+    <content><![CDATA[<h1 id="PHP-dynamically-create-object"><a href="#PHP-dynamically-create-object" class="headerlink" title="PHP dynamically create object"></a>PHP dynamically create object</h1><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">$object = <span class="keyword">new</span> ReflectionClass(<span class="string">'PDO'</span>);</span><br><span class="line">$object-&gt;newInstanceArgs(<span class="keyword">array</span>(<span class="string">'arg1'</span>=&gt;$arg1, <span class="string">'arg2'</span>=&gt;$arg2));</span><br></pre></td></tr></table></figure>
+<h1 id="PHP-dynamically-calling-func"><a href="#PHP-dynamically-calling-func" class="headerlink" title="PHP dynamically calling func"></a>PHP dynamically calling func</h1><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">$classname = <span class="string">"TestClassName"</span>;</span><br><span class="line">$object = <span class="keyword">new</span> <span class="comment">#classname();</span></span><br><span class="line"></span><br><span class="line">$methodname = <span class="string">"getData"</span>;</span><br><span class="line"></span><br><span class="line">$object-&gt;$methodname(<span class="string">"arg1"</span>, <span class="string">"arg2"</span>);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP PDO error info</title>
+    <url>/php/cookbook/php_pdo_error_info.html</url>
+    <content><![CDATA[<h1 id="PHP-PDO-catch-error-info"><a href="#PHP-PDO-catch-error-info" class="headerlink" title="PHP PDO catch error info"></a>PHP PDO catch error info</h1><p><code>`</code>php</p>
+<p>try{<br>    $db = new PDO(‘sqlite:/tmp/tmp.db’);<br>    $db-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);<br>    $st = $db-&gt;prepare(‘SELECT * FROM tmp’);<br>    $st-&gt;execute():<br>    while($row = $st-&gt;fetch(PDO:FETCH_NUM)){<br>        print implode(‘,’, $row).”<br>\n”;<br>    }<br>}catch(Exception $e){<br>    print “problem: “ . $e-&gt;getMessage();<br>}</p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p>php cookbook 10.10</p>
+]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>pdo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP session</title>
+    <url>/php/cookbook/php_session.html</url>
+    <content><![CDATA[<h1 id="PHP-Session"><a href="#PHP-Session" class="headerlink" title="PHP Session"></a>PHP Session</h1><h2 id="PHP-redirect-url-need-add-phpsessionid"><a href="#PHP-redirect-url-need-add-phpsessionid" class="headerlink" title="PHP redirect url need add phpsessionid"></a>PHP redirect url need add phpsessionid</h2><p>SID is constant value replace phpsessionid<br><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$redirect_url = <span class="string">'http://www.example.com'</span>;</span><br><span class="line"><span class="keyword">if</span>(defined(<span class="string">'SID'</span>) &amp;&amp; (! <span class="keyword">isset</span>($_COOKIE[session_name()])))&#123;</span><br><span class="line">    $redirect_url .= <span class="string">'?'</span> . SID</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="output-add-rewrite-var-string-name-string-value-bool"><a href="#output-add-rewrite-var-string-name-string-value-bool" class="headerlink" title="output_add_rewrite_var ( string $name , string $value ) : bool"></a>output_add_rewrite_var ( string $name , string $value ) : bool</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">output_add_rewrite_var(<span class="string">'token'</span>, $token);</span><br></pre></td></tr></table></figure>
+<p>此函数给URL重写机制添加名/值对。 这种名值对将被添加到URL（以GET参数的形式）和表单（以input隐藏域的形式），当透明URL重写用 session.use_trans_sid 开启时同样可以添加到session ID。 要注意，绝对URL(<a href="http://example.com/..)不能被重写。" target="_blank" rel="noopener">http://example.com/..)不能被重写。</a></p>
+<h2 id="force-use-cookie-url-not-contain-phpsessionid"><a href="#force-use-cookie-url-not-contain-phpsessionid" class="headerlink" title="force use cookie, url not contain phpsessionid"></a>force use cookie, url not contain phpsessionid</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">ini_set(<span class="string">'session.use_only_cookies'</span>, <span class="keyword">true</span>)</span><br><span class="line"></span><br><span class="line">session_regenerate_id();</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>session</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP Laravel</title>
+    <url>/php/laravel/timeline.html</url>
+    <content><![CDATA[<h1 id="learning-laravel"><a href="#learning-laravel" class="headerlink" title="learning laravel"></a>learning laravel</h1><ul>
+<li>install homestead vagrant box</li>
+<li>git clone <a href="https://github.com/laravel/homestead.git" target="_blank" rel="noopener">https://github.com/laravel/homestead.git</a> Homestead</li>
+</ul>
+<h2 id="laravel-local-server-init"><a href="#laravel-local-server-init" class="headerlink" title="laravel local server init"></a>laravel local server init</h2><ul>
+<li>php artisan serve –host=0.0.0.0 –port=8000</li>
+</ul>
+]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>laravel</tag>
       </tags>
   </entry>
   <entry>
@@ -2143,59 +2695,8 @@ There has been critical changes in the file system during this operation
         <category>php</category>
       </categories>
       <tags>
+        <tag>php</tag>
         <tag>configure</tag>
-        <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP Laravel</title>
-    <url>/php/laravel/timeline.html</url>
-    <content><![CDATA[<h1 id="learning-laravel"><a href="#learning-laravel" class="headerlink" title="learning laravel"></a>learning laravel</h1><ul>
-<li>install homestead vagrant box</li>
-<li>git clone <a href="https://github.com/laravel/homestead.git" target="_blank" rel="noopener">https://github.com/laravel/homestead.git</a> Homestead</li>
-</ul>
-<h2 id="laravel-local-server-init"><a href="#laravel-local-server-init" class="headerlink" title="laravel local server init"></a>laravel local server init</h2><ul>
-<li>php artisan serve –host=0.0.0.0 –port=8000</li>
-</ul>
-]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
-        <tag>laravel</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP database transaction</title>
-    <url>/php/cookbook/php_database_transaction.html</url>
-    <content><![CDATA[<h1 id="PHP-database-transaction"><a href="#PHP-database-transaction" class="headerlink" title="PHP database transaction"></a>PHP database transaction</h1><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Message</span></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> $db;</span><br><span class="line">    <span class="comment">// $form_errors save post validate error for showing error in pages</span></span><br><span class="line">    <span class="keyword">protected</span> $form_errors = <span class="keyword">array</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        set_exception_handler(<span class="keyword">array</span>(<span class="keyword">$this</span>, <span class="string">'logAndDie'</span>));</span><br><span class="line">        <span class="keyword">$this</span>-&gt;db = <span class="keyword">new</span> PDO(<span class="string">"sqlite:/tmp/tmp.db"</span>);</span><br><span class="line">        <span class="keyword">$this</span>-&gt;db-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">save</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;db-&gt;beginTransaction();</span><br><span class="line">        pass</span><br><span class="line">        <span class="keyword">$this</span>-&gt;db-&gt;commit();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">valid</span><span class="params">()</span></span>&#123;</span><br><span class="line">        pass</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">logAndDie</span><span class="params">(Exception $e)</span></span>&#123;</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'ERROR: '</span>. htmlentities($e-&gt;getMessage());</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;db-&gt;inTransaction())&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;db-&gt;rollback();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
-        <tag>database</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jq from label name get</title>
-    <url>/js/jquery/jq_select.html</url>
-    <content><![CDATA[<h1 id="select-in-jquery"><a href="#select-in-jquery" class="headerlink" title="select in jquery"></a>select in jquery</h1><h2 id="增加删除select里面的option"><a href="#增加删除select里面的option" class="headerlink" title="增加删除select里面的option"></a>增加删除select里面的option</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">"#select_id"</span>).append(<span class="string">"&lt;option value='Value'&gt;Text&lt;/option&gt;"</span>); <span class="comment">//为Select追加一个Option(下拉项) </span></span><br><span class="line">$(<span class="string">"#select_id"</span>).prepend(<span class="string">"&lt;option value='0'&gt;请选择&lt;/option&gt;"</span>); <span class="comment">//为Select插入一个Option(第一个位置) </span></span><br><span class="line">$(<span class="string">"#select_id option:last"</span>).remove(); <span class="comment">//删除Select中索引值最大Option(最后一个) </span></span><br><span class="line">$(<span class="string">"#select_id option[index='0']"</span>).remove(); <span class="comment">//删除Select中索引值为0的Option(第一个) </span></span><br><span class="line">$(<span class="string">"#select_id option[value='3']"</span>).remove(); <span class="comment">//删除Select中Value='3'的Option </span></span><br><span class="line">$(<span class="string">"#select_id option[text='4']"</span>).remove(); <span class="comment">//删除Select中Text='4'的Option </span></span><br><span class="line">jQuery(<span class="string">"#link3"</span>).find(<span class="string">"option"</span>).remove();<span class="comment">//删除select里面所有的option</span></span><br></pre></td></tr></table></figure>
-<h2 id="获取select里面的值"><a href="#获取select里面的值" class="headerlink" title="获取select里面的值"></a>获取select里面的值</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">"#select_id"</span>).change(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//code...&#125;); //为Select添加事件，当选择其中一项时触发 </span></span><br><span class="line"><span class="keyword">var</span> checkText=$(<span class="string">"#select_id"</span>).find(<span class="string">"option:selected"</span>).text(); <span class="comment">//获取Select选择的Text </span></span><br><span class="line"><span class="keyword">var</span> checkValue=$(<span class="string">"#select_id"</span>).val(); <span class="comment">//获取Select选择的Value </span></span><br><span class="line"><span class="keyword">var</span> checkIndex=$(<span class="string">"#select_id "</span>).get(<span class="number">0</span>).selectedIndex; <span class="comment">//获取Select选择的索引值 </span></span><br><span class="line"><span class="keyword">var</span> maxIndex=$(<span class="string">"#select_id option:last"</span>).attr(<span class="string">"index"</span>); <span class="comment">//获取Select最大的索引值</span></span><br></pre></td></tr></table></figure>
-<h2 id="select-事件"><a href="#select-事件" class="headerlink" title="select 事件"></a>select 事件</h2><ul>
-<li>onchange 选择option触发的事件</li>
-<li>onfocus  点击下拉框，就会触发的事件</li>
-<li>onclick 不会触发任何事件</li>
-</ul>
-]]></content>
-      <categories>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>js</tag>
-        <tag>jquery</tag>
       </tags>
   </entry>
   <entry>
@@ -2212,21 +2713,6 @@ There has been critical changes in the file system during this operation
         <tag>php</tag>
         <tag>crsf</tag>
         <tag>web attack</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP PDO error info</title>
-    <url>/php/cookbook/php_pdo_error_info.html</url>
-    <content><![CDATA[<h1 id="PHP-PDO-catch-error-info"><a href="#PHP-PDO-catch-error-info" class="headerlink" title="PHP PDO catch error info"></a>PHP PDO catch error info</h1><p><code>`</code>php</p>
-<p>try{<br>    $db = new PDO(‘sqlite:/tmp/tmp.db’);<br>    $db-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);<br>    $st = $db-&gt;prepare(‘SELECT * FROM tmp’);<br>    $st-&gt;execute():<br>    while($row = $st-&gt;fetch(PDO:FETCH_NUM)){<br>        print implode(‘,’, $row).”<br>\n”;<br>    }<br>}catch(Exception $e){<br>    print “problem: “ . $e-&gt;getMessage();<br>}</p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p>php cookbook 10.10</p>
-]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
-        <tag>pdo</tag>
       </tags>
   </entry>
   <entry>
@@ -2256,19 +2742,6 @@ There has been critical changes in the file system during this operation
       <tags>
         <tag>php</tag>
         <tag>web attack</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP dynamically create object</title>
-    <url>/php/cookbook/php_dynamic_create_object.html</url>
-    <content><![CDATA[<h1 id="PHP-dynamically-create-object"><a href="#PHP-dynamically-create-object" class="headerlink" title="PHP dynamically create object"></a>PHP dynamically create object</h1><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">$object = <span class="keyword">new</span> ReflectionClass(<span class="string">'PDO'</span>);</span><br><span class="line">$object-&gt;newInstanceArgs(<span class="keyword">array</span>(<span class="string">'arg1'</span>=&gt;$arg1, <span class="string">'arg2'</span>=&gt;$arg2));</span><br></pre></td></tr></table></figure>
-<h1 id="PHP-dynamically-calling-func"><a href="#PHP-dynamically-calling-func" class="headerlink" title="PHP dynamically calling func"></a>PHP dynamically calling func</h1><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">$classname = <span class="string">"TestClassName"</span>;</span><br><span class="line">$object = <span class="keyword">new</span> <span class="comment">#classname();</span></span><br><span class="line"></span><br><span class="line">$methodname = <span class="string">"getData"</span>;</span><br><span class="line"></span><br><span class="line">$object-&gt;$methodname(<span class="string">"arg1"</span>, <span class="string">"arg2"</span>);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
       </tags>
   </entry>
   <entry>
@@ -2312,19 +2785,6 @@ There has been critical changes in the file system during this operation
       </tags>
   </entry>
   <entry>
-    <title>install pip</title>
-    <url>/python/install/Pip.html</url>
-    <content><![CDATA[<h1 id="install-pip2-and-pip3"><a href="#install-pip2-and-pip3" class="headerlink" title="install pip2 and pip3"></a>install pip2 and pip3</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://bootstrap.pypa.io/get-pip.py</span><br><span class="line">sudo python2 get-pip.py</span><br><span class="line">sudo python get-pip.py</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>pip</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>php password Management Empty Password</title>
     <url>/php/secure/php_password_Management_Empty_Password.html</url>
     <content><![CDATA[<h1 id="php-password-Management-Empty-Password"><a href="#php-password-Management-Empty-Password" class="headerlink" title="php password Management Empty Password"></a>php password Management Empty Password</h1><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$tmp = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">"password"</span>=&gt;<span class="string">""</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
@@ -2339,17 +2799,56 @@ There has been critical changes in the file system during this operation
       </tags>
   </entry>
   <entry>
-    <title>Jq ajax</title>
-    <url>/js/jquery/jq_ajax.html</url>
-    <content><![CDATA[<h1 id="jquery-Ajax"><a href="#jquery-Ajax" class="headerlink" title="jquery Ajax"></a>jquery Ajax</h1><h2 id="ajax-请求"><a href="#ajax-请求" class="headerlink" title="ajax 请求"></a>ajax 请求</h2><h3 id="question-1"><a href="#question-1" class="headerlink" title="question 1"></a>question 1</h3><p>ajax请求成功后，success返回看不到data</p>
-<p>A：可能是因为服务器返回的数据不是json格式数据</p>
+    <title>django basic commands</title>
+    <url>/python/django/basic_command.html</url>
+    <content><![CDATA[<h1 id="django-basic-commands"><a href="#django-basic-commands" class="headerlink" title="django basic commands"></a>django basic commands</h1><h2 id="create-project"><a href="#create-project" class="headerlink" title="create project"></a>create project</h2><p>django-admin.py startproject project_name</p>
+<h2 id="create-app"><a href="#create-app" class="headerlink" title="create app"></a>create app</h2><p>django-admin.py startapp appname</p>
+<h2 id="synchro-database"><a href="#synchro-database" class="headerlink" title="synchro database"></a>synchro database</h2><ul>
+<li>python manange.py makemigrations</li>
+<li>python manange.py migrate</li>
+</ul>
+<h2 id="run-by-test-server"><a href="#run-by-test-server" class="headerlink" title="run by test server"></a>run by test server</h2><p>python manange.py runserver 127.0.0.1:8888</p>
+<h2 id="clear-database"><a href="#clear-database" class="headerlink" title="clear database"></a>clear database</h2><p>python manange.py flush</p>
+<h2 id="create-super-user"><a href="#create-super-user" class="headerlink" title="create super user"></a>create super user</h2><p>python manange.py createsuperuser</p>
+<h2 id="change-user-password"><a href="#change-user-password" class="headerlink" title="change user password"></a>change user password</h2><p>python manange.py changepassword username</p>
+<h2 id="dump-database"><a href="#dump-database" class="headerlink" title="dump database"></a>dump database</h2><p>python manange.py dumpdata appname &gt; appname.json</p>
+<h2 id="load-database"><a href="#load-database" class="headerlink" title="load database"></a>load database</h2><p>python manange.py loaddata appname.json</p>
+<h2 id="django-shell"><a href="#django-shell" class="headerlink" title="django shell"></a>django shell</h2><p>python manange.py shell</p>
+<h2 id="database-sql-shell"><a href="#database-sql-shell" class="headerlink" title="database sql shell"></a>database sql shell</h2><p>python manange.py dbshell</p>
 ]]></content>
       <categories>
-        <category>js</category>
+        <category>Python</category>
       </categories>
       <tags>
-        <tag>js</tag>
-        <tag>jquery</tag>
+        <tag>python</tag>
+        <tag>django</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php password Management Hardcoded Password</title>
+    <url>/php/secure/php_password_Management_Hardcoded_password.html</url>
+    <content><![CDATA[<h1 id="php-password-Management-Hardcoded-Password"><a href="#php-password-Management-Hardcoded-Password" class="headerlink" title="php password Management Hardcoded Password"></a>php password Management Hardcoded Password</h1><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$tmp = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">"password"</span>=&gt;<span class="string">"**********"</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h1 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h1><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$tmp = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">"password"</span>=&gt;strval(<span class="string">"*******"</span>),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>web attack</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>install pip</title>
+    <url>/python/install/Pip.html</url>
+    <content><![CDATA[<h1 id="install-pip2-and-pip3"><a href="#install-pip2-and-pip3" class="headerlink" title="install pip2 and pip3"></a>install pip2 and pip3</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://bootstrap.pypa.io/get-pip.py</span><br><span class="line">sudo python2 get-pip.py</span><br><span class="line">sudo python get-pip.py</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>pip</tag>
       </tags>
   </entry>
   <entry>
@@ -2475,33 +2974,23 @@ There has been critical changes in the file system during this operation
       </tags>
   </entry>
   <entry>
-    <title>PHP session</title>
-    <url>/php/cookbook/php_session.html</url>
-    <content><![CDATA[<h1 id="PHP-Session"><a href="#PHP-Session" class="headerlink" title="PHP Session"></a>PHP Session</h1><h2 id="PHP-redirect-url-need-add-phpsessionid"><a href="#PHP-redirect-url-need-add-phpsessionid" class="headerlink" title="PHP redirect url need add phpsessionid"></a>PHP redirect url need add phpsessionid</h2><p>SID is constant value replace phpsessionid<br><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$redirect_url = <span class="string">'http://www.example.com'</span>;</span><br><span class="line"><span class="keyword">if</span>(defined(<span class="string">'SID'</span>) &amp;&amp; (! <span class="keyword">isset</span>($_COOKIE[session_name()])))&#123;</span><br><span class="line">    $redirect_url .= <span class="string">'?'</span> . SID</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="output-add-rewrite-var-string-name-string-value-bool"><a href="#output-add-rewrite-var-string-name-string-value-bool" class="headerlink" title="output_add_rewrite_var ( string $name , string $value ) : bool"></a>output_add_rewrite_var ( string $name , string $value ) : bool</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">output_add_rewrite_var(<span class="string">'token'</span>, $token);</span><br></pre></td></tr></table></figure>
-<p>此函数给URL重写机制添加名/值对。 这种名值对将被添加到URL（以GET参数的形式）和表单（以input隐藏域的形式），当透明URL重写用 session.use_trans_sid 开启时同样可以添加到session ID。 要注意，绝对URL(<a href="http://example.com/..)不能被重写。" target="_blank" rel="noopener">http://example.com/..)不能被重写。</a></p>
-<h2 id="force-use-cookie-url-not-contain-phpsessionid"><a href="#force-use-cookie-url-not-contain-phpsessionid" class="headerlink" title="force use cookie, url not contain phpsessionid"></a>force use cookie, url not contain phpsessionid</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">ini_set(<span class="string">'session.use_only_cookies'</span>, <span class="keyword">true</span>)</span><br><span class="line"></span><br><span class="line">session_regenerate_id();</span><br></pre></td></tr></table></figure>
-]]></content>
+    <title>postgresql Learning Note</title>
+    <url>/databases/postgresql/postgresqlLearningNote.html</url>
+    <content><![CDATA[<h1 id="postgresql-LearningNote"><a href="#postgresql-LearningNote" class="headerlink" title="postgresql LearningNote"></a>postgresql LearningNote</h1><h2 id="时间相关"><a href="#时间相关" class="headerlink" title="时间相关"></a>时间相关</h2><h3 id="查询昨天的数据"><a href="#查询昨天的数据" class="headerlink" title="查询昨天的数据"></a>查询昨天的数据</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> <span class="keyword">current_date</span>- <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>))=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="查询当天的数据"><a href="#查询当天的数据" class="headerlink" title="查询当天的数据"></a>查询当天的数据</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'00:00:00'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="查询当月的数据"><a href="#查询当月的数据" class="headerlink" title="查询当月的数据"></a>查询当月的数据</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'1 mons'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="查询当年的数据"><a href="#查询当年的数据" class="headerlink" title="查询当年的数据"></a>查询当年的数据</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">audit</span> <span class="keyword">where</span> age(<span class="keyword">current_date</span>, <span class="built_in">DATE</span>(to_char(to_timestamp(<span class="built_in">time</span>), <span class="string">'YYYY-MM-DD 00:00:00'</span>)))=<span class="string">'1 years'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="timestamp-转化为时间戳"><a href="#timestamp-转化为时间戳" class="headerlink" title="timestamp 转化为时间戳"></a>timestamp 转化为时间戳</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">postgresql=<span class="comment"># select time, EXTRACT(epoch FROM time), to_timestamp(EXTRACT(epoch FROM time)) from table； alert_type='ip';</span></span><br><span class="line">     time      | date_part  |      to_timestamp      </span><br><span class="line"><span class="comment">---------------------+------------+------------------------</span></span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08</span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">postgresql=<span class="comment"># \d table;</span></span><br><span class="line">+<span class="comment">----------------------------------------------------</span></span><br><span class="line"> id            | integer                     |           | not null | nextval('tac_callback_id_seq'::regclass)</span><br><span class="line"> time    | timestamp without time zone |           | not null | '1970-01-01 08:00:00'::timestamp without time zone</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">postgresql=<span class="comment"># select time, EXTRACT(epoch FROM time), to_timestamp(EXTRACT(epoch FROM time)), to_timestamp(to_char(time , 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS'), EXTRACT(epoch FROM to_timestamp(to_char(time , 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS')) from tac_callback where alert_type='ip';</span></span><br><span class="line">     time      | date_part  |      to_timestamp      |      to_timestamp      | date_part  </span><br><span class="line"><span class="comment">---------------------+------------+------------------------+------------------------+------------</span></span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08 | 2020-08-24 14:30:44+08 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08 | 2020-08-24 14:30:44+08 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08 | 2020-08-24 14:30:44+08 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08 | 2020-08-24 14:30:44+08 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 1598279444 | 2020-08-24 22:30:44+08 | 2020-08-24 14:30:44+08 | 1598250644</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">postgresql=<span class="comment"># select time, time::TIMESTAMP WITH TIME ZONE, EXTRACT(epoch FROM time), EXTRACT(epoch FROM time::TIMESTAMP WITH TIME ZONE) from tac_callback where alert_type='ip';</span></span><br><span class="line">     time      |       time       | date_part  | date_part  </span><br><span class="line"><span class="comment">---------------------+------------------------+------------+------------</span></span><br><span class="line"> 2020-08-24 14:30:44 | 2020-08-24 14:30:44+08 | 1598279444 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 2020-08-24 14:30:44+08 | 1598279444 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 2020-08-24 14:30:44+08 | 1598279444 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 2020-08-24 14:30:44+08 | 1598279444 | 1598250644</span><br><span class="line"> 2020-08-24 14:30:44 | 2020-08-24 14:30:44+08 | 1598279444 | 1598250644</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>  EXTRACT(epoch FROM time) 返回的时间戳是double型</p>
+<h2 id="数据类型转化"><a href="#数据类型转化" class="headerlink" title="数据类型转化"></a>数据类型转化</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">CAST( 字段 AS 你要转换为的数据类型 )</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> <span class="keyword">id</span> = <span class="keyword">cast</span>(<span class="number">1003</span> <span class="keyword">as</span> <span class="built_in">VARCHAR</span>);</span><br><span class="line"></span><br><span class="line">字段 :: 你要转换为的数据类型</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> <span class="keyword">id</span> = <span class="number">1002</span> :: <span class="built_in">VARCHAR</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> sip::inet &lt;&lt;= $<span class="number">1</span>::inet;</span><br></pre></td></tr></table></figure>
+<h2 id="数据某表备份和恢复"><a href="#数据某表备份和恢复" class="headerlink" title="数据某表备份和恢复"></a>数据某表备份和恢复</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># dump</span></span><br><span class="line">pg_dump -U postgresql -t web -Fp -f web.sql</span><br><span class="line"></span><br><span class="line"><span class="comment"># restore</span></span><br><span class="line">psql -U postgresql -f web.sql</span><br></pre></td></tr></table></figure>
+<h2 id="字符串转时间戳"><a href="#字符串转时间戳" class="headerlink" title="字符串转时间戳"></a>字符串转时间戳</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">EXTRACT(epoch from to_timestamp(time_string, 'yyyy-MM-dd hh24:mi:ss'))</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>php</category>
+        <category>postgresql</category>
       </categories>
       <tags>
-        <tag>php</tag>
-        <tag>session</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php password Management Hardcoded Password</title>
-    <url>/php/secure/php_password_Management_Hardcoded_password.html</url>
-    <content><![CDATA[<h1 id="php-password-Management-Hardcoded-Password"><a href="#php-password-Management-Hardcoded-Password" class="headerlink" title="php password Management Hardcoded Password"></a>php password Management Hardcoded Password</h1><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$tmp = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">"password"</span>=&gt;<span class="string">"**********"</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h1 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h1><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$tmp = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">"password"</span>=&gt;strval(<span class="string">"*******"</span>),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
-        <tag>web attack</tag>
+        <tag>postgresql</tag>
       </tags>
   </entry>
   <entry>
@@ -3466,57 +3955,6 @@ There has been critical changes in the file system during this operation
       </categories>
       <tags>
         <tag>postgresql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>sogou install</title>
-    <url>/ubuntu/sogou.html</url>
-    <content><![CDATA[<h1 id="ubuntu-20-04-install-sogou"><a href="#ubuntu-20-04-install-sogou" class="headerlink" title="ubuntu 20.04 install sogou"></a>ubuntu 20.04 install sogou</h1><p>ubuntu 20.04 不支持搜狗官方linux下载的deb</p>
-<h2 id="使用ubuntukylin的-sogou输入法"><a href="#使用ubuntukylin的-sogou输入法" class="headerlink" title="使用ubuntukylin的 sogou输入法"></a>使用ubuntukylin的 sogou输入法</h2><h3 id="添加ubuntukylin源"><a href="#添加ubuntukylin源" class="headerlink" title="添加ubuntukylin源"></a>添加ubuntukylin源</h3><p>根据官方教程添加ukui的官方源，为了安装及后续更新。此源中包含了麒麟版搜狗输入法。</p>
-<p>$ curl -sL ‘<a href="https://keyserver.ubuntu.com/pks/lookup?&amp;op=get&amp;search=0x73BC8FBCF5DE40C6ADFCFFFA9C949F2093F565FF&#39;" target="_blank" rel="noopener">https://keyserver.ubuntu.com/pks/lookup?&amp;op=get&amp;search=0x73BC8FBCF5DE40C6ADFCFFFA9C949F2093F565FF&#39;</a> | sudo apt-key add<br>$ sudo apt-add-repository ‘deb <a href="http://archive.ubuntukylin.com/ukui" target="_blank" rel="noopener">http://archive.ubuntukylin.com/ukui</a> focal main’<br>$ sudo apt upgrade</p>
-<h3 id="安装搜狗输入法"><a href="#安装搜狗输入法" class="headerlink" title="安装搜狗输入法"></a>安装搜狗输入法</h3><p>直接安装软件包，注意包名是sogouimebs而不是原来的sogoupinyin。这个版本在其他地方暂时是找不到的，因为是麒麟社区定制的版本。由于ubuntu和优麒麟一脉相承的关系，我们可以直接拿来用。</p>
-<p>$ sudo apt install sogouimebs</p>
-<h3 id="输入法设置"><a href="#输入法设置" class="headerlink" title="输入法设置"></a>输入法设置</h3><p>根据自身需求针对输入法属性进行设置</p>
-<p>$ sogouIme-configtool </p>
-<h3 id="shift-ctrl-就可以切换语言"><a href="#shift-ctrl-就可以切换语言" class="headerlink" title="shift + ctrl 就可以切换语言"></a>shift + ctrl 就可以切换语言</h3>]]></content>
-      <categories>
-        <category>compile</category>
-      </categories>
-      <tags>
-        <tag>ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>kvm common command</title>
-    <url>/ubuntu/kvm.html</url>
-    <content><![CDATA[<h1 id="kvm-command"><a href="#kvm-command" class="headerlink" title="kvm command"></a>kvm command</h1><ul>
-<li>virsh list –all<ul>
-<li>gets the list of virtual machine info</li>
-</ul>
-</li>
-<li>virsh start “Name”<ul>
-<li>start virtual machine</li>
-</ul>
-</li>
-<li>virsh shutdown “Id”<ul>
-<li>shutdown virtual machine</li>
-</ul>
-</li>
-<li>virsh console “Id”<ul>
-<li>gets virtual machine console</li>
-</ul>
-</li>
-<li>virsh dumpxml “Id” | grep file<ul>
-<li>gets the image file path</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>kvm</category>
-      </categories>
-      <tags>
-        <tag>kvm</tag>
       </tags>
   </entry>
 </search>

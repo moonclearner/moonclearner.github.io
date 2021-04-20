@@ -112,14 +112,14 @@
 
 
   <meta name="description" content="common cmddelete all files in the current path except file A1234find ./* |grep -v A |xargs rm -r# second methodrm -rf !(keep1 | keep2) delete all file except py file1find . -name &amp;quot;*&amp;quot; -type f">
-<meta name="keywords" content="linux,shell">
+<meta name="keywords" content="shell,linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="common cmd">
 <meta property="og:url" content="https://moonclearner.cn/shell/common_cmd.html">
 <meta property="og:site_name" content="moonclearner page">
 <meta property="og:description" content="common cmddelete all files in the current path except file A1234find ./* |grep -v A |xargs rm -r# second methodrm -rf !(keep1 | keep2) delete all file except py file1find . -name &amp;quot;*&amp;quot; -type f">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-25T06:16:36.864Z">
+<meta property="og:updated_time" content="2021-03-29T09:09:55.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="common cmd">
 <meta name="twitter:description" content="common cmddelete all files in the current path except file A1234find ./* |grep -v A |xargs rm -r# second methodrm -rf !(keep1 | keep2) delete all file except py file1find . -name &amp;quot;*&amp;quot; -type f">
@@ -456,7 +456,7 @@
                 
               
 
-              <time title="Created: 2020-05-25 14:16:36" itemprop="dateCreated datePublished" datetime="2020-05-25T14:16:36+08:00">2020-05-25</time>
+              <time title="Created: 2021-03-29 17:09:55" itemprop="dateCreated datePublished" datetime="2021-03-29T17:09:55+08:00">2021-03-29</time>
             
 
             
@@ -502,7 +502,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">3.3k</span>
+                <span title="Symbols count in article">3.2k</span>
               
 
               
@@ -540,12 +540,6 @@
 <h2 id="delete-all-file-except-py-file"><a href="#delete-all-file-except-py-file" class="headerlink" title="delete all file except py file"></a>delete all file except py file</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*&quot; -type f |grep -v &quot;.py&quot; |grep  &quot;\.&quot; |xargs rm -rf</span><br></pre></td></tr></table></figure>
 <h2 id="kill-all-python-process"><a href="#kill-all-python-process" class="headerlink" title="kill all python process"></a>kill all python process</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep python |grep -v grep|awk  &apos;&#123;print $2&#125;&apos;|xargs kill -9</span><br></pre></td></tr></table></figure>
 <h2 id="bash-shortkey"><a href="#bash-shortkey" class="headerlink" title="bash shortkey"></a>bash shortkey</h2><ul>
-<li><p>history 显示命令历史列表</p>
-</li>
-<li><p>↑(Ctrl+p) 显示上一条命令</p>
-</li>
-<li><p>↓(Ctrl+n) 显示下一条命令</p>
-</li>
 <li><p>!num 执行命令历史列表的第num条命令</p>
 </li>
 <li><p>!! 执行上一条命令</p>
@@ -577,8 +571,6 @@
 <li><p>Esc+b 移动到当前单词的开头</p>
 </li>
 <li><p>Esc+f 移动到当前单词的结尾</p>
-</li>
-<li><p>Ctrl+l 清屏</p>
 </li>
 <li><p>Ctrl+u 剪切命令行中光标所在处之前的所有字符（不包括自身）</p>
 </li>
@@ -659,7 +651,6 @@
 <li><h1 id="Ctrl-Q-重新激活向屏幕输出。"><a href="#Ctrl-Q-重新激活向屏幕输出。" class="headerlink" title="Ctrl-Q: 重新激活向屏幕输出。"></a>Ctrl-Q: 重新激活向屏幕输出。</h1></li>
 <li><h1 id="up-arrow-开始历史命令搜索。"><a href="#up-arrow-开始历史命令搜索。" class="headerlink" title="up-arrow: 开始历史命令搜索。"></a>up-arrow: 开始历史命令搜索。</h1></li>
 <li><h1 id="Ctrl-R-开始增量历史命令搜索，可以按照关键字查查自己用过哪些命令。"><a href="#Ctrl-R-开始增量历史命令搜索，可以按照关键字查查自己用过哪些命令。" class="headerlink" title="Ctrl-R: 开始增量历史命令搜索，可以按照关键字查查自己用过哪些命令。"></a>Ctrl-R: 开始增量历史命令搜索，可以按照关键字查查自己用过哪些命令。</h1></li>
-<li><h1 id="TAB-完整的把文件名输入到命令行。"><a href="#TAB-完整的把文件名输入到命令行。" class="headerlink" title="TAB: 完整的把文件名输入到命令行。"></a>TAB: 完整的把文件名输入到命令行。</h1></li>
 <li><h1 id="Ctrl-V-TAB-输入-TAB-而不是扩展命令行。"><a href="#Ctrl-V-TAB-输入-TAB-而不是扩展命令行。" class="headerlink" title="Ctrl-V TAB: 输入 TAB 而不是扩展命令行。"></a>Ctrl-V TAB: 输入 TAB 而不是扩展命令行。</h1></li>
 <li><h1 id="Ctrl-P-上一条命令"><a href="#Ctrl-P-上一条命令" class="headerlink" title="Ctrl + P - 上一条命令"></a>Ctrl + P - 上一条命令</h1></li>
 <li><h1 id="Ctrl-N-下一条命令"><a href="#Ctrl-N-下一条命令" class="headerlink" title="Ctrl + N - 下一条命令"></a>Ctrl + N - 下一条命令</h1></li>
@@ -670,7 +661,6 @@
 <li><h1 id="n-p-打印上一条命令（不执行）"><a href="#n-p-打印上一条命令（不执行）" class="headerlink" title="!-n:p - 打印上一条命令（不执行）"></a>!-n:p - 打印上一条命令（不执行）</h1></li>
 <li><h1 id="string？-最新一条含有“string”的命令"><a href="#string？-最新一条含有“string”的命令" class="headerlink" title="!?string？- 最新一条含有“string”的命令"></a>!?string？- 最新一条含有“string”的命令</h1></li>
 <li><h1 id="n-gs-str1-str2-将倒数第N条命令的str1替换为str2，并执行（若不加g-则仅替换第一个）"><a href="#n-gs-str1-str2-将倒数第N条命令的str1替换为str2，并执行（若不加g-则仅替换第一个）" class="headerlink" title="!-n:gs/str1/str2/ - 将倒数第N条命令的str1替换为str2，并执行（若不加g,则仅替换第一个）"></a>!-n:gs/str1/str2/ - 将倒数第N条命令的str1替换为str2，并执行（若不加g,则仅替换第一个）</h1></li>
-<li><h1 id="Ctrl-l-清屏"><a href="#Ctrl-l-清屏" class="headerlink" title="Ctrl + l - 清屏"></a>Ctrl + l - 清屏</h1></li>
 <li><h1 id="Ctrl-A-光标移到行首"><a href="#Ctrl-A-光标移到行首" class="headerlink" title="Ctrl + A - 光标移到行首"></a>Ctrl + A - 光标移到行首</h1></li>
 <li><h1 id="Ctrl-E-光标移到行尾"><a href="#Ctrl-E-光标移到行尾" class="headerlink" title="Ctrl + E - 光标移到行尾"></a>Ctrl + E - 光标移到行尾</h1></li>
 <li><h1 id="Ctrl-W-清除光标之前一个单词"><a href="#Ctrl-W-清除光标之前一个单词" class="headerlink" title="Ctrl + W - 清除光标之前一个单词"></a>Ctrl + W - 清除光标之前一个单词</h1></li>
@@ -713,9 +703,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
-          
             <a href="/tags/shell/" rel="tag"><i class="fa fa-tag"></i> shell</a>
+          
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
           
         </div>
       
@@ -728,8 +718,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/php/configure/php_extension_compile_fail.html" rel="next" title="build php extension fail phpizse">
-                <i class="fa fa-chevron-left"></i> build php extension fail phpizse
+              <a href="/linux/KVM常用命令.html" rel="next" title="KVM常用命令">
+                <i class="fa fa-chevron-left"></i> KVM常用命令
               </a>
             
           </div>
@@ -738,8 +728,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/php/php_view_file.html" rel="prev" title="PHP View File">
-                PHP View File <i class="fa fa-chevron-right"></i>
+              <a href="/vim/vim.html" rel="prev" title="vim">
+                vim <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -814,7 +804,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">90</span>
+                    <span class="site-state-item-count">94</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -994,7 +984,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">52</span>
+                      
+                    
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1063,7 +1055,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#common-cmd"><span class="nav-number">1.</span> <span class="nav-text">common cmd</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-all-files-in-the-current-path-except-file-A"><span class="nav-number">1.1.</span> <span class="nav-text">delete all files in the current path except file A</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-all-file-except-py-file"><span class="nav-number">1.2.</span> <span class="nav-text">delete all file except py file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kill-all-python-process"><span class="nav-number">1.3.</span> <span class="nav-text">kill all python process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-shortkey"><span class="nav-number">1.4.</span> <span class="nav-text">bash shortkey</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-U-擦除一行光标前面的部分。"><span class="nav-number">2.</span> <span class="nav-text">Ctrl-U: 擦除一行光标前面的部分。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-H-擦除光标前面的一个字符。"><span class="nav-number">3.</span> <span class="nav-text">Ctrl-H: 擦除光标前面的一个字符。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-D-终止输入。-退出-shell，如果您正在使用-shell-的话-。"><span class="nav-number">4.</span> <span class="nav-text">Ctrl-D: 终止输入。(退出 shell，如果您正在使用 shell 的话)。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-C-终止当前正在运行的程序。"><span class="nav-number">5.</span> <span class="nav-text">Ctrl-C: 终止当前正在运行的程序。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-Z-暂停程序。"><span class="nav-number">6.</span> <span class="nav-text">Ctrl-Z: 暂停程序。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-S-停止向屏幕输出。"><span class="nav-number">7.</span> <span class="nav-text">Ctrl-S: 停止向屏幕输出。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-Q-重新激活向屏幕输出。"><span class="nav-number">8.</span> <span class="nav-text">Ctrl-Q: 重新激活向屏幕输出。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#up-arrow-开始历史命令搜索。"><span class="nav-number">9.</span> <span class="nav-text">up-arrow: 开始历史命令搜索。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-R-开始增量历史命令搜索，可以按照关键字查查自己用过哪些命令。"><span class="nav-number">10.</span> <span class="nav-text">Ctrl-R: 开始增量历史命令搜索，可以按照关键字查查自己用过哪些命令。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TAB-完整的把文件名输入到命令行。"><span class="nav-number">11.</span> <span class="nav-text">TAB: 完整的把文件名输入到命令行。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-V-TAB-输入-TAB-而不是扩展命令行。"><span class="nav-number">12.</span> <span class="nav-text">Ctrl-V TAB: 输入 TAB 而不是扩展命令行。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-P-上一条命令"><span class="nav-number">13.</span> <span class="nav-text">Ctrl + P - 上一条命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-N-下一条命令"><span class="nav-number">14.</span> <span class="nav-text">Ctrl + N - 下一条命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-U-擦除一行光标前面的部分。-1"><span class="nav-number">15.</span> <span class="nav-text">Ctrl-U: 擦除一行光标前面的部分。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-Y-粘贴前一Ctrl-U类命令删除的字符-，是粘贴不是撤销啊！"><span class="nav-number">16.</span> <span class="nav-text">Ctrl + Y - 粘贴前一Ctrl+U类命令删除的字符 ，是粘贴不是撤销啊！</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上一条命令"><span class="nav-number">17.</span> <span class="nav-text">!! - 上一条命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#n-倒数第N条历史命令"><span class="nav-number">18.</span> <span class="nav-text">!-n - 倒数第N条历史命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#n-p-打印上一条命令（不执行）"><span class="nav-number">19.</span> <span class="nav-text">!-n:p - 打印上一条命令（不执行）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#string？-最新一条含有“string”的命令"><span class="nav-number">20.</span> <span class="nav-text">!?string？- 最新一条含有“string”的命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#n-gs-str1-str2-将倒数第N条命令的str1替换为str2，并执行（若不加g-则仅替换第一个）"><span class="nav-number">21.</span> <span class="nav-text">!-n:gs/str1/str2/ - 将倒数第N条命令的str1替换为str2，并执行（若不加g,则仅替换第一个）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-l-清屏"><span class="nav-number">22.</span> <span class="nav-text">Ctrl + l - 清屏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-A-光标移到行首"><span class="nav-number">23.</span> <span class="nav-text">Ctrl + A - 光标移到行首</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-E-光标移到行尾"><span class="nav-number">24.</span> <span class="nav-text">Ctrl + E - 光标移到行尾</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-W-清除光标之前一个单词"><span class="nav-number">25.</span> <span class="nav-text">Ctrl + W - 清除光标之前一个单词</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-K-清除光标到行尾的字符"><span class="nav-number">26.</span> <span class="nav-text">Ctrl + K - 清除光标到行尾的字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-T-交换光标前两个字符"><span class="nav-number">27.</span> <span class="nav-text">Ctrl + T - 交换光标前两个字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-V-输入控制字符-如Ctrl-v-会输入-M"><span class="nav-number">28.</span> <span class="nav-text">Ctrl + V - 输入控制字符 如Ctrl+v ,会输入^M</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-F-光标后移一个字符"><span class="nav-number">29.</span> <span class="nav-text">Ctrl + F - 光标后移一个字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-B-光标前移一个字符"><span class="nav-number">30.</span> <span class="nav-text">Ctrl + B - 光标前移一个字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-H-删除光标前一个字符"><span class="nav-number">31.</span> <span class="nav-text">Ctrl + H - 删除光标前一个字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#N-F-光标后移N个单词，N为1时可省略"><span class="nav-number">32.</span> <span class="nav-text">N++F - 光标后移N个单词，N为1时可省略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#N-B-光标前移N个单词，N为1时可省略"><span class="nav-number">33.</span> <span class="nav-text">N++B - 光标前移N个单词，N为1时可省略</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#common-cmd"><span class="nav-number">1.</span> <span class="nav-text">common cmd</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-all-files-in-the-current-path-except-file-A"><span class="nav-number">1.1.</span> <span class="nav-text">delete all files in the current path except file A</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-all-file-except-py-file"><span class="nav-number">1.2.</span> <span class="nav-text">delete all file except py file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kill-all-python-process"><span class="nav-number">1.3.</span> <span class="nav-text">kill all python process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-shortkey"><span class="nav-number">1.4.</span> <span class="nav-text">bash shortkey</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-U-擦除一行光标前面的部分。"><span class="nav-number">2.</span> <span class="nav-text">Ctrl-U: 擦除一行光标前面的部分。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-H-擦除光标前面的一个字符。"><span class="nav-number">3.</span> <span class="nav-text">Ctrl-H: 擦除光标前面的一个字符。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-D-终止输入。-退出-shell，如果您正在使用-shell-的话-。"><span class="nav-number">4.</span> <span class="nav-text">Ctrl-D: 终止输入。(退出 shell，如果您正在使用 shell 的话)。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-C-终止当前正在运行的程序。"><span class="nav-number">5.</span> <span class="nav-text">Ctrl-C: 终止当前正在运行的程序。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-Z-暂停程序。"><span class="nav-number">6.</span> <span class="nav-text">Ctrl-Z: 暂停程序。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-S-停止向屏幕输出。"><span class="nav-number">7.</span> <span class="nav-text">Ctrl-S: 停止向屏幕输出。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-Q-重新激活向屏幕输出。"><span class="nav-number">8.</span> <span class="nav-text">Ctrl-Q: 重新激活向屏幕输出。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#up-arrow-开始历史命令搜索。"><span class="nav-number">9.</span> <span class="nav-text">up-arrow: 开始历史命令搜索。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-R-开始增量历史命令搜索，可以按照关键字查查自己用过哪些命令。"><span class="nav-number">10.</span> <span class="nav-text">Ctrl-R: 开始增量历史命令搜索，可以按照关键字查查自己用过哪些命令。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-V-TAB-输入-TAB-而不是扩展命令行。"><span class="nav-number">11.</span> <span class="nav-text">Ctrl-V TAB: 输入 TAB 而不是扩展命令行。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-P-上一条命令"><span class="nav-number">12.</span> <span class="nav-text">Ctrl + P - 上一条命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-N-下一条命令"><span class="nav-number">13.</span> <span class="nav-text">Ctrl + N - 下一条命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-U-擦除一行光标前面的部分。-1"><span class="nav-number">14.</span> <span class="nav-text">Ctrl-U: 擦除一行光标前面的部分。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-Y-粘贴前一Ctrl-U类命令删除的字符-，是粘贴不是撤销啊！"><span class="nav-number">15.</span> <span class="nav-text">Ctrl + Y - 粘贴前一Ctrl+U类命令删除的字符 ，是粘贴不是撤销啊！</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上一条命令"><span class="nav-number">16.</span> <span class="nav-text">!! - 上一条命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#n-倒数第N条历史命令"><span class="nav-number">17.</span> <span class="nav-text">!-n - 倒数第N条历史命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#n-p-打印上一条命令（不执行）"><span class="nav-number">18.</span> <span class="nav-text">!-n:p - 打印上一条命令（不执行）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#string？-最新一条含有“string”的命令"><span class="nav-number">19.</span> <span class="nav-text">!?string？- 最新一条含有“string”的命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#n-gs-str1-str2-将倒数第N条命令的str1替换为str2，并执行（若不加g-则仅替换第一个）"><span class="nav-number">20.</span> <span class="nav-text">!-n:gs/str1/str2/ - 将倒数第N条命令的str1替换为str2，并执行（若不加g,则仅替换第一个）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-A-光标移到行首"><span class="nav-number">21.</span> <span class="nav-text">Ctrl + A - 光标移到行首</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-E-光标移到行尾"><span class="nav-number">22.</span> <span class="nav-text">Ctrl + E - 光标移到行尾</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-W-清除光标之前一个单词"><span class="nav-number">23.</span> <span class="nav-text">Ctrl + W - 清除光标之前一个单词</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-K-清除光标到行尾的字符"><span class="nav-number">24.</span> <span class="nav-text">Ctrl + K - 清除光标到行尾的字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-T-交换光标前两个字符"><span class="nav-number">25.</span> <span class="nav-text">Ctrl + T - 交换光标前两个字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-V-输入控制字符-如Ctrl-v-会输入-M"><span class="nav-number">26.</span> <span class="nav-text">Ctrl + V - 输入控制字符 如Ctrl+v ,会输入^M</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-F-光标后移一个字符"><span class="nav-number">27.</span> <span class="nav-text">Ctrl + F - 光标后移一个字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-B-光标前移一个字符"><span class="nav-number">28.</span> <span class="nav-text">Ctrl + B - 光标前移一个字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ctrl-H-删除光标前一个字符"><span class="nav-number">29.</span> <span class="nav-text">Ctrl + H - 删除光标前一个字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#N-F-光标后移N个单词，N为1时可省略"><span class="nav-number">30.</span> <span class="nav-text">N++F - 光标后移N个单词，N为1时可省略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#N-B-光标前移N个单词，N为1时可省略"><span class="nav-number">31.</span> <span class="nav-text">N++B - 光标前移N个单词，N为1时可省略</span></a></li></ol></div>
             
 
           </div>
@@ -1096,7 +1088,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">134k</span>
+    <span title="Symbols count total">136k</span>
   
 
   
@@ -1105,7 +1097,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">2:01</span>
+    <span title="Reading time total">2:03</span>
   
 </div>
 

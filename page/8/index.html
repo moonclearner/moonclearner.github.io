@@ -413,7 +413,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/vim/configure.html">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/database/sqlNote.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="moonclearner">
@@ -433,7 +433,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/vim/configure.html" class="post-title-link" itemprop="url">vim configure</a>
+                <a href="/database/sqlNote.html" class="post-title-link" itemprop="url">sqlNote</a>
               
             
           </h1>
@@ -458,9 +458,25 @@
                 
               
 
-              <time title="Created: 2019-06-28 11:56:56" itemprop="dateCreated datePublished" datetime="2019-06-28T11:56:56+08:00">2019-06-28</time>
+              <time title="Created: 2021-07-18 19:28:31" itemprop="dateCreated datePublished" datetime="2021-07-18T19:28:31+08:00">2021-07-18</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-11-24 19:45:00" itemprop="dateModified" datetime="2020-11-24T19:45:00+08:00">2020-11-24</time>
+              
             
           </span>
 
@@ -476,7 +492,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vim/" itemprop="url" rel="index"><span itemprop="name">vim</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/sql/" itemprop="url" rel="index"><span itemprop="name">sql</span></a></span>
 
                 
                 
@@ -504,7 +520,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">333</span>
+                <span title="Symbols count in article">114</span>
               
 
               
@@ -541,20 +557,14 @@
         
           
             <p>
-              YouCompleteMe unavailable No module named future
-cd bundle/YouCompleteMe
-git submodule update --init --recursive
-if error, git config –global
+              sql Note优化途径关联查询，先过滤后关联select * from table1,table2 where 这个是先关联后过滤select * from table1,table2 where 这个是先关联后过滤
 
-
-
-YouCo
-              ...
+              
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/vim/configure.html#more" rel="contents">
+              <a class="btn" href="/database/sqlNote.html#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -616,7 +626,7 @@ YouCo
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/linux/ubuntu/addAppTOdash.html">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/database/sqlite_common_cmd.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="moonclearner">
@@ -636,7 +646,7 @@ YouCo
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/linux/ubuntu/addAppTOdash.html" class="post-title-link" itemprop="url">Add app to ubuntu dash</a>
+                <a href="/database/sqlite_common_cmd.html" class="post-title-link" itemprop="url">sqlite common cmd 常用命令</a>
               
             
           </h1>
@@ -661,9 +671,25 @@ YouCo
                 
               
 
-              <time title="Created: 2019-05-09 10:38:03" itemprop="dateCreated datePublished" datetime="2019-05-09T10:38:03+08:00">2019-05-09</time>
+              <time title="Created: 2021-07-18 19:28:31" itemprop="dateCreated datePublished" datetime="2021-07-18T19:28:31+08:00">2021-07-18</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-27 13:33:54" itemprop="dateModified" datetime="2019-02-27T13:33:54+08:00">2019-02-27</time>
+              
             
           </span>
 
@@ -679,7 +705,7 @@ YouCo
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ubuntu/" itemprop="url" rel="index"><span itemprop="name">ubuntu</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/sqlite/" itemprop="url" rel="index"><span itemprop="name">sqlite</span></a></span>
 
                 
                 
@@ -707,7 +733,7 @@ YouCo
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">421</span>
+                <span title="Symbols count in article">182</span>
               
 
               
@@ -744,13 +770,18 @@ YouCo
         
           
             <p>
-              Add app to ubuntu dash在/usr/share/applications/目录下新建一个名为eclipse.desktop的文件。文件内容如下：[Desktop Entry]Version=2018.09Name=EclipseGenericName[zh_CN]=Eclipse
+              sqlite common cmd 常用命令查看列表名
+pragma table_info(tablename);
+.schema tablename
+select * from sqlite_master where type=”table” and name=”tablename”;
+
+退出sq
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/linux/ubuntu/addAppTOdash.html#more" rel="contents">
+              <a class="btn" href="/database/sqlite_common_cmd.html#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -812,7 +843,7 @@ YouCo
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/linux/ubuntu/best_tool.html">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/database/sql-index_and_like.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="moonclearner">
@@ -832,7 +863,7 @@ YouCo
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/linux/ubuntu/best_tool.html" class="post-title-link" itemprop="url">ubuntu best tool</a>
+                <a href="/database/sql-index_and_like.html" class="post-title-link" itemprop="url">index and like and covering index</a>
               
             
           </h1>
@@ -857,207 +888,25 @@ YouCo
                 
               
 
-              <time title="Created: 2019-04-24 11:31:11" itemprop="dateCreated datePublished" datetime="2019-04-24T11:31:11+08:00">2019-04-24</time>
+              <time title="Created: 2021-07-18 19:28:31" itemprop="dateCreated datePublished" datetime="2021-07-18T19:28:31+08:00">2021-07-18</time>
             
 
             
-          </span>
+              
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/tool/" itemprop="url" rel="index"><span itemprop="name">tool</span></a></span>
-
                 
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">2k</span>
-              
-
-              
                 <span class="post-meta-divider">|</span>
-              
+                
 
-              
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
+                  <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                  <span class="post-meta-item-text">Edited on</span>
                 
-                <span title="Reading time">2 mins.</span>
+                <time title="Modified: 2020-11-10 21:07:01" itemprop="dateModified" datetime="2020-11-10T21:07:01+08:00">2020-11-10</time>
               
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              十大好用的Linux实用工具推荐，亲测！本文我们收集了对Linux用户非常有用的10个工具，其中包括网络监控、系统审计或其它有用命令，这10个Linux工具可以帮助大家提高工作和使用效率，非常实用。
-1.w
-对，你没看错，就是 w 命令。使用该命令我们可以查看到当前登录系统的用户是谁，以及执行了哪些
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/linux/ubuntu/best_tool.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-
-    
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/highchart/highchart_bar_show_zero_value.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="moonclearner">
-      <meta itemprop="description" content="moonclearner record code skill and my feeling">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="moonclearner page">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/highchart/highchart_bar_show_zero_value.html" class="post-title-link" itemprop="url">how to show zero value in bar</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-10 14:34:34" itemprop="dateCreated datePublished" datetime="2019-04-10T14:34:34+08:00">2019-04-10</time>
-            
-
             
           </span>
 
@@ -1073,601 +922,7 @@ YouCo
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/js/" itemprop="url" rel="index"><span itemprop="name">js</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">109</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              how to show zero value in barplotOptions: &#123;    column: &#123;    minPointLength: 3    &#125;&#125;
-
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/highchart/highchart_bar_show_zero_value.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-
-    
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/css/tabel_border_collapse.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="moonclearner">
-      <meta itemprop="description" content="moonclearner record code skill and my feeling">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="moonclearner page">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/css/tabel_border_collapse.html" class="post-title-link" itemprop="url">table border collapse</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-09 16:26:43" itemprop="dateCreated datePublished" datetime="2019-04-09T16:26:43+08:00">2019-04-09</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">274</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              the table border is displayed as a separate borderto achieve the effect of td or th border covering the outer border of the table
-table  &#123;  borde
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/css/tabel_border_collapse.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-
-    
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/linux/ubuntu/sudo_nopasswd.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="moonclearner">
-      <meta itemprop="description" content="moonclearner record code skill and my feeling">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="moonclearner page">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/linux/ubuntu/sudo_nopasswd.html" class="post-title-link" itemprop="url">sudo no password</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-03-18 10:23:59" itemprop="dateCreated datePublished" datetime="2019-03-18T10:23:59+08:00">2019-03-18</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ubuntu/" itemprop="url" rel="index"><span itemprop="name">ubuntu</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">195</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              setting sudo no password通过修改sudouser列表的方式免密码
-首先切换到root用户下 sudo -i,这个时候需要输入一次用户名和密码。
-然后，执行visudo，在打开的文件中找到root ALL=(ALL) ALL
-在其下面追加如下配置，即执行所有超级用户命令密码。
-
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/linux/ubuntu/sudo_nopasswd.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-
-    
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/linux/ubuntu/restore_ubuntu_system.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="moonclearner">
-      <meta itemprop="description" content="moonclearner record code skill and my feeling">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="moonclearner page">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/linux/ubuntu/restore_ubuntu_system.html" class="post-title-link" itemprop="url">backup ubuntu system</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-03-18 10:18:57" itemprop="dateCreated datePublished" datetime="2019-03-18T10:18:57+08:00">2019-03-18</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ubuntu/" itemprop="url" rel="index"><span itemprop="name">ubuntu</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/sql/" itemprop="url" rel="index"><span itemprop="name">sql</span></a></span>
 
                 
                 
@@ -1732,14 +987,17 @@ table  &#123;  borde
         
           
             <p>
-              原链接：https://community.bwbot.org/topic/167
-Systemback是一个Ubuntu系统中用于发布自定义系统镜像和系统备份的软件。有时候我们对自己的Ubuntu做了很多设置，比如各种软件包，各种自定义的配置。我们想要在另一台电脑上也安装一个和我们一模一样的系统，
+              avoid to global query when use to likeselect * when （name，age） has index
+%在左边，即使有索引，也会失效
+只有当%在右边时，才会生效 并且是range模式，而不是覆盖索引
+
+select id.name，age,salary  
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/linux/ubuntu/restore_ubuntu_system.html#more" rel="contents">
+              <a class="btn" href="/database/sql-index_and_like.html#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1801,7 +1059,7 @@ Systemback是一个Ubuntu系统中用于发布自定义系统镜像和系统备�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/linux/ubuntu/zsh_setting.html">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/database/sqlzooNote.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="moonclearner">
@@ -1821,7 +1079,7 @@ Systemback是一个Ubuntu系统中用于发布自定义系统镜像和系统备�
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/linux/ubuntu/zsh_setting.html" class="post-title-link" itemprop="url">zsh setting</a>
+                <a href="/database/sqlzooNote.html" class="post-title-link" itemprop="url">sqlzoo</a>
               
             
           </h1>
@@ -1846,9 +1104,25 @@ Systemback是一个Ubuntu系统中用于发布自定义系统镜像和系统备�
                 
               
 
-              <time title="Created: 2019-03-18 10:09:42" itemprop="dateCreated datePublished" datetime="2019-03-18T10:09:42+08:00">2019-03-18</time>
+              <time title="Created: 2021-07-18 19:28:31" itemprop="dateCreated datePublished" datetime="2021-07-18T19:28:31+08:00">2021-07-18</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-11-10 21:07:03" itemprop="dateModified" datetime="2020-11-10T21:07:03+08:00">2020-11-10</time>
+              
             
           </span>
 
@@ -1864,7 +1138,7 @@ Systemback是一个Ubuntu系统中用于发布自定义系统镜像和系统备�
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/zsh/" itemprop="url" rel="index"><span itemprop="name">zsh</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/sql/" itemprop="url" rel="index"><span itemprop="name">sql</span></a></span>
 
                 
                 
@@ -1892,7 +1166,7 @@ Systemback是一个Ubuntu系统中用于发布自定义系统镜像和系统备�
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">331</span>
+                <span title="Symbols count in article">163</span>
               
 
               
@@ -1929,14 +1203,23 @@ Systemback是一个Ubuntu系统中用于发布自定义系统镜像和系统备�
         
           
             <p>
-              How to fix and recover a “corrupt history file” in zshSimply removing random characters may also work:
-vim .zsh_historyRemove any strange characters, 
+              sql Notefunction
+concat
+concat(stringa, stringb)
+
+
+replace
+replace(column_name,replace_string, dest_replace_string)
+
+
+mid
+截取字符串 MID(column_name,start[
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/linux/ubuntu/zsh_setting.html#more" rel="contents">
+              <a class="btn" href="/database/sqlzooNote.html#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1998,7 +1281,7 @@ vim .zsh_historyRemove any strange characters,
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/cmder/cmder.html">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/database/postgresql_optimization_config.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="moonclearner">
@@ -2018,7 +1301,7 @@ vim .zsh_historyRemove any strange characters,
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/cmder/cmder.html" class="post-title-link" itemprop="url">cmder 各类配置以及问题解决</a>
+                <a href="/database/postgresql_optimization_config.html" class="post-title-link" itemprop="url">postgresql optimization config</a>
               
             
           </h1>
@@ -2043,9 +1326,25 @@ vim .zsh_historyRemove any strange characters,
                 
               
 
-              <time title="Created: 2019-02-27 13:33:54" itemprop="dateCreated datePublished" datetime="2019-02-27T13:33:54+08:00">2019-02-27</time>
+              <time title="Created: 2021-07-18 19:28:31" itemprop="dateCreated datePublished" datetime="2021-07-18T19:28:31+08:00">2021-07-18</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-06-02 18:56:03" itemprop="dateModified" datetime="2021-06-02T18:56:03+08:00">2021-06-02</time>
+              
             
           </span>
 
@@ -2061,7 +1360,7 @@ vim .zsh_historyRemove any strange characters,
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/cmder/" itemprop="url" rel="index"><span itemprop="name">cmder</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/postgresql/" itemprop="url" rel="index"><span itemprop="name">postgresql</span></a></span>
 
                 
                 
@@ -2089,7 +1388,7 @@ vim .zsh_historyRemove any strange characters,
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">331</span>
+                <span title="Symbols count in article">7.5k</span>
               
 
               
@@ -2103,7 +1402,7 @@ vim .zsh_historyRemove any strange characters,
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">1 mins.</span>
+                <span title="Reading time">7 mins.</span>
               
             </div>
           
@@ -2126,18 +1425,13 @@ vim .zsh_historyRemove any strange characters,
         
           
             <p>
-              cmder 配置cmder 显示 oh my zsh会出现乱码
-去网站nerdfonts最下面下载hack字体，解压安装hack字体
-在cmder 的setting中 font是 选择hack字体
-
-启动quake模式，使得cmder能够从window最上面一键呼出
-cmder的setting，ge
+              postgresql optimization configshared_buffersPostgreSQL既使用自身的缓冲区，也使用内核缓冲IO。这意味着数据会在内存中存储两次，首先是存入PostgreSQL缓冲区，然后是内核缓冲区。这被称为双重缓冲区处理。对大多数操作系统来说，这个参数是最有效的
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/cmder/cmder.html#more" rel="contents">
+              <a class="btn" href="/database/postgresql_optimization_config.html#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -2199,7 +1493,7 @@ cmder的setting，ge
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/hexo/hexo_post_header.html">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/database/postgresql_note.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="moonclearner">
@@ -2219,7 +1513,7 @@ cmder的setting，ge
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/hexo/hexo_post_header.html" class="post-title-link" itemprop="url">Hexo head setting</a>
+                <a href="/database/postgresql_note.html" class="post-title-link" itemprop="url">postgresql Learning Note</a>
               
             
           </h1>
@@ -2244,9 +1538,25 @@ cmder的setting，ge
                 
               
 
-              <time title="Created: 2019-02-27 13:33:54" itemprop="dateCreated datePublished" datetime="2019-02-27T13:33:54+08:00">2019-02-27</time>
+              <time title="Created: 2021-07-18 19:28:31" itemprop="dateCreated datePublished" datetime="2021-07-18T19:28:31+08:00">2021-07-18</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-04-23 16:25:44" itemprop="dateModified" datetime="2021-04-23T16:25:44+08:00">2021-04-23</time>
+              
             
           </span>
 
@@ -2262,7 +1572,7 @@ cmder的setting，ge
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/postgresql/" itemprop="url" rel="index"><span itemprop="name">postgresql</span></a></span>
 
                 
                 
@@ -2290,7 +1600,220 @@ cmder的setting，ge
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">290</span>
+                <span title="Symbols count in article">3.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">3 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              postgresql LearningNote时间相关查询昨天的数据select * from audit where current_date- DATE(to_char(to_timestamp(time), 'YYYY-MM-DD 00:00:00'))=1;
+查询当天的数据select * 
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/database/postgresql_note.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+
+    
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/database/postgresqlTablespace.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moonclearner">
+      <meta itemprop="description" content="moonclearner record code skill and my feeling">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="moonclearner page">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/database/postgresqlTablespace.html" class="post-title-link" itemprop="url">postgresql tablespace</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2021-07-18 19:28:31" itemprop="dateCreated datePublished" datetime="2021-07-18T19:28:31+08:00">2021-07-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-11-23 15:37:30" itemprop="dateModified" datetime="2020-11-23T15:37:30+08:00">2020-11-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/postgresql/" itemprop="url" rel="index"><span itemprop="name">postgresql</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">462</span>
               
 
               
@@ -2327,14 +1850,664 @@ cmder的setting，ge
         
           
             <p>
-              hexo post文件头设置---title: Hexo head settingcategories: hexocopyright: truetags:  - hexo  - settingkeywords:description:---
-hexo abstract settingabstract
+              Table Space应用场景设备上有两块存储单元A（ROM）和B（RAM）都有一个表空间存放在AB上
+由于B随着设备重启会重置，数据库的初始化应该放在A上
+然后在A和B上创建对应的表空间
+创建表放在A和B上的表空间上，但是注意，如果只是在表创建时，指定表空间，其约束也要指定表空间，或者设置一个默认
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/hexo/hexo_post_header.html#more" rel="contents">
+              <a class="btn" href="/database/postgresqlTablespace.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+
+    
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/database/postgresql_optimization.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moonclearner">
+      <meta itemprop="description" content="moonclearner record code skill and my feeling">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="moonclearner page">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/database/postgresql_optimization.html" class="post-title-link" itemprop="url">postgresql optimization</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2021-07-18 19:28:31" itemprop="dateCreated datePublished" datetime="2021-07-18T19:28:31+08:00">2021-07-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-06-07 11:04:15" itemprop="dateModified" datetime="2021-06-07T11:04:15+08:00">2021-06-07</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/postgresql/" itemprop="url" rel="index"><span itemprop="name">postgresql</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">4 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              postgresql optimization找到慢的SQL分析慢的SQLexplain slow_sql; 这个仅仅是理论分析explain analyze slow_sql; 理论加实际运行explain (analyze true,buffers true)  slow_sql; 理论加实际运
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/database/postgresql_optimization.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+
+    
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/database/postgresqlLearningResource.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moonclearner">
+      <meta itemprop="description" content="moonclearner record code skill and my feeling">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="moonclearner page">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/database/postgresqlLearningResource.html" class="post-title-link" itemprop="url">postgresql Learning resource map</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2021-07-18 19:28:31" itemprop="dateCreated datePublished" datetime="2021-07-18T19:28:31+08:00">2021-07-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-12-30 18:40:17" itemprop="dateModified" datetime="2019-12-30T18:40:17+08:00">2019-12-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/postgresql/" itemprop="url" rel="index"><span itemprop="name">postgresql</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">17k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">16 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              postgresql Learning resource map引用ty4z2008
+PostgreSQL(数据库)资料
+About:PostgreSQL About
+《PostgreSQL 源码分析系列》
+
+ PostgreSQL 源码分析系列
+
+介绍:PostgreSQL 源码分析系列文章
+
+《
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/database/postgresqlLearningResource.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+
+    
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/apache/apache_note.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moonclearner">
+      <meta itemprop="description" content="moonclearner record code skill and my feeling">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="moonclearner page">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/apache/apache_note.html" class="post-title-link" itemprop="url">Apache cookbook</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2021-07-18 19:28:31" itemprop="dateCreated datePublished" datetime="2021-07-18T19:28:31+08:00">2021-07-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-18 18:18:01" itemprop="dateModified" datetime="2019-06-18T18:18:01+08:00">2019-06-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/apache/" itemprop="url" rel="index"><span itemprop="name">apache</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">959</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              apache cookbookquery apache default user or group
+ps aux | egrep ‘(apache|httpd)’
+
+ca认证的时候有时候出现了403首先需要开启apahce ssl trace 3级别的日志,配置&lt;IfModule mod_ss
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/apache/apache_note.html#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -2385,7 +2558,7 @@ hexo abstract settingabstract
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2428,7 +2601,7 @@ hexo abstract settingabstract
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">94</span>
+                    <span class="site-state-item-count">109</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2491,7 +2664,15 @@ hexo abstract settingabstract
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -2610,7 +2791,11 @@ hexo abstract settingabstract
                     
                       
                     
-                    <span class="site-state-item-count">53</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -2695,7 +2880,7 @@ hexo abstract settingabstract
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">136k</span>
+    <span title="Symbols count total">162k</span>
   
 
   
@@ -2704,7 +2889,7 @@ hexo abstract settingabstract
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">2:03</span>
+    <span title="Reading time total">2:28</span>
   
 </div>
 

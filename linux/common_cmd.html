@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="true">
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="true">
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":5},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+
+    <meta name="baidu-site-verification" content="8NezAkUO3s">
+
+
+  <meta name="description" content="common cmddelete all files in the current path except file A1234find ./* |grep -v A |xargs rm -r# second methodrm -rf !(keep1 | keep2) delete all file except py file1find . -name &amp;quot;*&amp;quot; -type f">
+<meta name="keywords" content="linux,shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="common cmd">
+<meta property="og:url" content="https://moonclearner.cn/linux/common_cmd.html">
+<meta property="og:site_name" content="moonclearner page">
+<meta property="og:description" content="common cmddelete all files in the current path except file A1234find ./* |grep -v A |xargs rm -r# second methodrm -rf !(keep1 | keep2) delete all file except py file1find . -name &amp;quot;*&amp;quot; -type f">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-06-23T07:56:21.987Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="common cmd">
+<meta name="twitter:description" content="common cmddelete all files in the current path except file A1234find ./* |grep -v A |xargs rm -r# second methodrm -rf !(keep1 | keep2) delete all file except py file1find . -name &amp;quot;*&amp;quot; -type f">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="moonclearner page" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://moonclearner.cn/linux/common_cmd.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>common cmd | moonclearner page</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+  <div class="bg_content">
+      <canvas id="canvas"></canvas>
+  </div>
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <!--github-start-->
+    <a href="https://github.com/moonclearner" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <!--github-end-->
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">moonclearner page</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">moonclearner blog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>Sitemap</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/linux/common_cmd.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moonclearner">
+      <meta itemprop="description" content="moonclearner record code skill and my feeling">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="moonclearner page">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">common cmd
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2021-07-18 19:28:32" itemprop="dateCreated datePublished" datetime="2021-07-18T19:28:32+08:00">2021-07-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-06-23 15:56:21" itemprop="dateModified" datetime="2021-06-23T15:56:21+08:00">2021-06-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/shell/" itemprop="url" rel="index"><span itemprop="name">shell</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">3k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">3 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="common-cmd"><a href="#common-cmd" class="headerlink" title="common cmd"></a>common cmd</h1><h2 id="delete-all-files-in-the-current-path-except-file-A"><a href="#delete-all-files-in-the-current-path-except-file-A" class="headerlink" title="delete all files in the current path except file A"></a>delete all files in the current path except file A</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">find ./* |grep -v A |xargs rm -r</span><br><span class="line"></span><br><span class="line"># second method</span><br><span class="line">rm -rf !(keep1 | keep2)</span><br></pre></td></tr></table></figure>
+<h2 id="delete-all-file-except-py-file"><a href="#delete-all-file-except-py-file" class="headerlink" title="delete all file except py file"></a>delete all file except py file</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*&quot; -type f |grep -v &quot;.py&quot; |grep  &quot;\.&quot; |xargs rm -rf</span><br></pre></td></tr></table></figure>
+<h2 id="kill-all-python-process"><a href="#kill-all-python-process" class="headerlink" title="kill all python process"></a>kill all python process</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep python |grep -v grep|awk  &apos;&#123;print $2&#125;&apos;|xargs kill -9</span><br></pre></td></tr></table></figure>
+<h2 id="bash-shortkey"><a href="#bash-shortkey" class="headerlink" title="bash shortkey"></a>bash shortkey</h2><ul>
+<li><p>!num 执行命令历史列表的第num条命令</p>
+</li>
+<li><p>!! 执行上一条命令</p>
+</li>
+<li><p>!?string? 执行含有string字符串的最新命令</p>
+</li>
+<li><p>Ctrl+r 然后输入若干字符，开始向上搜索包含该字符的命令，继续按Ctrl+r，搜索上一条匹配的命令</p>
+</li>
+<li><p>Ctrl+s 与Ctrl+r类似,只是正向检索</p>
+</li>
+<li><p>Alt+f 光标向前移动一个单词</p>
+</li>
+<li><p>Alt+b 光标向后移动一个单词</p>
+</li>
+<li><p>ls !$ 执行命令ls，并以上一条命令的参数为其参数</p>
+</li>
+<li><p>Ctrl+a 移动到当前行的开头</p>
+</li>
+<li><p>Ctrl+e 移动到当前行的结尾</p>
+</li>
+<li><p>Esc+b 移动到当前单词的开头</p>
+</li>
+<li><p>Esc+f 移动到当前单词的结尾</p>
+</li>
+<li><p>Ctrl+u 剪切命令行中光标所在处之前的所有字符（不包括自身）</p>
+</li>
+<li><p>Ctrl+k 剪切命令行中光标所在处之后的所有字符（包括自身）</p>
+</li>
+<li><p>Ctrl+d 删除光标所在处字符</p>
+</li>
+<li><p>Ctrl+h 删除光标所在处前一个字符</p>
+</li>
+<li><p>Ctrl+y 粘贴刚才所删除的字符</p>
+</li>
+<li><p>Ctrl+w 剪切光标所在处之前的一个词（以空格、标点等为分隔符）</p>
+</li>
+<li><p>Alt+d 剪切光标之后的词</p>
+</li>
+<li><p>Esc+w 删除光标所在处之前的字符至其单词尾（以空格、标点等为分隔符）</p>
+</li>
+<li><p>Ctrl+t 颠倒光标所在处及其之前的字符位置，并将光标移动到下一个字符</p>
+</li>
+<li><p>Alt+t 交换当前与以前单词的位置</p>
+</li>
+<li><p>Alt+u 把当前词转化为大写</p>
+</li>
+<li><p>Alt+l 把当前词转化为小写</p>
+</li>
+<li><p>Alt+c 把当前词汇变成首字符大写</p>
+</li>
+<li><p>Ctrl+v 插入特殊字符,如Ctrl+v+Tab加入Tab字符键</p>
+</li>
+<li><p>Esc+t 颠倒光标所在处及其相邻单词的位置</p>
+</li>
+<li><p>Ctrl+c 删除整行</p>
+</li>
+<li><p>Ctrl+(x u) 按住Ctrl的同时再先后按x和u，撤销刚才的操作</p>
+</li>
+<li><p>Ctrl+s 挂起当前shell</p>
+</li>
+<li><p>Ctrl+q 重新启用挂起的shell</p>
+</li>
+<li><p>[Ctrl] + [Alt] + [Backspace] = 杀死你当前的 X 会话。杀死图形化桌面会话，把你返回到登录屏幕。如果正常退出步骤不起作用，你可以使用这种方法。</p>
+</li>
+<li><p>[Ctrl] + [Alt] + [Delete] = 关机和重新引导 Red Hat Linux。关闭你当前的会话然后重新引导 OS。只有在正常关机步骤不起作用时才使用这种方法。</p>
+</li>
+<li><p>[Ctrl] + [Alt] + [Fn] = 切换屏幕。 [Ctrl] + [Alt] + 功能键之一会显示一个新屏幕。根据默认设置，从 [F1] 到 [F6] 是 shell 提示屏幕， [F7] 是图形化屏幕。</p>
+</li>
+<li><p>[Alt] + [Tab] = 在图形化桌面环境中切换任务。如果你同时打开了不止一个应用程序，你可以使用 [Alt] + [Tab] 来在打开的任务和应用程序间切换。</p>
+</li>
+<li><p>[Ctrl] + [a] = 把光标移到行首。它在多数文本编辑器和 Mozilla 的 URL 字段内可以使用。</p>
+</li>
+<li><p>[Ctrl] + [d] = 从 shell 提示中注销（并关闭）。使用该快捷键，你就不必键入 exit 或 logout 。</p>
+</li>
+<li><p>[Ctrl] + [e] = 把光标移到行尾。它在多数文本编辑器和 Mozilla 的 URL 字段内都可使用。</p>
+</li>
+<li><p>[Ctrl] + [l] = 清除终端。该快捷操作与在命令行键入 clear 作用相同。</p>
+</li>
+<li><p>[Ctrl] + = 清除当前行。如果你在终端下工作，使用这一快捷操作可以清除从光标处到行首的字符。</p>
+</li>
+<li><p>[鼠标中间键] = 粘贴突出显示的文本。使用鼠标左键来突出显示文本。把光标指向你想粘贴文本的地方。点击鼠标中间键来粘贴它。在两键鼠标系统中，如果你把鼠标配置成模拟第三键，你可以同时点击鼠标的左右两键来执行粘贴。</p>
+</li>
+<li><p>[Tab] =命令行自动补全。使用 shell 提示时可使用这一命令。键入命令或文件名的前几个字符，然后按 [Tab] 键，它会自动补全命令或显示匹配你键入字符的所有命令。</p>
+</li>
+<li><p>[向上] 和 [向下] 箭头 = 显示命令历史。当你使用 shell 提示时，按 [向上] 或 [向下] 箭头来前后查看你在当前目录下键入的命令历史。当你看到你想使用的命令时，按 [Enter] 键。</p>
+</li>
+<li><p>clear = 清除 shell 提示屏幕。在命令行下键入它会清除所有这个 shell 提示屏幕中显示的数据。</p>
+</li>
+<li><p>exit = 注销。在 shell 提示中键入它会注销当前的用户或根用户帐号。</p>
+</li>
+<li><p>history = 显示命令历史。在 shell 提示中键入它来显示你所键入的被编号的前 1000 个命令。要显示较短的命令历史，键入 history f之后，空一格，在键入一个数字。例如： history 20 。</p>
+</li>
+<li><p>reset = 刷新 shell 提示屏幕。如果字符不清晰或乱码的话，在 shell 提示下键入这个命令会刷新屏幕。</p>
+</li>
+</ul>
+<h2 id="跟踪线程"><a href="#跟踪线程" class="headerlink" title="跟踪线程"></a>跟踪线程</h2><ul>
+<li>ps -eLf |grep pid</li>
+<li>ps -T -p pid</li>
+<li>top -H -p pid</li>
+<li>pstree -p pid</li>
+</ul>
+<h2 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h2><p>给挂载的光盘增加执行权限<br>mount /dev/sr0 -o loop,ro,exec /mnt</p>
+<h2 id="创建一个1G的文件"><a href="#创建一个1G的文件" class="headerlink" title="创建一个1G的文件"></a>创建一个1G的文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fallocate -l 1G test.img</span><br><span class="line"></span><br><span class="line">dd if=/dev/zero of=test.img bs=1 count=0 seek=1G</span><br></pre></td></tr></table></figure>
+<h2 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h2><ul>
+<li>ls -lh</li>
+<li>stat</li>
+<li>du -h</li>
+</ul>
+<h2 id="tar-解压覆盖"><a href="#tar-解压覆盖" class="headerlink" title="tar 解压覆盖"></a>tar 解压覆盖</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test.tgz  has test filepath, tar will cover /tmp/test filepath</span><br><span class="line"></span><br><span class="line">tar xvf test.tgz -C /tmp/</span><br></pre></td></tr></table></figure>
+<h2 id="yes-manual"><a href="#yes-manual" class="headerlink" title="yes manual"></a>yes manual</h2><h3 id="trick-1"><a href="#trick-1" class="headerlink" title="trick 1"></a>trick 1</h3><p>当遇到有些命令需要输入y或者yes进行下一步的时候，可以用yes来自动解决</p>
+<p>比如复制cp 遇到询问是否覆盖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yes | cp -apfr</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yes | yum install fortune-mod</span><br></pre></td></tr></table></figure>
+<h3 id="trick-2"><a href="#trick-2" class="headerlink" title="trick 2"></a>trick 2</h3><h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">查找路径所有文件路径</span><br><span class="line">find * -type f</span><br><span class="line"></span><br><span class="line">查找路径所有文件路径进一步通过fzf进行模糊查找</span><br><span class="line">find * -type f | fzf</span><br></pre></td></tr></table></figure>
+<h2 id="ssh-amp-zssh"><a href="#ssh-amp-zssh" class="headerlink" title="ssh &amp; zssh"></a>ssh &amp; zssh</h2><p>zssh 可以使用rz和sz，通过ctrl+space来切换</p>
+<p>需要使用密钥登陆<br>ssh -i ~/.ssh/id_rsa  -p 22 <a href="mailto:root@192.168.1.1" target="_blank" rel="noopener">root@192.168.1.1</a></p>
+<h2 id="du"><a href="#du" class="headerlink" title="du"></a>du</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">du -sh * | sort -rn</span><br><span class="line"></span><br><span class="line">du -sh * | sort -rn | head</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+
+    
+    
+    
+    
+      <div>
+        
+
+      </div>
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+          
+            <a href="/tags/shell/" rel="tag"><i class="fa fa-tag"></i> shell</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/linux/sogouInputMethod.html" rel="next" title="sogou input method install">
+                <i class="fa fa-chevron-left"></i> sogou input method install
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/linux/restore_ubuntu_system.html" rel="prev" title="backup ubuntu system">
+                backup ubuntu system <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div id="gitalk-container">
+    </div>
+    
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">moonclearner</p>
+              <p class="site-description motion-element" itemprop="description">moonclearner record code skill and my feeling</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">109</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/moonclearner" title="GitHub &rarr; https://github.com/moonclearner" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:moonclearner@qq.com" title="E-Mail &rarr; mailto:moonclearner@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#common-cmd"><span class="nav-number">1.</span> <span class="nav-text">common cmd</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-all-files-in-the-current-path-except-file-A"><span class="nav-number">1.1.</span> <span class="nav-text">delete all files in the current path except file A</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-all-file-except-py-file"><span class="nav-number">1.2.</span> <span class="nav-text">delete all file except py file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kill-all-python-process"><span class="nav-number">1.3.</span> <span class="nav-text">kill all python process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-shortkey"><span class="nav-number">1.4.</span> <span class="nav-text">bash shortkey</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跟踪线程"><span class="nav-number">1.5.</span> <span class="nav-text">跟踪线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挂载"><span class="nav-number">1.6.</span> <span class="nav-text">挂载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个1G的文件"><span class="nav-number">1.7.</span> <span class="nav-text">创建一个1G的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看文件"><span class="nav-number">1.8.</span> <span class="nav-text">查看文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tar-解压覆盖"><span class="nav-number">1.9.</span> <span class="nav-text">tar 解压覆盖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yes-manual"><span class="nav-number">1.10.</span> <span class="nav-text">yes manual</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#trick-1"><span class="nav-number">1.10.1.</span> <span class="nav-text">trick 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trick-2"><span class="nav-number">1.10.2.</span> <span class="nav-text">trick 2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find"><span class="nav-number">1.11.</span> <span class="nav-text">find</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh-amp-zssh"><span class="nav-number">1.12.</span> <span class="nav-text">ssh &amp; zssh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#du"><span class="nav-number">1.13.</span> <span class="nav-text">du</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moonclearner</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">162k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">2:28</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共字</span>
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+
+  
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.css">
+
+  
+  
+  <script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+   <script>
+        var gitalk = new Gitalk({
+          clientID: 'e47bf4fb4f5f701fc3a6',
+          clientSecret: '9155535868459f5a16e1180edee3a495ecc8eb71',
+          repo: 'moonclearner.github.io',
+          owner: 'moonclearner',
+          admin: ['moonclearner'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')
+       </script>
+
+
+  
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+<script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/moonclearner/live2d-widget/autoload.js"></script>
+</html>

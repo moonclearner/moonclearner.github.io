@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="true">
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="true">
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":5},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+
+    <meta name="baidu-site-verification" content="8NezAkUO3s">
+
+
+  <meta name="description" content="postgresql optimization configshared_buffersPostgreSQL既使用自身的缓冲区，也使用内核缓冲IO。这意味着数据会在内存中存储两次，首先是存入PostgreSQL缓冲区，然后是内核缓冲区。这被称为双重缓冲区处理。对大多数操作系统来说，这个参数是最有效的用于调优的参数。此参数的作用是设置PostgreSQL中用于缓存的专用内存量。shared_buff">
+<meta name="keywords" content="postgresql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="postgresql optimization config">
+<meta property="og:url" content="https://moonclearner.cn/database/postgresql_optimization_config.html">
+<meta property="og:site_name" content="moonclearner page">
+<meta property="og:description" content="postgresql optimization configshared_buffersPostgreSQL既使用自身的缓冲区，也使用内核缓冲IO。这意味着数据会在内存中存储两次，首先是存入PostgreSQL缓冲区，然后是内核缓冲区。这被称为双重缓冲区处理。对大多数操作系统来说，这个参数是最有效的用于调优的参数。此参数的作用是设置PostgreSQL中用于缓存的专用内存量。shared_buff">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-06-02T10:56:03.096Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="postgresql optimization config">
+<meta name="twitter:description" content="postgresql optimization configshared_buffersPostgreSQL既使用自身的缓冲区，也使用内核缓冲IO。这意味着数据会在内存中存储两次，首先是存入PostgreSQL缓冲区，然后是内核缓冲区。这被称为双重缓冲区处理。对大多数操作系统来说，这个参数是最有效的用于调优的参数。此参数的作用是设置PostgreSQL中用于缓存的专用内存量。shared_buff">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="moonclearner page" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://moonclearner.cn/database/postgresql_optimization_config.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>postgresql optimization config | moonclearner page</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+  <div class="bg_content">
+      <canvas id="canvas"></canvas>
+  </div>
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <!--github-start-->
+    <a href="https://github.com/moonclearner" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <!--github-end-->
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">moonclearner page</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">moonclearner blog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>Sitemap</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://moonclearner.cn/database/postgresql_optimization_config.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moonclearner">
+      <meta itemprop="description" content="moonclearner record code skill and my feeling">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="moonclearner page">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">postgresql optimization config
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2021-07-18 19:28:31" itemprop="dateCreated datePublished" datetime="2021-07-18T19:28:31+08:00">2021-07-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-06-02 18:56:03" itemprop="dateModified" datetime="2021-06-02T18:56:03+08:00">2021-06-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/postgresql/" itemprop="url" rel="index"><span itemprop="name">postgresql</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">7.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">7 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="postgresql-optimization-config"><a href="#postgresql-optimization-config" class="headerlink" title="postgresql optimization config"></a>postgresql optimization config</h1><h2 id="shared-buffers"><a href="#shared-buffers" class="headerlink" title="shared_buffers"></a>shared_buffers</h2><p>PostgreSQL既使用自身的缓冲区，也使用内核缓冲IO。这意味着数据会在内存中存储两次，首先是存入PostgreSQL缓冲区，然后是内核缓冲区。这被称为双重缓冲区处理。对大多数操作系统来说，这个参数是最有效的用于调优的参数。此参数的作用是设置PostgreSQL中用于缓存的专用内存量。<br>shared_buffers的默认值设置得非常低，因为某些机器和操作系统不支持使用更高的值。但在大多数现代设备中，通常需要增大此参数的值才能获得最佳性能。<br>建议的设置值为机器总内存大小的25％，但是也可以根据实际情况尝试设置更低和更高的值。实际值取决于机器的具体配置和工作的数据量大小。举个例子，如果工作数据集可以很容易地放入内存中，那么可以增加shared_buffers的值来包含整个数据库，以便整个工作数据集可以保留在缓存中。<br>在生产环境中，将shared_buffers设置为较大的值通常可以提供非常好的性能，但应当时刻注意找到平衡点。<br>查看当前shared_buffers的值：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">postgres=<span class="comment"># show shared_buffers;</span></span><br><span class="line"> shared_buffers </span><br><span class="line"><span class="comment">----------------</span></span><br><span class="line"> 128MB</span><br><span class="line">(1 row)</span><br></pre></td></tr></table></figure>
+<h2 id="wal-buffers"><a href="#wal-buffers" class="headerlink" title="wal_buffers"></a>wal_buffers</h2><p>PostgreSQL将其WAL（预写日志）记录写入缓冲区，然后将这些缓冲区刷新到磁盘。由wal_buffers定义的缓冲区的默认大小为16MB，但如果有大量并发连接的话，则设置为一个较高的值可以提供更好的性能。<br>查看当前wal_buffers的值：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">postgres=<span class="comment"># show wal_buffers;</span></span><br><span class="line"> wal_buffers</span><br><span class="line"><span class="comment">-------------</span></span><br><span class="line"> 4MB</span><br><span class="line">(1 row)</span><br></pre></td></tr></table></figure></p>
+<h2 id="effective-cache-size"><a href="#effective-cache-size" class="headerlink" title="effective_cache_size"></a>effective_cache_size</h2><p>effective_cache_size提供可用于磁盘高速缓存的内存量的估计值。它只是一个建议值，而不是确切分配的内存或缓存大小。它不会实际分配内存，而是会告知优化器内核中可用的缓存量。在一个索引的代价估计中，更高的数值会使得索引扫描更可能被使用，更低的数值会使得顺序扫描更可能被使用。在设置这个参数时，还应该考虑PostgreSQL的共享缓冲区以及将被用于PostgreSQL数据文件的内核磁盘缓冲区。默认值是4GB。<br>查看当前effective_cache_size的值：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">postgres=<span class="comment"># show effective_cache_size;</span></span><br><span class="line"> effective_cache_size</span><br><span class="line"><span class="comment">----------------------</span></span><br><span class="line"> 4GB</span><br><span class="line">(1 row)</span><br></pre></td></tr></table></figure>
+<h2 id="work-mem"><a href="#work-mem" class="headerlink" title="work_mem"></a>work_mem</h2><p>此配置用于复合排序。内存中的排序比溢出到磁盘的排序快得多，设置非常高的值可能会导致部署环境出现内存瓶颈，因为此参数是按用户排序操作。如果有多个用户尝试执行排序操作，则系统将为所有用户分配大小为work_mem *总排序操作数的空间。全局设置此参数可能会导致内存使用率过高，因此强烈建议在会话级别修改此参数值。默认值为4MB。<br>查看当前work_mem的值：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">postgres=<span class="comment"># show work_mem;</span></span><br><span class="line"> work_mem</span><br><span class="line"><span class="comment">----------</span></span><br><span class="line"> 4MB</span><br><span class="line">(1 row)</span><br></pre></td></tr></table></figure>
+<h2 id="maintenance-work-mem"><a href="#maintenance-work-mem" class="headerlink" title="maintenance_work_mem"></a>maintenance_work_mem</h2><p>maintenance_work_mem是用于维护任务的内存设置。默认值为64MB。设置较大的值对于VACUUM，RESTORE，CREATE INDEX，ADD FOREIGN KEY和ALTER TABLE等操作的性能提升效果显著。<br>查看当前maintenance_work_mem的值：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">postgres=<span class="comment"># show maintenance_work_mem;</span></span><br><span class="line"> maintenance_work_mem</span><br><span class="line"><span class="comment">----------------------</span></span><br><span class="line"> 64MB</span><br><span class="line">(1 row)</span><br></pre></td></tr></table></figure>
+<h2 id="synchronous-commit"><a href="#synchronous-commit" class="headerlink" title="synchronous_commit"></a>synchronous_commit</h2><p>此参数的作用为在向客户端返回成功状态之前，强制提交等待WAL被写入磁盘。这是性能和可靠性之间的权衡。如果应用程序被设计为性能比可靠性更重要，那么关闭synchronous_commit。这意味着成功状态与保证写入磁盘之间会存在时间差。在服务器崩溃的情况下，即使客户端在提交时收到成功消息，数据也可能丢失。<br>查看当前synchronous_commit的设置值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">postgres=# show synchronous_commit;</span><br><span class="line"> synchronous_commit</span><br><span class="line">--------------------</span><br><span class="line"> on</span><br><span class="line">(1 row)</span><br></pre></td></tr></table></figure></p>
+<h2 id="checkpoint-timeout和checkpoint-completion-target"><a href="#checkpoint-timeout和checkpoint-completion-target" class="headerlink" title="checkpoint_timeout和checkpoint_completion_target"></a>checkpoint_timeout和checkpoint_completion_target</h2><p>PostgreSQL将更改写入WAL。检查点进程将数据刷新到数据文件中。发生CHECKPOINT时完成此操作。这是一项开销很大的操作，整个过程涉及大量的磁盘读/写操作。用户可以在需要时随时发出CHECKPOINT指令，或者通过PostgreSQL的参数checkpoint_timeout和checkpoint_completion_target来自动完成。<br>checkpoint_timeout参数用于设置WAL检查点之间的时间。将此设置得太低会减少崩溃恢复时间，因为更多数据会写入磁盘，但由于每个检查点都会占用系统资源，因此也会损害性能。此参数只能在postgresql.conf文件中或在服务器命令行上设置。<br>checkpoint_completion_target指定检查点完成的目标，作为检查点之间总时间的一部分。默认值是 0.5。 这个参数只能在postgresql.conf文件中或在服务器命令行上设置。高频率的检查点可能会影响性能。<br>查看当前checkpoint_timeout和checkpoint_completion_target的值：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">postgres=<span class="comment"># show checkpoint_timeout;</span></span><br><span class="line"> checkpoint_timeout</span><br><span class="line"><span class="comment">--------------------</span></span><br><span class="line"> 5min</span><br><span class="line">(1 row)</span><br><span class="line"></span><br><span class="line">postgres=<span class="comment"># show checkpoint_completion_target;</span></span><br><span class="line"> checkpoint_completion_target</span><br><span class="line"><span class="comment">------------------------------</span></span><br><span class="line"> 0.5</span><br><span class="line">(1 row)</span><br></pre></td></tr></table></figure></p>
+<h2 id="max-connections"><a href="#max-connections" class="headerlink" title="max_connections"></a>max_connections</h2><p>允许客户端连接的最大数目</p>
+<h2 id="fsync"><a href="#fsync" class="headerlink" title="fsync"></a>fsync</h2><p>强制把数据同步更新到磁盘,如果系统的IO压力很大，把改参数改为off</p>
+<p>在fsync打开的情况下，优化后性能能够提升30%左右。因为有部分优化选项在默认的SQL测试语句中没有体现出它的优势，如果到实际测试中，提升应该不止30%。<br>测试的过程中，主要的瓶颈就在系统的IO，如果需要减少IO的负荷，最直接的方法就是把fsync关闭，但是这样就会在掉电的情况下，可能会丢失部分数据。</p>
+<h2 id="commit-delay"><a href="#commit-delay" class="headerlink" title="commit_delay"></a>commit_delay</h2><p>事务提交后，日志写到wal log上到wal_buffer写入到磁盘的时间间隔。需要配合commit_sibling。能够一次写入多个事务，减少IO，提高性能</p>
+<h2 id="commit-siblings"><a href="#commit-siblings" class="headerlink" title="commit_siblings"></a>commit_siblings</h2><p>设置触发commit_delay的并发事务数，根据并发事务多少来配置。减少IO，提高性能</p>
+<p><strong>并非所有参数都适用于所有应用程序类型。某些应用程序通过调整参数可以提高性能，有些则不会。必须针对应用程序及操作系统的特定需求来调整数据库参数。</strong></p>
+<h2 id="checkpoint-segments"><a href="#checkpoint-segments" class="headerlink" title="checkpoint_segments"></a>checkpoint_segments</h2><p>增加这个参数可以提升大量数据导入时候的速度。</p>
+<h2 id="archive-mode"><a href="#archive-mode" class="headerlink" title="archive_mode"></a>archive_mode</h2><p>这个参数设置为无效的时候，能够提升以下的操作的速度</p>
+<ul>
+<li>CREATE TABLE AS SELECT</li>
+<li>CREATE INDEX</li>
+<li>ALTER TABLE SET TABLESPACE</li>
+<li>CLUSTER等。</li>
+</ul>
+<h2 id="autovacuum"><a href="#autovacuum" class="headerlink" title="autovacuum"></a>autovacuum</h2><ul>
+<li>autovacuum：默认为on，表示是否开起autovacuum。默认开起。特别的，当需要冻结xid时，尽管此值为off，PG也会进行vacuum。 </li>
+<li>autovacuum_naptime：下一次vacuum的时间，默认1min。 这个naptime会被vacuum launcher分配到每个DB上。autovacuum_naptime/num of db。 </li>
+<li>log_autovacuum_min_duration：记录autovacuum动作到日志文件，当vacuum动作超过此值时。 “-1”表示不记录。“0”表示每次都记录。 </li>
+<li>autovacuum_max_workers：最大同时运行的worker数量，不包含launcher本身。 </li>
+<li>autovacuum_work_mem    ：每个worker可使用的最大内存数。</li>
+<li>autovacuum_vacuum_threshold    ：默认50。与autovacuum_vacuum_scale_factor配合使用， autovacuum_vacuum_scale_factor默认值为20%。当update,delete的tuples数量超过autovacuum_vacuum_scale_factor*table_size+autovacuum_vacuum_threshold时，进行vacuum。如果要使vacuum工作勤奋点，则将此值改小。 </li>
+<li>autovacuum_analyze_threshold        ：默认50。与autovacuum_analyze_scale_factor配合使用。</li>
+<li>autovacuum_analyze_scale_factor    ：默认10%。当update,insert,delete的tuples数量超过autovacuum_analyze_scale_factor*table_size+autovacuum_analyze_threshold时，进行analyze。 </li>
+<li>autovacuum_freeze_max_age：200 million。离下一次进行xid冻结的最大事务数。 </li>
+<li>autovacuum_multixact_freeze_max_age：400 million。离下一次进行xid冻结的最大事务数。 </li>
+<li>autovacuum_vacuum_cost_delay    ：如果为-1，取vacuum_cost_delay值。 </li>
+<li>autovacuum_vacuum_cost_limit：如果为-1，到vacuum_cost_limit的值，这个值是所有worker的累加值。</li>
+</ul>
+<h2 id="alter-config"><a href="#alter-config" class="headerlink" title="alter config"></a>alter config</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">SYSTEM</span> <span class="keyword">SET</span> configuration_parameter &#123; <span class="keyword">TO</span> | = &#125; &#123; <span class="keyword">value</span> | <span class="string">'value'</span> | <span class="keyword">DEFAULT</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查看所有数据库参数的值</span></span><br><span class="line"><span class="keyword">show</span> all;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">show</span> maintenance_work_mem;</span><br><span class="line"><span class="comment">--注意这里的设置不会改变postgresql.conf,只会改变postgresql.conf</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">SYSTEM</span> <span class="keyword">SET</span> maintenance_work_mem= <span class="number">1048576</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--重启数据库</span></span><br><span class="line"><span class="keyword">show</span> maintenance_work_mem; </span><br><span class="line"></span><br><span class="line"><span class="comment">--取消postgresql.auto.conf的参数设置</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">SYSTEM</span> <span class="keyword">SET</span> maintenance_work_mem= <span class="keyword">default</span>;</span><br><span class="line">``</span><br><span class="line"></span><br><span class="line"><span class="comment">## in summary</span></span><br><span class="line">```sql</span><br><span class="line">max_connections = 300       <span class="comment"># (change requires restart)</span></span><br><span class="line">unix_socket_directories = '.'   <span class="comment"># comma-separated list of directories</span></span><br><span class="line">shared_buffers = 194GB       <span class="comment"># 尽量用数据库管理内存，减少双重缓存，提高使用效率</span></span><br><span class="line">huge_pages = on           <span class="comment"># on, off, or try  ，使用大页</span></span><br><span class="line">work_mem = 256MB <span class="comment"># min 64kB  ， 减少外部文件排序的可能，提高效率</span></span><br><span class="line">maintenance_work_mem = 2GB  <span class="comment"># min 1MB  ， 加速建立索引</span></span><br><span class="line">autovacuum_work_mem = 2GB   <span class="comment"># min 1MB, or -1 to use maintenance_work_mem  ， 加速垃圾回收</span></span><br><span class="line">dynamic_shared_memory_type = mmap      <span class="comment"># the default is the first option</span></span><br><span class="line">vacuum_cost_delay = 0      <span class="comment"># 0-100 milliseconds   ， 垃圾回收不妥协，极限压力下，减少膨胀可能性</span></span><br><span class="line">bgwriter_delay = 10ms       <span class="comment"># 10-10000ms between rounds    ， 刷shared buffer脏页的进程调度间隔，尽量高频调度，减少用户进程申请不到内存而需要主动刷脏页的可能（导致RT升高）。</span></span><br><span class="line">bgwriter_lru_maxpages = 1000   <span class="comment"># 0-1000 max buffers written/round ,  一次最多刷多少脏页</span></span><br><span class="line">bgwriter_lru_multiplier = 10.0          <span class="comment"># 0-10.0 multipler on buffers scanned/round  一次扫描多少个块，上次刷出脏页数量的倍数</span></span><br><span class="line">effective_io_concurrency = 2           <span class="comment"># 1-1000; 0 disables prefetching ， 执行节点为bitmap heap scan时，预读的块数。从而</span></span><br><span class="line">wal_level = minimal         <span class="comment"># minimal, archive, hot_standby, or logical ， 如果现实环境，建议开启归档。</span></span><br><span class="line">synchronous_commit = off    <span class="comment"># synchronization level;    ， 异步提交</span></span><br><span class="line">wal_sync_method = open_sync    <span class="comment"># the default is the first option  ， 因为没有standby，所以写xlog选择一个支持O_DIRECT的fsync方法。</span></span><br><span class="line">full_page_writes = off      <span class="comment"># recover from partial page writes  ， 生产中，如果有增量备份和归档，可以关闭，提高性能。</span></span><br><span class="line">wal_buffers = 1GB           <span class="comment"># min 32kB, -1 sets based on shared_buffers  ，wal buffer大小，如果大量写wal buffer等待，则可以加大。</span></span><br><span class="line">wal_writer_delay = 10ms         <span class="comment"># 1-10000 milliseconds  wal buffer调度间隔，和bg writer delay类似。</span></span><br><span class="line">commit_delay = 20           <span class="comment"># range 0-100000, in microseconds  ，分组提交的等待时间</span></span><br><span class="line">commit_siblings = 9        <span class="comment"># range 1-1000  , 有多少个事务同时进入提交阶段时，就触发分组提交。</span></span><br><span class="line">checkpoint_timeout = 55min  <span class="comment"># range 30s-1h  时间控制的检查点间隔。</span></span><br><span class="line">max_wal_size = 320GB    <span class="comment">#   2个检查点之间最多允许产生多少个XLOG文件</span></span><br><span class="line">checkpoint_completion_target = 0.99     <span class="comment"># checkpoint target duration, 0.0 - 1.0  ，平滑调度间隔，假设上一个检查点到现在这个检查点之间产生了100个XLOG，则这次检查点需要在产生100*checkpoint_completion_target个XLOG文件的过程中完成。PG会根据这些值来调度平滑检查点。</span></span><br><span class="line">random_page_cost = 1.0     <span class="comment"># same scale as above  , 离散扫描的成本因子，本例使用的SSD IO能力足够好</span></span><br><span class="line">effective_cache_size = 240GB  <span class="comment"># 可用的OS CACHE</span></span><br><span class="line">log_destination = 'csvlog'  <span class="comment"># Valid values are combinations of</span></span><br><span class="line">logging_collector = on          <span class="comment"># Enable capturing of stderr and csvlog</span></span><br><span class="line">log_truncate_on_rotation = on           <span class="comment"># If on, an existing log file with the</span></span><br><span class="line">update_process_title = off</span><br><span class="line">track_activities = off</span><br><span class="line">autovacuum = on    <span class="comment"># Enable autovacuum subprocess?  'on'</span></span><br><span class="line">autovacuum_max_workers = 4 <span class="comment"># max number of autovacuum subprocesses    ，允许同时有多少个垃圾回收工作进程。</span></span><br><span class="line">autovacuum_naptime = 6s  <span class="comment"># time between autovacuum runs   ， 自动垃圾回收探测进程的唤醒间隔</span></span><br><span class="line">autovacuum_vacuum_cost_delay = 0    <span class="comment"># default vacuum cost delay for  ， 垃圾回收不妥协</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+
+    
+    
+    
+    
+      <div>
+        
+
+      </div>
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/postgresql/" rel="tag"><i class="fa fa-tag"></i> postgresql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/database/postgresql_note.html" rel="next" title="postgresql Learning Note">
+                <i class="fa fa-chevron-left"></i> postgresql Learning Note
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/database/sqlzooNote.html" rel="prev" title="sqlzoo">
+                sqlzoo <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div id="gitalk-container">
+    </div>
+    
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">moonclearner</p>
+              <p class="site-description motion-element" itemprop="description">moonclearner record code skill and my feeling</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">109</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/moonclearner" title="GitHub &rarr; https://github.com/moonclearner" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:moonclearner@qq.com" title="E-Mail &rarr; mailto:moonclearner@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#postgresql-optimization-config"><span class="nav-number">1.</span> <span class="nav-text">postgresql optimization config</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shared-buffers"><span class="nav-number">1.1.</span> <span class="nav-text">shared_buffers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wal-buffers"><span class="nav-number">1.2.</span> <span class="nav-text">wal_buffers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#effective-cache-size"><span class="nav-number">1.3.</span> <span class="nav-text">effective_cache_size</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#work-mem"><span class="nav-number">1.4.</span> <span class="nav-text">work_mem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maintenance-work-mem"><span class="nav-number">1.5.</span> <span class="nav-text">maintenance_work_mem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronous-commit"><span class="nav-number">1.6.</span> <span class="nav-text">synchronous_commit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checkpoint-timeout和checkpoint-completion-target"><span class="nav-number">1.7.</span> <span class="nav-text">checkpoint_timeout和checkpoint_completion_target</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#max-connections"><span class="nav-number">1.8.</span> <span class="nav-text">max_connections</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fsync"><span class="nav-number">1.9.</span> <span class="nav-text">fsync</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#commit-delay"><span class="nav-number">1.10.</span> <span class="nav-text">commit_delay</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#commit-siblings"><span class="nav-number">1.11.</span> <span class="nav-text">commit_siblings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checkpoint-segments"><span class="nav-number">1.12.</span> <span class="nav-text">checkpoint_segments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#archive-mode"><span class="nav-number">1.13.</span> <span class="nav-text">archive_mode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#autovacuum"><span class="nav-number">1.14.</span> <span class="nav-text">autovacuum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#alter-config"><span class="nav-number">1.15.</span> <span class="nav-text">alter config</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moonclearner</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">162k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">2:28</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共字</span>
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+
+  
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.css">
+
+  
+  
+  <script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+   <script>
+        var gitalk = new Gitalk({
+          clientID: 'e47bf4fb4f5f701fc3a6',
+          clientSecret: '9155535868459f5a16e1180edee3a495ecc8eb71',
+          repo: 'moonclearner.github.io',
+          owner: 'moonclearner',
+          admin: ['moonclearner'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')
+       </script>
+
+
+  
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+<script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/moonclearner/live2d-widget/autoload.js"></script>
+</html>

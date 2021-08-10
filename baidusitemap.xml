@@ -1,11 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://moonclearner.cn/linux/kvm.html</loc>
+    <lastmod>2021-08-02</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/linux/expand_home.html</loc>
+    <lastmod>2021-07-19</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/linux/bug.html</loc>
+    <lastmod>2021-07-19</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/vim/jump.html</loc>
+    <lastmod>2021-06-29</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/algorithm/ac.html</loc>
+    <lastmod>2021-06-28</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/linux/minicom.html</loc>
+    <lastmod>2021-06-28</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/linux/common_cmd.html</loc>
+    <lastmod>2021-06-23</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/vim/vim.html</loc>
+    <lastmod>2021-06-23</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/php/php_composer.html</loc>
+    <lastmod>2021-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/ITsecure/code_audit_notes.html</loc>
+    <lastmod>2021-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/linux/best_tool.html</loc>
+    <lastmod>2021-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/database/postgresql_optimization.html</loc>
+    <lastmod>2021-06-07</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/database/postgresql_optimization_config.html</loc>
+    <lastmod>2021-06-02</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/linux/firefox.html</loc>
+    <lastmod>2021-06-02</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/php/php_pg_transaction.html</loc>
+    <lastmod>2021-05-31</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/vim/configure.html</loc>
+    <lastmod>2021-05-25</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/linux/best_software.html</loc>
+    <lastmod>2021-05-17</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/php/php_ip.html</loc>
+    <lastmod>2021-05-07</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/database/postgresql_note.html</loc>
+    <lastmod>2021-04-23</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/linux/top.html</loc>
+    <lastmod>2021-04-22</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/linux/reply_flow.html</loc>
+    <lastmod>2021-04-22</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/git_svn/git_submodule.html</loc>
+    <lastmod>2021-04-22</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/ITsecure/api_secure.html</loc>
+    <lastmod>2021-04-22</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/ITsecure/RC4%E5%8F%97%E8%AF%AB%E7%A4%BC.html</loc>
+    <lastmod>2021-04-21</lastmod>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/redis/redis_note.html</loc>
     <lastmod>2021-04-20</lastmod>
   </url>
   <url>
-    <loc>https://moonclearner.cn/shell/shell_note.html</loc>
+    <loc>https://moonclearner.cn/linux/shell_note.html</loc>
     <lastmod>2021-04-20</lastmod>
   </url>
   <url>
@@ -19,18 +115,6 @@
   <url>
     <loc>https://moonclearner.cn/linux/centos7-install-mysql5-1.html</loc>
     <lastmod>2021-04-09</lastmod>
-  </url>
-  <url>
-    <loc>https://moonclearner.cn/vim/vim.html</loc>
-    <lastmod>2021-03-30</lastmod>
-  </url>
-  <url>
-    <loc>https://moonclearner.cn/shell/common_cmd.html</loc>
-    <lastmod>2021-03-29</lastmod>
-  </url>
-  <url>
-    <loc>https://moonclearner.cn/linux/KVM%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html</loc>
-    <lastmod>2021-03-18</lastmod>
   </url>
   <url>
     <loc>https://moonclearner.cn/python/python%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4-sftp.html</loc>
@@ -49,11 +133,7 @@
     <lastmod>2021-01-29</lastmod>
   </url>
   <url>
-    <loc>https://moonclearner.cn/linux/ubuntu/best_software.html</loc>
-    <lastmod>2021-01-04</lastmod>
-  </url>
-  <url>
-    <loc>https://moonclearner.cn/linux/ubuntu/deepin-wine.html</loc>
+    <loc>https://moonclearner.cn/linux/deepin-wine.html</loc>
     <lastmod>2021-01-04</lastmod>
   </url>
   <url>
@@ -97,10 +177,6 @@
     <lastmod>2020-11-18</lastmod>
   </url>
   <url>
-    <loc>https://moonclearner.cn/linux/ubuntu/kvm.html</loc>
-    <lastmod>2020-11-13</lastmod>
-  </url>
-  <url>
     <loc>https://moonclearner.cn/database/Mysql-force-function.html</loc>
     <lastmod>2020-11-13</lastmod>
   </url>
@@ -109,7 +185,7 @@
     <lastmod>2020-11-12</lastmod>
   </url>
   <url>
-    <loc>https://moonclearner.cn/linux/ubuntu/sogou.html</loc>
+    <loc>https://moonclearner.cn/linux/sogou.html</loc>
     <lastmod>2020-11-11</lastmod>
   </url>
   <url>
@@ -121,12 +197,8 @@
     <lastmod>2020-11-10</lastmod>
   </url>
   <url>
-    <loc>https://moonclearner.cn/linux/ubuntu/ubuntu_notes.html</loc>
+    <loc>https://moonclearner.cn/linux/ubuntu_notes.html</loc>
     <lastmod>2020-11-03</lastmod>
-  </url>
-  <url>
-    <loc>https://moonclearner.cn/database/postgresqlLearningNote.html</loc>
-    <lastmod>2020-10-15</lastmod>
   </url>
   <url>
     <loc>https://moonclearner.cn/php/secure/php_SessionID_on_login.html</loc>
@@ -153,11 +225,11 @@
     <lastmod>2020-04-30</lastmod>
   </url>
   <url>
-    <loc>https://moonclearner.cn/linux/ubuntu/pkg-config.html</loc>
+    <loc>https://moonclearner.cn/linux/pkg-config.html</loc>
     <lastmod>2020-04-13</lastmod>
   </url>
   <url>
-    <loc>https://moonclearner.cn/shell/cmd_return.html</loc>
+    <loc>https://moonclearner.cn/linux/cmd_return.html</loc>
     <lastmod>2020-03-11</lastmod>
   </url>
   <url>
@@ -177,7 +249,7 @@
     <lastmod>2020-01-07</lastmod>
   </url>
   <url>
-    <loc>https://moonclearner.cn/linux/ubuntu/sogouInputMethod.html</loc>
+    <loc>https://moonclearner.cn/linux/sogouInputMethod.html</loc>
     <lastmod>2020-01-06</lastmod>
   </url>
   <url>
@@ -190,10 +262,6 @@
   </url>
   <url>
     <loc>https://moonclearner.cn/ITsecure/www_trace_request.html</loc>
-    <lastmod>2019-12-16</lastmod>
-  </url>
-  <url>
-    <loc>https://moonclearner.cn/ITsecure/code%20audit%20Notes.html</loc>
     <lastmod>2019-12-16</lastmod>
   </url>
   <url>
@@ -237,10 +305,6 @@
     <lastmod>2019-07-25</lastmod>
   </url>
   <url>
-    <loc>https://moonclearner.cn/vim/configure.html</loc>
-    <lastmod>2019-06-28</lastmod>
-  </url>
-  <url>
     <loc>https://moonclearner.cn/git_svn/configure.html</loc>
     <lastmod>2019-06-27</lastmod>
   </url>
@@ -261,12 +325,8 @@
     <lastmod>2019-06-11</lastmod>
   </url>
   <url>
-    <loc>https://moonclearner.cn/linux/ubuntu/addAppTOdash.html</loc>
+    <loc>https://moonclearner.cn/linux/ubuntu_dashboard.html</loc>
     <lastmod>2019-05-09</lastmod>
-  </url>
-  <url>
-    <loc>https://moonclearner.cn/linux/ubuntu/best_tool.html</loc>
-    <lastmod>2019-04-24</lastmod>
   </url>
   <url>
     <loc>https://moonclearner.cn/javascript/js_self_adaption_set_iframe_height.html</loc>
@@ -293,15 +353,15 @@
     <lastmod>2019-03-29</lastmod>
   </url>
   <url>
-    <loc>https://moonclearner.cn/linux/ubuntu/sudo_nopasswd.html</loc>
+    <loc>https://moonclearner.cn/linux/sudo_nopasswd.html</loc>
     <lastmod>2019-03-18</lastmod>
   </url>
   <url>
-    <loc>https://moonclearner.cn/linux/ubuntu/restore_ubuntu_system.html</loc>
+    <loc>https://moonclearner.cn/linux/restore_ubuntu_system.html</loc>
     <lastmod>2019-03-18</lastmod>
   </url>
   <url>
-    <loc>https://moonclearner.cn/linux/ubuntu/zsh_setting.html</loc>
+    <loc>https://moonclearner.cn/linux/zsh_setting.html</loc>
     <lastmod>2019-03-18</lastmod>
   </url>
   <url>
@@ -309,11 +369,11 @@
     <lastmod>2019-02-27</lastmod>
   </url>
   <url>
-    <loc>https://moonclearner.cn/database/sqlite_common_cmd.html</loc>
+    <loc>https://moonclearner.cn/hexo/hexo_post_header.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>
   <url>
-    <loc>https://moonclearner.cn/hexo/hexo_post_header.html</loc>
+    <loc>https://moonclearner.cn/database/sqlite_common_cmd.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>
   <url>
@@ -322,10 +382,6 @@
   </url>
   <url>
     <loc>https://moonclearner.cn/php/php_deal_ip_and_mask.html</loc>
-    <lastmod>2019-02-27</lastmod>
-  </url>
-  <url>
-    <loc>https://moonclearner.cn/php/php_delete_array_element.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>
   <url>
@@ -341,7 +397,7 @@
     <lastmod>2019-02-27</lastmod>
   </url>
   <url>
-    <loc>https://moonclearner.cn/php/cookbook/php_dynamic_create_object.html</loc>
+    <loc>https://moonclearner.cn/php/php_delete_array_element.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>
   <url>
@@ -349,23 +405,15 @@
     <lastmod>2019-02-27</lastmod>
   </url>
   <url>
+    <loc>https://moonclearner.cn/php/cookbook/php_dynamic_create_object.html</loc>
+    <lastmod>2019-02-27</lastmod>
+  </url>
+  <url>
     <loc>https://moonclearner.cn/php/cookbook/php_pdo_error_info.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>
   <url>
-    <loc>https://moonclearner.cn/php/laravel/timeline.html</loc>
-    <lastmod>2019-02-27</lastmod>
-  </url>
-  <url>
-    <loc>https://moonclearner.cn/php/secure/php_CRSF_TOKEN.html</loc>
-    <lastmod>2019-02-27</lastmod>
-  </url>
-  <url>
     <loc>https://moonclearner.cn/php/cookbook/php_session.html</loc>
-    <lastmod>2019-02-27</lastmod>
-  </url>
-  <url>
-    <loc>https://moonclearner.cn/php/secure/php_SQL_inject.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>
   <url>
@@ -374,6 +422,18 @@
   </url>
   <url>
     <loc>https://moonclearner.cn/python/django/basic_command.html</loc>
+    <lastmod>2019-02-27</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/php/secure/php_CRSF_TOKEN.html</loc>
+    <lastmod>2019-02-27</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/php/secure/php_SQL_inject.html</loc>
+    <lastmod>2019-02-27</lastmod>
+  </url>
+  <url>
+    <loc>https://moonclearner.cn/php/laravel/timeline.html</loc>
     <lastmod>2019-02-27</lastmod>
   </url>
 </urlset> 

@@ -15,6 +15,6 @@ MoonC 是一款本地 Markdown 编辑器：点进段落即可书写，离开后�
 
 Windows 安装包（v0.2.1）：
 
-https://github.com/moonclearner/moonc_release/releases/download/0.2.1/MoonC_0.2.1_x64-setup.exe
+https://github.com/moonclearner/moonc_release/raw/main/release/MoonC_0.2.1_x64-setup.exe
 
 历史版本见 [moonc_release](https://github.com/moonclearner/moonc_release/releases)。

@@ -388,29 +388,60 @@ a:hover {
   line-height: 1.65;
 }
 
-/* ── 截图展示 ─────────────────────────────────────── */
+/* ── 图文交错展示 ─────────────────────────────────── */
 
-.showcase {
+.feature-pairs {
   display: grid;
-  gap: 1.5rem;
-  margin-top: 3rem;
+  gap: 3.5rem;
+  margin-top: 3.5rem;
 }
 
-@media (min-width: 860px) {
-  .showcase {
-    grid-template-columns: 1.1fr 1fr;
-  }
-
-  .showcase .shot:first-child {
-    grid-column: 1 / -1;
-  }
+.feature-pair {
+  display: grid;
+  grid-template-columns: 0.85fr 1.45fr;
+  gap: 2.5rem;
+  align-items: center;
 }
 
-.shot {
+/* 偶数行图文互换，形成左右交错 */
+.feature-pair:nth-child(even) .feature-copy {
+  order: 2;
+}
+
+.feature-pair:nth-child(even) .feature-shot {
+  order: 1;
+}
+
+.feature-copy .feature-num {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.feature-copy h3 {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.feature-copy p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+.feature-shot {
   margin: 0;
 }
 
-.shot img {
+.feature-shot img {
   display: block;
   width: 100%;
   height: auto;
@@ -419,16 +450,28 @@ a:hover {
   transition: box-shadow 300ms ease;
 }
 
-.shot:hover img {
+.feature-shot:hover img {
   box-shadow: 0 4px 20px rgba(28, 24, 20, 0.1);
 }
 
-.shot figcaption {
+.feature-shot figcaption {
   margin-top: 0.5rem;
   color: var(--muted);
   font-size: 0.82rem;
   font-style: italic;
   font-family: var(--font-serif);
+}
+
+@media (max-width: 859px) {
+  .feature-pair {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .feature-pair:nth-child(even) .feature-copy,
+  .feature-pair:nth-child(even) .feature-shot {
+    order: 0;
+  }
 }
 
 /* ── 下载区 ───────────────────────────────────────── */

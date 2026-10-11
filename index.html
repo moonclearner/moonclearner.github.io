@@ -11,13 +11,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="page-bg" aria-hidden="true"></div>
+    <div class="page-texture" aria-hidden="true"></div>
 
     <header class="top">
       <a class="top-brand" href="#top">MoonC</a>
@@ -25,7 +25,7 @@
         <a href="#features">特性</a>
         <a href="#download">下载</a>
         <a
-          href="https://github.com/moonclearner/moonc/releases"
+          href="https://github.com/moonclearner/moonclearner.github.io/releases"
           target="_blank"
           rel="noopener noreferrer"
           >版本</a
@@ -35,56 +35,75 @@
 
     <main id="top">
       <section class="hero">
-        <div class="hero-copy">
-          <p class="brand reveal">MoonC</p>
-          <h1 class="reveal delay-1">编辑区即渲染区</h1>
-          <p class="lead reveal delay-2">
-            本地 Markdown 编辑器。点进段落即可书写，离开后自动成稿，无需左右分屏。
-          </p>
-          <div class="cta-row reveal delay-3">
-            <a class="btn btn-primary" href="#download">下载 Windows 版</a>
-            <a
-              class="btn btn-ghost"
-              href="https://github.com/moonclearner/moonc/releases"
-              target="_blank"
-              rel="noopener noreferrer"
-              >历史版本</a
-            >
+        <div class="hero-frame">
+          <div class="hero-copy">
+            <p class="issue-line reveal">
+              <span class="issue-no">Vol. 0.2.9</span>
+              <span class="issue-rule" aria-hidden="true"></span>
+              <span class="issue-tag">本地 Markdown 编辑器</span>
+            </p>
+            <h1 class="hero-title reveal delay-1">
+              <span class="hero-brand">MoonC</span>
+              <span class="hero-tagline">编辑区即渲染区</span>
+            </h1>
+            <p class="lead reveal delay-2">
+              点进段落即可书写，离开后自动成稿。无需左右分屏，让文字回归文字。
+            </p>
+            <div class="cta-row reveal delay-3">
+              <a class="btn btn-primary" href="#download">下载 Windows 版</a>
+              <a
+                class="btn btn-ghost"
+                href="https://github.com/moonclearner/moonclearner.github.io/releases"
+                target="_blank"
+                rel="noopener noreferrer"
+                >历史版本</a
+              >
+            </div>
+            <p class="meta reveal delay-3">v0.2.9 · Windows 10 / 11</p>
           </div>
-          <p class="meta reveal delay-3">v0.2.2 · Windows 10 / 11</p>
-        </div>
 
-        <div class="hero-visual">
-          <img
-            class="hero-shot"
-            src="./assets/pasted-20260808-132612.png"
-            alt="MoonC 主界面"
-            width="1440"
-            height="900"
-          />
+          <div class="hero-visual reveal delay-2">
+            <figure class="hero-figure">
+              <img
+                class="hero-shot"
+                src="./assets/pasted-20260808-132612.png"
+                alt="MoonC 主界面"
+                width="1440"
+                height="900"
+              />
+              <figcaption class="hero-caption">MoonC 主界面</figcaption>
+            </figure>
+          </div>
         </div>
       </section>
 
+      <hr class="section-rule" aria-hidden="true" />
+
       <section id="features" class="section features">
         <div class="section-head">
+          <p class="section-label">Features</p>
           <h2>为专注写作而生</h2>
-          <p>从段落编辑到导出成稿，把注意力留在文字本身。</p>
+          <p class="section-sub">从段落编辑到导出成稿，把注意力留在文字本身。</p>
         </div>
 
         <ul class="feature-list">
-          <li>
+          <li class="feature-item">
+            <span class="feature-num" aria-hidden="true">01</span>
             <h3>即时成稿</h3>
             <p>当前段落可编辑，其余段落即时呈现效果；也可切换为全文编辑。</p>
           </li>
-          <li>
+          <li class="feature-item">
+            <span class="feature-num" aria-hidden="true">02</span>
             <h3>常用写法齐全</h3>
             <p>标题、列表、任务、表格、代码、公式与流程图均可直接书写。</p>
           </li>
-          <li>
+          <li class="feature-item">
+            <span class="feature-num" aria-hidden="true">03</span>
             <h3>图片随手贴</h3>
             <p>粘贴即可保存并插入，预览与原文同屏可见。</p>
           </li>
-          <li>
+          <li class="feature-item">
+            <span class="feature-num" aria-hidden="true">04</span>
             <h3>工作区与导出</h3>
             <p>多标签、大纲、文件树；需要分享时可导出网页或 PDF。</p>
           </li>
@@ -121,20 +140,23 @@
         </div>
       </section>
 
+      <hr class="section-rule" aria-hidden="true" />
+
       <section id="download" class="section download">
         <div class="section-head">
+          <p class="section-label">Download</p>
           <h2>下载 MoonC</h2>
-          <p>安装后即可开始本地写作，数据保存在你自己的电脑上。</p>
+          <p class="section-sub">安装后即可开始本地写作，数据保存在你自己的电脑上。</p>
         </div>
 
         <div class="download-panel">
-          <div>
-            <p class="download-name">MoonC 0.2.2</p>
-            <p class="download-desc">Windows 安装包</p>
+          <div class="download-info">
+            <p class="download-name">MoonC 0.2.9</p>
+            <p class="download-desc">Windows 安装包 · x64</p>
           </div>
           <a
-            class="btn btn-primary"
-            href="https://github.com/moonclearner/moonc/releases/download/0.2.2/MoonC_0.2.2_x64-setup.exe"
+            class="btn btn-primary btn-download"
+            href="https://github.com/moonclearner/moonclearner.github.io/releases/download/0.2.9/MoonC_0.2.9_x64-setup.exe"
             >下载安装包</a
           >
         </div>
@@ -142,7 +164,7 @@
         <p class="download-note">
           适用于 Windows 10 / 11。更多版本见
           <a
-            href="https://github.com/moonclearner/moonc/releases"
+            href="https://github.com/moonclearner/moonclearner.github.io/releases"
             target="_blank"
             rel="noopener noreferrer"
             >历史发布</a
@@ -152,8 +174,11 @@
     </main>
 
     <footer class="footer">
-      <p><span class="footer-brand">MoonC</span> · 本地写作</p>
-      <p>
+      <div class="footer-inner">
+        <p class="footer-brand">MoonC</p>
+        <p class="footer-tag">本地写作</p>
+      </div>
+      <p class="footer-url">
         <a href="https://moonclearner.github.io/">moonclearner.github.io</a>
       </p>
     </footer>
